@@ -168,16 +168,16 @@ def create_module_html(module, prev_module=None, next_module=None):
     nav_html = '<div class="navigation">\n'
 
     if prev_module:
-        nav_html += f'  <a href="{prev_module["id"]}.html" class="nav-button">← Precedente: {prev_module["title"]}</a>\n'
+        nav_html += f'  <a href="{prev_module["id"]}.html" class="nav-button">← Anterior: {prev_module["title"]}</a>\n'
     else:
         nav_html += '  <span></span>\n'
 
     nav_html += '  <div class="nav-center">\n'
-    nav_html += '    <a href="index.html" class="nav-button">📚 Indice</a>\n'
+    nav_html += '    <a href="index.html" class="nav-button">📚 Índice</a>\n'
     nav_html += '  </div>\n'
 
     if next_module:
-        nav_html += f'  <a href="{next_module["id"]}.html" class="nav-button">Successivo: {next_module["title"]} →</a>\n'
+        nav_html += f'  <a href="{next_module["id"]}.html" class="nav-button">Siguiente: {next_module["title"]} →</a>\n'
     else:
         nav_html += '  <span></span>\n'
 
@@ -236,13 +236,13 @@ def create_index_html():
     for i, module in enumerate(MODULES, 1):
         modules_cards += f'''
         <a href="{module['id']}.html" class="module-card">
-            <h3>Modulo {i}</h3>
+            <h3>Módulo {i}</h3>
             <div class="duration">{module['duration']}</div>
             <div class="description">{module['title']}</div>
         </a>'''
 
     html_template = f'''<!DOCTYPE html>
-<html lang="it">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -254,28 +254,28 @@ def create_index_html():
     <div class="container">
         <div class="header">
             <h1>{COURSE_TITLE}</h1>
-            <div class="subtitle">Corso completo per PMI italiane</div>
-            <div class="progress-indicator">Durata totale: ~2 ore | 4 Moduli</div>
+            <div class="subtitle">Curso completo para PYMEs italianas</div>
+            <div class="progress-indicator">Duración total: ~2 horas | 4 Módulos</div>
         </div>
 
         <div class="content">
             <div class="module-info">
-                <h3>Obiettivi del corso</h3>
+                <h3>Objetivos del curso</h3>
                 <ul>
-                    <li>Comprendere l'EU AI Act e le sue implicazioni per le PMI</li>
-                    <li>Classificare i sistemi AI nelle categorie di rischio</li>
-                    <li>Implementare controlli di governance minimi</li>
-                    <li>Pianificare la conformità con un piano operativo 90 giorni</li>
+                    <li>Comprender la Ley de IA de la UE y sus implicaciones para las PYMEs</li>
+                    <li>Clasificar los sistemas de IA en las categorías de riesgo</li>
+                    <li>Implementar controles mínimos de gobernanza</li>
+                    <li>Planificar el cumplimiento con un plan operativo de 90 días</li>
                 </ul>
             </div>
 
-            <h2>Moduli del corso</h2>
+            <h2>Módulos del curso</h2>
             <div class="module-grid">
                 {modules_cards}
             </div>
 
             <div class="info-box">
-                <strong>Nota:</strong> Questo corso è specificamente progettato per PMI italiane che utilizzano o pianificano di utilizzare sistemi di intelligenza artificiale. Ogni modulo include esempi pratici, checklist operative e template scaricabili.
+                <strong>Nota:</strong> Este curso está diseñado específicamente para PYMEs italianas que utilizan o planean utilizar sistemas de inteligencia artificial. Cada módulo incluye ejemplos prácticos, listas de verificación operativas y plantillas descargables.
             </div>
         </div>
     </div>
@@ -423,7 +423,7 @@ def create_imsmanifest():
     for i, module in enumerate(MODULES, 1):
         items_xml += f'''
       <item identifier="item_{module['id']}" identifierref="{module['id']}">
-        <title>Modulo {i}: {module['title']}</title>
+        <title>Módulo {i}: {module['title']}</title>
       </item>'''
 
     manifest = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -444,7 +444,7 @@ def create_imsmanifest():
     <organization identifier="org_default">
       <title>{COURSE_TITLE}</title>
       <item identifier="item_index" identifierref="index">
-        <title>Indice del Corso</title>
+        <title>Índice del Curso</title>
       </item>{items_xml}
     </organization>
   </organizations>
@@ -476,8 +476,8 @@ def create_zip_package():
             if file.is_file():
                 zipf.write(file, file.name)
 
-    print(f"\n✓ SCORM package created: {zip_path}")
-    print(f"✓ Size: {zip_path.stat().st_size / 1024:.1f} KB")
+    print(f"\n[SUCCESS] SCORM package created: {zip_path}")
+    print(f"[OK] Size: {zip_path.stat().st_size / 1024:.1f} KB")
     return zip_path
 
 
@@ -517,17 +517,17 @@ def main():
     print()
 
     print("=" * 60)
-    print("✓ SCORM package build complete!")
+    print("[SUCCESS] SCORM package build complete!")
     print("=" * 60)
     print()
     print(f"Package location: {zip_path.absolute()}")
     print()
-    print("To import into Moodle:")
-    print("1. Go to your Moodle course")
-    print("2. Click 'Aggiungi un'attività o una risorsa'")
-    print("3. Select 'Pacchetto SCORM'")
-    print("4. Upload the ZIP file")
-    print("5. Save and view")
+    print("Para importar en Moodle:")
+    print("1. Ve a tu curso de Moodle")
+    print("2. Haz clic en 'Añadir una actividad o un recurso'")
+    print("3. Selecciona 'Paquete SCORM'")
+    print("4. Sube el archivo ZIP")
+    print("5. Guardar cambios y mostrar")
     print()
 
 

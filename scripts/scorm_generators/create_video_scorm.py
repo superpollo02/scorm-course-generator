@@ -24,7 +24,7 @@ def create_video_player_html(video_filename, title, description=""):
     }.get(ext, 'video/mp4')
 
     html = f'''<!DOCTYPE html>
-<html lang="it">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -288,13 +288,13 @@ def create_video_player_html(video_filename, title, description=""):
         <div class="video-wrapper">
             <video id="videoPlayer" controls preload="metadata">
                 <source src="{video_filename}" type="{video_type}">
-                Il tuo browser non supporta l'elemento video.
+                Tu navegador no soporta el elemento de video.
             </video>
         </div>
 
         <div class="content">
             <div class="progress-container">
-                <div class="progress-label">Progresso Visualizzazione:</div>
+                <div class="progress-label">Progreso de Visualización:</div>
                 <div class="progress-bar">
                     <div id="progress-fill" class="progress-fill">
                         <span id="progress-text">0%</span>
@@ -303,36 +303,36 @@ def create_video_player_html(video_filename, title, description=""):
             </div>
 
             <div class="info">
-                <strong>ℹ️ Istruzioni:</strong><br>
-                Clicca il pulsante play per guardare il video. Il tuo progresso verrà tracciato automaticamente.
-                Il video sarà considerato completato quando raggiungi il 90% della visualizzazione.
+                <strong>ℹ️ Instrucciones:</strong><br>
+                Haz clic en el botón de reproducción para ver el video. Tu progreso se registrará automáticamente.
+                El video se considerará completado cuando alcances el 90% de la visualización.
             </div>
 
             <div class="controls-info">
                 <div class="control-item">
                     <div class="control-item-icon">▶️</div>
-                    <strong>Play/Pausa</strong><br>
-                    Controlla la riproduzione
+                    <strong>Reproducir/Pausa</strong><br>
+                    Controla la reproducción
                 </div>
                 <div class="control-item">
                     <div class="control-item-icon">🔊</div>
-                    <strong>Volume</strong><br>
-                    Regola l'audio
+                    <strong>Volumen</strong><br>
+                    Ajusta el volumen
                 </div>
                 <div class="control-item">
                     <div class="control-item-icon">⛶</div>
-                    <strong>Schermo intero</strong><br>
-                    Visualizzazione espansa
+                    <strong>Pantalla completa</strong><br>
+                    Visualización ampliada
                 </div>
             </div>
 
             <div id="completion-message">
-                <h3>✅ Video Completato!</h3>
-                <p>Ottimo lavoro! Il tuo progresso è stato registrato.</p>
+                <h3>✅ ¡Video Completado!</h3>
+                <p>¡Excelente trabajo! Tu progreso ha sido registrado.</p>
             </div>
 
             <div class="footer">
-                Pacchetto SCORM 1.2 - Compatibile con Moodle
+                Paquete SCORM 1.2 - Compatible con Moodle
             </div>
         </div>
     </div>

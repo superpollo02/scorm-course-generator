@@ -16,19 +16,19 @@
     <organization identifier="org_default">
       <title>EU AI Act: essentials e azioni pratiche per PMI</title>
       <item identifier="item_index" identifierref="index">
-        <title>Indice del Corso</title>
+        <title>Índice del Curso</title>
       </item>
       <item identifier="item_modulo1" identifierref="modulo1">
-        <title>Modulo 1: Modulo 1: Panoramica rapida e timeline AI Act</title>
+        <title>Módulo 1: Modulo 1: Panoramica rapida e timeline AI Act</title>
       </item>
       <item identifier="item_modulo2" identifierref="modulo2">
-        <title>Modulo 2: Modulo 2: Mappa dei casi d'uso e rischio</title>
+        <title>Módulo 2: Modulo 2: Mappa dei casi d'uso e rischio</title>
       </item>
       <item identifier="item_modulo3" identifierref="modulo3">
-        <title>Modulo 3: Modulo 3: Governance e controlli minimi</title>
+        <title>Módulo 3: Modulo 3: Governance e controlli minimi</title>
       </item>
       <item identifier="item_modulo4" identifierref="modulo4">
-        <title>Modulo 4: Modulo 4: Piano 90 giorni</title>
+        <title>Módulo 4: Modulo 4: Piano 90 giorni</title>
       </item>
     </organization>
   </organizations>

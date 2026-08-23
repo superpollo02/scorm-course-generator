@@ -1,104 +1,104 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Este archivo proporciona pautas para Claude Code / Antigravity cuando trabaja con código en este repositorio.
 
-## Project Overview
+## Descripción General del Proyecto
 
-SCORM 1.2 course content generation system using a multi-agent workflow. Creates universally-compatible e-learning content for all major LMS platforms (Moodle, Canvas, Blackboard, Google Classroom, TalentLMS, Schoology, D2L Brightspace, etc.).
+Sistema de generación de contenidos de cursos SCORM 1.2 utilizando un flujo de trabajo multi-agente. Crea contenido de e-learning universalmente compatible con todas las plataformas LMS principales (Moodle, Canvas, Blackboard, Google Classroom, TalentLMS, Schoology, D2L Brightspace, etc.).
 
-## Common Commands
+## Comandos Comunes
 
 ```bash
-# Generate SCORM package from markdown content
+# Generar paquete SCORM a partir de contenido markdown
 python scripts/scorm_generators/create_scorm_package.py
 
-# Create audio SCORM package
-python scripts/scorm_generators/create_audio_scorm.py <audio_file> [title] [description]
+# Crear paquete SCORM de audio
+python scripts/scorm_generators/create_audio_scorm.py <archivo_de_audio> [titulo] [descripcion]
 
-# Create video SCORM package
-python scripts/scorm_generators/create_video_scorm.py <video_file> [title] [description]
+# Crear paquete SCORM de video
+python scripts/scorm_generators/create_video_scorm.py <archivo_de_video> [titulo] [descripcion]
 
-# Compress large video files (recommended CRF: 23)
+# Comprimir archivos de video grandes (CRF recomendado: 23)
 ffmpeg -i input.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k output.mp4
 ```
 
-## Directory Structure
+## Estructura de Directorios
 
 ```
 scripts/
-├── scorm_generators/        # SCORM package creators (text, audio, video)
-├── content_generation/      # HTML page generation, content editing
-└── legacy/                  # Deprecated scripts (reference only)
+├── scorm_generators/        # Creadores de paquetes SCORM (texto, audio, video)
+├── content_generation/      # Generación de páginas HTML, edición de contenido
+└── legacy/                  # Scripts obsoletos (solo referencia)
 
-content/                     # Course content organized by course
-├── ai-principianti/         # Example: AI course for beginners
-└── sicurezza-lavoro/        # Example: Workplace safety course
+content/                     # Contenido de los cursos organizado por curso
+├── ai-principianti/         # Ejemplo: Curso de IA para principiantes
+└── sicurezza-lavoro/        # Ejemplo: Curso de seguridad laboral
 
-.claude/agents/              # Agent definition files
-output/                      # Generated SCORM packages (.zip)
-docs/                        # Import guides and troubleshooting
+.claude/agents/              # Archivos de definición de agentes
+output/                      # Paquetes SCORM generados (.zip)
+docs/                        # Guías de importación y resolución de problemas
 ```
 
-## Agent Workflow
+## Flujo de Trabajo de Agentes
 
-The system uses five specialized agents invoked via Task tool with `subagent_type`:
+El sistema utiliza cinco agentes especializados invocados con `subagent_type`:
 
-| Agent | subagent_type | Purpose |
-|-------|---------------|---------|
-| Course Outliner | `course-outliner` | Interview user → create pedagogically-sound course structure |
-| Content Creator | `content-creator` | Generate textual content from outline |
-| Senior Editor | `senior-editor` | Refine and polish content (uses Sonnet model) |
-| SCORM Packager | `moodle-xml-formatter` | Convert markdown → SCORM .zip package |
-| Multimedia Integrator | `multimedia-integrator` | Create audio/video SCORM packages |
+| Agente | subagent_type | Propósito |
+|-------|---------------|-----------|
+| Course Outliner | `course-outliner` | Entrevistar al usuario → crear una estructura pedagógica del curso |
+| Content Creator | `content-creator` | Generar contenido textual a partir de la estructura |
+| Senior Editor | `senior-editor` | Refinar y pulir el contenido escrito |
+| SCORM Packager | `moodle-xml-formatter` | Convertir markdown → paquete SCORM .zip |
+| Multimedia Integrator | `multimedia-integrator` | Crear paquetes SCORM de audio/video |
 
-**Standard workflow:**
-1. `course-outliner` → Interview and create outline
-2. `content-creator` → Write content from outline
-3. `senior-editor` → Polish and edit
-4. `moodle-xml-formatter` → Package as SCORM .zip
+**Flujo estándar:**
+1. `course-outliner` → Entrevista y creación de la estructura.
+2. `content-creator` → Escribir contenido a partir de la estructura.
+3. `senior-editor` → Pulir y editar.
+4. `moodle-xml-formatter` → Empaquetar como SCORM .zip.
 
-## SCORM Package Generation
+## Generación de Paquetes SCORM
 
-The `create_scorm_package.py` script expects a markdown file with modules prefixed by `# Modulo`. It:
-- Converts markdown to styled HTML with navigation buttons
-- Creates `imsmanifest.xml` for SCORM 1.2 compliance
-- Packages everything into a .zip ready for LMS import
+El script `create_scorm_package.py` espera un archivo markdown con módulos prefijados por `# Módulo` o `# Modulo`. El script:
+- Convierte markdown a HTML con estilo y botones de navegación.
+- Crea `imsmanifest.xml` compatible con SCORM 1.2.
+- Empaqueta todo en un archivo .zip listo para importar en el LMS.
 
-**Audio SCORM:** Marks complete when audio finishes. Supports MP3, WAV, OGG, M4A, AAC.
+**SCORM de Audio:** Se marca como completado cuando el audio termina. Soporta MP3, WAV, OGG, M4A, AAC.
 
-**Video SCORM:** Marks complete at 90% viewed. Supports MP4, WEBM, MOV, AVI, MKV.
+**SCORM de Video:** Se marca como completado al visualizar el 90%. Soporta MP4, WEBM, MOV, AVI, MKV.
 
-## Multimedia File Size Guidelines
+## Pautas de Tamaño de Archivos Multimedia
 
-| Size | Action |
+| Tamaño | Acción |
 |------|--------|
-| < 10 MB | Use directly |
-| 10-25 MB | Optional compression |
-| 25-50 MB | Recommend compression |
-| 50-100 MB | Require compression |
-| > 100 MB | External hosting (YouTube/Vimeo) |
+| < 10 MB | Usar directamente |
+| 10-25 MB | Compresión opcional |
+| 25-50 MB | Compresión recomendada |
+| 50-100 MB | Compresión obligatoria |
+| > 100 MB | Alojamiento externo (YouTube/Vimeo) |
 
-## Italian Language Guidelines
+## Directrices para el Idioma Español
 
-- Use informal "tu" tone consistently
-- Proper accents: è, à, ò, ù, ì, più, però, già, può
-- Culturally relevant examples (Italian/European context)
+- Utilizar de forma consistente el tono informal "tú".
+- Acentuación y caracteres correctos: á, é, í, ó, ú, ñ, ü, ¡, ¿.
+- Ejemplos adaptados a contextos culturalmente relevantes de habla hispana.
 
-## Quality Standards
+## Estándares de Calidad
 
-- **Pedagogical**: Bloom's Taxonomy, progressive complexity
-- **Tables**: Markdown tables with `|` separators, header row, and `|---|---|` separator
-- **SCORM**: Valid imsmanifest.xml in zip root
-- **Responsive**: Mobile-friendly HTML output
+- **Pedagógico**: Taxonomía de Bloom, complejidad progresiva.
+- **Tablas**: Tablas markdown con separadores `|`, fila de encabezado y separador `|---|---|`.
+- **SCORM**: Archivo `imsmanifest.xml` válido en la raíz del zip.
+- **Responsivo**: Salida HTML compatible con dispositivos móviles.
 
-## Troubleshooting
+## Resolución de Problemas
 
-**SCORM import fails:** Check imsmanifest.xml exists in zip root.
+**Fallo al importar SCORM:** Comprobar que `imsmanifest.xml` esté en la raíz del archivo zip.
 
-**Tables broken:** Ensure header row + separator row (`|---|---|`) + consistent column count.
+**Tablas rotas:** Asegurar fila de cabecera + fila separadora (`|---|---|`) + número consistente de columnas.
 
-**Upload too large:** For Moodle/XAMPP, edit php.ini: `upload_max_filesize=100M`, `post_max_size=100M`.
+**Carga demasiado grande:** Para Moodle/XAMPP, editar php.ini: `upload_max_filesize=100M`, `post_max_size=100M`.
 
-**Media won't play:** Re-encode to H.264/AAC format.
+**Los medios no se reproducen:** Volver a codificar a formato H.264/AAC.
 
-See `docs/` for detailed guides: `GUIDA_IMPORT_MOODLE.md`, `GUIDA_AUMENTARE_LIMITE_UPLOAD_MOODLE.md`
+Ver `docs/` para guías detalladas: `GUIA_IMPORTAR_MOODLE.md`, `GUIA_AUMENTAR_LIMITE_UPLOAD_MOODLE.md`

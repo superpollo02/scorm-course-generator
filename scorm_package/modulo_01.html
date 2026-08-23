@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo 1: Cos'è l'Intelligenza Artificiale</title>
+    
+<script type="text/javascript">
+    var API = null;
+
+    function findAPI(win) {
+        while (win.API == null && win.parent != null && win.parent != win) {
+            win = win.parent;
+        }
+        return win.API;
+    }
+
+    function initSCORM() {
+        API = findAPI(window);
+        if (API != null) {
+            API.LMSInitialize("");
+            API.LMSSetValue("cmi.core.lesson_status", "incomplete");
+        }
+    }
+
+    function finishSCORM() {
+        if (API != null) {
+            API.LMSSetValue("cmi.core.lesson_status", "completed");
+            API.LMSSetValue("cmi.core.score.raw", "100");
+            API.LMSFinish("");
+        }
+    }
+
+    function gotoPrevious() {
+        
+    }
+
+    function gotoNext() {
+        window.location.href = "modulo_02.html";
+    }
+
+    function gotoIndex() {
+        window.location.href = "index.html";
+    }
+
+    window.onload = initSCORM;
+    window.onbeforeunload = finishSCORM;
+</script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1f77b4;
+            border-bottom: 3px solid #1f77b4;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            color: #2ca02c;
+            margin-top: 30px;
+            border-left: 4px solid #2ca02c;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #ff7f0e;
+            margin-top: 25px;
+        }
+        h4 {
+            color: #d62728;
+            margin-top: 20px;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        strong {
+            color: #000;
+            font-weight: 600;
+        }
+        em {
+            color: #555;
+        }
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+        .navigation {
+            position: sticky;
+            top: 0;
+            background: #1f77b4;
+            padding: 15px;
+            margin: -30px -30px 30px -30px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            z-index: 100;
+        }
+        .navigation button {
+            background: white;
+            color: #1f77b4;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .navigation button:hover {
+            background: #f0f8ff;
+            transform: translateY(-2px);
+        }
+        .index-list {
+            list-style: none;
+            padding: 0;
+        }
+        .index-list li {
+            margin: 15px 0;
+        }
+        .index-list a {
+            display: block;
+            padding: 15px;
+            background: #f0f8ff;
+            color: #1f77b4;
+            text-decoration: none;
+            border-radius: 5px;
+            border-left: 4px solid #1f77b4;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        .index-list a:hover {
+            background: #1f77b4;
+            color: white;
+            transform: translateX(10px);
+        }
+        .course-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1f77b4, #2ca02c);
+            color: white;
+            border-radius: 8px;
+        }
+        .course-header h1 {
+            color: white;
+            border: none;
+            margin: 0;
+        }
+        .course-header p {
+            margin: 10px 0 0 0;
+            font-size: 18px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .data-table thead {
+            background: linear-gradient(135deg, #1f77b4, #2ca02c);
+            color: white;
+        }
+        .data-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #ddd;
+        }
+        .data-table td {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .data-table tbody tr:hover {
+            background: #f0f8ff;
+            transition: background 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation"><button onclick="gotoIndex()">&#8962; Indice</button><button onclick="gotoNext()">Successivo &rarr;</button></div>
+        <h2>Introduzione al Modulo</h2>
+Benvenuto nel primo modulo del tuo viaggio nel mondo dell'Intelligenza Artificiale! Se sei qui, probabilmente hai sentito parlare di AI in mille contesti diversi: dalle notizie al lavoro, dai film alle conversazioni con amici. Ma cosa significa davvero "Intelligenza Artificiale"? È una tecnologia misteriosa riservata agli scienziati o qualcosa che già usi ogni giorno senza saperlo?
+In questo modulo scoprirai che l'AI non è solo fantascienza, ma una realtà concreta che sta trasformando il modo in cui viviamo, lavoriamo e comunichiamo. Non preoccuparti se parti da zero: qui partiamo dalle basi, con un linguaggio semplice e tanti esempi pratici. Alla fine di questo modulo sarai in grado di spiegare con sicurezza cos'è l'AI, come si è evoluta nel tempo e quali sono le sue applicazioni nella vita quotidiana.
+Preparati a cambiare prospettiva: potresti scoprire che l'AI è molto più presente nella tua vita di quanto pensassi!
+---
+<h2>1.1 Definizioni Fondamentali</h2>
+<h3>Cos'è l'Intelligenza Artificiale?</h3>
+L'<strong>Intelligenza Artificiale</strong> (spesso abbreviata in <strong>AI</strong>, dall'inglese Artificial Intelligence) è la capacità di una macchina o di un programma informatico di eseguire compiti che normalmente richiederebbero l'intelligenza umana. Questi compiti includono cose come:
+<ul>
+  <li>Riconoscere volti in una foto</li>
+  <li>Capire e rispondere a domande in linguaggio naturale</li>
+  <li>Guidare un'auto in modo autonomo</li>
+  <li>Suggerire quale film guardare in base ai tuoi gusti</li>
+  <li>Tradurre testi da una lingua all'altra</li>
+</ul>
+In parole semplici, l'AI cerca di far "pensare" i computer in modo simile a come pensiamo noi, anche se con meccanismi molto diversi dal nostro cervello.
+<h3>AI, Machine Learning e Deep Learning: Facciamo Chiarezza</h3>
+Spesso sentiamo usare questi termini come se fossero sinonimi, ma in realtà rappresentano concetti diversi, uno contenuto nell'altro. Immagina delle bambole russe (le matrioske):
+<strong>Intelligenza Artificiale (AI)</strong> - La bambola più grande
+<ul>
+  <li>È il concetto generale: qualsiasi tecnica che permette alle macchine di imitare il comportamento intelligente umano</li>
+  <li>Include regole programmate manualmente, sistemi esperti, e molto altro</li>
+</ul>
+<strong>Machine Learning (ML)</strong> - La bambola intermedia
+<ul>
+  <li>È un sottoinsieme dell'AI</li>
+  <li>Qui le macchine "imparano" dai dati, senza essere programmate esplicitamente per ogni situazione</li>
+  <li>Esempio: un sistema che impara a riconoscere lo spam analizzando migliaia di email</li>
+</ul>
+<strong>Deep Learning (DL)</strong> - La bambola più piccola
+<ul>
+  <li>È un sottoinsieme del Machine Learning</li>
+  <li>Usa reti neurali artificiali complesse (ispirate al cervello umano) per imparare da enormi quantità di dati</li>
+  <li>Esempio: riconoscimento vocale di Alexa o Siri</li>
+</ul>
+<strong>Riepilogo visivo:</strong>
+```
+[AI]
+  └─ [Machine Learning]
+  └─ [Deep Learning]
+```
+<h3>Esempio Pratico per Capire la Differenza</h3>
+Immagina di voler creare un sistema che riconosce se in una foto c'è un gatto:
+<ul>
+  <li><strong>Approccio AI tradizionale</strong>: Un programmatore scrive manualmente tutte le regole ("se ha orecchie triangolari, baffi, quattro zampe... allora è un gatto")</li>
+  <li><strong>Approccio Machine Learning</strong>: Mostri al sistema migliaia di foto di gatti e di altri animali, e il sistema impara da solo a identificare i pattern che distinguono i gatti</li>
+  <li><strong>Approccio Deep Learning</strong>: Usi una rete neurale profonda che analizza automaticamente milioni di foto, scoprendo da sola le caratteristiche rilevanti (forme, texture, contorni) senza che nessuno le spieghi cosa cercare</li>
+</ul>
+---
+<h2>1.2 Breve Storia dell'AI: Da Turing ai Giorni Nostri</h2>
+<h3>Gli Albori: Il Sogno di una Macchina Pensante</h3>
+La storia dell'AI inizia molto prima dei computer moderni. Nel <strong>1950</strong>, il matematico britannico <strong>Alan Turing</strong> si pose una domanda rivoluzionaria: "Le macchine possono pensare?" Per rispondere, propose il famoso <strong>Test di Turing</strong>: se un essere umano, conversando con una macchina, non riesce a distinguerla da un altro essere umano, allora quella macchina può essere considerata "intelligente".
+<h3>Gli Anni '50-'60: La Nascita Ufficiale dell'AI</h3>
+Nel <strong>1956</strong>, al Dartmouth College negli Stati Uniti, si tenne una conferenza storica dove venne coniato per la prima volta il termine <strong>"Artificial Intelligence"</strong>. I ricercatori erano ottimisti: pensavano che entro pochi decenni avrebbero creato macchine intelligenti quanto gli esseri umani.
+I primi successi furono entusiasmanti:
+<ul>
+  <li>Programmi che giocavano a dama</li>
+  <li>Sistemi che dimostravano teoremi matematici</li>
+  <li>I primi chatbot come ELIZA (1966), che simulava una conversazione con uno psicoterapeuta</li>
+</ul>
+<h3>Gli "Inverni dell'AI": Anni di Disillusione</h3>
+L'ottimismo iniziale si scontrò con la dura realtà: i computer dell'epoca erano troppo lenti e limitati. I problemi che sembravano semplici (come riconoscere un volto o capire una frase) si rivelarono incredibilmente complessi. Negli anni '70 e '80, i finanziamenti diminuirono drasticamente in quelli che vengono chiamati gli <strong>"inverni dell'AI"</strong>.
+<h3>Il Rinascimento: Gli Anni '90-2000</h3>
+Le cose cambiarono con:
+<ul>
+  <li>Computer più potenti</li>
+  <li>Più dati disponibili (grazie a Internet)</li>
+  <li>Nuovi algoritmi di Machine Learning</li>
+</ul>
+Nel 1997, <strong>Deep Blue</strong> di IBM sconfisse il campione mondiale di scacchi Garry Kasparov, dimostrando che le macchine potevano superare gli umani in compiti cognitivi complessi.
+<h3>L'Esplosione Moderna: Dal 2010 a Oggi</h3>
+L'ultimo decennio ha visto progressi senza precedenti:
+<ul>
+  <li><strong>2011</strong>: Watson di IBM vince a Jeopardy!</li>
+  <li><strong>2012</strong>: Il Deep Learning inizia a dominare il riconoscimento di immagini</li>
+  <li><strong>2016</strong>: AlphaGo di Google batte il campione mondiale di Go</li>
+  <li><strong>2018-2020</strong>: Emergono i Large Language Models (GPT-3, BERT)</li>
+  <li><strong>2022-2023</strong>: ChatGPT e l'AI generativa diventano accessibili a tutti</li>
+  <li><strong>2024-2025</strong>: L'AI è ormai integrata in quasi ogni aspetto della vita quotidiana</li>
+</ul>
+Oggi non siamo più nell'era delle promesse, ma in quella delle <strong>applicazioni concrete</strong> dell'AI.
+---
+<h2>1.3 AI Debole vs AI Forte</h2>
+<h3>AI Debole (o Narrow AI)</h3>
+L'<strong>AI Debole</strong> è specializzata in un compito specifico. È estremamente brava in quello che fa, ma non può fare altro. Esempi:
+<ul>
+  <li><strong>Siri o Alexa</strong>: Capiscono comandi vocali, ma non possono guidare un'auto</li>
+  <li><strong>Filtri antispam</strong>: Identificano email indesiderate, ma non possono tradurre testi</li>
+  <li><strong>Netflix</strong>: Ti suggerisce film, ma non può diagnosticare malattie</li>
+</ul>
+L'AI Debole è quella che usiamo ogni giorno. È pratica, funzionale e ha trasformato interi settori dell'economia. <strong>Tutta l'AI che esiste oggi è AI Debole.</strong>
+<h3>AI Forte (o General AI)</h3>
+L'<strong>AI Forte</strong> è invece una macchina che possiede intelligenza generalizzata, simile a quella umana. Sarebbe in grado di:
+<ul>
+  <li>Comprendere qualsiasi problema intellettuale che un essere umano può affrontare</li>
+  <li>Imparare nuove competenze trasferendole da un dominio all'altro</li>
+  <li>Ragionare, pianificare e risolvere problemi in contesti completamente nuovi</li>
+  <li>Avere consapevolezza e comprensione di sé</li>
+</ul>
+<strong>Stato attuale</strong>: L'AI Forte <strong>non esiste ancora</strong>. È un obiettivo di ricerca futura, e gli esperti sono divisi su quando (e se) la raggiungeremo. Alcuni dicono tra 20 anni, altri tra 100 anni, altri pensano che potrebbe non essere mai possibile.
+<h3>Perché è Importante Distinguerle?</h3>
+Molti timori e aspettative irrealistiche sull'AI nascono dalla confusione tra AI Debole e Forte. Quando leggi notizie sensazionalistiche su "AI che superano gli umani", ricorda: parliamo sempre di compiti specifici, non di intelligenza generale.
+---
+<h2>1.4 Applicazioni Quotidiane dell'AI</h2>
+L'AI è già presente in moltissimi aspetti della tua vita quotidiana. Ecco alcuni esempi concreti:
+<h3>1. Smartphone e Assistenti Vocali</h3>
+<ul>
+  <li><strong>Siri, Google Assistant, Alexa</strong>: Comprendono il linguaggio naturale e rispondono alle tue domande</li>
+  <li><strong>Riconoscimento facciale</strong>: Sblocco del telefono con Face ID</li>
+  <li><strong>Correttore automatico</strong>: Prevede le parole mentre scrivi</li>
+  <li><strong>Fotocamera intelligente</strong>: Riconosce scene e volti, ottimizza automaticamente le foto</li>
+</ul>
+<h3>2. Social Media e Intrattenimento</h3>
+<ul>
+  <li><strong>Feed personalizzati</strong>: Facebook, Instagram, TikTok usano AI per mostrarti contenuti in base ai tuoi interessi</li>
+  <li><strong>Suggerimenti di contenuti</strong>: Netflix, Spotify, YouTube ti consigliano cosa guardare o ascoltare</li>
+  <li><strong>Filtri e effetti</strong>: I filtri di Instagram e Snapchat usano AI per modificare il tuo volto in tempo reale</li>
+</ul>
+<h3>3. E-commerce e Shopping</h3>
+<ul>
+  <li><strong>Raccomandazioni di prodotti</strong>: Amazon ti suggerisce articoli basandosi sui tuoi acquisti precedenti</li>
+  <li><strong>Chatbot per assistenza</strong>: Molti siti usano chatbot AI per rispondere alle domande dei clienti</li>
+  <li><strong>Ricerca visuale</strong>: Puoi fotografare un prodotto e trovare dove comprarlo online</li>
+</ul>
+<h3>4. Trasporti e Navigazione</h3>
+<ul>
+  <li><strong>Google Maps e Waze</strong>: Calcolano il percorso migliore in base al traffico in tempo reale</li>
+  <li><strong>Auto a guida autonoma</strong>: Tesla e altre case automobilistiche stanno sviluppando veicoli che guidano da soli</li>
+  <li><strong>Prenotazione intelligente</strong>: App come Uber usano AI per ottimizzare i percorsi e i prezzi</li>
+</ul>
+<h3>5. Casa e Vita Quotidiana</h3>
+<ul>
+  <li><strong>Termostati intelligenti</strong>: Imparano le tue abitudini e regolano automaticamente la temperatura</li>
+  <li><strong>Aspirapolvere robot</strong>: Mappano la casa e puliscono in modo autonomo</li>
+  <li><strong>Elettrodomestici smart</strong>: Frigoriferi che ti avvisano quando manca qualcosa, lavatrici che ottimizzano il ciclo</li>
+</ul>
+<h3>6. Lavoro e Produttività</h3>
+<ul>
+  <li><strong>Email e comunicazione</strong>: Filtri antispam, risposte suggerite in Gmail</li>
+  <li><strong>Traduzione automatica</strong>: Google Translate e DeepL traducono testi e conversazioni in tempo reale</li>
+  <li><strong>Strumenti di scrittura</strong>: Grammarly corregge grammatica e stile, ChatGPT aiuta a scrivere contenuti</li>
+</ul>
+<h3>7. Salute e Benessere</h3>
+<ul>
+  <li><strong>Fitness tracker</strong>: Smartwatch che monitorano battito cardiaco, sonno, attività fisica</li>
+  <li><strong>App mediche</strong>: Sistemi che aiutano i medici a diagnosticare malattie analizzando immagini mediche</li>
+  <li><strong>Assistenza mentale</strong>: Chatbot che offrono supporto psicologico di base</li>
+</ul>
+<h3>8. Sicurezza</h3>
+<ul>
+  <li><strong>Riconoscimento facciale</strong>: Aeroporti, banche, sistemi di sorveglianza</li>
+  <li><strong>Rilevamento frodi</strong>: Le banche usano AI per identificare transazioni sospette</li>
+  <li><strong>Cybersecurity</strong>: Sistemi che rilevano e bloccano attacchi informatici</li>
+</ul>
+---
+<h2>Attività del Modulo 1</h2>
+<h3>Attività 1: Quiz - Riconoscere Esempi di AI nella Vita Quotidiana</h3>
+<strong>Obiettivo</strong>: Verificare la tua comprensione delle applicazioni AI che usi quotidianamente.
+<strong>Istruzioni</strong>:
+Per ciascuna delle seguenti situazioni, indica se si tratta di un'applicazione di Intelligenza Artificiale oppure no. Dopo aver risposto, rifletti su quale tipo di AI è coinvolta (se applicabile).
+<strong>Domande:</strong>
+<ol>
+  <li>Scrivi "ciao" su WhatsApp e ti viene suggerito automaticamente "come stai?" come parola successiva.</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Se sì, che tipo di compito svolge?</li>
+</ul>
+</ol>
+<ol>
+  <li>Usi una calcolatrice per fare 25 + 37.</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Perché?</li>
+</ul>
+</ol>
+<ol>
+  <li>Google Foto raggruppa automaticamente tutte le foto in cui compare il tuo cane.</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Quale capacità "intelligente" dimostra?</li>
+</ul>
+</ol>
+<ol>
+  <li>Il tuo termostato smart impara a quali orari sei a casa e regola la temperatura di conseguenza.</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Come fa a "imparare"?</li>
+</ul>
+</ol>
+<ol>
+  <li>Excel calcola automaticamente la somma di una colonna quando usi la funzione SUM().</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Perché?</li>
+</ul>
+</ol>
+<ol>
+  <li>YouTube ti raccomanda video simili a quelli che hai guardato di recente.</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Su quali dati si basa?</li>
+</ul>
+</ol>
+<ol>
+  <li>Un semaforo cambia da rosso a verde dopo un tempo prestabilito.</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Cosa manca per essere considerato AI?</li>
+</ul>
+</ol>
+<ol>
+  <li>Shazam riconosce una canzone che sta suonando alla radio.</li>
+<ul>
+  <li>È AI? Sì / No</li>
+  <li>Che tipo di riconoscimento esegue?</li>
+</ul>
+</ol>
+<strong>Risposte e Spiegazioni:</strong>
+<ol>
+  <li><strong>Sì</strong> - È AI. Il sistema usa il Machine Learning per prevedere quale parola è più probabile che tu scriva successivamente, basandosi su miliardi di conversazioni analizzate.</li>
+</ol>
+<ol>
+  <li><strong>No</strong> - Non è AI. Una calcolatrice esegue operazioni matematiche seguendo regole fisse programmate. Non c'è apprendimento né adattamento.</li>
+</ol>
+<ol>
+  <li><strong>Sì</strong> - È AI. Il sistema usa riconoscimento di immagini e clustering per identificare pattern visivi ricorrenti (il tuo cane) e raggruppare foto simili.</li>
+</ol>
+<ol>
+  <li><strong>Sì</strong> - È AI. Il termostato usa algoritmi di Machine Learning per analizzare i tuoi comportamenti e ottimizzare automaticamente le impostazioni.</li>
+</ol>
+<ol>
+  <li><strong>No</strong> - Non è AI. È una funzione programmata che esegue sempre la stessa operazione matematica. Non c'è intelligenza né apprendimento.</li>
+</ol>
+<ol>
+  <li><strong>Sì</strong> - È AI. YouTube usa sistemi di raccomandazione basati su Machine Learning che analizzano le tue preferenze, i tuoi comportamenti e quelli di utenti simili.</li>
+</ol>
+<ol>
+  <li><strong>No</strong> - Un semaforo tradizionale segue semplicemente un timer. Tuttavia, esistono semafori intelligenti che usano AI per ottimizzare i tempi in base al traffico reale!</li>
+</ol>
+<ol>
+  <li><strong>Sì</strong> - È AI. Shazam usa algoritmi di riconoscimento audio che confrontano le caratteristiche sonore della canzone con un database di milioni di tracce.</li>
+</ol>
+---
+<h3>Attività 2: Discussione - Quali Tecnologie AI Usi Già Senza Saperlo?</h3>
+<strong>Obiettivo</strong>: Riflettere sulla presenza pervasiva dell'AI nella tua vita e condividere esperienze con altri studenti.
+<strong>Istruzioni</strong>:
+<ol>
+  <li><strong>Fase di Riflessione Personale (15 minuti)</strong>:</li>
+<ul>
+  <li>Pensa alla tua giornata tipo, dal momento in cui ti svegli a quando vai a dormire</li>
+  <li>Elenca almeno 5 momenti o strumenti in cui interagisci con l'AI (anche senza esserne consapevole)</li>
+  <li>Per ogni esempio, chiediti:</li>
+  <li>Cosa fa esattamente questa tecnologia?</li>
+  <li>Come migliora o cambia la mia esperienza?</li>
+  <li>Come funzionerebbe senza AI?</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Esempi di Domande Guida</strong>:</li>
+<ul>
+  <li>Quale app hai usato stamattina appena sveglio?</li>
+  <li>Come sei arrivato al lavoro o a scuola? Hai usato una app di navigazione?</li>
+  <li>Quali piattaforme social hai consultato? Come vengono scelti i contenuti che vedi?</li>
+  <li>Hai fatto acquisti online? Come hai trovato i prodotti?</li>
+  <li>Hai ascoltato musica o guardato video? Chi ha scelto cosa proporti?</li>
+  <li>Hai scritto email o messaggi? Il sistema ti ha aiutato in qualche modo?</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Fase di Condivisione (Nel forum di discussione)</strong>:</li>
+<ul>
+  <li>Condividi la tua lista con il gruppo</li>
+  <li>Leggi le risposte degli altri partecipanti</li>
+  <li>Commenta almeno 2 contributi di altri studenti:</li>
+  <li>Hai scoperto applicazioni AI che non conoscevi?</li>
+  <li>Ci sono tecnologie che usi anche tu?</li>
+  <li>Hai avuto reazioni di sorpresa scoprendo che certe tecnologie usano AI?</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Riflessione Finale</strong>:</li>
+</ol>
+  Dopo aver partecipato alla discussione, scrivi un breve paragrafo (5-7 righe) in risposta a questa domanda:
+  > "Prima di questo modulo, quanto eri consapevole dell'AI nella tua vita quotidiana? La tua percezione è cambiata?"
+<strong>Esempio di Contributo alla Discussione</strong>:
+<em>"Questa mattina ho realizzato che uso l'AI praticamente dal momento in cui apro gli occhi! Il mio telefono mi sveglia con una playlist personalizzata su Spotify (AI che sceglie le canzoni), controllo le notifiche di Gmail che ha già filtrato lo spam (AI), uso Google Maps per evitare il traffico andando al lavoro (AI), e a pranzo ho ordinato cibo con una app che mi ha suggerito ristoranti in base alle mie preferenze passate (AI). La cosa che mi ha sorpreso di più è che il correttore automatico che uso ogni giorno mentre scrivo messaggi è una forma di AI! Pensavo fosse solo un semplice dizionario, invece impara dal mio modo di scrivere. Devo dire che ora vedo l'AI ovunque!"</em>
+---
+<h2>Riepilogo del Modulo 1</h2>
+Congratulazioni per aver completato il primo modulo! Ecco cosa hai imparato:
+<h3>Concetti Chiave</h3>
+<ol>
+  <li><strong>Definizione di AI</strong>: L'Intelligenza Artificiale è la capacità delle macchine di eseguire compiti che normalmente richiedono intelligenza umana.</li>
+</ol>
+<ol>
+  <li><strong>AI, ML e DL</strong>: Sono concetti correlati ma distinti:</li>
+<ul>
+  <li>AI è l'insieme generale di tecniche</li>
+  <li>Machine Learning è un sottoinsieme dell'AI in cui le macchine imparano dai dati</li>
+  <li>Deep Learning è un sottoinsieme del ML che usa reti neurali complesse</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Storia dell'AI</strong>: Dai sogni visionari degli anni '50 agli "inverni" degli anni '70-'80, fino all'esplosione moderna degli ultimi 10 anni.</li>
+</ol>
+<ol>
+  <li><strong>AI Debole vs Forte</strong>:</li>
+<ul>
+  <li>AI Debole (Narrow AI): Specializzata in compiti specifici - è quella che esiste oggi</li>
+  <li>AI Forte (General AI): Intelligenza generalizzata simile all'umana - non esiste ancora</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>AI nella Vita Quotidiana</strong>: L'AI è ormai integrata in smartphone, social media, e-commerce, trasporti, casa, lavoro, salute e sicurezza.</li>
+</ol>
+<h3>Cosa Hai Acquisito</h3>
+<ul>
+  <li>La capacità di riconoscere l'AI nelle applicazioni quotidiane</li>
+  <li>Una comprensione storica di come l'AI si è evoluta</li>
+  <li>La distinzione tra diversi tipi e livelli di AI</li>
+  <li>Consapevolezza di quanto l'AI sia già presente nella tua vita</li>
+</ul>
+<h3>Prossimi Passi</h3>
+Nel prossimo modulo, approfondiremo <strong>come funziona</strong> l'AI: scoprirai cosa accade "dietro le quinte" quando un sistema AI impara e prende decisioni. Esploreremo concetti come dati, algoritmi, training e inferenza, smontando il mito che l'AI sia "magia" e mostrandoti i meccanismi concreti che la fanno funzionare.
+---
+---
+    </div>
+</body>
+</html>

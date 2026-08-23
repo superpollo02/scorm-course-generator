@@ -1,6 +1,6 @@
 # SCORM Course Generator
 
-Sistema professionale per la generazione di contenuti didattici in formato SCORM 1.2, compatibile con qualsiasi LMS (Learning Management System).
+Sistema profesional para la generación de contenidos didácticos en formato SCORM 1.2, compatible con cualquier LMS (Learning Management System).
 
 [![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
 [![SCORM 1.2](https://img.shields.io/badge/SCORM-1.2-green.svg)](https://scorm.com/)
@@ -8,45 +8,45 @@ Sistema professionale per la generazione di contenuti didattici in formato SCORM
 
 ---
 
-## Indice
+## Índice
 
-- [Panoramica](#panoramica)
-- [Caratteristiche Principali](#caratteristiche-principali)
-- [Requisiti di Sistema](#requisiti-di-sistema)
-- [Installazione](#installazione)
-- [Quick Start](#quick-start)
-- [Architettura Multi-Agente](#architettura-multi-agente)
-- [Struttura del Progetto](#struttura-del-progetto)
-- [Guida Completa agli Script](#guida-completa-agli-script)
-- [Integrazione Multimediale](#integrazione-multimediale)
-- [Importazione nei LMS](#importazione-nei-lms)
-- [Standard di Qualità](#standard-di-qualità)
-- [Risoluzione Problemi](#risoluzione-problemi)
-- [Esempi di Corsi](#esempi-di-corsi)
-- [Contributing](#contributing)
-- [Licenza](#licenza)
+- [Descripción General](#descripción-general)
+- [Características Principales](#características-principales)
+- [Requisitos del Sistema](#requisitos-del-sistema)
+- [Instalación](#instalación)
+- [Inicio Rápido](#inicio-rápido)
+- [Arquitectura Multi-Agente](#arquitectura-multi-agente)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Guía Completa de Scripts](#guía-completa-de-scripts)
+- [Integración Multimedia](#integración-multimedia)
+- [Importación en LMS](#importación-en-lms)
+- [Estándares de Calidad](#estándares-de-calidad)
+- [Resolución de Problemas](#resolución-de-problemas)
+- [Ejemplos de Cursos](#ejemplos-de-cursos)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
 
 ---
 
-## Panoramica
+## Descripción General
 
-Questo progetto utilizza un'**architettura multi-agente basata su AI** per creare contenuti didattici di alta qualità in formato SCORM 1.2. Il sistema divide il processo di creazione in fasi specializzate, ciascuna gestita da un agente dedicato con competenze specifiche.
+Este proyecto utiliza una **arquitectura multi-agente basada en IA** para crear contenidos didácticos de alta calidad en formato SCORM 1.2. El sistema divide el proceso de creación en fases especializadas, cada una gestionada por un agente dedicado con competencias específicas.
 
-### Perché SCORM 1.2?
+### ¿Por qué SCORM 1.2?
 
-SCORM 1.2 è lo standard e-learning più affidabile e universalmente supportato:
+SCORM 1.2 es el estándar de e-learning más confiable y universalmente compatible:
 
-| Vantaggio | Descrizione |
+| Ventaja | Descripción |
 |-----------|-------------|
-| **Compatibilità Universale** | Funziona su qualsiasi LMS moderno |
-| **Affidabilità** | Standard maturo e stabile dal 2001 |
-| **Tracciamento** | Supporta completamento e progressi dell'utente |
-| **Portabilità** | Un unico pacchetto funziona ovunque |
-| **Offline-Ready** | Visualizzabile anche localmente senza LMS |
+| **Compatibilidad Universal** | Funciona en cualquier LMS moderno |
+| **Fiabilidad** | Estándar maduro y estable desde 2001 |
+| **Seguimiento** | Soporta el estado de finalización y el progreso del usuario |
+| **Portabilidad** | Un único paquete funciona en cualquier parte |
+| **Listo para modo local** | Se puede visualizar localmente sin necesidad de un LMS |
 
-### LMS Supportati
+### LMS Soportados
 
-- **Moodle** (tutte le versioni)
+- **Moodle** (todas las versiones)
 - **Canvas** (Instructure)
 - **Blackboard Learn**
 - **Google Classroom**
@@ -56,61 +56,61 @@ SCORM 1.2 è lo standard e-learning più affidabile e universalmente supportato:
 - **SAP Litmos**
 - **Docebo**
 - **iSpring Learn**
-- E qualsiasi altro LMS che supporta SCORM 1.2
+- Y cualquier otro LMS compatible con SCORM 1.2
 
 ---
 
-## Caratteristiche Principali
+## Características Principales
 
-### Generazione Contenuti
-- **Creazione Automatica**: Da semplice outline a corso completo
-- **Qualità Professionale**: Contenuti pedagogicamente validi e grammaticalmente corretti
-- **Multi-lingua**: Ottimizzato per italiano con supporto accenti e tono formale/informale
+### Generación de Contenidos
+- **Creación Automática**: Desde un simple esquema hasta un curso completo
+- **Calidad Profesional**: Contenidos pedagógicamente válidos y gramaticalmente correctos
+- **Optimización en Español**: Soporte completo para acentos, caracteres especiales y tono formal/informal
 
-### Formattazione
-- **Markdown → HTML**: Conversione automatica con stili professionali
-- **Tabelle Responsive**: Rendering perfetto su desktop e mobile
-- **Navigazione Integrata**: Pulsanti Precedente/Successivo/Indice
+### Formateo
+- **Markdown → HTML**: Conversión automática con estilos profesionales
+- **Tablas Responsivas**: Visualización perfecta tanto en escritorio como en dispositivos móviles
+- **Navegación Integrada**: Botones de Anterior/Siguiente/Índice
 
 ### Multimedia
-- **Audio SCORM**: Player HTML5 con tracciamento completamento
-- **Video SCORM**: Player con progress bar e completamento al 90%
-- **Compressione Intelligente**: Ottimizzazione automatica file grandi
+- **SCORM de Audio**: Reproductor HTML5 con seguimiento de finalización
+- **SCORM de Video**: Reproductor con barra de progreso y finalización automática al 90% visto
+- **Compresión Inteligente**: Optimización automática para archivos multimedia grandes
 
-### Tracciamento
-- **SCORM API**: Comunicazione completa con LMS
-- **Stato Completamento**: incomplete → completed
-- **Punteggio**: Supporto score reporting
+### Seguimiento
+- **API SCORM**: Comunicación completa con el LMS
+- **Estado de Finalización**: de `incomplete` a `completed`
+- **Puntuaciones**: Soporte para el reporte de calificaciones (`score raw`)
 
 ---
 
-## Requisiti di Sistema
+## Requisitos del Sistema
 
-### Obbligatori
+### Obligatorios
 
-| Requisito | Versione | Note |
+| Requisito | Versión | Notas |
 |-----------|----------|------|
-| **Python** | 3.8+ | Testato su 3.9, 3.10, 3.11 |
-| **Claude Code** | Latest | Per utilizzo agenti AI |
+| **Python** | 3.8+ | Probado en 3.9, 3.10, 3.11, 3.14 |
+| **Claude Code / Antigravity** | Última | Para el uso de agentes de IA |
 
-### Opzionali
+### Opcionales
 
-| Requisito | Versione | Utilizzo |
+| Requisito | Versión | Uso |
 |-----------|----------|----------|
-| **ffmpeg** | 4.0+ | Compressione video/audio |
-| **Git** | 2.0+ | Version control |
+| **ffmpeg** | 4.0+ | Compresión de video/audio |
+| **Git** | 2.0+ | Control de versiones |
 
-### Installazione ffmpeg
+### Instalación de ffmpeg
 
 **Windows (con Chocolatey):**
 ```powershell
 choco install ffmpeg
 ```
 
-**Windows (manuale):**
-1. Scarica da https://ffmpeg.org/download.html
-2. Estrai in `C:\ffmpeg`
-3. Aggiungi `C:\ffmpeg\bin` al PATH di sistema
+**Windows (manual):**
+1. Descarga desde https://ffmpeg.org/download.html
+2. Extrae los archivos en `C:\ffmpeg`
+3. Añade `C:\ffmpeg\bin` al PATH del sistema
 
 **macOS:**
 ```bash
@@ -124,34 +124,34 @@ sudo apt update && sudo apt install ffmpeg
 
 ---
 
-## Installazione
+## Instalación
 
-### 1. Clona il Repository
+### 1. Clona el Repositorio
 
 ```bash
-git clone https://github.com/tuousername/scorm-course-generator.git
+git clone https://github.com/tuusername/scorm-course-generator.git
 cd scorm-course-generator
 ```
 
 ### 2. Verifica Python
 
 ```bash
-python --version  # Deve essere 3.8+
+python --version  # Debe ser 3.8+
 ```
 
-### 3. (Opzionale) Crea Virtual Environment
+### 3. Crea el Entorno Virtual (Opcional)
 
 ```bash
 python -m venv venv
 
 # Windows
-venv\Scripts\activate
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process; .\venv\Scripts\Activate.ps1
 
 # macOS/Linux
 source venv/bin/activate
 ```
 
-### 4. Verifica Installazione
+### 4. Verifica la Instalación
 
 ```bash
 python scripts/scorm_generators/create_scorm_package.py --help
@@ -159,688 +159,352 @@ python scripts/scorm_generators/create_scorm_package.py --help
 
 ---
 
-## Quick Start
+## Inicio Rápido
 
-### Metodo 1: Usando gli Agenti AI (Consigliato)
+### Método 1: Usando los Agentes de IA (Recomendado)
 
-Il modo più semplice per creare un corso completo è utilizzare gli agenti AI in Claude Code:
+La forma más sencilla de crear un curso completo es utilizar los agentes de IA integrados:
 
 ```
-1. Apri Claude Code nella directory del progetto
-2. Chiedi: "Voglio creare un corso su [ARGOMENTO]"
-3. L'agente course-outliner ti intervisterà per capire i requisiti
-4. Seguiranno automaticamente content-creator, senior-editor e il packaging SCORM
+1. Abre tu terminal de IA en el directorio del proyecto.
+2. Solicita: "Quiero crear un curso sobre [TEMA]"
+3. El agente de estructura de cursos te entrevistará para definir los requisitos.
+4. Los agentes de creación, edición y empaquetado generarán automáticamente el archivo SCORM final.
 ```
 
-### Metodo 2: Usando gli Script Direttamente
+### Método 2: Usando los Scripts Directamente
 
-#### Passo 1: Prepara il Contenuto
+#### Paso 1: Prepara el Contenido
 
-Crea un file markdown con la struttura:
+Crea un archivo markdown con la siguiente estructura:
 
 ```markdown
-# Modulo 1: Introduzione
+# Módulo 1: Introducción
 
-## Obiettivi di Apprendimento
-- Comprendere i concetti base
-- Applicare le tecniche fondamentali
+## Objetivos de Aprendizaje
+- Comprender los conceptos básicos
+- Aplicar las técnicas fundamentales
 
-## Contenuto
-Testo del modulo...
+## Contenido
+Texto del módulo...
 
-# Modulo 2: Approfondimento
+# Módulo 2: Profundización
 
-## Obiettivi di Apprendimento
+## Objetivos de Aprendizaje
 ...
 ```
 
-#### Passo 2: Genera il Pacchetto SCORM
+#### Paso 2: Genera el Paquete SCORM
 
 ```bash
 python scripts/scorm_generators/create_scorm_package.py
 ```
 
-#### Passo 3: Importa nel tuo LMS
+#### Paso 3: Importa en tu LMS
 
-Carica il file `.zip` generato nel tuo LMS come "Pacchetto SCORM".
+Sube el archivo `.zip` generado a tu LMS como "Paquete SCORM".
 
 ---
 
-## Architettura Multi-Agente
+## Arquitectura Multi-Agente
 
-Il sistema utilizza **cinque agenti specializzati**, ciascuno con competenze specifiche:
+El sistema utiliza **cinco agentes especializados**, cada uno con competencias específicas:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        WORKFLOW COMPLETO                         │
+│                        FLUJO DE TRABAJO                         │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐       │
 │  │   COURSE     │    │   CONTENT    │    │   SENIOR     │       │
 │  │   OUTLINER   │───▶│   CREATOR    │───▶│   EDITOR     │       │
-│  │   (Orange)   │    │   (Blue)     │    │   (Red)      │       │
+│  │  (Naranja)   │    │   (Azul)     │    │   (Rojo)     │       │
 │  └──────────────┘    └──────────────┘    └──────────────┘       │
 │         │                                        │               │
-│         │              Outline                   │ Contenuto     │
-│         │              Strutturato               │ Raffinato     │
+│         │              Esquema                   │ Contenido     │
+│         │              Estructurado              │ Pulido        │
 │         ▼                                        ▼               │
 │  ┌──────────────────────────────────────────────────────────┐   │
 │  │                    SCORM PACKAGER                         │   │
-│  │                       (Green)                             │   │
-│  └──────────────────────────────────────────────────────────┘   │
+│  │                       (Verde)                             │   │
+│  └──────────────────────────────────────────────────────────┐   │
 │                              │                                   │
 │                              ▼                                   │
 │                    ┌──────────────────┐                         │
-│                    │  Pacchetto SCORM │                         │
+│                    │  Paquete SCORM   │                         │
 │                    │     (.zip)       │                         │
 │                    └──────────────────┘                         │
 │                                                                  │
 │  ┌──────────────────────────────────────────────────────────┐   │
-│  │              MULTIMEDIA INTEGRATOR (Purple)               │   │
-│  │         Audio/Video → SCORM Standalone Packages           │   │
-│  └──────────────────────────────────────────────────────────┘   │
+│  │              MULTIMEDIA INTEGRATOR (Morado)               │   │
+│  │       Audio/Video → Paquetes SCORM Independientes          │   │
+│  └──────────────────────────────────────────────────────────┐   │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### Dettaglio Agenti
+### Detalle de los Agentes
 
-#### 1. Course Outliner (Arancione)
-**Scopo**: Crea strutture di corso pedagogicamente valide
+#### 1. Course Outliner (Naranja)
+**Objetivo**: Diseña estructuras de cursos pedagógicamente sólidas.
 
-| Aspetto | Dettaglio |
+| Aspecto | Detalle |
 |---------|-----------|
-| **Input** | Intervista con obiettivi, audience, durata, livello |
-| **Output** | Outline completo con moduli, argomenti e attività |
-| **Metodologia** | Bloom's Taxonomy, complessità progressiva |
-| **Invocazione** | `subagent_type="course-outliner"` |
+| **Entrada** | Entrevista sobre objetivos, público, duración y nivel |
+| **Salida** | Esquema completo con módulos, temas y actividades |
+| **Metodología** | Taxonomía de Bloom, complejidad progresiva |
+| **Invocación** | `subagent_type="course-outliner"` |
 
-**Esempio di output:**
+**Ejemplo de salida:**
 ```markdown
-# Corso: Introduzione all'Intelligenza Artificiale
+# Curso: Introducción a la Inteligencia Artificial
 
-## Modulo 1: Fondamenti (2 ore)
-### Obiettivi
-- Definire l'intelligenza artificiale
-- Distinguere AI debole e forte
+## Módulo 1: Fundamentos (2 horas)
+### Objetivos
+- Definir la inteligencia artificial
+- Distinguir entre IA débil y fuerte
 
-### Argomenti
-1.1 Storia dell'AI
-1.2 Tipi di AI
-1.3 Applicazioni quotidiane
+### Temas
+1.1 Historia de la IA
+1.2 Tipos de IA
+1.3 Aplicaciones cotidianas
 
-### Attività
-- Quiz di autovalutazione
-- Discussione: "L'AI nella tua vita"
+### Actividades
+- Quiz de autoevaluación
+- Debate: "La IA en tu vida diaria"
 ```
 
-#### 2. Content Creator (Blu)
-**Scopo**: Genera contenuti testuali dettagliati
+#### 2. Content Creator (Azul)
+**Objetivo**: Genera contenidos de texto detallados.
 
-| Aspetto | Dettaglio |
+| Aspecto | Detalle |
 |---------|-----------|
-| **Input** | Outline strutturato del corso |
-| **Output** | Contenuti completi in markdown |
-| **Stile** | Tono "tu", esempi pratici, italiano corretto |
-| **Invocazione** | `subagent_type="content-creator"` |
+| **Entrada** | Esquema estructurado del curso |
+| **Salida** | Contenidos completos en formato markdown |
+| **Estilo** | Tono de "tú", ejemplos prácticos, español neutro |
+| **Invocación** | `subagent_type="content-creator"` |
 
-#### 3. Senior Editor (Rosso)
-**Scopo**: Raffina e perfeziona i contenuti
+#### 3. Senior Editor (Rojo)
+**Objetivo**: Revisa, pule y perfecciona los contenidos escritos.
 
-| Aspetto | Dettaglio |
+| Aspecto | Detalle |
 |---------|-----------|
-| **Input** | Bozza dei contenuti |
-| **Output** | Contenuti pubblicabili |
-| **Modello** | Usa specificamente Sonnet |
-| **Invocazione** | `subagent_type="senior-editor"` |
+| **Entrada** | Borrador de los contenidos |
+| **Salida** | Contenidos finales listos para publicar |
+| **Modelo** | Diseñado para trabajar con modelos avanzados (ej. Sonnet) |
+| **Invocación** | `subagent_type="senior-editor"` |
 
-**Processo di editing in 6 passaggi:**
-1. **Meccanica**: Grammatica, ortografia, punteggiatura
-2. **Chiarezza**: Semplificazione frasi complesse
-3. **Concisione**: Rimozione ridondanze
-4. **Consistenza**: Terminologia uniforme
-5. **E-learning**: Adattamento formato digitale
-6. **Flusso**: Coerenza narrativa
+**Proceso de edición en 6 pasos:**
+1. **Mecánica**: Corrección de gramática, ortografía y puntuación.
+2. **Claridad**: Simplificación de oraciones complejas.
+3. **Concisión**: Eliminación de redundancias.
+4. **Consistencia**: Unificación de términos técnicos y tono.
+5. **E-learning**: Adaptación a formatos de lectura digital ágiles.
+6. **Fluidez**: Coherencia y transición narrativa óptima.
 
 #### 4. SCORM Packager (Verde)
-**Scopo**: Converte contenuti in pacchetti SCORM
+**Objetivo**: Convierte los contenidos markdown a formato SCORM.
 
-| Aspetto | Dettaglio |
+| Aspecto | Detalle |
 |---------|-----------|
-| **Input** | Contenuti markdown finali |
-| **Output** | File .zip SCORM 1.2 compliant |
-| **Include** | HTML stilizzato, navigazione, imsmanifest.xml |
-| **Invocazione** | `subagent_type="moodle-xml-formatter"` |
+| **Entrada** | Contenidos markdown aprobados |
+| **Salida** | Archivo .zip compatible con el estándar SCORM 1.2 |
+| **Componentes** | HTML estructurado, estilos, navegación y manifest XML |
+| **Invocación** | `subagent_type="moodle-xml-formatter"` |
 
-#### 5. Multimedia Integrator (Viola)
-**Scopo**: Crea pacchetti SCORM per audio/video
+#### 5. Multimedia Integrator (Morado)
+**Objetivo**: Crea paquetes SCORM dedicados a archivos de audio o video.
 
-| Aspetto | Dettaglio |
+| Aspecto | Detalle |
 |---------|-----------|
-| **Input** | File audio (MP3, WAV, etc.) o video (MP4, WEBM, etc.) |
-| **Output** | Pacchetti SCORM standalone con player HTML5 |
-| **Funzioni** | Analisi, compressione, ottimizzazione |
-| **Invocazione** | `subagent_type="multimedia-integrator"` |
+| **Entrada** | Archivo de audio (MP3, WAV...) o de video (MP4, WEBM...) |
+| **Salida** | Paquete SCORM independiente con reproductor HTML5 integrado |
+| **Funciones** | Análisis de integridad, compresión y optimización |
+| **Invocación** | `subagent_type="multimedia-integrator"` |
 
 ---
 
-## Struttura del Progetto
+## Estructura del Proyecto
 
 ```
 scorm-course-generator/
 │
-├── .claude/                          # Configurazione Claude Code
-│   ├── agents/                       # Definizioni agenti
-│   │   ├── course-outliner.md       # Agente struttura corso
-│   │   ├── content-creator.md       # Agente creazione contenuti
-│   │   ├── senior-editor.md         # Agente editing
-│   │   ├── moodle-xml-formatter.md  # Agente SCORM packaging
+├── .claude/                          # Configuración del agente
+│   ├── agents/                       # Definiciones de los agentes
+│   │   ├── course-outliner.md       # Agente de estructura del curso
+│   │   ├── content-creator.md       # Agente de creación de contenido
+│   │   ├── senior-editor.md         # Agente de edición
+│   │   ├── moodle-xml-formatter.md  # Agente de empaquetado SCORM
 │   │   └── multimedia-integrator.md # Agente multimedia
-│   └── settings.local.json          # Impostazioni locali
+│   └── settings.local.json          # Ajustes locales
 │
-├── scripts/                          # Script Python
-│   ├── scorm_generators/            # Generatori SCORM
-│   │   ├── create_scorm_package.py  # Genera pacchetto testo
-│   │   ├── create_audio_scorm.py    # Genera pacchetto audio
-│   │   ├── create_video_scorm.py    # Genera pacchetto video
-│   │   └── create_sicurezza_scorm.py # Template corso sicurezza
-│   ├── content_generation/          # Generazione contenuti
-│   │   ├── create_html_pages.py     # Conversione HTML
-│   │   └── edit_course_correct.py   # Editing automatico
-│   └── legacy/                      # Script deprecati
-│       └── ...                      # Mantenuti per riferimento
+├── scripts/                          # Scripts de Python
+│   ├── scorm_generators/            # Creadores de SCORM
+│   │   ├── create_scorm_package.py  # Genera paquete de texto
+│   │   ├── create_audio_scorm.py    # Genera paquete de audio
+│   │   ├── create_video_scorm.py    # Genera paquete de video
+│   │   └── create_sicurezza_scorm.py # Generador específico de seguridad
+│   ├── content_generation/          # Scripts de procesamiento
+│   │   ├── create_html_pages.py     # Conversión HTML
+│   │   └── edit_course_correct.py   # Edición y corrección automática
+│   └── legacy/                      # Scripts antiguos (referencia)
+│       └── ...
 │
-├── content/                         # Contenuti corsi
-│   ├── ai-principianti/            # Esempio: Corso AI
-│   │   ├── course-outline.md       # Struttura corso
-│   │   ├── course-content-edited.md # Contenuto finale
-│   │   └── modules/                # Moduli separati
-│   ├── sicurezza-lavoro/           # Esempio: Sicurezza
+├── content/                         # Contenidos de los cursos
+│   ├── ai-principianti/            # Ejemplo: Curso de IA
+│   │   ├── course-outline.md
+│   │   ├── course-content-edited.md
+│   │   └── modules/
+│   ├── sicurezza-lavoro/           # Ejemplo: Seguridad Laboral
 │   │   ├── modulo1-content.md
 │   │   ├── modulo2-content.md
-│   │   └── modulo3-content.md
-│   └── eu-ai-act-pmi/              # Esempio: AI Act EU
+│   │   └── ...
+│   └── eu-ai-act-pmi/              # Ejemplo: Ley de IA de la UE
 │       ├── course-outline.md
 │       └── modulo*.md
 │
-├── media/                           # File multimediali
-│   ├── audio/                      # File audio sorgente
-│   └── video/                      # File video sorgente
+├── media/                           # Archivos multimedia fuente
+│   ├── audio/
+│   └── video/
 │
-├── output/                          # Output generati
-│   └── scorm/                      # Pacchetti SCORM .zip
+├── output/                          # Salidas generadas
+│   └── scorm/                      # Paquetes SCORM .zip finales
 │
-├── docs/                            # Documentazione
-│   ├── GUIDA_IMPORT_MOODLE.md      # Guida import Moodle
-│   ├── GUIDA_AUMENTARE_LIMITE_UPLOAD_MOODLE.md
-│   ├── GUIDA_COMPATIBILITA_LMS.md  # Compatibilità LMS
-│   └── ISTRUZIONI_IMPORT_*.md      # Guide specifiche
+├── docs/                            # Documentación de soporte
+│   ├── GUIA_IMPORTAR_MOODLE.md      # Guida de importación en Moodle
+│   ├── GUIA_AUMENTAR_LIMITE_UPLOAD_MOODLE.md
+│   ├── GUIA_COMPATIBILIDAD_LMS.md   # Matriz de compatibilidad
+│   └── INSTRUCCIONES_*.md
 │
-├── temp/                            # File temporanei (gitignore)
+├── temp/                            # Directorio temporal (ignorado)
 │
-├── CLAUDE.md                        # Istruzioni per Claude Code
-├── README.md                        # Questo file
-└── .gitignore                       # File ignorati da Git
+├── CLAUDE.md                        # Guía de desarrollo para agentes
+├── README.md                        # Este archivo
+└── .gitignore
 ```
 
 ---
 
-## Guida Completa agli Script
+## Guía Completa de Scripts
 
 ### create_scorm_package.py
 
-**Scopo**: Genera pacchetto SCORM da file markdown
+**Objetivo**: Genera un paquete SCORM a partir de un archivo markdown.
 
-**Utilizzo**:
+**Uso**:
 ```bash
 python scripts/scorm_generators/create_scorm_package.py
 ```
 
-**Requisiti input**:
-- File `course-content-edited.md` nella directory corrente
-- Struttura con intestazioni `# Modulo X: Titolo`
+**Requisitos**:
+- Archivo `course-content-edited.md` en el directorio de ejecución.
+- Estructura con encabezados `# Módulo X: Título`.
 
-**Output**:
-- Directory `scorm_package/` con file HTML
-- File `[nome-corso]-SCORM.zip`
-
-**Funzionalità**:
-- Conversione Markdown → HTML
-- Gestione tabelle con CSS styling
-- Navigazione inter-modulo
-- Manifest SCORM 1.2 valido
-
-### create_audio_scorm.py
-
-**Scopo**: Crea pacchetto SCORM con player audio
-
-**Utilizzo**:
-```bash
-# Base
-python scripts/scorm_generators/create_audio_scorm.py lezione.mp3
-
-# Con titolo
-python scripts/scorm_generators/create_audio_scorm.py lezione.mp3 "Lezione 1"
-
-# Con titolo e descrizione
-python scripts/scorm_generators/create_audio_scorm.py lezione.mp3 "Lezione 1" "Introduzione al corso"
-```
-
-**Formati supportati**: MP3, WAV, OGG, M4A, AAC
-
-**Caratteristiche**:
-- Player HTML5 responsive
-- Tracciamento SCORM (completato quando audio finisce)
-- Design mobile-friendly
-- Messaggio completamento visivo
-
-### create_video_scorm.py
-
-**Scopo**: Crea pacchetto SCORM con player video
-
-**Utilizzo**:
-```bash
-# Base
-python scripts/scorm_generators/create_video_scorm.py video.mp4
-
-# Con titolo
-python scripts/scorm_generators/create_video_scorm.py video.mp4 "Video Lezione 1"
-
-# Completo
-python scripts/scorm_generators/create_video_scorm.py video.mp4 "Video Lezione 1" "Panoramica del modulo"
-```
-
-**Formati supportati**: MP4, WEBM, MOV, AVI, MKV
-
-**Caratteristiche**:
-- Player HTML5 con controlli nativi
-- Progress bar personalizzata
-- Completamento al 90% della visualizzazione
-- Fullscreen mode
-- Design responsive
+**Salida**:
+- Directorio de desarrollo `scorm_package/` con los archivos HTML.
+- Archivo empaquetado final `[nombre-del-curso]-SCORM.zip`.
 
 ---
 
-## Integrazione Multimediale
+### create_audio_scorm.py
 
-### Linee Guida Dimensioni File
+**Objetivo**: Crea un paquete SCORM con un reproductor de audio integrado.
 
-| Dimensione | Raccomandazione | Azione |
+**Uso**:
+```bash
+# Básico
+python scripts/scorm_generators/create_audio_scorm.py leccion.mp3
+
+# Con título
+python scripts/scorm_generators/create_audio_scorm.py leccion.mp3 "Lección 1"
+
+# Completo
+python scripts/scorm_generators/create_audio_scorm.py leccion.mp3 "Lección 1" "Introducción general"
+```
+
+**Formatos**: MP3, WAV, OGG, M4A, AAC.
+
+---
+
+### create_video_scorm.py
+
+**Objetivo**: Crea un paquete SCORM con un reproductor de video interactivo.
+
+**Uso**:
+```bash
+# Básico
+python scripts/scorm_generators/create_video_scorm.py video.mp4
+
+# Con título y descripción
+python scripts/scorm_generators/create_video_scorm.py video.mp4 "Video Lección 1" "Vista general"
+```
+
+**Formatos**: MP4, WEBM, MOV, AVI, MKV.
+
+---
+
+## Integración Multimedia
+
+### Guía de Tamaños Recomendados
+
+| Tamaño | Recomendación | Acción sugerida |
 |------------|-----------------|--------|
-| < 10 MB | Ideale | Usa direttamente |
-| 10-25 MB | Accettabile | Compressione opzionale |
-| 25-50 MB | Grande | Compressione consigliata |
-| 50-100 MB | Molto grande | Compressione necessaria |
-| > 100 MB | Troppo grande | Hosting esterno (YouTube/Vimeo) |
+| < 10 MB | Ideal | Usar directamente |
+| 10-25 MB | Aceptable | Compresión opcional |
+| 25-50 MB | Grande | Compresión recomendada |
+| 50-100 MB | Muy grande | Compresión obligatoria |
+| > 100 MB | Excesivo | Alojamiento externo (YouTube/Vimeo) |
 
-### Compressione Video con ffmpeg
+### Compresión de Video con ffmpeg
 
-#### Presets Consigliati
-
-**Alta Qualità (bilanciato)**:
+**Alta Calidad (Recomendado)**:
 ```bash
 ffmpeg -i input.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k output.mp4
 ```
 
-**File Piccolo (qualità buona)**:
+**Calidad Media (Tamaño reducido)**:
 ```bash
 ffmpeg -i input.mp4 -vcodec libx264 -crf 28 -preset fast -acodec aac -b:a 96k output.mp4
 ```
 
-**Minimo (qualità accettabile)**:
-```bash
-ffmpeg -i input.mp4 -vcodec libx264 -crf 32 -preset veryfast -acodec aac -b:a 64k output.mp4
-```
-
-#### Guida Valori CRF
-
-| CRF | Qualità | Uso Tipico |
-|-----|---------|------------|
-| 18-20 | Visivamente lossless | Archivio, master |
-| 21-23 | Alta qualità | Raccomandato per corsi |
-| 24-27 | Buona qualità | Bilanciamento qualità/dimensione |
-| 28-32 | Accettabile | Quando dimensione è priorità |
-
-### Compressione Audio
-
-```bash
-# MP3 alta qualità
-ffmpeg -i input.wav -codec:a libmp3lame -b:a 192k output.mp3
-
-# MP3 bilanciato
-ffmpeg -i input.wav -codec:a libmp3lame -b:a 128k output.mp3
-
-# MP3 compatto
-ffmpeg -i input.wav -codec:a libmp3lame -b:a 96k output.mp3
-```
-
-### Embedding Video Esterni
-
-Per video > 100 MB, usa embedding YouTube/Vimeo nel contenuto HTML:
-
-```html
-<!-- YouTube -->
-<iframe width="560" height="315"
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        frameborder="0" allowfullscreen></iframe>
-
-<!-- Vimeo -->
-<iframe src="https://player.vimeo.com/video/VIDEO_ID"
-        width="560" height="315"
-        frameborder="0" allowfullscreen></iframe>
-```
-
 ---
 
-## Importazione nei LMS
+## Importación en LMS
 
 ### Moodle
 
-#### Procedura Standard
-
-1. **Accedi al corso** Moodle dove vuoi aggiungere il contenuto
-2. **Attiva modifica**: Clicca "Attiva modifica" in alto a destra
-3. **Aggiungi attività**: Clicca "Aggiungi un'attività o una risorsa"
-4. **Seleziona SCORM**: Scegli "Pacchetto SCORM" dalla lista
-5. **Carica file**:
-   - Clicca "Aggiungi file" o trascina il .zip
-   - Attendi il caricamento completo
-6. **Configura** (opzionale):
-   - Nome: Personalizza il titolo visualizzato
-   - Descrizione: Aggiungi note per gli studenti
-   - Aspetto: Configura dimensioni finestra
-7. **Salva**: Clicca "Salva e visualizza"
-
-#### Configurazione Avanzata Moodle
-
-**Impostazioni Pacchetto**:
-- **Metodo di grading**: "Punteggio più alto" per quiz
-- **Numero massimo tentativi**: Illimitato per studio
-- **Visualizzazione struttura**: "Disabilitata" per navigazione custom
-
-**Impostazioni Aspetto**:
-- **Tipo visualizzazione**: "Nuova finestra" consigliato
-- **Larghezza/Altezza**: 100% per responsive
-
-### Canvas
-
-1. **Vai a Settings** del corso
-2. **Import Course Content** → Seleziona "SCORM Package"
-3. **Choose File**: Carica il .zip
-4. **Import**: Attendi completamento
-5. **Pubblica**: Il contenuto apparirà nei Moduli
-
-### Blackboard
-
-1. **Content Area** → "Build Content"
-2. **Content Package (SCORM)**
-3. **Browse**: Seleziona il .zip
-4. **Submit**: Configura opzioni e salva
-
-### Google Classroom
-
-Google Classroom non supporta nativamente SCORM. Opzioni:
-1. **Usa SCORM Cloud** come intermediario
-2. **Estrai HTML** e carica come materiale
-3. **Link esterno** a LMS con supporto SCORM
-
-### Altri LMS
-
-La maggior parte dei LMS moderni supporta SCORM 1.2:
-
-| LMS | Percorso Import |
-|-----|-----------------|
-| TalentLMS | Course → Add Content → SCORM |
-| Schoology | Materials → Add File → SCORM Package |
-| D2L Brightspace | Content → Import Components |
-| SAP Litmos | Courses → Create → SCORM |
-| Docebo | Course Management → Training Material |
+1. **Accede a tu curso** en Moodle.
+2. **Activa la edición** en la esquina superior derecha.
+3. Haz clic en **"Añadir una actividad o recurso"**.
+4. Selecciona **"Paquete SCORM"**.
+5. Sube tu archivo `.zip` generado.
+6. Ajusta los parámetros de visualización (se recomienda "Nueva ventana" y tamaño responsivo) y haz clic en **"Guardar cambios"**.
 
 ---
 
-## Standard di Qualità
+## Estándares de Calidad
 
-### Pedagogia
-
-- **Bloom's Taxonomy**: Obiettivi strutturati per livelli cognitivi
-- **Complessità Progressiva**: Dal semplice al complesso
-- **Varietà Attività**: Quiz, esercizi, discussioni, progetti
-- **Feedback Immediato**: Riscontro su quiz e attività
-
-### Contenuti
-
-- **Accuratezza**: Informazioni verificate e aggiornate
-- **Rilevanza**: Esempi pratici e casi reali
-- **Engagement**: Stile coinvolgente, non accademico
-- **Accessibilità**: Linguaggio appropriato al target
-
-### Lingua Italiana
-
-| Aspetto | Standard |
-|---------|----------|
-| **Tono** | Informale "tu" (non "Lei" o "voi") |
-| **Accenti** | Sempre corretti: è, à, ò, ù, ì, é |
-| **Apostrofi** | Uso corretto: un'altra, qual è (no apostrofo) |
-| **Esempi** | Contesto italiano/europeo |
-| **Terminologia** | Italiano quando possibile, inglese se standard |
-
-### Tecnici
-
-- **SCORM 1.2**: Manifest valido, risorse dichiarate
-- **HTML5**: Semantico, accessibile, responsive
-- **CSS**: Mobile-first, cross-browser
-- **JavaScript**: SCORM API corretto, fallback graceful
+- **Pedagogía**: Contenido estructurado según la taxonomía de Bloom con dificultad incremental.
+- **Formato**: Markdown a HTML responsivo. Tablas bien estructuradas con separadores estándar.
+- **Idioma**: Tono cercano "tú" consistente, acentuación perfecta en español y ejemplos relevantes.
+- **SCORM**: Cumplimiento estricto del esquema XML 1.2 verificado mediante validaciones de estructura.
 
 ---
 
-## Risoluzione Problemi
+## Contribuciones
 
-### Problemi Comuni
-
-#### SCORM non si apre nel LMS
-
-**Sintomi**: Errore import, pagina bianca, "file non valido"
-
-**Soluzioni**:
-1. Verifica che `imsmanifest.xml` sia nella root dello zip (non in sottocartella)
-2. Apri lo zip e controlla la struttura
-3. Rigenera il pacchetto con lo script
-
-```bash
-# Verifica contenuto zip
-python -c "import zipfile; print(zipfile.ZipFile('package.zip').namelist())"
-```
-
-#### Tabelle non visualizzate correttamente
-
-**Sintomi**: Tabelle senza bordi, formattazione rotta
-
-**Soluzioni**:
-1. Verifica formato markdown:
-   ```markdown
-   | Colonna 1 | Colonna 2 |
-   |-----------|-----------|
-   | Dato 1    | Dato 2    |
-   ```
-2. Controlla che tutte le righe abbiano stesso numero di `|`
-3. Rigenera il pacchetto (include CSS tabelle aggiornato)
-
-#### Upload fallisce (file troppo grande)
-
-**Sintomi**: Timeout, errore upload, "file exceeds limit"
-
-**Soluzioni per Moodle locale (XAMPP)**:
-
-1. Apri XAMPP Control Panel
-2. Apache → Config → php.ini
-3. Modifica:
-   ```ini
-   upload_max_filesize = 100M
-   post_max_size = 100M
-   max_execution_time = 300
-   max_input_time = 300
-   memory_limit = 256M
-   ```
-4. Riavvia Apache
-
-**Soluzioni generali**:
-- Comprimi video/audio con ffmpeg
-- Dividi corso in moduli separati
-- Usa hosting esterno per media grandi
-
-#### Video/Audio non si riproduce
-
-**Sintomi**: Player vuoto, errore codec, no audio
-
-**Soluzioni**:
-1. **Converti a formato standard**:
-   ```bash
-   # Video → MP4 H.264
-   ffmpeg -i input.mov -vcodec libx264 -acodec aac output.mp4
-
-   # Audio → MP3
-   ffmpeg -i input.wav -codec:a libmp3lame -b:a 128k output.mp3
-   ```
-2. Verifica che il file sia incluso nello zip
-3. Testa in browser diversi (Chrome, Firefox, Edge)
-4. Controlla console browser per errori (F12)
-
-#### Completamento non tracciato
-
-**Sintomi**: Corso sempre "incomplete", punteggio non salvato
-
-**Soluzioni**:
-1. Verifica che LMS abbia SCORM abilitato
-2. Controlla impostazioni pacchetto nel LMS
-3. Testa con SCORM Cloud (debug)
-4. Verifica JavaScript non abbia errori (console browser)
-
-### Debug Avanzato
-
-#### Testare SCORM Localmente
-
-```bash
-# Server locale Python
-cd scorm_package
-python -m http.server 8000
-# Apri http://localhost:8000/index.html
-```
-
-#### Validare Manifest
-
-```bash
-# Verifica XML ben formato
-python -c "import xml.etree.ElementTree as ET; ET.parse('imsmanifest.xml')"
-```
-
-#### SCORM Cloud Testing
-
-1. Crea account su https://cloud.scorm.com
-2. Upload pacchetto per test
-3. Usa debugger integrato per verificare chiamate API
+1. Realiza un **Fork** del repositorio.
+2. Crea una rama para tu característica: `git checkout -b feature/nueva-funcion`.
+3. Haz commit de tus cambios: `git commit -m "Añade nueva función"`.
+4. Envía la rama: `git push origin feature/nueva-funcion`.
+5. Abre una **Pull Request**.
 
 ---
 
-## Esempi di Corsi
+## Licencia
 
-### Corsi Inclusi
-
-Il repository include esempi completi:
-
-#### 1. AI per Principianti (`content/ai-principianti/`)
-- **Moduli**: 10
-- **Durata**: ~8 ore
-- **Livello**: Base
-- **Contenuto**: Introduzione completa all'intelligenza artificiale
-
-#### 2. Sicurezza sul Lavoro (`content/sicurezza-lavoro/`)
-- **Moduli**: 3 + Test finale
-- **Durata**: ~4 ore
-- **Livello**: Base
-- **Contenuto**: Formazione obbligatoria D.Lgs. 81/08
-
-#### 3. EU AI Act per PMI (`content/eu-ai-act-pmi/`)
-- **Moduli**: 4
-- **Durata**: ~3 ore
-- **Livello**: Intermedio
-- **Contenuto**: Regolamento europeo AI per piccole/medie imprese
-
-### Creare un Nuovo Corso
-
-1. **Crea directory**:
-   ```bash
-   mkdir content/mio-nuovo-corso
-   ```
-
-2. **Crea outline** (`course-outline.md`):
-   ```markdown
-   # Corso: Nome del Corso
-
-   ## Informazioni Generali
-   - Target: [descrizione audience]
-   - Durata: [ore totali]
-   - Livello: [base/intermedio/avanzato]
-
-   ## Modulo 1: [Titolo]
-   ### Obiettivi
-   - ...
-   ### Argomenti
-   - ...
-   ```
-
-3. **Genera contenuti** con agente o manualmente
-
-4. **Crea pacchetto SCORM**:
-   ```bash
-   cd content/mio-nuovo-corso
-   python ../../scripts/scorm_generators/create_scorm_package.py
-   ```
+Este proyecto está liberado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más información.
 
 ---
 
-## Contributing
-
-### Come Contribuire
-
-1. **Fork** del repository
-2. **Crea branch**: `git checkout -b feature/nuova-funzione`
-3. **Commit**: `git commit -m "Aggiunge nuova funzione"`
-4. **Push**: `git push origin feature/nuova-funzione`
-5. **Pull Request**: Apri PR con descrizione dettagliata
-
-### Linee Guida
-
-- **Codice**: Segui PEP 8 per Python
-- **Commit**: Messaggi chiari in italiano o inglese
-- **Documentazione**: Aggiorna README e CLAUDE.md se necessario
-- **Test**: Verifica che i pacchetti generati funzionino
-
-### Segnalare Bug
-
-Apri una Issue con:
-- Descrizione del problema
-- Passi per riprodurre
-- Output/errore completo
-- Sistema operativo e versione Python
-
----
-
-## Licenza
-
-Questo progetto è rilasciato sotto licenza MIT. Vedi il file `LICENSE` per dettagli.
-
----
-
-## Contatti e Supporto
-
-Per problemi o domande:
-
-1. **Documentazione**: Controlla `docs/` per guide dettagliate
-2. **CLAUDE.md**: Istruzioni per utilizzo con Claude Code
-3. **Esempi**: Consulta `content/` per riferimento
-4. **Issues**: Apri una issue su GitHub per bug o richieste
-
----
-
-*Creato con Claude Code - Sistema professionale per la generazione di contenuti e-learning*
-
+*Desarrollado de forma profesional para la creación y gestión ágil de contenidos e-learning.*

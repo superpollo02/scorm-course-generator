@@ -148,10 +148,10 @@ def create_scorm_html(title, content, prev_page=None, next_page=None, is_index=F
     if not is_index:
         nav_buttons = '<div class="navigation">'
         if prev_page:
-            nav_buttons += f'<button onclick="gotoPrevious()">&larr; Precedente</button>'
-        nav_buttons += '<button onclick="gotoIndex()">&#8962; Indice</button>'
+            nav_buttons += f'<button onclick="gotoPrevious()">&larr; Anterior</button>'
+        nav_buttons += '<button onclick="gotoIndex()">&#8962; Índice</button>'
         if next_page:
-            nav_buttons += f'<button onclick="gotoNext()">Successivo &rarr;</button>'
+            nav_buttons += f'<button onclick="gotoNext()">Siguiente &rarr;</button>'
         nav_buttons += '</div>'
 
     scorm_script = ''
@@ -201,7 +201,7 @@ def create_scorm_html(title, content, prev_page=None, next_page=None, is_index=F
 '''
 
     html = f'''<!DOCTYPE html>
-<html lang="it">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -427,7 +427,7 @@ def create_imsmanifest(modules):
     </resource>
 '''
     items += '''      <item identifier="item_index" identifierref="resource_index">
-        <title>Indice del Corso</title>
+        <title>Índice del Curso</title>
       </item>
 '''
 

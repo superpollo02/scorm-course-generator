@@ -23,7 +23,7 @@ def create_audio_player_html(audio_filename, title, description=""):
     }.get(ext, 'audio/mpeg')
 
     html = f'''<!DOCTYPE html>
-<html lang="it">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -206,21 +206,21 @@ def create_audio_player_html(audio_filename, title, description=""):
         <div class="player-wrapper">
             <audio id="audioPlayer" controls preload="metadata">
                 <source src="{audio_filename}" type="{audio_type}">
-                Il tuo browser non supporta l'elemento audio.
+                Tu navegador no soporta el elemento de audio.
             </audio>
         </div>
 
         <div class="info">
-            <strong>ℹ️ Istruzioni:</strong><br>
-            Clicca il pulsante play per ascoltare l'audio. Il tuo progresso verrà tracciato automaticamente.
+            <strong>ℹ️ Instrucciones:</strong><br>
+            Haz clic en el botón de reproducción para escuchar el audio. Tu progreso se registrará automáticamente.
         </div>
 
         <div id="completion-message">
-            ✅ Audio completato! Il tuo progresso è stato registrato.
+            ✅ ¡Audio completado! Tu progreso ha sido registrado.
         </div>
 
         <div class="footer">
-            Pacchetto SCORM 1.2 - Compatibile con Moodle
+            Paquete SCORM 1.2 - Compatible con Moodle
         </div>
     </div>
 </body>
@@ -312,16 +312,15 @@ def create_audio_scorm(audio_file, title=None, description="", output_name=None)
                     file_path = os.path.join(root, file)
                     arcname = os.path.relpath(file_path, scorm_dir)
                     zipf.write(file_path, arcname)
-
         # Cleanup temp directory
         shutil.rmtree(scorm_dir)
 
         file_size = os.path.getsize(output_name) / 1024
-        print(f"\n✅ Pacchetto SCORM creato: {output_name}")
-        print(f"📦 Dimensione: {file_size:.1f} KB")
-        print(f"\n🎯 Come importare in Moodle:")
+        print(f"\n[OK] Pacchetto SCORM creato: {output_name}")
+        print(f"[INFO] Dimensione: {file_size:.1f} KB")
+        print(f"\n[INFO] Come importare in Moodle:")
         print("1. Vai al tuo corso")
-        print("2. Clicca 'Aggiungi un'attività o una risorsa'")
+        print("2. Clicca 'Aggiungi un'attivita o una risorsa'")
         print("3. Seleziona 'Pacchetto SCORM'")
         print(f"4. Carica il file: {output_name}")
         print("5. Salva - Fatto!")
@@ -329,7 +328,7 @@ def create_audio_scorm(audio_file, title=None, description="", output_name=None)
         return True
 
     except Exception as e:
-        print(f"\n❌ Errore: {e}")
+        print(f"\n[ERROR] Errore: {e}")
         # Cleanup on error
         if os.path.exists(scorm_dir):
             import shutil

@@ -1,0 +1,13 @@
+identificador: curso-ejemplo-2026
+titulo: "Curso de Ejemplo: Introducción a scorm_modern"
+idioma: es
+contenido_md: curso_ejemplo.md
+salida_dir: output
+version: "1.0"
+puntaje_minimo: 70
+enlaces:
+  - titulo: "Documentación de SCORM 1.2"
+    url: "https://scorm.com/scorm-explained/technical-scorm/run-time/"
+    descripcion: "Referencia técnica del estándar."
+  - titulo: "Repositorio del proyecto"
+    url: "https://github.com/superpollo02/cursoScorm"

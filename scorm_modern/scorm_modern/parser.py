@@ -135,6 +135,7 @@ class Leccion:
     titulo: str
     contenido_md: str
     apoyos: list[BloqueApoyo] = field(default_factory=list)
+    tipo_seccion: str = "clase"
 
 
 @dataclass
@@ -147,7 +148,7 @@ class CursoParseado:
     def validar(self) -> list[str]:
         errores = []
         if self.leccion is None:
-            errores.append("El curso debe tener exactamente una sección '# Lección: ...'.")
+            errores.append("El curso debe tener exactamente una sección '# Clase: ...' o '# Lectura: ...'.")
         if self.evaluacion is not None:
             errores.extend(self.evaluacion.validar())
         if not self.actividades:
@@ -248,12 +249,21 @@ def parsear_markdown(md_texto: str) -> CursoParseado:
 
         titulo_norm = _normalizar(titulo_crudo)
 
-        if titulo_norm.startswith("leccion:") or titulo_norm.startswith("lección:"):
+        if (titulo_norm.startswith("leccion:") or titulo_norm.startswith("lección:") or 
+            titulo_norm.startswith("clase:") or titulo_norm.startswith("lectura:") or 
+            titulo_norm.startswith("lecturas:")):
             if leccion is not None:
-                raise ParseError("Solo puede haber una sección '# Lección: ...' por curso.")
+                raise ParseError("Solo puede haber una sección '# Clase:', '# Lectura:' o '# Lección:' por curso.")
+            
+            tipo = "clase"
+            if titulo_norm.startswith("leccion:") or titulo_norm.startswith("lección:"):
+                tipo = "lección"
+            elif titulo_norm.startswith("lectura:") or titulo_norm.startswith("lecturas:"):
+                tipo = "lectura"
+
             titulo = titulo_crudo.split(":", 1)[1].strip()
             contenido, apoyos = _extraer_apoyos(cuerpo)
-            leccion = Leccion(titulo=titulo, contenido_md=contenido, apoyos=apoyos)
+            leccion = Leccion(titulo=titulo, contenido_md=contenido, apoyos=apoyos, tipo_seccion=tipo)
 
         elif titulo_norm.startswith("evaluacion:") or titulo_norm.startswith("evaluación:"):
             if evaluacion is not None:
@@ -274,8 +284,8 @@ def parsear_markdown(md_texto: str) -> CursoParseado:
         else:
             raise ParseError(
                 f"Sección de nivel 1 no reconocida: '# {titulo_crudo}'. "
-                "Debe comenzar con 'Lección:', 'Evaluación:', 'Actividad:', "
-                "'Ejercicio:' o llamarse 'Enlaces'."
+                "Debe comenzar con 'Clase:', 'Lectura:', 'Lección:', 'Evaluación:', "
+                "'Actividad:', 'Ejercicio:' o llamarse 'Enlaces'."
             )
 
     return CursoParseado(

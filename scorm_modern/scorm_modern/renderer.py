@@ -350,7 +350,8 @@ def _pagina_html(titulo: str, badge: str, badge_clase: str, cuerpo: str,
 def render_leccion(leccion: Leccion, nav: PaginaNav | None = None) -> str:
     cuerpo = f"<h1>{leccion.titulo}</h1>" + markdown_to_html(leccion.contenido_md, leccion.apoyos)
     extra_js = 'window.onbeforeunload = function () { finishSCORM("completed", 100); };'
-    return _pagina_html(leccion.titulo, "Lección", "badge-leccion", cuerpo, nav, extra_js)
+    tipo_label = leccion.tipo_seccion.capitalize()
+    return _pagina_html(leccion.titulo, tipo_label, "badge-leccion", cuerpo, nav, extra_js)
 
 
 def render_actividad(actividad: Actividad, nav: PaginaNav | None = None) -> str:

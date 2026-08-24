@@ -123,7 +123,7 @@ def construir_curso(config: CursoConfig, base_dir: str | Path | None = None) -> 
     html_leccion = render_leccion(curso.leccion, nav=nav_para(idx))
     (salida_dir / archivos["leccion"]).write_text(html_leccion, encoding="utf-8")
     items_manifest.append(ItemManifest("leccion", curso.leccion.titulo, archivos["leccion"]))
-    items_indice.append((curso.leccion.titulo, archivos["leccion"], "Lección"))
+    items_indice.append((curso.leccion.titulo, archivos["leccion"], curso.leccion.tipo_seccion.capitalize()))
     idx += 1
 
     # --- Renderizar evaluación

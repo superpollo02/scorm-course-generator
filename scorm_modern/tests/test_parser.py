@@ -105,4 +105,4 @@ def test_curso_sin_leccion_es_invalido():
     md = "# Actividad: Uno\ncontenido\n"
     curso = parsear_markdown(md)
     errores = curso.validar()
-    assert any("Lección" in e for e in errores)
+    assert any("Clase" in e or "Lectura" in e for e in errores)

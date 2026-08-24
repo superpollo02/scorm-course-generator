@@ -408,29 +408,75 @@ python scripts/scorm_generators/create_scorm_package.py
 
 ### create_scorm_modern_package.py
 
-**Objetivo**: Genera un paquete SCORM moderno compuesto por **1 Lección + 1 Evaluación (quiz interactivo) + N Actividades**, con soporte de bloques de apoyo (`:::apoyo:::`) con video embebido de YouTube/Drive, y una lista de enlaces externos (`ENLACES.md`).
+**Objetivo**: Genera un paquete SCORM moderno compuesto por **1 Clase o Lectura + 1 Evaluación (cuestionario interactivo) + N Actividades**, con soporte de bloques de apoyo (`:::apoyo:::`) con video embebido de YouTube/Drive, y una lista de enlaces externos (`ENLACES.md`).
 
 **Uso**:
 ```bash
 # Validar configuración + contenido, sin generar nada
 python scripts/scorm_generators/create_scorm_modern_package.py validate mi-curso/config.yaml
 
-# Listar los objetos parseados (lección/evaluación/actividades/enlaces)
+# Listar los objetos parseados (clase/lectura/evaluación/actividades/enlaces)
 python scripts/scorm_generators/create_scorm_modern_package.py list mi-curso/config.yaml
 
 # Construir el paquete SCORM (.zip)
 python scripts/scorm_generators/create_scorm_modern_package.py build mi-curso/config.yaml
 ```
 
-**Requisitos**:
-- Un `config.yaml` con `identificador`, `titulo`, `contenido_md`, `puntaje_minimo` y `enlaces` (opcional). Ver `scorm_modern/README.md`.
-- El markdown referenciado debe tener exactamente una sección `# Lección:`, como máximo una `# Evaluación:` (con preguntas `## Pregunta N`, opciones `A)`–`D)` y `**Respuesta correcta: X**`), una o más `# Actividad:`/`# Ejercicio:`, y opcionalmente `# Enlaces`.
+**Guía de Creación del Archivo de Configuración (`config.yaml`)**:
+El archivo `config.yaml` orquesta las propiedades del curso. Debes crear un archivo de texto con extensión `.yaml` siguiendo esta estructura:
+```yaml
+identificador: mi-curso-id         # ID único para el paquete (sin espacios ni acentos)
+titulo: "Mi Curso SCORM Moderno"   # Título del curso que aparecerá en el LMS
+contenido_md: curso.md             # Ruta relativa al archivo markdown con el contenido
+salida_dir: output                 # Carpeta donde se generará el paquete final
+puntaje_minimo: 80                 # Puntaje mínimo para aprobar la evaluación (0 a 100)
+
+enlaces:                           # (Opcional) Listado de enlaces de interés
+  - titulo: "Sitio Oficial"
+    url: "https://ejemplo.com"
+    descripcion: "Documentación y recursos del tema."
+```
+
+**Guía de Creación del Archivo de Contenido (`.md`)**:
+El archivo markdown referenciado (por ejemplo, `curso.md`) debe estructurarse usando títulos de nivel 1 (`# `) que definen los componentes. 
+
+> [!NOTE]
+> Se utiliza **`# Clase:`** o **`# Lectura:`** (o `# Lecturas:`) en lugar de `# Lección:` para estructurar la unidad de estudio del curso, reflejando el propósito de clases académicas y lecturas sugeridas.
+
+```markdown
+# Clase: Introducción al Tema
+Aquí va el contenido teórico de la clase o lectura.
+
+:::apoyo
+Este es un bloque de apoyo destacado para tips o notas adicionales.
+VIDEO: https://www.youtube.com/watch?v=EjemploVideoId
+:::
+
+# Actividad: Práctica Guiada
+Descripción de la actividad o ejercicio práctico que el estudiante debe realizar.
+
+# Evaluación: Cuestionario del Módulo
+Breve introducción al quiz.
+
+## Pregunta 1
+¿Cuál es la respuesta correcta?
+A) Opción incorrecta 1
+B) Opción correcta
+C) Opción incorrecta 2
+D) Opción incorrecta 3
+
+**Respuesta correcta: B**
+**Explicación:** Opcional. Aquí se detalla la justificación de la respuesta correcta.
+
+# Enlaces
+- [Recurso Adicional](https://recurso.com) — Descripción opcional del recurso.
+```
 
 **Salida**:
-- Directorio `<salida_dir>/<identificador>/` con `index.html`, `leccion.html`, `evaluacion.html`, `actividad_NN.html`, `imsmanifest.xml` (título real por objeto) y `ENLACES.md`.
+- Directorio `<salida_dir>/<identificador>/` con `index.html`, `leccion.html` (o el nombre correspondiente a Clase/Lectura), `evaluacion.html`, `actividad_NN.html`, `imsmanifest.xml` y `ENLACES.md`.
 - Archivo empaquetado final `<identificador>-SCORM.zip`.
 
-**Cuándo usarlo en lugar de `create_scorm_package.py`**: cuando el curso necesita un quiz autocorregido con seguimiento SCORM de aprobado/reprobado, actividades separadas de la lección, o una lista curada de enlaces externos.
+**Cuándo usarlo en lugar de `create_scorm_package.py`**: cuando el curso necesita una clase o lectura con un quiz autocorregido con seguimiento SCORM de aprobado/reprobado, actividades separadas de la lección, o una lista curada de enlaces externos.
 
 ---
 

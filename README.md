@@ -406,6 +406,34 @@ python scripts/scorm_generators/create_scorm_package.py
 
 ---
 
+### create_scorm_modern_package.py
+
+**Objetivo**: Genera un paquete SCORM moderno compuesto por **1 Lección + 1 Evaluación (quiz interactivo) + N Actividades**, con soporte de bloques de apoyo (`:::apoyo:::`) con video embebido de YouTube/Drive, y una lista de enlaces externos (`ENLACES.md`).
+
+**Uso**:
+```bash
+# Validar configuración + contenido, sin generar nada
+python scripts/scorm_generators/create_scorm_modern_package.py validate mi-curso/config.yaml
+
+# Listar los objetos parseados (lección/evaluación/actividades/enlaces)
+python scripts/scorm_generators/create_scorm_modern_package.py list mi-curso/config.yaml
+
+# Construir el paquete SCORM (.zip)
+python scripts/scorm_generators/create_scorm_modern_package.py build mi-curso/config.yaml
+```
+
+**Requisitos**:
+- Un `config.yaml` con `identificador`, `titulo`, `contenido_md`, `puntaje_minimo` y `enlaces` (opcional). Ver `scorm_modern/README.md`.
+- El markdown referenciado debe tener exactamente una sección `# Lección:`, como máximo una `# Evaluación:` (con preguntas `## Pregunta N`, opciones `A)`–`D)` y `**Respuesta correcta: X**`), una o más `# Actividad:`/`# Ejercicio:`, y opcionalmente `# Enlaces`.
+
+**Salida**:
+- Directorio `<salida_dir>/<identificador>/` con `index.html`, `leccion.html`, `evaluacion.html`, `actividad_NN.html`, `imsmanifest.xml` (título real por objeto) y `ENLACES.md`.
+- Archivo empaquetado final `<identificador>-SCORM.zip`.
+
+**Cuándo usarlo en lugar de `create_scorm_package.py`**: cuando el curso necesita un quiz autocorregido con seguimiento SCORM de aprobado/reprobado, actividades separadas de la lección, o una lista curada de enlaces externos.
+
+---
+
 ### create_audio_scorm.py
 
 **Objetivo**: Crea un paquete SCORM con un reproductor de audio integrado.

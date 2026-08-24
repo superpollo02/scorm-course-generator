@@ -9,8 +9,13 @@ Sistema de generación de contenidos de cursos SCORM 1.2 utilizando un flujo de 
 ## Comandos Comunes
 
 ```bash
-# Generar paquete SCORM a partir de contenido markdown
+# Generar paquete SCORM a partir de contenido markdown (formato "# Módulo X: Título")
 python scripts/scorm_generators/create_scorm_package.py
+
+# Generar paquete SCORM moderno: 1 Lección + 1 Evaluación (quiz) + N Actividades + enlaces
+python scripts/scorm_generators/create_scorm_modern_package.py validate <config.yaml>
+python scripts/scorm_generators/create_scorm_modern_package.py build <config.yaml>
+python scripts/scorm_generators/create_scorm_modern_package.py list <config.yaml>
 
 # Crear paquete SCORM de audio
 python scripts/scorm_generators/create_audio_scorm.py <archivo_de_audio> [titulo] [descripcion]
@@ -26,9 +31,15 @@ ffmpeg -i input.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k
 
 ```
 scripts/
-├── scorm_generators/        # Creadores de paquetes SCORM (texto, audio, video)
+├── scorm_generators/        # Creadores de paquetes SCORM (texto, audio, video, moderno)
 ├── content_generation/      # Generación de páginas HTML, edición de contenido
 └── legacy/                  # Scripts obsoletos (solo referencia)
+
+scorm_modern/                 # Generador moderno: Lección + Evaluación + N Actividades + enlaces
+├── scorm_modern/             # Paquete Python (config, parser, renderer, manifest, builder, cli)
+├── tests/                    # pytest (30 tests)
+├── ejemplo/                  # config.yaml + markdown de ejemplo funcional
+└── README.md                 # Formato de config.yaml y del markdown fuente
 
 content/                     # Contenido de los cursos organizado por curso
 ├── ai-principianti/         # Ejemplo: Curso de IA para principiantes
@@ -59,10 +70,16 @@ El sistema utiliza cinco agentes especializados invocados con `subagent_type`:
 
 ## Generación de Paquetes SCORM
 
-El script `create_scorm_package.py` espera un archivo markdown con módulos prefijados por `# Módulo` o `# Modulo`. El script:
-- Convierte markdown a HTML con estilo y botones de navegación.
-- Crea `imsmanifest.xml` compatible con SCORM 1.2.
-- Empaqueta todo en un archivo .zip listo para importar en el LMS.
+Hay **dos generadores de texto** disponibles; elegir según la estructura del contenido:
+
+| Generador | Estructura de origen | Cuándo usarlo |
+|---|---|---|
+| `create_scorm_package.py` | `# Módulo X: Título` (secuencia simple de módulos) | Cursos lineales sin quiz interactivo ni enlaces estructurados. |
+| `create_scorm_modern_package.py` (→ paquete `scorm_modern/`) | `# Lección:` + `# Evaluación:` + `# Actividad:`/`# Ejercicio:` + `# Enlaces` | Cursos que necesitan un quiz corregido en el navegador (con seguimiento SCORM de aprobado/reprobado), actividades separadas de la lección, bloques de apoyo (`:::apoyo:::`) con video embebido de YouTube/Drive, y una lista de enlaces (`ENLACES.md`). |
+
+**`create_scorm_package.py`**: convierte markdown a HTML con estilo y botones de navegación, crea `imsmanifest.xml` compatible con SCORM 1.2, y empaqueta todo en un .zip listo para importar en el LMS.
+
+**`create_scorm_modern_package.py`** (`validate` / `build` / `list`): lee un `config.yaml` (con `identificador`, `titulo`, `contenido_md`, `puntaje_minimo`, `enlaces`) y el markdown que referencia, valida ambos, y genera 1 página de lección + 1 de evaluación (quiz autoevaluable) + N páginas de actividad + `ENLACES.md` + `imsmanifest.xml` con título real por objeto, todo empaquetado en `<identificador>-SCORM.zip`. Ver `scorm_modern/README.md` para el formato completo del config y del markdown.
 
 **SCORM de Audio:** Se marca como completado cuando el audio termina. Soporta MP3, WAV, OGG, M4A, AAC.
 

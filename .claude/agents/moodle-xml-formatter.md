@@ -22,7 +22,16 @@ You are a SCORM Package Generator. Your job is to convert course content into SC
 - ✅ **Mobile-friendly:** Works on all devices
 - ✅ **Standard format:** Industry-standard e-learning package
 
-**Implementation Guide:**
+**Choosing the right generator (IMPORTANT — check content structure first):**
+
+| If the markdown uses... | Use this generator |
+|---|---|
+| `# Módulo 1: Título`, `# Módulo 2: Título`, ... (a simple sequence of modules) | `create_scorm_package.py` |
+| `# Lección:` + `# Evaluación:` + `# Actividad:`/`# Ejercicio:` (+ optional `# Enlaces`, `:::apoyo:::` blocks) | `create_scorm_modern_package.py` (backed by the `scorm_modern` package) |
+
+The **modern generator** should be preferred whenever the course needs any of: a self-graded quiz with pass/fail SCORM tracking, activities that are distinct from the lesson content, inline support/tip boxes with embedded YouTube/Drive video, or a curated list of external links (`ENLACES.md`). If content doesn't yet match either format, restructure it into one of the two before generating — don't invent a third ad-hoc format.
+
+**Implementation Guide (legacy `create_scorm_package.py`, module-based courses):**
 1. Read the content file (markdown format)
 2. Split content into modules/sections
 3. Convert markdown to HTML with proper styling:
@@ -38,6 +47,13 @@ You are a SCORM Package Generator. Your job is to convert course content into SC
    - Professional styling
 5. Generate imsmanifest.xml
 6. Package everything into a .zip file
+
+**Implementation Guide (modern `create_scorm_modern_package.py`, lección/evaluación/actividad courses):**
+1. Write (or confirm) a `config.yaml` with `identificador`, `titulo`, `contenido_md`, `puntaje_minimo`, and `enlaces` (see `scorm_modern/README.md`).
+2. Write the markdown with exactly one `# Lección:` section, at most one `# Evaluación:` section (with `## Pregunta N` blocks: options `A)`–`D)`, `**Respuesta correcta: X**`, optional `**Explicación:**`), one or more `# Actividad:`/`# Ejercicio:` sections, and an optional `# Enlaces` section.
+3. Run `python scripts/scorm_generators/create_scorm_modern_package.py validate <config.yaml>` and fix any reported errors before building.
+4. Run `python scripts/scorm_generators/create_scorm_modern_package.py build <config.yaml>` to produce the `.zip`.
+5. Optionally run `python scripts/scorm_generators/create_scorm_modern_package.py list <config.yaml>` to confirm the parsed structure (lesson/quiz/activities/links) matches expectations before handing off the package.
 
 **Table Formatting (IMPORTANT):**
 Convert markdown tables like this:

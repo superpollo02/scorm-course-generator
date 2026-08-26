@@ -71,3 +71,16 @@ desktop.ini
 # Backup files
 *.bak
 *.backup
+
+# Credentials and local environment
+.env
+
+# Testing and outputs
+test_inputs/
+output/
+gemini_error_response.json
+*.zip
+*.bundle
+Antigravity..txt
+DOCUMENTO_TECNICO-SCORM.txt
+README.txt

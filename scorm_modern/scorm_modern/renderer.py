@@ -28,6 +28,7 @@ __all__ = [
     "render_evaluacion",
     "render_actividad",
     "render_indice",
+    "render_conectabloques",
     "PaginaNav",
 ]
 
@@ -436,6 +437,7 @@ function corregirQuiz() {{
     return _pagina_html(evaluacion.titulo, "Evaluación", "badge-evaluacion", cuerpo, nav, extra_js)
 
 
+ 
 def render_indice(titulo_curso: str, items: list[tuple[str, str, str]]) -> str:
     """items: lista de (etiqueta, archivo, tipo) para el listado del índice."""
     filas = "".join(
@@ -448,3 +450,234 @@ def render_indice(titulo_curso: str, items: list[tuple[str, str, str]]) -> str:
         f'<ul class="index-list">{filas}</ul>'
     )
     return _pagina_html(f"Índice — {titulo_curso}", "", "", cuerpo, None, es_indice=True)
+
+
+def render_conectabloques(conceptos: list[dict[str, str]], nav: PaginaNav | None = None) -> str:
+    """Genera la página HTML interactiva de la actividad Conectabloques (emparejamiento)."""
+    
+    # Preparar el cuerpo HTML
+    cuerpo = """
+    <h1>Actividad Interactiva: Conectabloques</h1>
+    <p>Empareja cada concepto técnico con su definición correcta haciendo clic en un término de la izquierda y luego en su definición correspondiente de la derecha.</p>
+    
+    <div class="conectabloques-container">
+        <div class="game-status">
+            <div class="status-item">Progreso: <span id="progress-text">0 / 0</span></div>
+            <div class="status-item">Racha: <span id="streak-count">🔥 0</span></div>
+            <div id="streak-banner" class="streak-badge">¡Racha Excelente!</div>
+        </div>
+        
+        <div class="progress-bar-container">
+            <div id="progress-fill" class="progress-bar-fill"></div>
+        </div>
+        
+        <div class="game-columns" style="margin-top: 20px;">
+            <div>
+                <div class="column-title">Términos</div>
+                <div id="terms-list" class="cards-list"></div>
+            </div>
+            <div>
+                <div class="column-title">Definiciones</div>
+                <div id="definitions-list" class="cards-list"></div>
+            </div>
+        </div>
+        
+        <div id="success-panel" class="success-message">
+            <h2>🎉 ¡Excelente trabajo!</h2>
+            <p>Has conectado todos los bloques correctamente y completado la actividad.</p>
+            <p>Puntaje obtenido: <strong>100%</strong>. Tu progreso ha sido registrado en el LMS.</p>
+        </div>
+    </div>
+    """
+    
+    # CSS específico para Conectabloques
+    estilos_extra = """
+    .conectabloques-container { margin-top: 20px; }
+    .game-status { display: flex; justify-content: space-between; align-items: center; background: rgba(31, 119, 180, 0.05); padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(31, 119, 180, 0.1); }
+    .status-item { font-size: 16px; font-weight: 600; }
+    .streak-badge { background: linear-gradient(135deg, #ff9800, #e65100); color: white; padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: bold; display: none; }
+    .game-columns { display: grid; grid-template-columns: 1fr 1.2fr; gap: 25px; margin-bottom: 30px; }
+    @media (max-width: 768px) { .game-columns { grid-template-columns: 1fr; } }
+    .column-title { font-size: 18px; font-weight: bold; color: #1f77b4; margin-bottom: 15px; border-bottom: 2px solid rgba(31, 119, 180, 0.1); padding-bottom: 5px; }
+    .cards-list { display: flex; flex-direction: column; gap: 12px; }
+    .game-card { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.2s ease; user-select: none; position: relative; overflow: hidden; }
+    .game-card:hover:not(.matched) { border-color: #1f77b4; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.06); }
+    .game-card.selected { border-color: #2196f3; background-color: rgba(33, 150, 243, 0.05); box-shadow: 0 0 0 1px #2196f3; }
+    .game-card.matched { border-color: #4caf50; background-color: rgba(76, 175, 80, 0.05); color: #2e7d32; cursor: default; }
+    .game-card.matched::after { content: "✓"; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-weight: bold; font-size: 18px; }
+    .game-card.error { border-color: #f44336; background-color: rgba(244, 67, 54, 0.05); animation: shake 0.4s ease-in-out; }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+    .progress-bar-container { width: 100%; height: 10px; background: #e0e0e0; border-radius: 999px; margin-top: 15px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #1f77b4, #4caf50); transition: width 0.3s ease; }
+    .success-message { display: none; text-align: center; background: rgba(76, 175, 80, 0.1); border: 2px dashed #4caf50; padding: 25px; border-radius: 8px; margin-top: 25px; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .success-message h2 { color: #2e7d32; border-left: none; padding-left: 0; margin-top: 0; }
+    """
+
+    # Inyectar Javascript para la lógica interactiva
+    extra_js = f"""
+    var CONCEPTOS = {json.dumps(conceptos)};
+    var selectedTerm = null;
+    var selectedDef = null;
+    var matchedCount = 0;
+    var streak = 0;
+    var maxStreak = 0;
+    
+    function shuffle(array) {{
+        var currentIndex = array.length, randomIndex;
+        while (currentIndex != 0) {{
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }}
+        return array;
+    }}
+    
+    function initGame() {{
+        var termsList = document.getElementById('terms-list');
+        var defsList = document.getElementById('definitions-list');
+        
+        termsList.innerHTML = '';
+        defsList.innerHTML = '';
+        
+        document.getElementById('progress-text').textContent = "0 / " + CONCEPTOS.length;
+        
+        // Crear copias y barajar por separado
+        var terms = CONCEPTOS.map(function(c, idx) {{ return {{ id: idx, val: c.termino }}; }});
+        var defs = CONCEPTOS.map(function(c, idx) {{ return {{ id: idx, val: c.definicion }}; }});
+        
+        shuffle(terms);
+        shuffle(defs);
+        
+        // Renderizar Términos
+        terms.forEach(function(t) {{
+            var card = document.createElement('div');
+            card.className = 'game-card';
+            card.dataset.id = t.id;
+            card.dataset.type = 'term';
+            card.textContent = t.val;
+            card.onclick = handleCardClick;
+            termsList.appendChild(card);
+        }});
+        
+        // Renderizar Definiciones
+        defs.forEach(function(d) {{
+            var card = document.createElement('div');
+            card.className = 'game-card';
+            card.dataset.id = d.id;
+            card.dataset.type = 'def';
+            card.textContent = d.val;
+            card.onclick = handleCardClick;
+            defsList.appendChild(card);
+        }});
+    }}
+    
+    function handleCardClick(e) {{
+        var card = e.currentTarget;
+        if (card.classList.contains('matched') || card.classList.contains('error')) return;
+        
+        var id = card.dataset.id;
+        var type = card.dataset.type;
+        
+        if (type === 'term') {{
+            // Deseleccionar término anterior si hay
+            var prev = document.querySelector('.game-card[data-type="term"].selected');
+            if (prev) prev.classList.remove('selected');
+            
+            card.classList.add('selected');
+            selectedTerm = card;
+        }} else {{
+            // Deseleccionar definición anterior si hay
+            var prev = document.querySelector('.game-card[data-type="def"].selected');
+            if (prev) prev.classList.remove('selected');
+            
+            card.classList.add('selected');
+            selectedDef = card;
+        }}
+        
+        // Verificar coincidencia
+        if (selectedTerm && selectedDef) {{
+            checkMatch();
+        }}
+    }}
+    
+    function checkMatch() {{
+        var termId = selectedTerm.dataset.id;
+        var defId = selectedDef.dataset.id;
+        
+        if (termId === defId) {{
+            // ¡Acierto!
+            selectedTerm.classList.remove('selected');
+            selectedDef.classList.remove('selected');
+            
+            selectedTerm.classList.add('matched');
+            selectedDef.classList.add('matched');
+            
+            matchedCount++;
+            streak++;
+            if (streak > maxStreak) maxStreak = streak;
+            
+            updateStatus();
+            
+            selectedTerm = null;
+            selectedDef = null;
+            
+            if (matchedCount === CONCEPTOS.length) {{
+                handleWin();
+            }}
+        }} else {{
+            // ¡Error!
+            var t = selectedTerm;
+            var d = selectedDef;
+            
+            t.classList.add('error');
+            d.classList.add('error');
+            
+            streak = 0;
+            updateStatus();
+            
+            selectedTerm = null;
+            selectedDef = null;
+            
+            setTimeout(function() {{
+                t.classList.remove('selected', 'error');
+                d.classList.remove('selected', 'error');
+            }}, 1000);
+        }}
+    }}
+    
+    function updateStatus() {{
+        document.getElementById('progress-text').textContent = matchedCount + " / " + CONCEPTOS.length;
+        var fill = (matchedCount / CONCEPTOS.length) * 100;
+        document.getElementById('progress-fill').style.width = fill + "%";
+        
+        document.getElementById('streak-count').textContent = "🔥 " + streak;
+        
+        var banner = document.getElementById('streak-banner');
+        if (streak >= 3) {{
+            banner.style.display = 'inline-block';
+            banner.textContent = "🔥 Racha x" + streak + "!";
+        }} else {{
+            banner.style.display = 'none';
+        }}
+    }}
+    
+    function handleWin() {{
+        document.getElementById('success-panel').style.display = 'block';
+        finishSCORM("completed", 100);
+    }}
+    
+    // Iniciar el juego cuando se cargue la página
+    var oldOnload = window.onload;
+    window.onload = function() {{
+        if (oldOnload) oldOnload();
+        initGame();
+    }};
+    """
+    
+    # Inyectar estilos extra en la cabecera HTML concatenándolo
+    html_leido = _pagina_html("Actividad Conectabloques", "Actividad", "badge-actividad", cuerpo, nav, extra_js)
+    
+    # Insertar el estilo extra de Conectabloques antes del fin de la etiqueta de estilos
+    html_leido = html_leido.replace("</style>", estilos_extra + "\n</style>")
+    return html_leido

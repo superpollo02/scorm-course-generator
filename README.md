@@ -84,11 +84,22 @@ Usuario: «Genera la Unidad X»
   │      • 1. La Clase: Dual Video (Short HyperFrames + Videoclase magistral 20-30m target="_blank").
   │      • 2. La Lectura: 3 lecturas didácticas, infografía incrustada, glosario, FAQs y bibliografía.
   │      • 3. La Práctica: Consigna orientadora obligatoria («se resuelve con los videos...»),
-  │        Conectabloques SCORM (8 pares) y Trivia SCORM (sin numeración rígida para aleatorización).
+  │        ficha de desafíos interactivos y caso situado de gestión con rúbrica.
   │
-  └── 4. DIRECTORIO ÚNICO & AUTO-AUDITORÍA (Zero-Missing Self-Healing Gate)
-         Consolidación en un solo directorio con subdirectorios temáticos y validación con tiza comprobar.
+  └── 4. DIRECTORIO ÚNICO, EMPAQUETADO SCORM & AUTO-AUDITORÍA (Zero-Missing Gate)
+         • Empaquetado SCORM: Conectabloques (8 pares) + Trivia (sin numeración rígida).
+         • Examen Final Sumativo: Si es la unidad de cierre, genera examen integrador con candado Moodle.
+         • Consolidación en directorio único jerarquizado y validación con tiza comprobar.
 ```
+
+### 🎯 Detalle de Actividades Formativas, Consignas y Examen Final
+
+| Componente | Fase de Creación | Ubicación y Archivo | Regla Técnica & Pedagógica (Kit Aula Lista) |
+| :--- | :---: | :--- | :--- |
+| **Consignas de la Práctica** | **Fase 3** | `04_la_practica/04_tarea_la_practica.html` | Incluye la **consigna orientadora obligatoria**: *«Esta práctica se resuelve con lo visto en los videos docentes; no necesitás repasar toda la bibliografía obligatoria para completarla»*. Detalla los dos desafíos SCORM y el caso situado con su rúbrica. |
+| **Conectabloques SCORM** | **Fases 1, 3 y 4** | `scorm/conectabloques_unidad-SCORM.zip` | 8 pares conceptuales clave extraídos de las fuentes de cátedra. Compilado con Web Audio, temporizador, interfaz synthwave responsiva y reporte de score al libro de calificaciones de Moodle. |
+| **Gran Trivia SCORM** | **Fases 1, 3 y 4** | `scorm/trivia_unidad-SCORM.zip` | Banco de preguntas formativas **sin numeración rígida en los enunciados** (sin "Pregunta 1") para permitir la aleatorización anti-trampa en Moodle. Incluye retroalimentación pedagógica inmediata por opción. |
+| **Examen Final Sumativo** | **Fases 1, 3 y 4** *(Unidad Final)* | `examen_final/` o `scorm/modulo_completo-SCORM.zip` | Se activa cuando la instrucción solicita la **última unidad del programa** (o el cierre de cursado). Incluye `banner_examen_final.png`, consigna formal de acreditación (duración 45-50 min, nota mínima 70%), banco aleatorizado global y **restricción de acceso condicionada (candado de Moodle)** hasta completar las prácticas previas. |
 
 ### Estructura Canónica de Directorio Único
 

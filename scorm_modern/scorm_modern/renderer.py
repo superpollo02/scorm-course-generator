@@ -67,12 +67,21 @@ def _drive_id(url: str) -> str | None:
     return None
 
 
-def embed_video(url: str) -> str:
-    """Devuelve el HTML de embebido para un video de YouTube o Google Drive.
+def _vimeo_id(url: str) -> str | None:
+    patrones = [
+        r"vimeo\.com/video/(\d+)",
+        r"vimeo\.com/(\d+)",
+        r"player\.vimeo\.com/video/(\d+)",
+    ]
+    for patron in patrones:
+        m = re.search(patron, url)
+        if m:
+            return m.group(1)
+    return None
 
-    Si la URL no coincide con ninguno de los dos proveedores soportados,
-    se devuelve un enlace simple como alternativa segura.
-    """
+
+def embed_video(url: str) -> str:
+    """Devuelve el HTML de embebido para YouTube, Vimeo, Google Drive o video local (MP4/WEBM)."""
     url = url.strip()
 
     yid = _youtube_id(url)
@@ -86,6 +95,16 @@ def embed_video(url: str) -> str:
             "</div>"
         )
 
+    vid = _vimeo_id(url)
+    if vid:
+        return (
+            '<div class="video-embed">'
+            f'<iframe src="https://player.vimeo.com/video/{vid}" '
+            'title="Video incrustado" frameborder="0" allowfullscreen '
+            'allow="autoplay; fullscreen; picture-in-picture"></iframe>'
+            "</div>"
+        )
+
     did = _drive_id(url)
     if did:
         return (
@@ -93,6 +112,18 @@ def embed_video(url: str) -> str:
             f'<iframe src="https://drive.google.com/file/d/{did}/preview" '
             'title="Video incrustado" frameborder="0" allow="autoplay"></iframe>'
             "</div>"
+        )
+
+    # Comprobar si es un video local (.mp4, .webm, .ogg)
+    url_lower = url.lower()
+    if any(url_lower.endswith(ext) or ext + "?" in url_lower for ext in (".mp4", ".webm", ".ogg")):
+        return (
+            '<div class="video-embed video-local-wrapper">'
+            f'<video controls preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; background:#000;">'
+            f'<source src="{url}" type="video/mp4">'
+            'Tu navegador no soporta la reproducción de video HTML5.'
+            '</video>'
+            '</div>'
         )
 
     return f'<p class="video-fallback"><a href="{url}" target="_blank" rel="noopener">Ver video ↗</a></p>'
@@ -207,10 +238,25 @@ def _convert_table(table_rows: list[str]) -> str:
 def render_apoyo(apoyo: BloqueApoyo) -> str:
     contenido_html = markdown_to_html(apoyo.contenido_md) if apoyo.contenido_md else ""
     video_html = embed_video(apoyo.video_url) if apoyo.video_url else ""
+    
+    videos_adic_html = ""
+    if getattr(apoyo, "videos_adicionales", None):
+        items_v = []
+        for v in apoyo.videos_adicionales:
+            tit = v.get("titulo", "Video Adicional")
+            u = v.get("url", "")
+            items_v.append(
+                f'<div class="video-adicional-card" style="margin-top:14px; border-top:1px solid rgba(0,0,0,0.1); padding-top:10px;">'
+                f'<h4 style="margin:6px 0 10px; color:#1f77b4; font-size:15px;">🎬 {tit}</h4>'
+                f'{embed_video(u)}'
+                f'</div>'
+            )
+        videos_adic_html = "".join(items_v)
+
     return (
         '<div class="apoyo-box">'
         '<div class="apoyo-icono">💡</div>'
-        f'<div class="apoyo-contenido">{contenido_html}{video_html}</div>'
+        f'<div class="apoyo-contenido">{contenido_html}{video_html}{videos_adic_html}</div>'
         "</div>"
     )
 

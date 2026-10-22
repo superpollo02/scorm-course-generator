@@ -17,10 +17,21 @@ def test_embed_video_drive():
     assert "drive.google.com/file/d/XYZ987/preview" in html
 
 
-def test_embed_video_desconocido_usa_fallback():
+def test_embed_video_vimeo():
     html = embed_video("https://vimeo.com/12345")
+    assert "player.vimeo.com/video/12345" in html
+
+
+def test_embed_video_mp4_local():
+    html = embed_video("media/video_clase.mp4")
+    assert "video-local-wrapper" in html
+    assert "media/video_clase.mp4" in html
+
+
+def test_embed_video_desconocido_usa_fallback():
+    html = embed_video("https://dailymotion.com/video/x7xyz")
     assert "video-fallback" in html
-    assert "https://vimeo.com/12345" in html
+    assert "https://dailymotion.com/video/x7xyz" in html
 
 
 def test_markdown_to_html_tabla_y_lista():

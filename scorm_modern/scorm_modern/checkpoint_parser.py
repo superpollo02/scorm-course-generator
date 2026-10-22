@@ -30,6 +30,7 @@ def parse_checkpoint_markdown(filepath_or_content: str | Path) -> Dict[str, Any]
         "id_unidad": "1",
         "clase": "Clase",
         "video_url": "",
+        "videos_adicionales": [],
     }
 
     # Buscar metadatos en las primeras líneas
@@ -44,6 +45,15 @@ def parse_checkpoint_markdown(filepath_or_content: str | Path) -> Dict[str, Any]
             metadata["clase"] = line_strip[len("## Clase:"):].strip()
         elif line_strip.startswith("## Video URL:"):
             metadata["video_url"] = line_strip[len("## Video URL:"):].strip()
+        elif line_strip.startswith("## Video Adicional URL:"):
+            metadata["videos_adicionales"].append({"url": line_strip[len("## Video Adicional URL:"):].strip(), "titulo": "Video Adicional"})
+        elif line_strip.startswith("## Video Adicional:"):
+            val = line_strip[len("## Video Adicional:"):].strip()
+            if "|" in val:
+                u, t = val.split("|", 1)
+                metadata["videos_adicionales"].append({"url": u.strip(), "titulo": t.strip()})
+            else:
+                metadata["videos_adicionales"].append({"url": val, "titulo": "Video Adicional"})
 
     # Dividir el archivo por secciones de nivel 1 (# )
     # Usamos regex para dividir, pero manteniendo el título de la sección

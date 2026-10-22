@@ -67,6 +67,7 @@ class ParseError(ValueError):
 _RE_SECCION = re.compile(r"^#\s+(.*)$", re.MULTILINE)
 _RE_APOYO = re.compile(r":::apoyo\s*\n(.*?)\n:::", re.DOTALL)
 _RE_VIDEO = re.compile(r"^\s*VIDEO:\s*(\S+)\s*$", re.MULTILINE)
+_RE_VIDEO_ADICIONAL = re.compile(r"^\s*VIDEO_ADICIONAL:\s*(\S+)(?:\s*\|\s*(.+?))?\s*$", re.MULTILINE)
 _RE_PREGUNTA = re.compile(r"^##\s+Pregunta\s+(\d+)\s*$", re.MULTILINE)
 _RE_OPCION = re.compile(r"^([A-D])\)\s*(.+)$", re.MULTILINE)
 _RE_RESPUESTA = re.compile(
@@ -80,10 +81,11 @@ _RE_ENLACE_MD = re.compile(r"^-\s*\[(.+?)\]\((\S+?)\)(?:\s*[—-]\s*(.*))?$", re
 
 @dataclass
 class BloqueApoyo:
-    """Bloque de apoyo/nota en línea, con soporte opcional de video embebido."""
+    """Bloque de apoyo/nota en línea, con soporte opcional de video principal y videos adicionales."""
 
     contenido_md: str
     video_url: str | None = None
+    videos_adicionales: list[dict[str, str]] = field(default_factory=list)
 
 
 @dataclass
@@ -171,8 +173,14 @@ def _extraer_apoyos(texto: str) -> tuple[str, list[BloqueApoyo]]:
         bloque = match.group(1).strip()
         video_match = _RE_VIDEO.search(bloque)
         video_url = video_match.group(1) if video_match else None
-        contenido_sin_video = _RE_VIDEO.sub("", bloque).strip()
-        apoyos.append(BloqueApoyo(contenido_md=contenido_sin_video, video_url=video_url))
+        v_adic: list[dict[str, str]] = []
+        for v_m in _RE_VIDEO_ADICIONAL.finditer(bloque):
+            url_ad = v_m.group(1).strip()
+            titulo_ad = v_m.group(2).strip() if v_m.group(2) else "Video Adicional"
+            v_adic.append({"url": url_ad, "titulo": titulo_ad})
+        contenido_limpio = _RE_VIDEO.sub("", bloque)
+        contenido_limpio = _RE_VIDEO_ADICIONAL.sub("", contenido_limpio).strip()
+        apoyos.append(BloqueApoyo(contenido_md=contenido_limpio, video_url=video_url, videos_adicionales=v_adic))
         return f"{{{{APOYO_{len(apoyos) - 1}}}}}"
 
     restante = _RE_APOYO.sub(_reemplazar, texto)

@@ -226,13 +226,15 @@ def construir_desde_checkpoint(checkpoint_data: dict, base_dir: str | Path | Non
     
     # --- 1. Renderizar Introducción ---
     apoyos_intro = []
-    if metadata["video_url"]:
+    v_adic = metadata.get("videos_adicionales", [])
+    if metadata.get("video_url") or v_adic:
         apoyos_intro.append(BloqueApoyo(
             contenido_md="### Video de la Clase\nVisualiza la explicación del docente para comprender el tema:",
-            video_url=metadata["video_url"]
+            video_url=metadata.get("video_url"),
+            videos_adicionales=v_adic
         ))
     content_intro = checkpoint_data["introduccion"]
-    if metadata["video_url"]:
+    if metadata.get("video_url") or v_adic:
         content_intro += "\n\n{{APOYO_0}}"
         
     intro_obj = Leccion(titulo=intro_titulo, contenido_md=content_intro, apoyos=apoyos_intro)

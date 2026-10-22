@@ -104,10 +104,15 @@ def fix_backup(input_mbz, output_mbz):
         extract_dir = os.path.join(temp_dir, 'backup')
         os.makedirs(extract_dir)
 
-        # Extract existing backup
+        # Extract existing backup de forma segura contra Zip Slip
         print(f"Extracting {input_mbz}...")
         with zipfile.ZipFile(input_mbz, 'r') as zip_ref:
-            zip_ref.extractall(extract_dir)
+            real_base = os.path.realpath(extract_dir)
+            for member in zip_ref.infolist():
+                target_path = os.path.realpath(os.path.join(extract_dir, member.filename))
+                if not (target_path == real_base or target_path.startswith(real_base + os.sep)):
+                    raise ValueError(f"Intento de Path Traversal (Zip Slip) detectado: {member.filename}")
+                zip_ref.extract(member, extract_dir)
 
         # Add missing files
         print("Adding missing XML files...")

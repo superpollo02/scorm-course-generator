@@ -15,7 +15,7 @@ evaluación o actividad), no un nombre genérico.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from xml.sax.saxutils import escape
+
 
 __all__ = ["ItemManifest", "generar_manifest"]
 
@@ -29,26 +29,42 @@ class ItemManifest:
     archivo: str
 
 
+from xml.sax.saxutils import escape
+import re
+
+_RE_SAFE_ID = re.compile(r"[^a-zA-Z0-9_-]")
+
+
+def _sanitizar_id(ident: str) -> str:
+    """Asegura que los identificadores de recurso sean alfanuméricos válidos para XML."""
+    return _RE_SAFE_ID.sub("_", ident)
+
+
 def generar_manifest(
     identificador_curso: str,
     titulo_curso: str,
     items: list[ItemManifest],
     version: str = "1.0",
 ) -> str:
-    """Construye el XML completo de imsmanifest.xml para SCORM 1.2."""
+    """Construye el XML completo de imsmanifest.xml para SCORM 1.2 protegiendo contra inyección XML."""
 
     resources = []
     entradas = []
 
+    id_curso_limpio = _sanitizar_id(identificador_curso)
+    ver_esc = escape(version)
+
     for item in items:
-        resource_id = f"resource_{item.identificador}"
-        item_id = f"item_{item.identificador}"
+        id_item_limpio = _sanitizar_id(item.identificador)
+        resource_id = f"resource_{id_item_limpio}"
+        item_id = f"item_{id_item_limpio}"
+        archivo_esc = escape(item.archivo)
         titulo_esc = escape(item.titulo)
 
         resources.append(
             f'    <resource identifier="{resource_id}" type="webcontent" '
-            f'adlcp:scormtype="sco" href="{item.archivo}">\n'
-            f'      <file href="{item.archivo}"/>\n'
+            f'adlcp:scormtype="sco" href="{archivo_esc}">\n'
+            f'      <file href="{archivo_esc}"/>\n'
             f"    </resource>"
         )
         entradas.append(
@@ -60,7 +76,7 @@ def generar_manifest(
     titulo_curso_esc = escape(titulo_curso)
 
     manifest = f"""<?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="com.scorm_modern.{identificador_curso}" version="{version}"
+<manifest identifier="com.scorm_modern.{id_curso_limpio}" version="{ver_esc}"
           xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
           xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

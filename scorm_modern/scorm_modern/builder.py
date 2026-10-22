@@ -90,6 +90,17 @@ def construir_curso(config: CursoConfig, base_dir: str | Path | None = None) -> 
         raise BuildError(f"El curso parseado no es válido:\n  - {detalle}")
 
     salida_dir = config.ruta_salida(base)
+    # Verificación de contención de ruta para evitar sobreescritura fuera del workspace
+    try:
+        base_res = base.resolve()
+        salida_res = salida_dir.resolve()
+        # Permitir salida si está dentro de base o es un subdirectorio relativo seguro
+        if not (salida_res == base_res or str(salida_res).startswith(str(base_res))):
+            # Si apunta fuera de la base, validar que no apunte a directorios críticos del sistema
+            if str(salida_res).lower().startswith((r"c:\windows", "/etc", "/var", "/bin", "/usr")):
+                raise BuildError(f"Ruta de salida no permitida por seguridad: {salida_dir}")
+    except (RuntimeError, ValueError) as exc:
+        raise BuildError(f"Error de seguridad en ruta de salida: {exc}") from exc
     salida_dir.mkdir(parents=True, exist_ok=True)
 
     items_manifest: list[ItemManifest] = []

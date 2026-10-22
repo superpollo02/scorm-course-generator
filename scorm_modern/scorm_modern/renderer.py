@@ -51,6 +51,41 @@ _RE_HR = re.compile(r"^---$", re.MULTILINE)
 _RE_OL_START = re.compile(r"^\d+\.\s")
 _RE_TABLE_DIVIDER = re.compile(r"^\|[\s\-:|]+\|$")
 
+# Etiquetas HTML permitidas en el Markdown didáctico
+_TAGS_PERMITIDAS = frozenset({
+    "p", "br", "hr", "h1", "h2", "h3", "h4", "h5", "h6",
+    "strong", "b", "em", "i", "u", "s", "span", "code", "pre", "blockquote",
+    "ul", "ol", "li", "table", "thead", "tbody", "tr", "th", "td",
+    "div", "a", "img", "iframe", "video", "source"
+})
+
+_RE_TAG_CHECK = re.compile(r"^</?([a-zA-Z0-9]+)", re.IGNORECASE)
+_RE_SCRIPT_ONERROR = re.compile(r"(?i)(<script|javascript:|onerror\s*=|onload\s*=|onclick\s*=|onmouseover\s*=)")
+
+
+def _sanitizar_linea_html(line: str) -> str:
+    """Verifica que una línea HTML use únicamente etiquetas y atributos seguros.
+    Si contiene scripts, manejadores de eventos (onerror/onload) o etiquetas prohibidas,
+    se escapa de forma segura para prevenir Stored XSS en el LMS."""
+    stripped = line.strip()
+    if not stripped:
+        return ""
+
+    # Bloqueo inmediato de manejadores de eventos y javascript:
+    if _RE_SCRIPT_ONERROR.search(stripped):
+        import html
+        return f"<p>{html.escape(line)}</p>"
+
+    # Comprobación de etiqueta raíz
+    m = _RE_TAG_CHECK.match(stripped)
+    if m:
+        tag_name = m.group(1).lower()
+        if tag_name not in _TAGS_PERMITIDAS:
+            import html
+            return f"<p>{html.escape(line)}</p>"
+
+    return line
+
 _RE_YT_PATTERNS = [
     re.compile(r"youtube\.com/watch\?v=([\w-]+)"),
     re.compile(r"youtu\.be/([\w-]+)"),
@@ -218,7 +253,7 @@ def markdown_to_html(md_text: str, apoyos: list[BloqueApoyo] | None = None) -> s
         else:
             cerrar_listas()
             if stripped.startswith("<"):
-                result.append(line)
+                result.append(_sanitizar_linea_html(line))
             elif stripped:
                 result.append(f"<p>{line}</p>")
 

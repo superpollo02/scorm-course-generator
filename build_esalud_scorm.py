@@ -4,7 +4,6 @@ ESALUD Academic Program SCORM Package Builder
 Converts the academic program markdown file into a beautifully styled HTML SCORM 1.2 package in Spanish.
 """
 
-import os
 import re
 import zipfile
 from pathlib import Path

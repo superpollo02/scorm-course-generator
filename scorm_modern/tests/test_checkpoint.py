@@ -6,9 +6,8 @@ Pruebas unitarias para el parser del checkpoint markdown y utilidades del genera
 
 from __future__ import annotations
 
-from pathlib import Path
 from scorm_modern.checkpoint_parser import parse_checkpoint_markdown
-from scorm_modern.ai_generator import buscar_unidad_en_programa, generar_prompt
+from scorm_modern.ai_generator import buscar_unidad_en_programa
 
 
 def test_buscar_unidad_en_programa():

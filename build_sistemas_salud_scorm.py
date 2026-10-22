@@ -4,7 +4,6 @@ Sistemas de Salud Comparados SCORM Package Builder
 Converts the markdown units into a beautifully styled HTML SCORM 1.2 package.
 """
 
-import os
 import re
 import zipfile
 from pathlib import Path

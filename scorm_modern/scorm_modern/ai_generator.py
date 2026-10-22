@@ -15,7 +15,6 @@ import yaml
 
 try:
     import google.generativeai as genai
-    from google.generativeai.types import GenerateContentResponse
     HAS_GENAI = True
 except ImportError:
     HAS_GENAI = False

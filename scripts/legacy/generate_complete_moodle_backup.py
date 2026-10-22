@@ -7,11 +7,9 @@ Creates a full Moodle backup structure with all necessary XML files
 
 import os
 import re
-import html
 import hashlib
 import time
 import zipfile
-from datetime import datetime
 from xml.sax.saxutils import escape
 import markdown2
 

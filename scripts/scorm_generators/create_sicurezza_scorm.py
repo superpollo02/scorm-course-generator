@@ -8,7 +8,6 @@ Handles 4 modules + final test with proper formatting
 import os
 import zipfile
 import re
-from pathlib import Path
 
 def markdown_to_html(md_text):
     """Convert markdown to HTML with support for tables, lists, bold/italic, and details tags"""

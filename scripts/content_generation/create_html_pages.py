@@ -6,7 +6,6 @@ Ready to copy-paste into Moodle pages
 
 import os
 import re
-from pathlib import Path
 
 def markdown_to_html(md_text):
     """Convert basic markdown to HTML"""
@@ -33,8 +32,7 @@ def markdown_to_html(md_text):
 
     for line in lines:
         stripped = line.lstrip()
-        indent = len(line) - len(stripped)
-
+        
         # Unordered list
         if stripped.startswith('- ') or stripped.startswith('* '):
             if not in_ul:

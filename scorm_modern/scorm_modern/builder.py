@@ -17,7 +17,7 @@ import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
-from .config import ConfigError, CursoConfig, Enlace
+from .config import CursoConfig, Enlace
 from .manifest import ItemManifest, generar_manifest
 from .parser import CursoParseado, ParseError, parsear_markdown, Leccion, Evaluacion, Pregunta, BloqueApoyo
 from .renderer import PaginaNav, render_actividad, render_evaluacion, render_indice, render_leccion, render_conectabloques
@@ -35,14 +35,6 @@ class ResultadoBuild:
     archivo_zip: Path
     curso: CursoParseado
     enlaces: list[Enlace]
-
-
-def _slug(texto: str, prefijo: str, indice: int | None = None) -> str:
-    base = "".join(c if c.isalnum() else "_" for c in texto.lower()).strip("_")
-    base = base or prefijo
-    if indice is not None:
-        return f"{prefijo}_{indice:02d}_{base}"[:60]
-    return f"{prefijo}_{base}"[:60]
 
 
 def _combinar_enlaces(config: CursoConfig, curso: CursoParseado) -> list[Enlace]:

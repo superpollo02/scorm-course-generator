@@ -6,7 +6,6 @@ Fix Moodle backup by adding missing essential XML files
 import os
 import zipfile
 import tempfile
-import shutil
 
 def create_missing_xml_files(extract_dir):
     """Create missing XML files required by Moodle"""

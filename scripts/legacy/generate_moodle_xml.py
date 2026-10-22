@@ -6,10 +6,8 @@ Converts markdown course content to Moodle-compatible XML backup format
 """
 
 import re
-import html
 import hashlib
 import time
-from datetime import datetime
 from xml.sax.saxutils import escape
 import markdown2
 

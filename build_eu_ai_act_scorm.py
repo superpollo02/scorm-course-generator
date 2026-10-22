@@ -4,7 +4,6 @@ EU AI Act SCORM Package Builder
 Converts 4 modules from markdown to beautifully styled HTML SCORM 1.2 package
 """
 
-import os
 import re
 import zipfile
 from pathlib import Path

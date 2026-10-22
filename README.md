@@ -11,6 +11,7 @@ Sistema profesional para la generación de contenidos didácticos en formato SCO
 ## Índice
 
 - [Descripción General](#descripción-general)
+- [Flujo Autónomo «Genera la Unidad X» (Kit Aula Lista & HyperFrames)](#️-flujo-autónomo-genera-la-unidad-x-protocolo-kit-aula-lista--hyperframes)
 - [Características Principales](#características-principales)
 - [Requisitos del Sistema](#requisitos-del-sistema)
 - [Instalación](#instalación)
@@ -57,6 +58,84 @@ SCORM 1.2 es el estándar de e-learning más confiable y universalmente compatib
 - **Docebo**
 - **iSpring Learn**
 - Y cualquier otro LMS compatible con SCORM 1.2
+
+---
+
+## 🏛️ Flujo Autónomo «Genera la Unidad X» (Protocolo Kit Aula Lista & HyperFrames)
+
+El sistema integra un flujo de trabajo autónomo de punta a punta. Cuando el docente o usuario solicita **«Genera la Unidad X»**, el agente detona automáticamente una cadena de 4 fases que produce todos los contenidos organizados en un **único directorio estructurado**, ejecuta una auto-auditoría (*Zero-Missing Gate*) y corrige cualquier elemento faltante antes de finalizar:
+
+```text
+Usuario: «Genera la Unidad X»
+  │
+  ├── 1. INGESTA COGNITIVA (NotebookLM con CLI nlm)
+  │      Conexión al cuaderno correspondiente (ej. Unidad 1 SSC, 39 fuentes).
+  │      Extracción de citas textuales, transcripciones docentes, diapositivas y papers.
+  │
+  ├── 2. PRODUCCIÓN MULTIMEDIA REAL (HyperFrames + SVG/Chrome)
+  │      • Video Short Microlearning (1920x1080, 30fps): Composición HTML/GSAP renderizada
+  │        headless a MP4 mediante el motor HyperFrames (captura chromium + encoding ffmpeg).
+  │      • Banners Visuales Panorámicos: Generación SVG y renderizado PNG con tipografía limpia.
+  │      • Infografías de Síntesis: Diagramas conceptuales de alta resolución.
+  │      • Diapositivas: Archivo de placas oficiales descargables (.pptx).
+  │
+  ├── 3. MAQUETACIÓN AULA TRIPARTITA (Moodle 4.5 / Bootstrap 4.6.2)
+  │      • Encabezado: Banner + frase de encuadre (2 oraciones) + 3 preguntas andragógicas (Circular 5).
+  │      • 1. La Clase: Dual Video (Short HyperFrames + Videoclase magistral 20-30m target="_blank").
+  │      • 2. La Lectura: 3 lecturas didácticas, infografía incrustada, glosario, FAQs y bibliografía.
+  │      • 3. La Práctica: Consigna orientadora obligatoria («se resuelve con los videos...»),
+  │        Conectabloques SCORM (8 pares) y Trivia SCORM (sin numeración rígida para aleatorización).
+  │
+  └── 4. DIRECTORIO ÚNICO & AUTO-AUDITORÍA (Zero-Missing Self-Healing Gate)
+         Consolidación en un solo directorio con subdirectorios temáticos y validación con tiza comprobar.
+```
+
+### Estructura Canónica de Directorio Único
+
+Todos los artefactos se generan en una sola carpeta por unidad, respetando la siguiente jerarquía:
+
+```text
+output/<unidad>_kit_aula_lista/
+├── 01_encabezado/
+│   ├── banner_unidad.png                       # Banner visual panorámico
+│   ├── banner_unidad.svg                       # Fuente vectorial
+│   └── 01_etiqueta_encabezado_y_banner.html    # Etiqueta Moodle (área de texto y medios)
+│
+├── 02_la_clase/
+│   ├── video_short_hyperframes.mp4             # Video MP4 renderizado por HyperFrames
+│   ├── hyperframes_short/                      # Proyecto fuente HyperFrames (index.html, GSAP)
+│   ├── diapositivas_unidad.pptx                # Presentación de placas docentes
+│   └── 02_pagina_la_clase.html                 # Página Moodle con Dual Video
+│
+├── 03_la_lectura/
+│   ├── infografia_unidad.png                   # Infografía conceptual de síntesis
+│   ├── infografia_unidad.svg                   # Vectorial editable
+│   └── 03_pagina_la_lectura.html               # Página Moodle con marco teórico y glosario
+│
+├── 04_la_practica/
+│   └── 04_tarea_la_practica.html               # Tarea Moodle con consigna orientadora y caso
+│
+└── scorm/
+    ├── conectabloques_unidad-SCORM.zip         # 8 pares conceptuales, temporizador, audio
+    ├── trivia_unidad-SCORM.zip                 # Preguntas aleatorizables sin numeración rígida
+    └── modulo_completo-SCORM.zip               # Paquete SCORM integrador de la asignatura
+```
+
+### Checklist Obligatorio de Autoverificación (Zero-Missing Gate)
+
+Antes de responder al usuario, el agente auto-audita 10 puntos canónicos:
+1. `banner_unidad.png`: Banner visual de cabecera creado y enlazado.
+2. `01_etiqueta_...`: Contiene el banner, la síntesis de 2 oraciones y las 3 preguntas andragógicas.
+3. `video_short_hyperframes.mp4`: Video short de microlearning renderizado con HyperFrames.
+4. `02_pagina_...`: Integra Dual Video (Short + Clase magistral docente de 20-30 min con `target="_blank"`).
+5. `diapositivas.*`: Archivo de placas de la clase presente y enlazado.
+6. `03_pagina_...`: Módulo teórico estructurado con Glosario de términos clave y bloque FAQ.
+7. `infografia_unidad.png`: Infografía conceptual de síntesis creada e incrustada en la lectura.
+8. `04_tarea_...`: Incluye la consigna obligatoria (*«Esta práctica se resuelve con lo visto en los videos docentes...»*) y caso con rúbrica.
+9. `conectabloques-SCORM.zip` y `trivia-SCORM.zip`: Paquetes SCORM 1.2 interactivos compilados.
+10. `tiza comprobar *.html`: Auditoría ejecutada con éxito (`Paso COMPROBAR: ok`) en todos los ficheros HTML.
+
+> **Regla de Autocorrección (Self-Healing):** Si falta cualquiera de estos 10 componentes, el sistema procede de inmediato a generarlo o compilarlo hasta satisfacer el 100% de la lista sin dejarlo pendiente.
 
 ---
 

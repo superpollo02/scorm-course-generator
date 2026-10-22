@@ -402,13 +402,15 @@ def generar_html_trivia(trivia: TriviaData) -> str:
       var optsContainer = document.getElementById("options-container");
       optsContainer.innerHTML = "";
 
+      var optsFrag = document.createDocumentFragment();
       q.opciones.forEach(function(opt) {{
         var btn = document.createElement("button");
         btn.className = "option-btn";
         btn.innerHTML = '<span class="opt-badge">' + opt.letra + '</span><span>' + opt.texto + '</span>';
         btn.onclick = function() {{ checkAnswer(opt.letra, btn); }};
-        optsContainer.appendChild(btn);
+        optsFrag.appendChild(btn);
       }});
+      optsContainer.appendChild(optsFrag);
 
       var fb = document.getElementById("feedback-container");
       fb.className = "feedback-box";

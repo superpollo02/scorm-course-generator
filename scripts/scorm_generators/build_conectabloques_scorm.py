@@ -579,23 +579,27 @@ def generar_html_conectabloques(data: ConectabloquesData) -> str:
       var shuffledTerms = shuffle(ORIGINAL_CONCEPTS);
       var shuffledDefs = shuffle(ORIGINAL_CONCEPTS);
 
+      var termsFrag = document.createDocumentFragment();
       shuffledTerms.forEach(function(c) {{
         var div = document.createElement("div");
         div.className = "block-item";
         div.id = "term-" + c.id;
         div.innerText = c.term;
         div.onclick = function() {{ handleSelectTerm(c.id); }};
-        termsContainer.appendChild(div);
+        termsFrag.appendChild(div);
       }});
+      termsContainer.appendChild(termsFrag);
 
+      var defsFrag = document.createDocumentFragment();
       shuffledDefs.forEach(function(c) {{
         var div = document.createElement("div");
         div.className = "block-item";
         div.id = "def-" + c.id;
         div.innerText = c.definition;
         div.onclick = function() {{ handleSelectDef(c.id); }};
-        defsContainer.appendChild(div);
+        defsFrag.appendChild(div);
       }});
+      defsContainer.appendChild(defsFrag);
     }}
 
     function handleSelectTerm(id) {{

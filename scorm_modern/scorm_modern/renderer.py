@@ -39,42 +39,57 @@ __all__ = [
 
 _RE_APOYO_MARCADOR = re.compile(r"\{\{APOYO_(\d+)\}\}")
 
+# Precompilación de expresiones regulares para conversión Markdown -> HTML
+_RE_H4 = re.compile(r"^#### (.*?)$", re.MULTILINE)
+_RE_H3 = re.compile(r"^### (.*?)$", re.MULTILINE)
+_RE_H2 = re.compile(r"^## (.*?)$", re.MULTILINE)
+_RE_H1 = re.compile(r"^# (.*?)$", re.MULTILINE)
+_RE_BOLD_ITALIC = re.compile(r"\*\*\*(.*?)\*\*\*")
+_RE_BOLD = re.compile(r"\*\*(.*?)\*\*")
+_RE_ITALIC = re.compile(r"(?<!\*)\*([^\*\r\n]+?)\*(?!\*)")
+_RE_HR = re.compile(r"^---$", re.MULTILINE)
+_RE_OL_START = re.compile(r"^\d+\.\s")
+_RE_TABLE_DIVIDER = re.compile(r"^\|[\s\-:|]+\|$")
+
+_RE_YT_PATTERNS = [
+    re.compile(r"youtube\.com/watch\?v=([\w-]+)"),
+    re.compile(r"youtu\.be/([\w-]+)"),
+    re.compile(r"youtube\.com/embed/([\w-]+)"),
+    re.compile(r"youtube\.com/shorts/([\w-]+)"),
+]
+
+_RE_DRIVE_PATTERNS = [
+    re.compile(r"drive\.google\.com/file/d/([\w-]+)"),
+    re.compile(r"drive\.google\.com/open\?id=([\w-]+)"),
+    re.compile(r"[?&]id=([\w-]+)"),
+]
+
+_RE_VIMEO_PATTERNS = [
+    re.compile(r"vimeo\.com/video/(\d+)"),
+    re.compile(r"vimeo\.com/(\d+)"),
+    re.compile(r"player\.vimeo\.com/video/(\d+)"),
+]
+
 
 def _youtube_id(url: str) -> str | None:
-    patrones = [
-        r"youtube\.com/watch\?v=([\w-]+)",
-        r"youtu\.be/([\w-]+)",
-        r"youtube\.com/embed/([\w-]+)",
-        r"youtube\.com/shorts/([\w-]+)",
-    ]
-    for patron in patrones:
-        m = re.search(patron, url)
+    for patron in _RE_YT_PATTERNS:
+        m = patron.search(url)
         if m:
             return m.group(1)
     return None
 
 
 def _drive_id(url: str) -> str | None:
-    patrones = [
-        r"drive\.google\.com/file/d/([\w-]+)",
-        r"drive\.google\.com/open\?id=([\w-]+)",
-        r"[?&]id=([\w-]+)",
-    ]
-    for patron in patrones:
-        m = re.search(patron, url)
+    for patron in _RE_DRIVE_PATTERNS:
+        m = patron.search(url)
         if m:
             return m.group(1)
     return None
 
 
 def _vimeo_id(url: str) -> str | None:
-    patrones = [
-        r"vimeo\.com/video/(\d+)",
-        r"vimeo\.com/(\d+)",
-        r"player\.vimeo\.com/video/(\d+)",
-    ]
-    for patron in patrones:
-        m = re.search(patron, url)
+    for patron in _RE_VIMEO_PATTERNS:
+        m = patron.search(url)
         if m:
             return m.group(1)
     return None
@@ -136,15 +151,15 @@ def markdown_to_html(md_text: str, apoyos: list[BloqueApoyo] | None = None) -> s
     apoyos = apoyos or []
     html = md_text
 
-    html = re.sub(r"^#### (.*?)$", r"<h4>\1</h4>", html, flags=re.MULTILINE)
-    html = re.sub(r"^### (.*?)$", r"<h3>\1</h3>", html, flags=re.MULTILINE)
-    html = re.sub(r"^## (.*?)$", r"<h2>\1</h2>", html, flags=re.MULTILINE)
-    html = re.sub(r"^# (.*?)$", r"<h1>\1</h1>", html, flags=re.MULTILINE)
+    html = _RE_H4.sub(r"<h4>\1</h4>", html)
+    html = _RE_H3.sub(r"<h3>\1</h3>", html)
+    html = _RE_H2.sub(r"<h2>\1</h2>", html)
+    html = _RE_H1.sub(r"<h1>\1</h1>", html)
 
-    html = re.sub(r"\*\*\*(.*?)\*\*\*", r"<strong><em>\1</em></strong>", html)
-    html = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", html)
-    html = re.sub(r"(?<!\*)\*([^*\n]+?)\*(?!\*)", r"<em>\1</em>", html)
-    html = re.sub(r"^---$", r"<hr>", html, flags=re.MULTILINE)
+    html = _RE_BOLD_ITALIC.sub(r"<strong><em>\1</em></strong>", html)
+    html = _RE_BOLD.sub(r"<strong>\1</strong>", html)
+    html = _RE_ITALIC.sub(r"<em>\1</em>", html)
+    html = _RE_HR.sub(r"<hr>", html)
 
     lines = html.split("\n")
     result: list[str] = []
@@ -195,11 +210,11 @@ def markdown_to_html(md_text: str, apoyos: list[BloqueApoyo] | None = None) -> s
                 result.append("<ul>")
                 in_ul = True
             result.append(f"  <li>{stripped[2:]}</li>")
-        elif re.match(r"^\d+\.\s", stripped):
+        elif _RE_OL_START.match(stripped):
             if not in_ol:
                 result.append("<ol>")
                 in_ol = True
-            result.append(f"  <li>{re.sub(r'^\\d+\\.\\s', '', stripped)}</li>")
+            result.append(f"  <li>{_RE_OL_START.sub('', stripped)}</li>")
         else:
             cerrar_listas()
             if stripped.startswith("<"):
@@ -220,7 +235,7 @@ def _convert_table(table_rows: list[str]) -> str:
 
     html = '<table class="data-table">\n'
     for i, row in enumerate(table_rows):
-        if i == 1 and re.match(r"^\|[\s\-:|]+\|$", row):
+        if i == 1 and _RE_TABLE_DIVIDER.match(row):
             continue
         cells = [c.strip() for c in row.split("|") if c.strip()]
         if not cells:

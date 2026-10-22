@@ -5,75 +5,18 @@ Ready to copy-paste into Moodle pages
 """
 
 import os
-import re
 
 def markdown_to_html(md_text):
-    """Convert basic markdown to HTML"""
-    html = md_text
+    """Delega la conversión al motor canónico optimizado de scorm_modern."""
+    from scorm_modern.renderer import markdown_to_html as _m2h
+    return _m2h(md_text)
 
-    # Headers
-    html = re.sub(r'^# (.*?)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
-    html = re.sub(r'^## (.*?)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
-    html = re.sub(r'^### (.*?)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
-    html = re.sub(r'^#### (.*?)$', r'<h4>\1</h4>', html, flags=re.MULTILINE)
 
-    # Bold and italic
-    html = re.sub(r'\*\*\*(.*?)\*\*\*', r'<strong><em>\1</em></strong>', html)
-    html = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', html)
-    html = re.sub(r'\*(.*?)\*', r'<em>\1</em>', html)
-    html = re.sub(r'__(.*?)__', r'<strong>\1</strong>', html)
-    html = re.sub(r'_(.*?)_', r'<em>\1</em>', html)
+def convert_table(table_rows):
+    """Delega la conversión de tablas al motor canónico optimizado de scorm_modern."""
+    from scorm_modern.renderer import _convert_table
+    return _convert_table(table_rows)
 
-    # Convert markdown lists to HTML
-    lines = html.split('\n')
-    in_ul = False
-    in_ol = False
-    result = []
-
-    for line in lines:
-        stripped = line.lstrip()
-        
-        # Unordered list
-        if stripped.startswith('- ') or stripped.startswith('* '):
-            if not in_ul:
-                result.append('<ul>')
-                in_ul = True
-            content = stripped[2:]
-            result.append(f'<li>{content}</li>')
-        # Ordered list
-        elif re.match(r'^\d+\.\s', stripped):
-            if not in_ol:
-                result.append('<ol>')
-                in_ol = True
-            content = re.sub(r'^\d+\.\s', '', stripped)
-            result.append(f'<li>{content}</li>')
-        else:
-            if in_ul:
-                result.append('</ul>')
-                in_ul = False
-            if in_ol:
-                result.append('</ol>')
-                in_ol = False
-            result.append(line)
-
-    if in_ul:
-        result.append('</ul>')
-    if in_ol:
-        result.append('</ol>')
-
-    html = '\n'.join(result)
-
-    # Paragraphs (simple approach)
-    paragraphs = html.split('\n\n')
-    html = ''
-    for p in paragraphs:
-        p = p.strip()
-        if p and not p.startswith('<'):
-            html += f'<p>{p}</p>\n\n'
-        else:
-            html += p + '\n\n'
-
-    return html
 
 def split_into_modules(content):
     """Split content into modules"""

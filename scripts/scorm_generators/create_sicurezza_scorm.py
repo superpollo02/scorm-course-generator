@@ -7,138 +7,18 @@ Handles 4 modules + final test with proper formatting
 
 import os
 import zipfile
-import re
 
 def markdown_to_html(md_text):
-    """Convert markdown to HTML with support for tables, lists, bold/italic, and details tags"""
-    html = md_text
+    """Delega la conversión al motor canónico optimizado de scorm_modern."""
+    from scorm_modern.renderer import markdown_to_html as _m2h
+    return _m2h(md_text)
 
-    # Convert details/summary tags (keep as-is for HTML)
-    # These are already valid HTML5 tags
-
-    # Headers
-    html = re.sub(r'^# (.*?)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
-    html = re.sub(r'^## (.*?)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
-    html = re.sub(r'^### (.*?)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
-    html = re.sub(r'^#### (.*?)$', r'<h4>\1</h4>', html, flags=re.MULTILINE)
-
-    # Bold and italic
-    html = re.sub(r'\*\*\*(.*?)\*\*\*', r'<strong><em>\1</em></strong>', html)
-    html = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', html)
-    html = re.sub(r'\*(.*?)\*', r'<em>\1</em>', html)
-
-    # Horizontal rules
-    html = re.sub(r'^---$', r'<hr>', html, flags=re.MULTILINE)
-
-    # Convert tables and lists
-    lines = html.split('\n')
-    in_ul = False
-    in_ol = False
-    in_table = False
-    in_code_block = False
-    table_rows = []
-    result = []
-
-    for line in lines:
-        stripped = line.strip()
-
-        # Handle code blocks (```...```)
-        if stripped.startswith('```'):
-            in_code_block = not in_code_block
-            if in_code_block:
-                result.append('<pre><code>')
-            else:
-                result.append('</code></pre>')
-            continue
-
-        if in_code_block:
-            result.append(line)
-            continue
-
-        # Check if this is a table row
-        if '|' in stripped and not stripped.startswith('<'):
-            if not in_table:
-                in_table = True
-                table_rows = []
-            table_rows.append(stripped)
-        else:
-            # End of table, process it
-            if in_table:
-                result.append(convert_table(table_rows))
-                in_table = False
-                table_rows = []
-
-            # Process lists
-            if stripped.startswith('- ') or stripped.startswith('* '):
-                if not in_ul:
-                    result.append('<ul>')
-                    in_ul = True
-                content = stripped[2:]
-                result.append(f'  <li>{content}</li>')
-            elif re.match(r'^\d+\.\s', stripped):
-                if not in_ol:
-                    result.append('<ol>')
-                    in_ol = True
-                content = re.sub(r'^\d+\.\s', '', stripped)
-                result.append(f'  <li>{content}</li>')
-            else:
-                if in_ul:
-                    result.append('</ul>')
-                    in_ul = False
-                if in_ol:
-                    result.append('</ol>')
-                    in_ol = False
-
-                # Wrap non-header, non-list lines in paragraphs
-                if stripped and not stripped.startswith('<'):
-                    result.append(f'<p>{line}</p>')
-                elif stripped.startswith('<'):
-                    result.append(line)
-
-    # Handle remaining table
-    if in_table:
-        result.append(convert_table(table_rows))
-
-    if in_ul:
-        result.append('</ul>')
-    if in_ol:
-        result.append('</ol>')
-
-    return '\n'.join(result)
 
 def convert_table(table_rows):
-    """Convert markdown table to HTML with beautiful styling"""
-    if len(table_rows) < 2:
-        return '\n'.join(table_rows)
+    """Delega la conversión de tablas al motor canónico optimizado de scorm_modern."""
+    from scorm_modern.renderer import _convert_table
+    return _convert_table(table_rows)
 
-    html = '<table class="data-table">\n'
-
-    for i, row in enumerate(table_rows):
-        # Skip separator row (usually row 1)
-        if i == 1 and re.match(r'^\|[\s\-:|]+\|$', row):
-            continue
-
-        # Clean up the row
-        cells = [cell.strip() for cell in row.split('|')]
-        cells = [c for c in cells if c]  # Remove empty cells
-
-        if not cells:
-            continue
-
-        # First row is header
-        if i == 0:
-            html += '<thead>\n<tr>\n'
-            for cell in cells:
-                html += f'  <th>{cell}</th>\n'
-            html += '</tr>\n</thead>\n<tbody>\n'
-        else:
-            html += '<tr>\n'
-            for cell in cells:
-                html += f'  <td>{cell}</td>\n'
-            html += '</tr>\n'
-
-    html += '</tbody>\n</table>'
-    return html
 
 def create_scorm_html(title, content, prev_page=None, next_page=None, is_index=False):
     """Create SCORM-compatible HTML page with beautiful styling"""

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo Situacional - 16:9 (45s)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: #0b0f19;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden;
+      width: 1920px;
+      height: 1080px;
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      background: #0d1322;
+      overflow: hidden;
+    }
+
+    .ambient-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.09) 0%, transparent 50%),
+        linear-gradient(180deg, #090d16 0%, #0d1322 100%);
+      z-index: 1;
+    }
+
+    .ambient-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      z-index: 2;
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background: rgba(13, 19, 34, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 70px;
+      z-index: 100;
+    }
+
+    .brand-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+      font-weight: 900;
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    .brand-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+
+    .brand-text span {
+      color: #34d399;
+    }
+
+    .course-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .course-tag .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f59e0b;
+      box-shadow: 0 0 10px #f59e0b;
+    }
+
+    .scene {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      width: 1920px;
+      height: 890px;
+      padding: 55px 100px;
+      opacity: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hook-badge {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #34d399;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      font-size: 60px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      max-width: 1520px;
+      margin-bottom: 32px;
+      color: #ffffff;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #34d399 0%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .conflict-cards-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      max-width: 1580px;
+    }
+
+    .conflict-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .conflict-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+
+    .conflict-text h4 {
+      font-size: 25px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .conflict-text p {
+      font-size: 19px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    .section-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 36px;
+      letter-spacing: -1px;
+    }
+
+    /* SCENE 2: Grupo vs Equipo (Paradigma Quirófano) */
+    .dual-arena {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      width: 100%;
+    }
+
+    .pillar-box {
+      border-radius: 24px;
+      padding: 40px 44px;
+      background: linear-gradient(160deg, rgba(30, 41, 59, 0.78) 0%, rgba(15, 23, 42, 0.92) 100%);
+    }
+
+    .box-grupo {
+      border: 2px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .box-equipo {
+      border: 2px solid #10b981;
+      box-shadow: 0 12px 40px rgba(16, 185, 129, 0.2);
+    }
+
+    .pillar-title {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .pillar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 21px;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    /* SCENE 3: Liderazgo Situacional */
+    .tri-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px;
+      width: 100%;
+    }
+
+    .vector-card {
+      background: linear-gradient(160deg, rgba(30, 41, 59, 0.78) 0%, rgba(15, 23, 42, 0.92) 100%);
+      border-radius: 24px;
+      padding: 36px 34px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .vec-title {
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    .vec-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 19px;
+      color: #cbd5e1;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* SCENE 4: Golden Box */
+    .golden-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(245, 158, 11, 0.1) 100%);
+      border: 2px solid rgba(52, 211, 153, 0.45);
+      border-radius: 28px;
+      padding: 52px 64px;
+      text-align: center;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+      max-width: 1460px;
+      margin: 0 auto;
+    }
+
+    .golden-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fbbf24;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .golden-quote {
+      font-size: 44px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      margin-bottom: 32px;
+    }
+
+    .golden-quote span {
+      color: #34d399;
+    }
+
+    .cta-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: linear-gradient(135deg, #059669 0%, #d97706 100%);
+      color: #ffffff;
+      padding: 18px 44px;
+      border-radius: 50px;
+      font-size: 24px;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(5, 150, 105, 0.4);
+    }
+
+    .cta-banner .campus-pill {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .subtitles-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 100px;
+      right: 100px;
+      height: 72px;
+      background: rgba(10, 15, 25, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 40px;
+      z-index: 120;
+    }
+
+    .caption-line {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f8fafc;
+      text-align: center;
+      letter-spacing: -0.2px;
+      opacity: 0;
+      position: absolute;
+      width: calc(100% - 80px);
+    }
+
+    .caption-line .highlight {
+      color: #34d399;
+    }
+  </style>
+</head>
+<body>
+
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="45"
+    data-width="1920"
+    data-height="1080"
+    data-fps="30"
+    data-layout-allow-overlap="true"
+    data-layout-allow-occlusion="true">
+
+    <div class="ambient-bg"></div>
+    <div class="ambient-grid"></div>
+
+    <!-- Audio Tracks -->
+    <audio id="bgm" src="assets/audio/bgm-network-synapse-45s.wav" data-start="0" data-duration="45" data-volume="0.12"></audio>
+    <audio id="vo" src="assets/audio/vo-u2-comunicacion-45s.mp3" data-start="0.4" data-duration="43" data-volume="0.95"></audio>
+    <audio id="sfx-whoosh1" src="assets/audio/whoosh-cinematic.mp3" data-start="0.2" data-duration="2.8" data-volume="0.28"></audio>
+    <audio id="sfx-pop" src="assets/audio/pop.mp3" data-start="2.2" data-duration="0.72" data-volume="0.35"></audio>
+    <audio id="sfx-whoosh2" src="assets/audio/whoosh.mp3" data-start="12.0" data-duration="0.57" data-volume="0.32"></audio>
+    <audio id="sfx-chime" src="assets/audio/chime.mp3" data-start="25.0" data-duration="2.50" data-volume="0.38"></audio>
+    <audio id="sfx-sparkle" src="assets/audio/sparkle.mp3" data-start="35.8" data-duration="1.80" data-volume="0.40"></audio>
+
+    <header class="top-bar">
+      <div class="brand-badge">
+        <div class="brand-logo-icon">E</div>
+        <div class="brand-text">Campus <span>ESALUD</span> | Gestión de Personas y Talento Humano</div>
+      </div>
+      <div class="course-tag">
+        <div class="live-dot"></div>
+        UNIDAD 2 • LIC. CARLA NANI
+      </div>
+    </header>
+
+    <!-- SCENE 1: Comunicación Emisor vs Perceptor (0s - 12s) -->
+    <div class="scene" id="scene-1">
+      <div class="hook-badge">💬 Unidad 2 • Comunicación Eficaz e Imponderables (2 + 2 ≠ 4)</div>
+      <h1 class="hero-title">
+        ¿Diste una indicación médica en el pase de guardia y <span class="gradient-text">se interpretó todo al revés</span>?
+      </h1>
+      <div class="conflict-cards-container">
+        <div class="conflict-card" id="card-1">
+          <div class="conflict-icon">📡</div>
+          <div class="conflict-text">
+            <h4>El Emisor es el Especialista Responsable</h4>
+            <p>Debe codificar el mensaje conscientemente adecuando el lenguaje técnico y gestual a cada interlocutor.</p>
+          </div>
+        </div>
+        <div class="conflict-card" id="card-2">
+          <div class="conflict-icon">🧠</div>
+          <div class="conflict-text">
+            <h4>Perceptor Activo (No Receptor Pasivo)</h4>
+            <p>El paciente o colega decodifica según su edad, nivel sociocultural, miedos, prejuicios y vivencias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 2: Grupo vs Equipo - El Quirófano (12s - 25s) -->
+    <div class="scene" id="scene-2">
+      <div class="section-kicker">SINERGIA ASISTENCIAL • LIC. CARLA NANI</div>
+      <h2 class="section-heading">De Grupo Fragmentado a Equipo en Quirófano</h2>
+      <div class="dual-arena">
+        <div class="pillar-box box-grupo" id="box-grupo">
+          <h3 class="pillar-title" style="color:#cbd5e1;">GRUPO DE TRABAJO</h3>
+          <ul class="pillar-list">
+            <li>• Se reúne por afinidad social o cercanía espontánea.</li>
+            <li>• Formación similar realizando tareas en paralelo.</li>
+            <li>• Estructura jerárquica vertical y rígida.</li>
+            <li>• Responsabilidad estrictamente individual.</li>
+          </ul>
+        </div>
+        <div class="pillar-box box-equipo" id="box-equipo">
+          <h3 class="pillar-title" style="color:#34d399;">EQUIPO EN QUIRÓFANO (PARADIGMA)</h3>
+          <ul class="pillar-list">
+            <li>• Habilidades complementarias (cirujano, anestesista, enfermería).</li>
+            <li>• Meta común implícita y explícita: la seguridad del paciente.</li>
+            <li>• Las jerarquías se dinamizan según la experticia del rol.</li>
+            <li>• Corresponsabilidad colectiva y cohesión sinérgica.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 3: Liderazgo Situacional, Empatía y Maslow (25s - 36s) -->
+    <div class="scene" id="scene-3">
+      <div class="section-kicker">CONDUCCIÓN DE EQUIPOS DE SALUD</div>
+      <h2 class="section-heading">Liderazgo Situacional: Persuadir sin Coerción</h2>
+      <div class="tri-grid">
+        <div class="vector-card" id="lid-1" style="border-color:#34d399;">
+          <h3 class="vec-title" style="color:#34d399;">1. Persuasión Situacional</h3>
+          <ul class="vec-list">
+            <li>• Guiar e inspirar sin fuerza bruta ni autoritarismo.</li>
+            <li>• Adaptar el estilo al contexto, crisis y madurez del equipo.</li>
+          </ul>
+        </div>
+        <div class="vector-card" id="lid-2" style="border-color:#38bdf8;">
+          <h3 class="vec-title" style="color:#38bdf8;">2. Empatía ≠ Permisividad</h3>
+          <ul class="vec-list">
+            <li>• Empatía genuina: comprender la vivencia del otro para decidir con rigor.</li>
+            <li>• Permisividad: decir a todo que sí, diluyendo la autoridad y el orden.</li>
+          </ul>
+        </div>
+        <div class="vector-card" id="lid-3" style="border-color:#fbbf24;">
+          <h3 class="vec-title" style="color:#fbbf24;">3. Maslow y Prevención</h3>
+          <ul class="vec-list">
+            <li>• Empoderar reconociendo pertenencia, estima y desarrollo.</li>
+            <li>• Evitar las causas de fracaso: sordera directiva, impulsividad y no delegar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 4: Cierre y CTA (36s - 45s) -->
+    <div class="scene" id="scene-4">
+      <div class="golden-box" id="gold-card">
+        <div class="golden-label">⭐ REGLA DE ORO • UNIDAD 2 (LIC. CARLA NANI)</div>
+        <p class="golden-quote">
+          "En gestión de personas 2 + 2 nunca es 4: <span>adecuá tu mensaje al perceptor, construí equipo y liderá con empatía genuina</span>."
+        </p>
+        <div class="cta-banner">
+          <span>Resolvé el Caso Situado de UTI en</span>
+          <span class="campus-pill">Campus ESALUD Mendoza</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtitles Bar -->
+    <div class="subtitles-bar">
+      <div class="caption-line" id="cap-1">
+        En comunicación clínica no hay receptores pasivos: tu interlocutor es un <span class="highlight">perceptor activo</span>.
+      </div>
+      <div class="caption-line" id="cap-2">
+        La responsabilidad de lograr <span class="highlight">comunicación eficaz</span> recae siempre sobre el profesional emisor.
+      </div>
+      <div class="caption-line" id="cap-3">
+        El <span class="highlight">quirófano</span> es el paradigma de equipo: habilidades complementarias y responsabilidad compartida.
+      </div>
+      <div class="caption-line" id="cap-4">
+        El <span class="highlight">líder situacional</span> persuade sin coerción, distingue empatía de permisividad y empodera según Maslow.
+      </div>
+      <div class="caption-line" id="cap-5">
+        Liderá tu equipo y completá la Evaluación Integradora en el <span class="highlight">Campus ESALUD</span>.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["main"] = tl;
+
+    // SCENE 1: 0.0s -> 12.0s
+    tl.to("#scene-1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2)
+      .from("#scene-1 .hook-badge", { y: -20, opacity: 0, duration: 0.6, ease: "back.out(1.5)" }, 0.4)
+      .from("#scene-1 .hero-title", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.6)
+      .from("#card-1", { x: -40, opacity: 0, duration: 0.7, ease: "power2.out" }, 1.8)
+      .from("#card-2", { x: 40, opacity: 0, duration: 0.7, ease: "power2.out" }, 2.2)
+      .to("#scene-1", { opacity: 0, scale: 0.96, duration: 0.5, ease: "power2.in" }, 11.5);
+
+    // SCENE 2: 12.0s -> 25.0s
+    tl.to("#scene-2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 12.0)
+      .from("#box-grupo", { x: -50, opacity: 0, duration: 0.7, ease: "power3.out" }, 12.4)
+      .from("#box-equipo", { x: 50, opacity: 0, duration: 0.7, ease: "power3.out" }, 13.0)
+      .to("#scene-2", { opacity: 0, scale: 1.03, duration: 0.5, ease: "power2.in" }, 24.5);
+
+    // SCENE 3: 25.0s -> 36.0s
+    tl.to("#scene-3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 25.0)
+      .from("#lid-1", { y: 40, opacity: 0, duration: 0.6, ease: "power2.out" }, 25.4)
+      .from("#lid-2", { y: 40, opacity: 0, duration: 0.6, ease: "power2.out" }, 25.9)
+      .from("#lid-3", { y: 40, opacity: 0, duration: 0.6, ease: "power2.out" }, 26.4)
+      .to("#scene-3", { opacity: 0, duration: 0.5, ease: "power2.in" }, 35.5);
+
+    // SCENE 4: 36.0s -> 45.0s
+    tl.to("#scene-4", { opacity: 1, duration: 0.6, ease: "power2.out" }, 36.0)
+      .from("#gold-card", { scale: 0.9, opacity: 0, duration: 0.8, ease: "back.out(1.5)" }, 36.3)
+      .from("#gold-card .cta-banner", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, 37.8)
+      .to("#root", { opacity: 0, duration: 0.8, ease: "power2.in" }, 44.2);
+
+    // Captions
+    tl.to("#cap-1", { opacity: 1, duration: 0.4 }, 0.4)
+      .to("#cap-1", { opacity: 0, duration: 0.3 }, 6.4)
+      .to("#cap-2", { opacity: 1, duration: 0.4 }, 6.8)
+      .to("#cap-2", { opacity: 0, duration: 0.3 }, 12.0)
+      .to("#cap-3", { opacity: 1, duration: 0.4 }, 12.4)
+      .to("#cap-3", { opacity: 0, duration: 0.3 }, 24.6)
+      .to("#cap-4", { opacity: 1, duration: 0.4 }, 25.0)
+      .to("#cap-4", { opacity: 0, duration: 0.3 }, 35.5)
+      .to("#cap-5", { opacity: 1, duration: 0.4 }, 35.9)
+      .to("#cap-5", { opacity: 0, duration: 0.4 }, 44.2);
+
+    tl.seek(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<moodle_backup>
+  <information>
+    <name>Introduzione all'Intelligenza Artificiale per Principianti</name>
+    <moodle_version>2023100900</moodle_version>
+    <moodle_release>4.3</moodle_release>
+    <backup_version>2023100900</backup_version>
+    <backup_release>4.3</backup_release>
+    <backup_date>1761289308</backup_date>
+    <mnet_remoteusers>0</mnet_remoteusers>
+    <include_files>1</include_files>
+    <include_file_references_to_external_content>0</include_file_references_to_external_content>
+    <original_wwwroot>https://moodle.example.com</original_wwwroot>
+    <original_site_identifier_hash>generated_1b6c8a84f6c6f2f7d402b0f9ceff2062</original_site_identifier_hash>
+    <original_course_id>1</original_course_id>
+    <original_course_fullname>Introduzione all'Intelligenza Artificiale per Principianti</original_course_fullname>
+    <original_course_shortname>AI-Principianti</original_course_shortname>
+    <original_course_startdate>1761289308</original_course_startdate>
+    <original_course_enddate>0</original_course_enddate>
+    <original_course_contextid>2</original_course_contextid>
+    <original_system_contextid>1</original_system_contextid>
+    <type>course</type>
+    <format>topics</format>
+    <interactive>1</interactive>
+    <mode>10</mode>
+    <execution>1</execution>
+    <executiontime>0</executiontime>
+  </information>
+  <details>
+    <detail backup_id="1b6c8a84f6c6f2f7d402b0f9ceff2062" type="course" format="topics" interactive="1" mode="10" execution="1" executiontime="0">
+      <activities>
+        <activity moduleid="1" sectionid="1" modulename="label" title="Label" directory="activities/label_1">
+        </activity>
+        <activity moduleid="2" sectionid="1" modulename="page" title="1.1 Definizioni Fondamentali" directory="activities/page_2">
+        </activity>
+        <activity moduleid="3" sectionid="1" modulename="page" title="1.2 Breve Storia dell'AI: Da Turing ai Giorni Nostri" directory="activities/page_3">
+        </activity>
+        <activity moduleid="4" sectionid="1" modulename="page" title="1.3 AI Debole vs AI Forte" directory="activities/page_4">
+        </activity>
+        <activity moduleid="5" sectionid="1" modulename="page" title="1.4 Applicazioni Quotidiane dell'AI" directory="activities/page_5">
+        </activity>
+        <activity moduleid="6" sectionid="1" modulename="page" title="Riepilogo del Modulo 1" directory="activities/page_6">
+        </activity>
+        <activity moduleid="7" sectionid="1" modulename="quiz" title="Attività del Modulo 1" directory="activities/quiz_7">
+        </activity>
+        <activity moduleid="8" sectionid="2" modulename="label" title="Label" directory="activities/label_8">
+        </activity>
+        <activity moduleid="9" sectionid="2" modulename="page" title="2.1 Dati: Il Carburante dell'AI" directory="activities/page_9">
+        </activity>
+        <activity moduleid="10" sectionid="2" modulename="page" title="2.2 Algoritmi e Modelli" directory="activities/page_10">
+        </activity>
+        <activity moduleid="11" sectionid="2" modulename="page" title="2.3 Training e Inferenza" directory="activities/page_11">
+        </activity>
+        <activity moduleid="12" sectionid="2" modulename="page" title="Riepilogo del Modulo 2" directory="activities/page_12">
+        </activity>
+        <activity moduleid="13" sectionid="2" modulename="assign" title="Attività del Modulo 2" directory="activities/assign_13">
+        </activity>
+        <activity moduleid="14" sectionid="3" modulename="label" title="Label" directory="activities/label_14">
+        </activity>
+        <activity moduleid="15" sectionid="3" modulename="page" title="3.1 Supervised Learning (Apprendimento Supervisionato)" directory="activities/page_15">
+        </activity>
+        <activity moduleid="16" sectionid="3" modulename="page" title="3.2 Unsupervised Learning (Apprendimento Non Supervisionato)" directory="activities/page_16">
+        </activity>
+        <activity moduleid="17" sectionid="3" modulename="page" title="3.3 Reinforcement Learning (Apprendimento per Rinforzo)" directory="activities/page_17">
+        </activity>
+        <activity moduleid="18" sectionid="3" modulename="page" title="3.4 Semi-Supervised e Transfer Learning" directory="activities/page_18">
+        </activity>
+        <activity moduleid="19" sectionid="3" modulename="page" title="Riepilogo del Modulo 3" directory="activities/page_19">
+        </activity>
+        <activity moduleid="20" sectionid="3" modulename="page" title="Introduzione all'Intelligenza Artificiale per Principianti" directory="activities/page_20">
+        </activity>
+        <activity moduleid="21" sectionid="3" modulename="quiz" title="Modulo 4: Le Reti Neurali e il Deep Learning" directory="activities/quiz_21">
+        </activity>
+        <activity moduleid="22" sectionid="3" modulename="assign" title="Attività del Modulo 3" directory="activities/assign_22">
+        </activity>
+        <activity moduleid="23" sectionid="3" modulename="assign" title="Modulo 5: AI Generativa: Testo, Immagini e Creatività" directory="activities/assign_23">
+        </activity>
+        <activity moduleid="24" sectionid="3" modulename="assign" title="Modulo 6: Usare l'AI in Modo Razionale ed Efficiente" directory="activities/assign_24">
+        </activity>
+        <activity moduleid="25" sectionid="7" modulename="label" title="Label" directory="activities/label_25">
+        </activity>
+        <activity moduleid="26" sectionid="7" modulename="page" title="Argomento 1: Bias nei Dati e negli Algoritmi" directory="activities/page_26">
+        </activity>
+        <activity moduleid="27" sectionid="7" modulename="page" title="Argomento 2: Privacy e Protezione dei Dati" directory="activities/page_27">
+        </activity>
+        <activity moduleid="28" sectionid="7" modulename="page" title="Argomento 3: Trasparenza e Spiegabilità (Explainable AI)" directory="activities/page_28">
+        </activity>
+        <activity moduleid="29" sectionid="7" modulename="page" title="Argomento 4: Impatto Sociale e Occupazionale" directory="activities/page_29">
+        </activity>
+        <activity moduleid="30" sectionid="7" modulename="page" title="Argomento 5: Regolamentazioni e Governance (EU AI Act, ecc.)" directory="activities/page_30">
+        </activity>
+        <activity moduleid="31" sectionid="7" modulename="page" title="Riepilogo del Modulo" directory="activities/page_31">
+        </activity>
+        <activity moduleid="32" sectionid="7" modulename="forum" title="Attività 1: Discussione - Casi Controversi di Uso dell'AI" directory="activities/forum_32">
+        </activity>
+        <activity moduleid="33" sectionid="7" modulename="forum" title="Attività 2: Analisi Critica - Identificare Potenziali Bias in Sistemi Reali" directory="activities/forum_33">
+        </activity>
+        <activity moduleid="34" sectionid="8" modulename="label" title="Label" directory="activities/label_34">
+        </activity>
+        <activity moduleid="35" sectionid="8" modulename="page" title="1. Qualità dei Dati: Accuratezza, Completezza, Rilevanza" directory="activities/page_35">
+        </activity>
+        <activity moduleid="36" sectionid="8" modulename="page" title="2. GDPR e Protezione dei Dati Personali" directory="activities/page_36">
+        </activity>
+        <activity moduleid="37" sectionid="8" modulename="page" title="3. Data Poisoning e Attacchi Adversarial" directory="activities/page_37">
+        </activity>
+        <activity moduleid="38" sectionid="8" modulename="page" title="4. Anonimizzazione e Pseudonimizzazione" directory="activities/page_38">
+        </activity>
+        <activity moduleid="39" sectionid="8" modulename="page" title="5. Open Data vs Dati Proprietari" directory="activities/page_39">
+        </activity>
+        <activity moduleid="40" sectionid="8" modulename="page" title="Riepilogo del Modulo" directory="activities/page_40">
+        </activity>
+        <activity moduleid="41" sectionid="8" modulename="quiz" title="Attività 2: Quiz - Scenari di Privacy e Conformità Normativa" directory="activities/quiz_41">
+        </activity>
+        <activity moduleid="42" sectionid="9" modulename="label" title="Label" directory="activities/label_42">
+        </activity>
+        <activity moduleid="43" sectionid="9" modulename="page" title="1. Piattaforme No-Code/Low-Code per AI" directory="activities/page_43">
+        </activity>
+        <activity moduleid="44" sectionid="9" modulename="page" title="2. Strumenti AI per Produttività (Scrittura, Ricerca, Analisi)" directory="activities/page_44">
+        </activity>
+        <activity moduleid="45" sectionid="9" modulename="page" title="3. Strumenti AI per Creatività (Design, Contenuti, Media)" directory="activities/page_45">
+        </activity>
+        <activity moduleid="46" sectionid="9" modulename="page" title="4. API e Integrazioni" directory="activities/page_46">
+        </activity>
+        <activity moduleid="47" sectionid="9" modulename="page" title="5. Risorse Gratuite vs a Pagamento" directory="activities/page_47">
+        </activity>
+        <activity moduleid="48" sectionid="9" modulename="page" title="Riepilogo del Modulo" directory="activities/page_48">
+        </activity>
+        <activity moduleid="49" sectionid="9" modulename="forum" title="Attività 2: Progetto - Risolvi un Problema Reale con uno Strumento AI" directory="activities/forum_49">
+        </activity>
+        <activity moduleid="50" sectionid="9" modulename="assign" title="Attività 1: Hands-on Lab - Esplora 3-5 Strumenti AI Diversi" directory="activities/assign_50">
+        </activity>
+        <activity moduleid="51" sectionid="10" modulename="label" title="Label" directory="activities/label_51">
+        </activity>
+        <activity moduleid="52" sectionid="10" modulename="page" title="1. Tendenze Emergenti: AGI, AI Multimodale, Edge AI" directory="activities/page_52">
+        </activity>
+        <activity moduleid="53" sectionid="10" modulename="page" title="2. L'Impatto dell'AI su Lavoro e Società" directory="activities/page_53">
+        </activity>
+        <activity moduleid="54" sectionid="10" modulename="page" title="3. Come Rimanere Aggiornati: Risorse, Community e Corsi" directory="activities/page_54">
+        </activity>
+        <activity moduleid="55" sectionid="10" modulename="page" title="4. Percorsi di Specializzazione nell'AI" directory="activities/page_55">
+        </activity>
+        <activity moduleid="56" sectionid="10" modulename="page" title="5. Opportunità di Carriera nell'Era dell'AI" directory="activities/page_56">
+        </activity>
+        <activity moduleid="57" sectionid="10" modulename="page" title="Riepilogo e Conclusione del Modulo" directory="activities/page_57">
+        </activity>
+        <activity moduleid="58" sectionid="10" modulename="forum" title="Attività del Modulo" directory="activities/forum_58">
+        </activity>
+      </activities>
+      <sections>
+        <section sectionid="0" title="Generale" directory="sections/section_0">
+        </section>
+        <section sectionid="1" title="Modulo 1" directory="sections/section_1">
+        </section>
+        <section sectionid="2" title="Modulo 2" directory="sections/section_2">
+        </section>
+        <section sectionid="3" title="Modulo 3" directory="sections/section_3">
+        </section>
+        <section sectionid="4" title="Modulo 4" directory="sections/section_4">
+        </section>
+        <section sectionid="5" title="Modulo 5" directory="sections/section_5">
+        </section>
+        <section sectionid="6" title="Modulo 6" directory="sections/section_6">
+        </section>
+        <section sectionid="7" title="Modulo 7" directory="sections/section_7">
+        </section>
+        <section sectionid="8" title="Modulo 8" directory="sections/section_8">
+        </section>
+        <section sectionid="9" title="Modulo 9" directory="sections/section_9">
+        </section>
+        <section sectionid="10" title="Modulo 10" directory="sections/section_10">
+        </section>
+      </sections>
+      <course courseid="1" contextid="2" directory="course">
+      </course>
+    </detail>
+  </details>
+  <contents>
+    <activities>
+      <activity moduleid="1" sectionid="1" modulename="label" directory="activities/label_1">
+        <title>Label</title>
+      </activity>
+      <activity moduleid="2" sectionid="1" modulename="page" directory="activities/page_2">
+        <title>1.1 Definizioni Fondamentali</title>
+      </activity>
+      <activity moduleid="3" sectionid="1" modulename="page" directory="activities/page_3">
+        <title>1.2 Breve Storia dell'AI: Da Turing ai Giorni Nostri</title>
+      </activity>
+      <activity moduleid="4" sectionid="1" modulename="page" directory="activities/page_4">
+        <title>1.3 AI Debole vs AI Forte</title>
+      </activity>
+      <activity moduleid="5" sectionid="1" modulename="page" directory="activities/page_5">
+        <title>1.4 Applicazioni Quotidiane dell'AI</title>
+      </activity>
+      <activity moduleid="6" sectionid="1" modulename="page" directory="activities/page_6">
+        <title>Riepilogo del Modulo 1</title>
+      </activity>
+      <activity moduleid="7" sectionid="1" modulename="quiz" directory="activities/quiz_7">
+        <title>Attività del Modulo 1</title>
+      </activity>
+      <activity moduleid="8" sectionid="2" modulename="label" directory="activities/label_8">
+        <title>Label</title>
+      </activity>
+      <activity moduleid="9" sectionid="2" modulename="page" directory="activities/page_9">
+        <title>2.1 Dati: Il Carburante dell'AI</title>
+      </activity>
+      <activity moduleid="10" sectionid="2" modulename="page" directory="activities/page_10">
+        <title>2.2 Algoritmi e Modelli</title>
+      </activity>
+      <activity moduleid="11" sectionid="2" modulename="page" directory="activities/page_11">
+        <title>2.3 Training e Inferenza</title>
+      </activity>
+      <activity moduleid="12" sectionid="2" modulename="page" directory="activities/page_12">
+        <title>Riepilogo del Modulo 2</title>
+      </activity>
+      <activity moduleid="13" sectionid="2" modulename="assign" directory="activities/assign_13">
+        <title>Attività del Modulo 2</title>
+      </activity>
+      <activity moduleid="14" sectionid="3" modulename="label" directory="activities/label_14">
+        <title>Label</title>
+      </activity>
+      <activity moduleid="15" sectionid="3" modulename="page" directory="activities/page_15">
+        <title>3.1 Supervised Learning (Apprendimento Supervisionato)</title>
+      </activity>
+      <activity moduleid="16" sectionid="3" modulename="page" directory="activities/page_16">
+        <title>3.2 Unsupervised Learning (Apprendimento Non Supervisionato)</title>
+      </activity>
+      <activity moduleid="17" sectionid="3" modulename="page" directory="activities/page_17">
+        <title>3.3 Reinforcement Learning (Apprendimento per Rinforzo)</title>
+      </activity>
+      <activity moduleid="18" sectionid="3" modulename="page" directory="activities/page_18">
+        <title>3.4 Semi-Supervised e Transfer Learning</title>
+      </activity>
+      <activity moduleid="19" sectionid="3" modulename="page" directory="activities/page_19">
+        <title>Riepilogo del Modulo 3</title>
+      </activity>
+      <activity moduleid="20" sectionid="3" modulename="page" directory="activities/page_20">
+        <title>Introduzione all'Intelligenza Artificiale per Principianti</title>
+      </activity>
+      <activity moduleid="21" sectionid="3" modulename="quiz" directory="activities/quiz_21">
+        <title>Modulo 4: Le Reti Neurali e il Deep Learning</title>
+      </activity>
+      <activity moduleid="22" sectionid="3" modulename="assign" directory="activities/assign_22">
+        <title>Attività del Modulo 3</title>
+      </activity>
+      <activity moduleid="23" sectionid="3" modulename="assign" directory="activities/assign_23">
+        <title>Modulo 5: AI Generativa: Testo, Immagini e Creatività</title>
+      </activity>
+      <activity moduleid="24" sectionid="3" modulename="assign" directory="activities/assign_24">
+        <title>Modulo 6: Usare l'AI in Modo Razionale ed Efficiente</title>
+      </activity>
+      <activity moduleid="25" sectionid="7" modulename="label" directory="activities/label_25">
+        <title>Label</title>
+      </activity>
+      <activity moduleid="26" sectionid="7" modulename="page" directory="activities/page_26">
+        <title>Argomento 1: Bias nei Dati e negli Algoritmi</title>
+      </activity>
+      <activity moduleid="27" sectionid="7" modulename="page" directory="activities/page_27">
+        <title>Argomento 2: Privacy e Protezione dei Dati</title>
+      </activity>
+      <activity moduleid="28" sectionid="7" modulename="page" directory="activities/page_28">
+        <title>Argomento 3: Trasparenza e Spiegabilità (Explainable AI)</title>
+      </activity>
+      <activity moduleid="29" sectionid="7" modulename="page" directory="activities/page_29">
+        <title>Argomento 4: Impatto Sociale e Occupazionale</title>
+      </activity>
+      <activity moduleid="30" sectionid="7" modulename="page" directory="activities/page_30">
+        <title>Argomento 5: Regolamentazioni e Governance (EU AI Act, ecc.)</title>
+      </activity>
+      <activity moduleid="31" sectionid="7" modulename="page" directory="activities/page_31">
+        <title>Riepilogo del Modulo</title>
+      </activity>
+      <activity moduleid="32" sectionid="7" modulename="forum" directory="activities/forum_32">
+        <title>Attività 1: Discussione - Casi Controversi di Uso dell'AI</title>
+      </activity>
+      <activity moduleid="33" sectionid="7" modulename="forum" directory="activities/forum_33">
+        <title>Attività 2: Analisi Critica - Identificare Potenziali Bias in Sistemi Reali</title>
+      </activity>
+      <activity moduleid="34" sectionid="8" modulename="label" directory="activities/label_34">
+        <title>Label</title>
+      </activity>
+      <activity moduleid="35" sectionid="8" modulename="page" directory="activities/page_35">
+        <title>1. Qualità dei Dati: Accuratezza, Completezza, Rilevanza</title>
+      </activity>
+      <activity moduleid="36" sectionid="8" modulename="page" directory="activities/page_36">
+        <title>2. GDPR e Protezione dei Dati Personali</title>
+      </activity>
+      <activity moduleid="37" sectionid="8" modulename="page" directory="activities/page_37">
+        <title>3. Data Poisoning e Attacchi Adversarial</title>
+      </activity>
+      <activity moduleid="38" sectionid="8" modulename="page" directory="activities/page_38">
+        <title>4. Anonimizzazione e Pseudonimizzazione</title>
+      </activity>
+      <activity moduleid="39" sectionid="8" modulename="page" directory="activities/page_39">
+        <title>5. Open Data vs Dati Proprietari</title>
+      </activity>
+      <activity moduleid="40" sectionid="8" modulename="page" directory="activities/page_40">
+        <title>Riepilogo del Modulo</title>
+      </activity>
+      <activity moduleid="41" sectionid="8" modulename="quiz" directory="activities/quiz_41">
+        <title>Attività 2: Quiz - Scenari di Privacy e Conformità Normativa</title>
+      </activity>
+      <activity moduleid="42" sectionid="9" modulename="label" directory="activities/label_42">
+        <title>Label</title>
+      </activity>
+      <activity moduleid="43" sectionid="9" modulename="page" directory="activities/page_43">
+        <title>1. Piattaforme No-Code/Low-Code per AI</title>
+      </activity>
+      <activity moduleid="44" sectionid="9" modulename="page" directory="activities/page_44">
+        <title>2. Strumenti AI per Produttività (Scrittura, Ricerca, Analisi)</title>
+      </activity>
+      <activity moduleid="45" sectionid="9" modulename="page" directory="activities/page_45">
+        <title>3. Strumenti AI per Creatività (Design, Contenuti, Media)</title>
+      </activity>
+      <activity moduleid="46" sectionid="9" modulename="page" directory="activities/page_46">
+        <title>4. API e Integrazioni</title>
+      </activity>
+      <activity moduleid="47" sectionid="9" modulename="page" directory="activities/page_47">
+        <title>5. Risorse Gratuite vs a Pagamento</title>
+      </activity>
+      <activity moduleid="48" sectionid="9" modulename="page" directory="activities/page_48">
+        <title>Riepilogo del Modulo</title>
+      </activity>
+      <activity moduleid="49" sectionid="9" modulename="forum" directory="activities/forum_49">
+        <title>Attività 2: Progetto - Risolvi un Problema Reale con uno Strumento AI</title>
+      </activity>
+      <activity moduleid="50" sectionid="9" modulename="assign" directory="activities/assign_50">
+        <title>Attività 1: Hands-on Lab - Esplora 3-5 Strumenti AI Diversi</title>
+      </activity>
+      <activity moduleid="51" sectionid="10" modulename="label" directory="activities/label_51">
+        <title>Label</title>
+      </activity>
+      <activity moduleid="52" sectionid="10" modulename="page" directory="activities/page_52">
+        <title>1. Tendenze Emergenti: AGI, AI Multimodale, Edge AI</title>
+      </activity>
+      <activity moduleid="53" sectionid="10" modulename="page" directory="activities/page_53">
+        <title>2. L'Impatto dell'AI su Lavoro e Società</title>
+      </activity>
+      <activity moduleid="54" sectionid="10" modulename="page" directory="activities/page_54">
+        <title>3. Come Rimanere Aggiornati: Risorse, Community e Corsi</title>
+      </activity>
+      <activity moduleid="55" sectionid="10" modulename="page" directory="activities/page_55">
+        <title>4. Percorsi di Specializzazione nell'AI</title>
+      </activity>
+      <activity moduleid="56" sectionid="10" modulename="page" directory="activities/page_56">
+        <title>5. Opportunità di Carriera nell'Era dell'AI</title>
+      </activity>
+      <activity moduleid="57" sectionid="10" modulename="page" directory="activities/page_57">
+        <title>Riepilogo e Conclusione del Modulo</title>
+      </activity>
+      <activity moduleid="58" sectionid="10" modulename="forum" directory="activities/forum_58">
+        <title>Attività del Modulo</title>
+      </activity>
+    </activities>
+    <sections>
+      <section sectionid="0" directory="sections/section_0">
+        <title>Generale</title>
+      </section>
+      <section sectionid="1" directory="sections/section_1">
+        <title>Modulo 1</title>
+      </section>
+      <section sectionid="2" directory="sections/section_2">
+        <title>Modulo 2</title>
+      </section>
+      <section sectionid="3" directory="sections/section_3">
+        <title>Modulo 3</title>
+      </section>
+      <section sectionid="4" directory="sections/section_4">
+        <title>Modulo 4</title>
+      </section>
+      <section sectionid="5" directory="sections/section_5">
+        <title>Modulo 5</title>
+      </section>
+      <section sectionid="6" directory="sections/section_6">
+        <title>Modulo 6</title>
+      </section>
+      <section sectionid="7" directory="sections/section_7">
+        <title>Modulo 7</title>
+      </section>
+      <section sectionid="8" directory="sections/section_8">
+        <title>Modulo 8</title>
+      </section>
+      <section sectionid="9" directory="sections/section_9">
+        <title>Modulo 9</title>
+      </section>
+      <section sectionid="10" directory="sections/section_10">
+        <title>Modulo 10</title>
+      </section>
+    </sections>
+    <course courseid="1" contextid="2" directory="course">
+      <shortname>AI-Principianti</shortname>
+      <fullname>Introduzione all'Intelligenza Artificiale per Principianti</fullname>
+      <category>Technology / AI</category>
+      <summary><![CDATA[Corso introduttivo all'intelligenza artificiale per principianti. Impara le nozioni base dell'AI per farne un uso razionale ed efficiente.]]></summary>
+    </course>
+  </contents>
+</moodle_backup>

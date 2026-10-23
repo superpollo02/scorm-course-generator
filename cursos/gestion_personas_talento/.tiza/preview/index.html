@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previsualización Local Moodle 4.5 — Curso 3: Gestión de Personas y Talento Humano en Salud</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1e293b; }
+    .moodle-topbar { background: linear-gradient(90deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 14px 28px; position: sticky; top: 0; z-index: 1050; box-shadow: 0 3px 12px rgba(0,0,0,0.2); }
+    .sidebar-Index { position: sticky; top: 80px; max-height: calc(100vh - 100px); overflow-y: auto; background: #fff; border-radius: 12px; padding: 18px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .sidebar-Index .nav-link { color: #334155; font-size: 0.92rem; padding: 7px 10px; border-radius: 6px; font-weight: 500; }
+    .sidebar-Index .nav-link:hover { background: #eff6ff; color: #1d4ed8; }
+    .sidebar-Index .section-title { font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-top: 14px; margin-bottom: 6px; padding-left: 10px; }
+    .moodle-section { background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 4px 14px rgba(0,0,0,0.04); padding: 28px 32px; margin-bottom: 28px; }
+    .moodle-activity-box { border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 10px; background: #fcfdff; padding: 24px 28px; margin-top: 22px; }
+    .moodle-activity-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 18px; }
+    .video-grid-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 18px 0; }
+    .video-card-preview { background: #0f172a; color: #fff; padding: 16px; border-radius: 12px; }
+    .video-card-preview video { width: 100%; border-radius: 8px; background: #000; }
+    details { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 16px; margin-bottom: 8px; }
+    summary { font-weight: 700; color: #1e40af; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<header class="moodle-topbar d-flex justify-content-between align-items-center">
+  <div>
+    <span class="badge badge-warning mr-2">MODO PREVISUALIZACIÓN LOCAL</span>
+    <strong>Campus ESALUD Mendoza (Moodle 4.5)</strong> — Curso 3: Gestión de Personas y Talento Humano en Salud
+  </div>
+  <div>
+    <span class="badge badge-success p-2"><i class="fa-solid fa-check-circle"></i> 13 Ficheros Validados con tiza comprobar: OK</span>
+  </div>
+</header>
+
+<div class="container-fluid py-4 px-4">
+  <div class="row">
+    <!-- Left Course Index Sidebar -->
+    <div class="col-lg-3 mb-4">
+      <div class="sidebar-Index">
+        <h5 class="font-weight-bold mb-2"><i class="fa-solid fa-list-ul text-primary"></i> Índice del Aula</h5>
+        <p class="small text-muted mb-2">Navegá por las secciones o abrí cada vista previa individual de <code>tiza</code>:</p>
+
+        <div class="section-title">0. Presentación General</div>
+        <nav class="nav flex-column">
+          <a class="nav-link" href="#sec-presentacion"><i class="fa-solid fa-tag text-secondary mr-1"></i> Encabezado y Programa</a>
+          <a class="nav-link small text-primary pl-4" href="00_encabezado_general_curso.html" target="_blank">↳ Ver fichero 00 en Tiza</a>
+        </nav>
+
+        <div class="section-title">1. Unidad 1 (Dra. Salomón)</div>
+        <nav class="nav flex-column">
+          <a class="nav-link" href="#sec-u1-encabezado"><i class="fa-solid fa-tag text-secondary mr-1"></i> Encabezado Unidad 1</a>
+          <a class="nav-link" href="#sec-u1-clase"><i class="fa-solid fa-video text-primary mr-1"></i> 1. La Clase (3 Videos + PPTX)</a>
+          <a class="nav-link" href="#sec-u1-lectura"><i class="fa-solid fa-book-open text-info mr-1"></i> 2. La Lectura (3 Textos + 20 FAQs)</a>
+          <a class="nav-link" href="#sec-u1-practica"><i class="fa-solid fa-puzzle-piece text-warning mr-1"></i> 3. La Práctica + Caso Triage</a>
+          <a class="nav-link" href="05_u1_conecta_bloques_y_trivia.html" target="_blank"><i class="fa-solid fa-circle-check text-success mr-1"></i> Cuestionario U1 (Tiza Preview)</a>
+        </nav>
+
+        <div class="section-title">2. Unidad 2 (Lic. Nani)</div>
+        <nav class="nav flex-column">
+          <a class="nav-link" href="#sec-u2-encabezado"><i class="fa-solid fa-tag text-secondary mr-1"></i> Encabezado Unidad 2</a>
+          <a class="nav-link" href="#sec-u2-clase"><i class="fa-solid fa-video text-primary mr-1"></i> 1. La Clase (3 Videos + PPTX)</a>
+          <a class="nav-link" href="#sec-u2-lectura"><i class="fa-solid fa-book-open text-info mr-1"></i> 2. La Lectura (3 Textos + 20 FAQs)</a>
+          <a class="nav-link" href="#sec-u2-practica"><i class="fa-solid fa-puzzle-piece text-warning mr-1"></i> 3. La Práctica + Caso UTI</a>
+          <a class="nav-link" href="10_u2_conecta_bloques_y_trivia.html" target="_blank"><i class="fa-solid fa-circle-check text-success mr-1"></i> Cuestionario U2 (Tiza Preview)</a>
+        </nav>
+
+        <div class="section-title">3. Cierre y Examen Final</div>
+        <nav class="nav flex-column">
+          <a class="nav-link" href="#sec-cierre"><i class="fa-solid fa-lock text-danger mr-1"></i> Doble Candado y Examen (16 preg.)</a>
+          <a class="nav-link" href="12_examen_final_integrador.html" target="_blank"><i class="fa-solid fa-award text-danger mr-1"></i> Ver Examen Final (16 Casos)</a>
+        </nav>
+
+        <div class="section-title">4. Simuladores Interactivos</div>
+        <nav class="nav flex-column">
+          <a class="nav-link" href="../../output/gestion-talento-salud-u1/index.html" target="_blank"><i class="fa-solid fa-gamepad text-primary mr-1"></i> Jugar SCORM Interactivo U1</a>
+          <a class="nav-link" href="../../output/gestion-talento-salud-u2/index.html" target="_blank"><i class="fa-solid fa-gamepad text-success mr-1"></i> Jugar SCORM Interactivo U2</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main Course Content Column -->
+    <div class="col-lg-9">
+
+      <!-- SECCIÓN 0: PRESENTACIÓN -->
+      <section class="moodle-section" id="sec-presentacion">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge badge-dark px-3 py-2">SECCIÓN 0 • PRESENTACIÓN Y PROGRAMA ACADÉMICO</span>
+          <a href="00_encabezado_general_curso.html" target="_blank" class="btn btn-sm btn-outline-primary">Abrir Vista Previa Individual (00)</a>
+        </div>
+        <p><img src="../../img/banner_general_curso.png" alt="Banner Oficial Curso 3: Gestión de Personas y Talento Humano en Salud" class="img-fluid rounded-lg mb-3"></p>
+
+<h3><i class="fa-solid fa-fw fa-graduation-cap" aria-hidden="true"></i> Curso 3: Gestión de Personas y Talento Humano en Salud</h3>
+<p><span class="badge badge-primary">30 Horas Reloj</span> <span class="badge badge-info">100% Virtual Asincrónico (Autogestionado)</span> <span class="badge badge-secondary">Circular N° 5 • Campus ESALUD Mendoza</span></p>
+
+<p class="lead">En las instituciones sanitarias complejas, la excelencia asistencial no depende únicamente del saber clínico individual, sino de la capacidad estratégica de conducir personas, sincronizar voluntades y construir culturas organizacionales saludables. Este trayecto formativo brinda a los profesionales de las residencias herramientas concretas de cultura institucional, comunicación asertiva, trabajo en equipo interdependiente y liderazgo situacional.</p>
+
+<div class="alert alert-info">
+  <h4><i class="fa-solid fa-fw fa-bullseye" aria-hidden="true"></i> Fundamentación Andragógica y Premisa Central</h4>
+  <p class="mb-2">En la formación biomédica tradicional se privilegia el aprendizaje técnico individual sobre el desarrollo de competencias relacionales. Sin embargo, los hospitales y centros de salud son organizaciones complejas donde coexisten múltiples dominios sociales y técnicos. En la conducción del talento humano <strong>«dos más dos nunca es cuatro»</strong> (\(2 + 2 \neq 4\)) debido a la presencia constante de imponderables y factores emocionales propios de la condición humana.</p>
+  <ul class="mb-0">
+    <li><strong>Unidad 1 (Dra. Susana Salomón):</strong> Cultura Organizacional, Gestión vs. Administración y los Vectores de la Identidad Institucional (el SER, el HACER y el ESTAR).</li>
+    <li><strong>Unidad 2 (Lic. Carla Nani):</strong> Gestión de Imponderables, Proceso Comunicacional (Emisor y Perceptor Activo), Paradigma del Quirófano y Liderazgo Situacional.</li>
+    <li><strong>Acreditación Oficial (Doble Candado Circular N° 5):</strong> Aprobación del Examen Final Integrador (\(\ge 70\%\)) y completamiento de la Encuesta de Calidad Educativa.</li>
+  </ul>
+</div>
+
+<details>
+  <summary>Desplegar Programa Académico Oficial Completo (Ficha Técnica, Objetivos y Cronograma de 4 Semanas)</summary>
+  <div class="card card-body bg-light mt-2">
+    <h4><i class="fa-solid fa-fw fa-list-check" aria-hidden="true"></i> 1. Identificación Institucional del Curso</h4>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th scope="row">Denominación Oficial</th>
+          <td>Curso 3: Gestión de Personas y Talento Humano en Salud</td>
+        </tr>
+        <tr>
+          <th scope="row">Organismo</th>
+          <td>Ministerio de Salud y Deportes de Mendoza — Escuela de Salud Pública (ESALUD)</td>
+        </tr>
+        <tr>
+          <th scope="row">Destinatarios</th>
+          <td>Profesionales del Sistema Provincial de Residencias y Equipos de Salud</td>
+        </tr>
+        <tr>
+          <th scope="row">Carga Horaria y Duración</th>
+          <td>30 Horas Reloj distribuidas en 4 semanas ( dedicación estimada: 7,5 horas semanales)</td>
+        </tr>
+        <tr>
+          <th scope="row">Equipo Docente</th>
+          <td>Dra. Susana Salomón (Unidad 1) y Lic. Carla Nani (Unidad 2)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4><i class="fa-solid fa-fw fa-circle-check" aria-hidden="true"></i> 2. Competencias y Resultados de Aprendizaje</h4>
+    <ul>
+      <li><strong>Diferenciar la gestión de la administración tradicional:</strong> Reconocer que administrar implica normar y ordenar procesos, mientras que gestionar se orienta a conducir personas, sincronizar voluntades y lograr resultados asistenciales.</li>
+      <li><strong>Analizar la identidad y cultura organizacional:</strong> Evaluar el <strong>SER</strong> (misión, visión, valores y principios rectores), el <strong>HACER</strong> (prioridades, funciones y actividades) y el <strong>ESTAR</strong> (ambiente, estructura y cultura) en los efectores sanitarios.</li>
+      <li><strong>Diagnosticar tipologías culturales y clima laboral:</strong> Identificar manifestaciones culturales (Clan, Adhocracia, Mercado y Jerárquica) y su impacto en el bienestar, retención del talento y seguridad del paciente.</li>
+      <li><strong>Dominar el proceso de comunicación en salud:</strong> Codificar mensajes considerando los condicionantes socioculturales y emocionales del <strong>perceptor</strong> (pacientes, familias y colegas).</li>
+      <li><strong>Fomentar el trabajo en equipo sustentable:</strong> Distinguir la dinámica del equipo de trabajo de los grupos sociales tomando al <strong>quirófano</strong> como paradigma de interdependencia y responsabilidad compartida.</li>
+      <li><strong>Ejercer un liderazgo situacional y empático:</strong> Aplicar estilos flexibles que inspiren y persuadan sin coerción, diferenciando la empatía genuina de la permisividad y previniendo las causas de fracaso directivo.</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-fw fa-clock" aria-hidden="true"></i> 3. Cronograma Académico Sugerido (4 Semanas / 30 Horas)</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Semana</th>
+          <th scope="col">Módulo / Unidad</th>
+          <th scope="col">Actividades del Modelo Tripartito (Clase • Lectura • Práctica)</th>
+          <th scope="col">Carga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Semana 1</strong></td>
+          <td>Unidad 1 (Parte A)</td>
+          <td>Encuadre andragógico, Videoclase Magistral (Dra. Salomón), Video Shorts (NotebookLM + HyperFrames) y Lecturas 1.1 y 1.2.</td>
+          <td>7,5 hs</td>
+        </tr>
+        <tr>
+          <td><strong>Semana 2</strong></td>
+          <td>Unidad 1 (Parte B)</td>
+          <td>Lectura 1.3, Infografías 1.1 y 1.2, Glosario, 20 FAQs, Conecta Bloques U1, Trivia U1 y Caso Situado de Triage.</td>
+          <td>7,5 hs</td>
+        </tr>
+        <tr>
+          <td><strong>Semana 3</strong></td>
+          <td>Unidad 2 (Parte A)</td>
+          <td>Encuadre andragógico, Videoclase Magistral (Lic. Nani), Video Shorts (NotebookLM + HyperFrames) y Lecturas 2.1 y 2.2.</td>
+          <td>7,5 hs</td>
+        </tr>
+        <tr>
+          <td><strong>Semana 4</strong></td>
+          <td>Unidad 2 (Parte B) y Cierre</td>
+          <td>Lectura 2.3, Infografías 2.1 y 2.2, Conecta Bloques U2, Trivia U2, Caso UTI y Examen Final Integrador (16 casos).</td>
+          <td>7,5 hs</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="mb-0"><a class="btn btn-primary" href="../../lecturas/programa_academico_oficial.docx" target="_blank"><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Descargar Programa Académico Oficial Completo (DOCX)</a></p>
+  </div>
+</details>
+      </section>
+
+      <!-- SECCIÓN 1: UNIDAD 1 -->
+      <section class="moodle-section" id="sec-u1-encabezado">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge badge-primary px-3 py-2">SECCIÓN 1 • UNIDAD 1: CULTURA ORGANIZACIONAL Y GESTIÓN (DRA. SUSANA SALOMÓN)</span>
+          <a href="01_u1_encabezado.html" target="_blank" class="btn btn-sm btn-outline-primary">Abrir Etiqueta Encabezado (01)</a>
+        </div>
+        <p><img src="../../img/banner_unidad_1.png" alt="Banner Unidad 1: Cultura Organizacional y Desafíos de la Gestión" class="img-fluid rounded-lg mb-3"></p>
+
+<h3><i class="fa-solid fa-fw fa-flag" aria-hidden="true"></i> Unidad 1: Cultura Organizacional y los Desafíos de la Gestión Institucional</h3>
+<p><span class="badge badge-primary">Semanas 1 y 2</span> <span class="badge badge-info">Docente: Dra. Susana Salomón</span></p>
+
+<p class="lead">La gestión de personas en el ámbito sanitario exige superar el enfoque normativo tradicional para conducir estratégicamente el talento humano en escenarios signados por la complejidad y la incertidumbre. Comprender la identidad institucional a través de la tridimensionalidad del <strong>SER</strong>, el <strong>HACER</strong> y el <strong>ESTAR</strong> permite diagnosticar las manifestaciones culturales y promover entornos laborales altamente efectivos.</p>
+
+<div class="alert alert-info">
+  <h4><i class="fa-solid fa-fw fa-circle-question" aria-hidden="true"></i> Tres Preguntas Andragógicas Disparadoras (Circular N° 5)</h4>
+  <ol class="mb-0">
+    <li><strong>Supuestos Inconscientes:</strong> ¿De qué manera las pautas no escritas y los rituales cotidianos de su servicio asistencial condicionan la toma de decisiones clínicas y la integración de los nuevos residentes?</li>
+    <li><strong>Tensión Identitaria:</strong> Al observar las dinámicas de su hospital o centro de salud, ¿cómo se manifiestan las tensiones entre los valores declarados (el SER) y la asignación real de prioridades operativas (el HACER)?</li>
+    <li><strong>Diagnóstico de Tipología Cultural:</strong> Identificando la cultura predominante en su área (Clan, Adhocracia, Mercado o Jerárquica), ¿cuáles son las principales barreras u oportunidades que esta genera para consolidar un clima laboral saludable?</li>
+  </ol>
+</div>
+
+        <!-- 1. LA CLASE U1 -->
+        <div class="moodle-activity-box" id="sec-u1-clase">
+          <div class="moodle-activity-header">
+            <h4 class="mb-0 text-primary"><i class="fa-solid fa-file-lines mr-2"></i> Página Moodle: 1. La Clase (Unidad 1)</h4>
+            <a href="02_u1_la_clase.html" target="_blank" class="btn btn-sm btn-primary">Abrir Página 02_u1_la_clase.html</a>
+          </div>
+          <h3><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> 1. La Clase: Cultura Organizacional en Salud</h3>
+<p><span class="badge badge-primary">Etapa 1 del Modelo Tripartito</span> <span class="badge badge-secondary">Dra. Susana Salomón</span></p>
+<p class="lead">Visualizá la videoclase magistral de la unidad, repasá las dos cápsulas audiovisuales de microlearning (el Video Short conceptual generado con NotebookLM y el Video Short animado en alta definición renderizado con HyperFrames) y descargá las diapositivas oficiales de cátedra.</p>
+
+<div class="alert alert-info">
+  <h4><i class="fa-solid fa-fw fa-bullseye" aria-hidden="true"></i> Qué vas a aprender en esta clase</h4>
+  <ul class="mb-0">
+    <li>Diferenciar la <strong>administración normativa</strong> de procesos frente a la <strong>gestión estratégica</strong> del talento humano en contextos sanitarios complejos.</li>
+    <li>Articular los tres vectores de la identidad hospitalaria: el <strong>SER</strong> (Misión, Visión, Valores y Principios rectores innegociables), el <strong>HACER</strong> (Prioridades, Funciones finales y de apoyo, Actividades) y el <strong>ESTAR</strong> (Estructura formal vs. real, Ambiente y Cultura).</li>
+    <li>Reconocer las 4 tipologías culturales (Clan, Adhocracia, Mercado y Jerárquica), las subculturas clínicas vs. quirúrgicas y la diferencia entre clima laboral y cultura organizacional.</li>
+  </ul>
+</div>
+
+<h3>Videoclase Magistral Oficial (Dra. Susana Salomón)</h3>
+<p>Reproducí la clase magistral completa desde el reproductor embebido o abrila directamente en una pestaña externa de YouTube:</p>
+<p><iframe src="https://www.youtube.com/embed/wEQLqEE7r2I" title="Módulo 4: Unidad 1. CULTURA ORGANIZACIONAL - Dra. Susana Salomón" style="width:100%;aspect-ratio:16/9;border:0" allowfullscreen></iframe></p>
+
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <div class="card border-primary">
+      <div class="card-body">
+        <h4 class="card-title text-primary"><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> Videos de la Unidad 1 (Magistral + 2 Video Shorts)</h4>
+        <p class="card-text">Contás con tres formatos complementarios para abordar los ejes de la Dra. Susana Salomón:</p>
+        <ul class="mb-3">
+          <li><strong>Videoclase Magistral (25 min):</strong> Desarrollo expositivo completo de la unidad.</li>
+          <li><strong>Video Short NotebookLM:</strong> Síntesis explicativa narrada (<em>Por Qué Gestionar Un Hospital No Es Administrarlo</em>).</li>
+          <li><strong>Video Short HyperFrames (1080p 30fps):</strong> Microlearning animado sobre los vectores SER, HACER y ESTAR y las 4 tipologías culturales.</li>
+        </ul>
+        <p class="mb-2"><a class="btn btn-primary" href="https://www.youtube.com/watch?v=wEQLqEE7r2I" target="_blank"><i class="fa-solid fa-fw fa-link" aria-hidden="true"></i> Abrir Videoclase Magistral en YouTube</a></p>
+        <p class="mb-2"><a class="btn btn-secondary" href="../../media/u1_video_short_cultura_organizacional.mp4" target="_blank"><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> Ver Video Short NotebookLM — Unidad 1 (MP4)</a></p>
+        <p class="mb-0"><a class="btn btn-info" href="../../media/u1_hyperframes_short.mp4" target="_blank"><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> Ver Video Short HyperFrames — Unidad 1 (MP4)</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h4 class="card-title"><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Diapositivas Oficiales y Paquetes Interactivos</h4>
+        <p class="card-text">Descargá las placas oficiales de estudio de la Unidad 1 en formato PDF o PowerPoint editable:</p>
+        <ul class="mb-3">
+          <li><a href="../../diapositivas/u1_diapositivas_cultura_organizacional.pdf" target="_blank">Descargar Diapositivas Oficiales Unidad 1 (PDF)</a></li>
+          <li><a href="../../diapositivas/u1_diapositivas_cultura_organizacional.pptx" target="_blank">Descargar Presentación Editable Unidad 1 (PPTX)</a></li>
+        </ul>
+        <p class="card-text mb-0"><strong>Guía de observación activa:</strong> Durante el visionado, prestá especial atención a la diferencia entre la <em>cadena de mando formal</em> (el organigrama impreso) y la <em>cadena de mando real</em> (los referentes a quienes acuden efectivamente los residentes en la guardia).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-success">
+  <h4><i class="fa-solid fa-fw fa-lightbulb" aria-hidden="true"></i> Idea Clave de la Cátedra</h4>
+  <p class="mb-0">El vector del <strong>SER</strong> (Misión, Visión, Valores y Principios Rectores) constituye el núcleo ético de la institución, debe publicarse por acto administrativo oficial (Resolución Ministerial) y <strong>no es un bien transable ni negociable</strong>.</p>
+</div>
+
+          <hr>
+          <h5><i class="fa-solid fa-film text-info"></i> Reproductores Locales Directos — Video Shorts Unidad 1 (NotebookLM + HyperFrames)</h5>
+          <div class="video-grid-preview">
+            <div class="video-card-preview">
+              <div class="mb-2"><strong>1. Video Short NotebookLM (Unidad 1)</strong> <span class="badge badge-info float-right">7.8 MB • MP4</span></div>
+              <video src="../../media/u1_video_short_cultura_organizacional.mp4" controls preload="metadata"></video>
+            </div>
+            <div class="video-card-preview">
+              <div class="mb-2"><strong>2. Video Short HyperFrames GSAP (Unidad 1)</strong> <span class="badge badge-success float-right">5.4 MB • 1080p 30fps</span></div>
+              <video src="../../media/u1_hyperframes_short.mp4" controls preload="metadata"></video>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. LA LECTURA U1 -->
+        <div class="moodle-activity-box" id="sec-u1-lectura">
+          <div class="moodle-activity-header">
+            <h4 class="mb-0 text-primary"><i class="fa-solid fa-book-open mr-2"></i> Página Moodle: 2. La Lectura (Unidad 1 — Texto Completo + 2 Infografías + 20 FAQs)</h4>
+            <a href="03_u1_la_lectura.html" target="_blank" class="btn btn-sm btn-primary">Abrir Página 03_u1_la_lectura.html</a>
+          </div>
+          <h3><i class="fa-solid fa-fw fa-book-open" aria-hidden="true"></i> 2. La Lectura: Profundización Teórica y Síntesis Visual (Unidad 1)</h3>
+<p><span class="badge badge-primary">Etapa 2 del Modelo Tripartito</span> <span class="badge badge-info">3 Lecturas Completas + 2 Infografías NotebookLM + Glosario + 20 FAQs</span></p>
+<p class="lead">En esta sección accedés al desarrollo académico íntegro de las tres lecturas de la Unidad 1 elaboradas a partir de la cátedra de la Dra. Susana Salomón, las dos infografías conceptuales producidas con NotebookLM, el repositorio de archivos descargables, el glosario de 10 términos y las 20 preguntas frecuentes sobre dilemas culturales en hospitales.</p>
+
+<h3>Infografía 1.1: Gestión vs. Administración y Vectores de Identidad</h3>
+<p><img src="../../img/u1_infografia_01_gestion_y_vectores.png" alt="Infografía Unidad 1: Gestión y administración institucional sanitaria y vectores SER, HACER y ESTAR" class="img-fluid rounded-lg mb-3"></p>
+
+<h3>Lectura 1.1: Gestión vs. Administración en Salud y Complejidad del Contexto Sanitario</h3>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title text-primary">1. Diferenciación Conceptual: Administración Tradicional vs. Gestión Estratégica</h4>
+    <p>En el ámbito de las instituciones sanitarias coexisten dos enfoques complementarios pero sustancialmente diferentes para la conducción institucional:</p>
+    <ul>
+      <li><strong>Administración Tradicional:</strong> Constituye un enfoque esencialmente <strong>normativo, estructurado y ordenador</strong>. Se centra en el cumplimiento de reglamentos, la regularidad procedimental y la calidad técnica operativa. Su objetivo principal es disponer y organizar racionalmente los recursos materiales, económicos y normativos para asegurar un funcionamiento predecible. En un hospital o centro de salud, la función administrativa se ejemplifica en la oficina de personal, encargada de fiscalizar el cumplimiento de horarios, la contabilización de licencias y el trámite de expedientes reglamentarios.</li>
+      <li><strong>Gestión Estratégica:</strong> Representa un enfoque dinámico orientado a <strong>resultados asistenciales, la conducción del talento humano y la sincronización de voluntades</strong>. Mientras la administración norma procesos, la gestión orienta las acciones coordinadas hacia el logro eficaz (cumplir los objetivos sanitarios) y eficiente (con el uso óptimo de los recursos disponibles). La gestión prioriza al capital humano y entiende que en el comportamiento social de las organizaciones de salud <strong>«dos más dos nunca es cuatro»</strong> (\(2 + 2 \neq 4\)), debido a la interferencia constante de imponderables, factores emocionales y la complejidad subjetiva del equipo de salud. En la práctica hospitalaria, el área de gestión del talento humano planifica cómo capacitar, formar, motivar y desarrollar a los profesionales.</li>
+    </ul>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Dimensión</th>
+          <th scope="col">Administración Tradicional</th>
+          <th scope="col">Gestión Estratégica en Salud</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Enfoque principal</strong></td>
+          <td>Normativo, procedimental y de control formal.</td>
+          <td>Estratégico, orientado a resultados asistenciales y personas.</td>
+        </tr>
+        <tr>
+          <td><strong>Objeto de acción</strong></td>
+          <td>Procesos, recursos físicos y regularidad técnica.</td>
+          <td>Talento humano, sincronización de voluntades e imponderables.</td>
+        </tr>
+        <tr>
+          <td><strong>Criterio de éxito</strong></td>
+          <td>Orden, cumplimiento normativo y previsibilidad.</td>
+          <td>Eficacia, eficiencia clínica y clima laboral saludable.</td>
+        </tr>
+        <tr>
+          <td><strong>Ejemplo hospitalario</strong></td>
+          <td>Control de horarios, presentismo y otorgamiento de licencias.</td>
+          <td>Planificación de la capacitación continua, motivación y liderazgo.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 class="card-title text-primary mt-3">2. La Complejidad del Contexto Sanitario Contemporáneo</h4>
+    <p>Las instituciones de salud se definen como <strong>organizaciones complejas con múltiples dominios sociales y técnicos</strong>. En ellas coexisten saberes heterogéneos: profesionales con tecnicaturas y licenciaturas, médicos de múltiples especialidades, odontólogos, psicólogos, trabajadores sociales, enfermeros, junto al personal administrativo, de mantenimiento, plomería, limpieza y seguridad. Todos estos actores poseen sus propios dominios técnicos, pero convergen para agregar valor: devolver la salud, prevenir la enfermedad o acompañar en el final de la vida, integrando además la docencia y la investigación de manera inter y transdisciplinaria.</p>
+    <p>Los efectores de salud enfrentan hoy cinco grandes desafíos contextuales:</p>
+    <ol class="mb-0">
+      <li><strong>Innovación Tecnológica e Inteligencia Artificial:</strong> La irrupción acelerada de nuevas tecnologías y de la Inteligencia Artificial provoca una rápida obsolescencia de equipamientos y modelos operativos, exigiendo aprendizaje continuo.</li>
+      <li><strong>Pulverización por Especialidades:</strong> La hiperespecialización y subespecialización biomédica dicotomiza la medicina y dificulta gravemente el abordaje integral e integrado del paciente como persona.</li>
+      <li><strong>Sobregeneración de Información:</strong> La creación y transmisión de evidencia científica crece a un ritmo inabarcable para los profesionales en formación y en ejercicio.</li>
+      <li><strong>Competitividad y Complejidad de Mercados:</strong> La presencia de competidores numerosos y las restricciones económico-financieras obligan a gestionar con alta eficiencia.</li>
+      <li><strong>Incertidumbre Permanente y Desafíos Ambientales:</strong> Cambios epidemiológicos repentinos y crecientes exigencias de sostenibilidad ambiental en la gestión hospitalaria.</li>
+    </ol>
+  </div>
+</div>
+
+<h3>Lectura 1.2: Los Tres Vectores de la Identidad Institucional (EL SER, EL HACER y EL ESTAR)</h3>
+<div class="card mb-4">
+  <div class="card-body">
+    <p>La Dra. Susana Salomón estructura los desafíos internos de la gestión institucional a través de tres vectores indisolubles que configuran la identidad de la organización:</p>
+
+    <h4 class="card-title text-primary">1. El Vector del SER: Identidad Sustancial y Núcleo Ético</h4>
+    <p>El vector del <strong>SER</strong> constituye el corazón (<em>core</em>) de la institución y <strong>no es un bien transable ni negociable</strong>. Para ser plenamente reconocido, debe ponerse en valor y publicarse oficialmente (por ejemplo, mediante Resolución Ministerial en el Boletín Oficial) para que todo ingresante lo conozca desde su primer día:</p>
+    <ul>
+      <li><strong>Misión (¿Qué somos?):</strong> Define el propósito fundamental, la razón de ser de la organización y su contribución a la sociedad. Promueve acciones orientadas a un propósito común (idealmente sintetizable en una idea nuclear clara de hasta 8 palabras que identifique al usuario y las premisas de valor).</li>
+      <li><strong>Visión (¿Qué queremos ser?):</strong> Es el horizonte estratégico a largo plazo, la imagen futura que impulsa y guía el crecimiento institucional (<em>¿cómo queremos que nos vean?</em>).</li>
+      <li><strong>Valores Estratégicos (¿Cómo hacemos lo que hacemos?):</strong> Son las convicciones que establecen las prioridades y sustentan la misión y la visión. Para diagnosticarlos nos preguntamos: <em>¿Cómo se trata la gente entre sí? ¿Qué es lo importante aquí? ¿A quiénes se admira? ¿Qué cosas no estaríamos dispuestos a hacer?</em></li>
+      <li><strong>Principios Rectores o Valores Éticos:</strong> Situados en la base de la pirámide identitaria, son las creencias sustanciales que rigen la línea de conducta (ética, calidad, seguridad del paciente, honestidad, equidad, puntualidad, disciplina, cordialidad), como se ejemplifica en el marco normativo del Hospital Universitario de la UNCUYO.</li>
+    </ul>
+
+    <h4 class="card-title text-primary mt-3">2. El Vector del HACER: Dimensión Operativa y Funcional</h4>
+    <p>Traduce el propósito identitario en operaciones concretas mediante tres niveles:</p>
+    <ul>
+      <li><strong>Prioridades:</strong> Selección estratégica de caminos de acción evaluando riesgos e impacto sanitario.</li>
+      <li><strong>Funciones:</strong> División del trabajo en unidades organizativas (departamentos, servicios). Se clasifican en:
+        <ul>
+          <li><em>Funciones Finales:</em> Orientadas directamente a cumplir la misión asistencial frente al usuario (consultorios externos, internación, cirugía, guardia).</li>
+          <li><em>Funciones Intermedias o de Apoyo:</em> Proveen los insumos y servicios indispensables para que las funciones finales existan (laboratorio, diagnóstico por imágenes, farmacia, esterilización, mantenimiento, administración).</li>
+        </ul>
+      </li>
+      <li><strong>Actividades:</strong> Tareas estandarizadas ejecutadas por las personas; representan a escala individual lo que las funciones representan a escala departamental.</li>
+    </ul>
+
+    <h4 class="card-title text-primary mt-3">3. El Vector del ESTAR: Estructura, Ambiente y Cultura</h4>
+    <ul class="mb-0">
+      <li><strong>Ambiente:</strong> Contexto de intercambio continuo de recursos, información y demandas con la comunidad.</li>
+      <li><strong>Estructura Organizativa:</strong> Articula la división y coordinación del trabajo. Es crucial distinguir entre la <strong>cadena de mando formal</strong> (el organigrama oficial impreso) y la <strong>cadena de mando real</strong> (las redes informales de autoridad técnica y ascendencia moral a las que efectivamente acuden los residentes y profesionales ante una urgencia o dilema).</li>
+      <li><strong>Cultura Organizacional:</strong> El entramado de códigos, reglas de juego y significados compartidos en la convivencia diaria.</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Infografía 1.2: Tipologías Culturales y Clima Laboral Sanitario</h3>
+<p><img src="../../img/u1_infografia_02_tipologias_y_clima.png" alt="Infografía Unidad 1: Las 4 tipologías culturales en salud y diferenciación entre clima y cultura" class="img-fluid rounded-lg mb-3"></p>
+
+<h3>Lectura 1.3: Cultura Organizacional, Tipologías Culturales y Clima Laboral</h3>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title text-primary">1. La Cultura como «Alma» o «Personalidad» de la Organización</h4>
+    <p>La cultura organizacional es el sistema de significados compartidos por los miembros de una institución que la distingue de otras. Transmite sentido de identidad, genera compromiso colectivo más allá del interés individual y refuerza la estabilidad del sistema social.</p>
+    <p><strong>¿Cómo aprenden y transmiten la cultura los integrantes de un hospital?</strong></p>
+    <ol>
+      <li><strong>Historias:</strong> Relatos y narrativas sobre los fundadores, momentos críticos superados, aciertos y errores históricos que vinculan el presente con el pasado.</li>
+      <li><strong>Ritos y Rituales:</strong> Secuencias repetitivas de actividades que refuerzan valores clave (pases de sala, ateneos clínicos, actos de recepción y despedida de residentes, brindis integradores de fin de año donde comparten desde el director hasta el personal de apoyo).</li>
+      <li><strong>Símbolos Materiales:</strong> Disposición arquitectónica, mobiliario, equipamiento y vestimenta distintiva (guardapolvos, ambos o casacas identificatorias con el logo del servicio) que comunican pertenencia e igualdad o jerarquía.</li>
+      <li><strong>Lenguaje:</strong> Siglas, acrónimos y jerga técnica compartida por los miembros de la institución o unidad.</li>
+    </ol>
+
+    <h4 class="card-title text-primary mt-3">2. Los Tres Niveles de la Cultura y las Subculturas Hospitalarias</h4>
+    <ul>
+      <li><strong>Nivel 1 — Artefactos y Manifestaciones Físicas:</strong> Lo visible de inmediato (arquitectura, vestimenta, pautas de trato observables, reglamentos expuestos).</li>
+      <li><strong>Nivel 2 — Valores del Comportamiento:</strong> Normas que se vivencian al pertenecer al grupo y observar a quiénes se toma como modelo de conducta.</li>
+      <li><strong>Nivel 3 — Supuestos Inconscientes:</strong> Creencias profundas e implícitas («el ADN institucional») que determinan de forma automática cómo se perciben y resuelven los problemas.</li>
+      <li><strong>Subculturas Clínicas vs. Quirúrgicas:</strong> Dentro de un mismo hospital conviven subculturas diferenciadas. Los servicios clínicos suelen operar bajo dinámicas deliberativas, pases prolongados y consenso interdisciplinario; los servicios quirúrgicos suelen presentar estructuras más verticales, decisiones inmediatas bajo estrés agudo y rituales propios de quirófano.</li>
+    </ul>
+
+    <h4 class="card-title text-primary mt-3">3. Las Cuatro Tipologías Culturales (Beneficios y Límites)</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Tipología Cultural</th>
+          <th scope="col">Rasgos Centrales</th>
+          <th scope="col">Beneficios Principales</th>
+          <th scope="col">Límites y Riesgos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Cultura Tipo Clan (Familiar / Colaborativa)</strong></td>
+          <td>Estructura horizontal, trato cercano como una gran familia, foco en las personas, el consenso y el trabajo en equipo.</td>
+          <td>Alto sentido de pertenencia, cohesión, satisfacción laboral y adaptabilidad interna.</td>
+          <td>Dificultad para sostener la cohesión y el control cuando la organización crece masivamente.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Cultura de Adhocracia (Innovación / Riesgo)</strong></td>
+          <td>Dinámica, emprendedora, flexible; fomenta la iniciativa individual, la creatividad y la asunción de riesgos.</td>
+          <td>Aprendizaje acelerado, innovación constante y rápida respuesta ante desafíos inéditos.</td>
+          <td>Riesgo de errores por falta de estandarización, presión por la novedad y competencia interna.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Cultura de Mercado (Competitiva / Resultados)</strong></td>
+          <td>Orientada a metas cuantitativas, productividad, rentabilidad y diferenciación frente a competidores externos.</td>
+          <td>Claridad de objetivos medibles, eficiencia operativa y orientación al logro prestacional.</td>
+          <td>Rivalidad entre colegas, estrés crónico, <em>burnout</em> y desmotivación afectiva.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Cultura Jerárquica (Control / Estabilidad)</strong></td>
+          <td>Estructura corporativa tradicional basada en normas estrictas, procedimientos formales y cadena de mando vertical.</td>
+          <td>Estabilidad, previsibilidad, orden administrativo y claridad de funciones formales.</td>
+          <td>Rigidez extrema, burocracia defensiva, resistencia al cambio y lentitud ante imponderables.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 class="card-title text-primary mt-3">4. Clima Laboral vs. Cultura Organizacional</h4>
+    <p class="mb-0">El <strong>clima laboral</strong> constituye la percepción subjetiva (individual y colectiva) que tienen los trabajadores sobre su ambiente cotidiano en un momento determinado. Forma parte de la cultura, pero mientras la <strong>cultura</strong> es profunda, estructural y se construye a largo plazo, el <strong>clima</strong> es coyuntural y sensible al estilo de conducción inmediato. Un <strong>ambiente laboral tóxico</strong> (hostilidad, falta de reconocimiento, rumores) destruye la salud mental y eleva la tasa de eventos adversos; un <strong>clima saludable</strong> potencia la retención del talento y la seguridad del paciente.</p>
+  </div>
+</div>
+
+<h3><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Carpeta Temática de Lecturas Descargables — Unidad 1</h3>
+<div class="card border-primary mb-4">
+  <div class="card-body">
+    <h4 class="card-title text-primary">Repositorio Documental: Cultura Organizacional y Gestión</h4>
+    <p class="card-text">Descargá las tres lecturas completas en formato Word (DOCX) y las presentaciones oficiales de la Unidad 1:</p>
+    <ul class="mb-0">
+      <li><a href="../../lecturas/unidad_1/lectura_1_1_gestion_vs_administracion_y_contexto.docx" target="_blank">Lectura 1.1: Gestión vs. Administración y Complejidad del Contexto Sanitario (DOCX)</a></li>
+      <li><a href="../../lecturas/unidad_1/lectura_1_2_vectores_identidad_ser_hacer_estar.docx" target="_blank">Lectura 1.2: Los Tres Vectores de la Identidad Institucional: SER, HACER y ESTAR (DOCX)</a></li>
+      <li><a href="../../lecturas/unidad_1/lectura_1_3_cultura_tipologias_y_clima_laboral.docx" target="_blank">Lectura 1.3: Cultura Organizacional, Tipologías y Clima Laboral (DOCX)</a></li>
+      <li><a href="../../diapositivas/u1_diapositivas_cultura_organizacional.pdf" target="_blank">Diapositivas de Cátedra Unidad 1: Cultura Organizacional en Salud (PDF)</a></li>
+      <li><a href="../../diapositivas/u1_diapositivas_cultura_organizacional.pptx" target="_blank">Presentación Editable Unidad 1: Cultura Organizacional en Salud (PPTX)</a></li>
+    </ul>
+  </div>
+</div>
+
+<h3><i class="fa-solid fa-fw fa-book" aria-hidden="true"></i> Glosario Terminológico Completo de la Unidad 1 (10 Términos)</h3>
+<table class="table table-striped mb-4">
+  <thead>
+    <tr>
+      <th scope="col">N°</th>
+      <th scope="col">Término Clave</th>
+      <th scope="col">Definición Académica Aplicada en Salud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Administración en Salud</strong></td>
+      <td>Enfoque normativo y procedimental destinado a ordenar recursos físicos y financieros y fiscalizar el cumplimiento de reglamentos, horarios y licencias.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Gestión Estratégica en Salud</strong></td>
+      <td>Conducción centrada en las personas y en la sincronización de voluntades para lograr objetivos asistenciales con eficacia y eficiencia en entornos complejos.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Vector del SER</strong></td>
+      <td>Dimensión nuclear e innegociable de la identidad institucional integrada por la Misión, la Visión, los Valores estratégicos y los Principios rectores.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Misión Institucional</strong></td>
+      <td>Enunciado que define qué somos, nuestra razón de ser y la contribución esencial que el efector de salud brinda a sus usuarios y a la comunidad.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>Principios Rectores</strong></td>
+      <td>Creencias éticas sustanciales e innegociables (seguridad, calidad, honestidad, equidad) publicadas oficialmente para pautar la conducta del equipo de salud.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>Funciones Finales vs. de Apoyo</strong></td>
+      <td>En el HACER, las funciones finales asisten directamente al paciente (guardia, internación, cirugía) y las de apoyo brindan el soporte indispensable (laboratorio, farmacia, mantenimiento).</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><strong>Cadena de Mando Real</strong></td>
+      <td>En el ESTAR, red de autoridad técnica y ascendencia moral reconocida en la práctica cotidiana por los profesionales, diferenciada del organigrama formal impreso.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><strong>Cultura Organizacional</strong></td>
+      <td>Alma o personalidad de la institución compuesta por significados compartidos, historias, ritos, símbolos materiales, lenguaje y supuestos inconscientes.</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td><strong>Subcultura Hospitalaria</strong></td>
+      <td>Configuración cultural propia de un servicio o especialidad (ej. subcultura clínica frente a subcultura quirúrgica) con rituales, ritmos y jergas distintivas.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td><strong>Clima Laboral</strong></td>
+      <td>Percepción subjetiva, individual y colectiva de los trabajadores respecto a las condiciones relacionales y emocionales de su entorno laboral en un momento dado.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><i class="fa-solid fa-fw fa-circle-question" aria-hidden="true"></i> 20 Preguntas Frecuentes (FAQs) sobre Dilemas Culturales en Hospitales</h3>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">1. ¿Por qué se afirma en gestión de talento humano que «dos más dos nunca es cuatro»?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque las instituciones de salud no son sistemas mecánicos exactos. Al estar integradas por personas que trabajan bajo alta presión emocional y clínica, intervienen imponderables, subjetividades y dinámicas relacionales que impiden predecir resultados con fórmulas rígidas.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">2. ¿Puede una institución de salud funcionar eficazmente solo con administración tradicional sin ejercer gestión?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">No. La administración asegura el orden normativo y el control de horarios o licencias, pero sin gestión estratégica del talento humano se pierde el sentido de propósito, se desarticula la cooperación interdisciplinaria y la organización fracasa ante la incertidumbre.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">3. ¿Cuál es la diferencia fundamental entre la Misión y la Visión institucional?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">La Misión define el propósito presente (<em>¿qué somos hoy y a quién servimos?</em>), mientras que la Visión proyecta el horizonte estratégico a largo plazo (<em>¿qué aspiramos llegar a ser?</em>). La Misión ordena el presente; la Visión tracciona el futuro.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">4. ¿Por qué los Principios Rectores no son considerados un «bien transable»?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque constituyen el cimiento ético de la identidad institucional. Si un hospital negocia la seguridad del paciente, la honestidad o la equidad por presiones coyunturales, destruye la confianza social y corrompe su cultura interna.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">5. ¿Qué diferencia existe entre las funciones finales y las funciones de apoyo en el vector del HACER?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Las funciones finales brindan atención asistencial directa al usuario (internación, guardia, quirófanos, consultorios). Las funciones intermedias o de apoyo (laboratorio, esterilización, farmacia, mantenimiento, limpieza) garantizan los insumos y procesos sin los cuales las funciones finales se paralizarían.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">6. ¿Cómo influye la «cadena de mando real» en la formación de los médicos residentes?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Determina a quién consultan efectivamente los residentes frente a una urgencia o dilema clínico. Más allá del organigrama formal, los residentes siguen a los referentes con autoridad técnica y moral real en la sala o la guardia.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">7. ¿Por qué la subcultura quirúrgica suele diferenciarse marcadamente de la subcultura de clínica médica?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Por la naturaleza de sus procesos asistenciales: el quirófano demanda decisiones inmediatas, roles altamente ritualizados y jerarquías ejecutivas en tiempo real, mientras que la clínica médica se apoya en ateneos deliberativos y seguimiento longitudinal.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">8. ¿Qué riesgos entraña intentar gestionar un hospital público mediante una cultura puramente de Mercado?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Induce rivalidad interna entre servicios por metas cuantitativas, deteriora la solidaridad interdisciplinaria, multiplica el síndrome de <em>burnout</em> y relega prestaciones preventivas o comunitarias esenciales.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">9. ¿Es posible cambiar la cultura de una institución de salud por decreto en el corto plazo?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">No. Como la cultura reside en supuestos inconscientes, tradiciones y ritos consolidados durante años, su transformación exige coherencia sostenida a mediano y largo plazo entre el SER declarado, las prioridades del HACER y el liderazgo ejemplar en el ESTAR.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">10. ¿De qué manera un clima laboral negativo repercute directamente en la seguridad del paciente?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Un clima tóxico u hostil genera temor a reportar incidentes, inhibe las preguntas de los residentes más jóvenes, fragmenta el pase de guardia y aumenta drásticamente la tasa de errores asistenciales evitables.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">11. ¿Cómo impacta la «pulverización por especialidades» en la experiencia del paciente hospitalizado?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Cuando cada subespecialidad observa únicamente un órgano aislado sin gestión integradora, el paciente recibe indicaciones fragmentadas o contradictorias. La gestión debe diseñar actividades inter y transdisciplinarias en el HACER para restituir la mirada integral.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">12. ¿Por qué recomienda la Dra. Salomón que la idea nuclear de la Misión sea breve y clara?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque un enunciado extenso y retórico no es recordado ni apropiado por el personal. Una misión clara (de hasta 8 palabras en su núcleo, sumando usuario y premisa de valor) permite que desde el cirujano hasta el personal de admisión orienten sus decisiones diarias con el mismo norte.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">13. ¿Por qué deben publicarse la Misión, Visión y Principios Rectores en el Boletín Oficial o por Resolución?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Para otorgarles institucionalidad pública y carácter vinculante más allá de las gestiones directivas transitorias, asegurando que todo profesional que ingresa al sistema conozca las reglas éticas del efector.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">14. ¿Qué papel cumplen los rituales informales (como un brindis de fin de año o el café post-guardia) en la cultura hospitalaria?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Expresan y renuevan la cohesión social entre los múltiples dominios técnicos y sociales del hospital, nivelando simbólicamente a profesionales médicos, enfermeros, administrativos y personal de maestranza en torno a una identidad común.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">15. ¿Qué representan los símbolos materiales como las casacas bordadas o la arquitectura de un servicio?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Corresponden al primer nivel cultural (artefactos visibles) y comunican sentido de pertenencia e identidad grupal, aunque la gestión debe cuidar que no se conviertan en barreras de aislamiento frente a otros servicios.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">16. ¿Cuándo se vuelve disfuncional una cultura de tipo Clan en un efector sanitario?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Cuando el hospital crece en escala y complejidad o cuando el espíritu de cuerpo familiar se utiliza para encubrir desvíos técnicos y evitar la estandarización necesaria en el HACER.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">17. ¿En qué situaciones sanitarias resulta altamente valiosa una cultura con rasgos de Adhocracia?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">En unidades de investigación traslacional, implementación de telemedicina, rediseño de flujos de Triage o respuesta rápida ante emergencias epidemiológicas donde los protocolos rígidos resultan insuficientes.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">18. ¿Qué ventaja aporta la Cultura Jerárquica si se la equilibra adecuadamente con gestión estratégica?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Aporta estabilidad normativa, trazabilidad médico-legal y seguridad procedimental en áreas críticas como esterilización, hemoterapia o farmacovigilancia, siempre que no bloquee la innovación asistencial.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">19. ¿Por qué un ingresante a la residencia debe diagnosticar primero el ESTAR de su servicio antes de proponer cambios?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque ignorar la historia, los valores de comportamiento y la cadena de mando real del servicio activa anticuerpos culturales inmediatos. Conocer el ESTAR permite alinear cualquier mejora con la identidad institucional.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-4">
+  <div class="card-body">
+    <h4 class="card-title">20. ¿Qué utilidad práctica tiene dominar estos conceptos al presentarse a un concurso de Jefatura de Residentes o de Servicio?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Como destaca la Dra. Salomón, todo proyecto de gestión para un concurso requiere alinear las propuestas operativas (el HACER) con la Misión y Principios Rectores del hospital (el SER) y con un diagnóstico realista de la cultura y estructura del servicio (el ESTAR).</p>
+    </details>
+  </div>
+</div>
+
+<h3><i class="fa-solid fa-fw fa-book" aria-hidden="true"></i> Bibliografía y Fuentes Oficiales de la Unidad 1</h3>
+<div class="card border-secondary">
+  <div class="card-body">
+    <ul class="mb-0">
+      <li><strong>Salomón, S. (2024).</strong> <em>Módulo 4: Unidad 1. Cultura Organizacional y los Desafíos de la Gestión Institucional</em> [Videoclase magistral y material de cátedra]. Programa de Capacitación en Competencias Transversales para Residencias del Equipo de Salud, Ministerio de Salud y Deportes de Mendoza.</li>
+      <li><strong>Cameron, K. S., &amp; Quinn, R. E. (2011).</strong> <em>Diagnosing and Changing Organizational Culture: Based on the Competing Values Framework</em>. Jossey-Bass (Marco de las 4 tipologías culturales: Clan, Adhocracia, Mercado y Jerárquica).</li>
+      <li><strong>Schein, E. H. (2017).</strong> <em>Organizational Culture and Leadership</em>. Wiley (Niveles de la cultura organizacional: artefactos, valores expuestos y supuestos básicos subyacentes).</li>
+      <li><strong>Universidad Nacional de Cuyo — Hospital Universitario.</strong> <em>Marco Normativo de Misión, Visión, Valores Estratégicos y Principios Rectores Institucionales</em>. Mendoza, Argentina.</li>
+    </ul>
+  </div>
+</div>
+        </div>
+
+        <!-- 3. LA PRÁCTICA U1 -->
+        <div class="moodle-activity-box" id="sec-u1-practica">
+          <div class="moodle-activity-header">
+            <h4 class="mb-0 text-primary"><i class="fa-solid fa-puzzle-piece mr-2"></i> Página Moodle: 3. La Práctica + Cuestionario Gamificado (Unidad 1)</h4>
+            <div>
+              <a href="04_u1_la_practica.html" target="_blank" class="btn btn-sm btn-outline-primary mr-1">Abrir Página 04</a>
+              <a href="05_u1_conecta_bloques_y_trivia.html" target="_blank" class="btn btn-sm btn-success">Abrir Cuestionario 05 (Conecta Bloques + Trivia U1)</a>
+            </div>
+          </div>
+          <h3><i class="fa-solid fa-fw fa-puzzle-piece" aria-hidden="true"></i> 3. La Práctica: Aplicación Situada y Gamificación</h3>
+<p><span class="badge badge-primary">Etapa 3 del Modelo Tripartito</span> <span class="badge badge-success">Conecta Bloques + Trivia + Caso Situado</span></p>
+
+<div class="alert alert-warning">
+  <h4><i class="fa-solid fa-fw fa-triangle-exclamation" aria-hidden="true"></i> Importante: Consigna Orientadora Obligatoria</h4>
+  <p class="mb-0">Esta actividad práctica se resuelve integrando los conceptos de la videoclase magistral de la Dra. Susana Salomón, el video short microlearning y las tres lecturas teóricas de la Unidad 1. Analizá críticamente tu servicio hospitalario e identificá cómo los vectores del <strong>SER</strong>, el <strong>HACER</strong> y el <strong>ESTAR</strong> moldean el comportamiento cotidiano antes de realizar el Conecta Bloques, la Trivia y el Caso Situado.</p>
+</div>
+
+<h3>Ficha de Desafíos Interactivos de la Unidad 1</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Desafío</th>
+      <th scope="col">Objetivo de Aprendizaje</th>
+      <th scope="col">Modalidad en el Aula</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Conecta Bloques (8 pares)</strong></td>
+      <td>Emparejar los conceptos de Gestión, Administración, vectores SER/HACER/ESTAR y Tipologías Culturales con sus definiciones exactas.</td>
+      <td>Actividad interactiva de emparejamiento / Paquete SCORM <code>u1_conecta_bloques_SCORM.zip</code></td>
+    </tr>
+    <tr>
+      <td><strong>2. Trivia Gamificada Unidad 1</strong></td>
+      <td>Resolver 10 situaciones conceptuales con preguntas barajadas sin numeración rígida y retroalimentación inmediata.</td>
+      <td>Cuestionario formativo con intentos ilimitados / Paquete SCORM <code>u1_trivia_SCORM.zip</code></td>
+    </tr>
+    <tr>
+      <td><strong>3. Caso Situado de Gestión</strong></td>
+      <td>Diagnosticar la tensión entre rigidez jerárquica e innovación adhocrática en un servicio de Triage de urgencias.</td>
+      <td>Resolución analítica evaluada mediante rúbrica de 3 criterios.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Caso Situado de Gestión Hospitalaria: Tensión en el Servicio de Triage</h3>
+<div class="card border-primary mb-3">
+  <div class="card-body">
+    <h4 class="card-title text-primary">Escenario Clínico-Institucional</h4>
+    <p class="card-text">El Servicio de Urgencias del Hospital Central registró un incremento del 35% en los tiempos de espera en Triage durante el último semestre. La Misión declarada del hospital establece ser un <em>«centro de excelencia con atención centrada en las personas y respuesta oportuna»</em> (<strong>el SER</strong>). Sin embargo, el servicio opera bajo una cultura estrictamente <strong>Jerárquica</strong>. Los residentes e instructores diseñaron un protocolo ágil de reevaluación dinámica (con rasgos de <strong>Adhocracia</strong>), pero la Jefatura lo rechazó argumentando que <em>«no figura en el manual tradicional ni siguió la vía jerárquica formal»</em>. Esto provocó desmotivación, deterioro del clima laboral y reclamos constantes en la guardia.</p>
+    <details>
+      <summary>Ver guía de resolución sugerida</summary>
+      <p class="mt-2 mb-0"><strong>Claves de intervención:</strong> 1) Evidenciar la contradicción entre el SER (atención oportuna centrada en la persona) y el HACER/ESTAR (burocracia rígida que demora el Triage). 2) Incorporar a los líderes de la cadena de mando real para validar una prueba piloto controlada, combinando la seguridad normativa de la cultura jerárquica con la flexibilidad innovadora de la adhocracia.</p>
+    </details>
+  </div>
+</div>
+
+<h3>Rúbrica Analítica de Evaluación del Caso (Unidad 1)</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Criterio</th>
+      <th scope="col">Excelente (4 pts)</th>
+      <th scope="col">Satisfactorio (3 pts)</th>
+      <th scope="col">En Proceso (2 pts)</th>
+      <th scope="col">Inicial (1 pt)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Diagnóstico del SER, HACER y ESTAR</strong></td>
+      <td>Articula con precisión los 3 vectores y explicita la contradicción entre la Misión declarada y el proceso operativo real.</td>
+      <td>Identifica correctamente los 3 vectores, aunque con menor detalle en la distinción entre cadena formal y real.</td>
+      <td>Reconoce parcialmente las dimensiones pero confunde funciones del HACER con componentes del ESTAR.</td>
+      <td>No distingue los vectores de la identidad institucional en el caso planteado.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Tipología Cultural y Clima Laboral</strong></td>
+      <td>Fundamenta con rigor los límites de la cultura Jerárquica, el aporte de la Adhocracia y el impacto en el clima del servicio.</td>
+      <td>Clasifica bien la tipología cultural y diferencia clima de cultura de manera general.</td>
+      <td>Menciona el malestar del equipo pero confunde clima laboral coyuntural con cultura organizacional.</td>
+      <td>No aplica la clasificación de tipologías culturales vista en la unidad.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Propuesta de Gestión Estratégica</strong></td>
+      <td>Diseña una intervención viable que sincroniza voluntades, estandariza mejoras en el HACER y preserva los principios rectores.</td>
+      <td>Propone medidas correctivas adecuadas pero centradas únicamente en aspectos administrativos.</td>
+      <td>Plantea sugerencias aisladas sin abordar la resistencia cultural del servicio.</td>
+      <td>Propone medidas puramente punitivas que agravan el clima organizacional.</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: UNIDAD 2 -->
+      <section class="moodle-section" id="sec-u2-encabezado">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge badge-success px-3 py-2">SECCIÓN 2 • UNIDAD 2: COMUNICACIÓN, TRABAJO EN EQUIPO Y LIDERAZGO (LIC. CARLA NANI)</span>
+          <a href="06_u2_encabezado.html" target="_blank" class="btn btn-sm btn-outline-success">Abrir Etiqueta Encabezado (06)</a>
+        </div>
+        <p><img src="../../img/banner_unidad_2.png" alt="Banner Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo en Salud" class="img-fluid rounded-lg mb-3"></p>
+
+<h3><i class="fa-solid fa-fw fa-flag" aria-hidden="true"></i> Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo Situacional en Salud</h3>
+<p><span class="badge badge-primary">Semanas 3 y 4</span> <span class="badge badge-success">Docente: Lic. Carla Nani</span></p>
+
+<p class="lead">La gestión eficiente del talento humano en salud exige comprender la premisa ineludible de que \(2 + 2 \neq 4\), adaptando la comunicación al perceptor y a los imponderables del entorno asistencial. Transformar grupos sociales en equipos de trabajo cohesivos conducidos bajo un liderazgo situacional empático constituye la clave para optimizar la atención en áreas críticas como el quirófano o la guardia.</p>
+
+<div class="alert alert-info">
+  <h4><i class="fa-solid fa-fw fa-circle-question" aria-hidden="true"></i> Tres Preguntas Andragógicas Disparadoras (Circular N° 5)</h4>
+  <ol class="mb-0">
+    <li><strong>Atención a los Condicionantes del Perceptor:</strong> ¿Cómo influyen los condicionantes socioculturales, etarios y emocionales de sus perceptores (pacientes, familias y colegas) al codificar un diagnóstico crítico o una indicación en el pase de guardia?</li>
+    <li><strong>Del Grupo al Equipo (Paradigma del Quirófano):</strong> Comparando la dinámica cotidiana de su servicio con el modelo interdependiente del quirófano, ¿qué factores favorecen u obstaculizan la responsabilidad colectiva y la complementariedad de roles?</li>
+    <li><strong>Liderazgo Situacional y Empatía:</strong> Reflexionando sobre la conducción de personas en contextos de alta presión, ¿dónde radica el límite entre la empatía genuina y la permisividad, y cómo prevenir las causas habituales de fracaso del líder?</li>
+  </ol>
+</div>
+
+        <!-- 1. LA CLASE U2 -->
+        <div class="moodle-activity-box" id="sec-u2-clase">
+          <div class="moodle-activity-header">
+            <h4 class="mb-0 text-success"><i class="fa-solid fa-file-lines mr-2"></i> Página Moodle: 1. La Clase (Unidad 2)</h4>
+            <a href="07_u2_la_clase.html" target="_blank" class="btn btn-sm btn-success">Abrir Página 07_u2_la_clase.html</a>
+          </div>
+          <h3><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> 1. La Clase: Comunicación, Trabajo en Equipo y Liderazgo</h3>
+<p><span class="badge badge-primary">Etapa 1 del Modelo Tripartito</span> <span class="badge badge-success">Lic. Carla Nani</span></p>
+<p class="lead">Visualizá la videoclase magistral de la Lic. Carla Nani, repasá los dos Video Shorts de microlearning (la cápsula conceptual producida con NotebookLM y la composición animada renderizada con HyperFrames) y descargá las diapositivas oficiales de la unidad.</p>
+
+<div class="alert alert-info">
+  <h4><i class="fa-solid fa-fw fa-bullseye" aria-hidden="true"></i> Qué vas a aprender en esta clase</h4>
+  <ul class="mb-0">
+    <li>Comprender por qué en la gestión del talento humano \(2 + 2 \neq 4\) y cómo responder con adaptabilidad rápida ante los <strong>imponderables</strong>.</li>
+    <li>Dominar el proceso comunicacional reconociendo al interlocutor como un <strong>perceptor activo</strong> atravesado por condicionantes emocionales y socioculturales, asumiendo la responsabilidad como profesional <strong>emisor</strong>.</li>
+    <li>Diferenciar un grupo social de un <strong>equipo de trabajo asistencial</strong> tomando al <strong>quirófano</strong> como paradigma de interdependencia y responsabilidad compartida.</li>
+    <li>Ejercer un <strong>liderazgo situacional</strong> basado en la persuasión sin coerción, la escucha activa, la empatía genuina (distinta de la permisividad) y el reconocimiento de necesidades (Pirámide de Maslow).</li>
+  </ul>
+</div>
+
+<h3>Videoclase Magistral Oficial (Lic. Carla Nani)</h3>
+<p>Reproducí la clase completa desde el reproductor integrado o abrila en una nueva pestaña de YouTube:</p>
+<p><iframe src="https://www.youtube.com/embed/ELI-w2KgJSc" title="Módulo 4: Video 2. Motivación, Trabajo en Equipo y Liderazgo - Lic. Carla Nani" style="width:100%;aspect-ratio:16/9;border:0" allowfullscreen></iframe></p>
+
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <div class="card border-primary">
+      <div class="card-body">
+        <h4 class="card-title text-primary"><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> Videos de la Unidad 2 (Magistral + 2 Video Shorts)</h4>
+        <p class="card-text">Disponés de tres recursos audiovisuales complementarios para consolidar los contenidos de la Lic. Carla Nani:</p>
+        <ul class="mb-3">
+          <li><strong>Videoclase Magistral (28 min):</strong> Exposición completa con ejemplos hospitalarios reales.</li>
+          <li><strong>Video Short NotebookLM:</strong> Síntesis conceptual narrada (<em>Por Qué el Paciente No Es un Receptor</em>).</li>
+          <li><strong>Video Short HyperFrames (1080p 30fps):</strong> Cápsula dinámica sobre Emisor-Perceptor, Equipo en Quirófano y Liderazgo Situacional.</li>
+        </ul>
+        <p class="mb-2"><a class="btn btn-primary" href="https://www.youtube.com/watch?v=ELI-w2KgJSc" target="_blank"><i class="fa-solid fa-fw fa-link" aria-hidden="true"></i> Abrir Videoclase Magistral en YouTube</a></p>
+        <p class="mb-2"><a class="btn btn-secondary" href="../../media/u2_video_short_comunicacion_liderazgo.mp4" target="_blank"><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> Ver Video Short NotebookLM — Unidad 2 (MP4)</a></p>
+        <p class="mb-0"><a class="btn btn-info" href="../../media/u2_hyperframes_short.mp4" target="_blank"><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> Ver Video Short HyperFrames — Unidad 2 (MP4)</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h4 class="card-title"><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Diapositivas Oficiales de Cátedra</h4>
+        <p class="card-text">Descargá las diapositivas oficiales de la Unidad 2 en formato PDF o PowerPoint editable:</p>
+        <ul class="mb-3">
+          <li><a href="../../diapositivas/u2_diapositivas_comunicacion_liderazgo.pdf" target="_blank">Descargar Diapositivas Oficiales Unidad 2 (PDF)</a></li>
+          <li><a href="../../diapositivas/u2_diapositivas_comunicacion_liderazgo.pptx" target="_blank">Descargar Presentación Editable Unidad 2 (PPTX)</a></li>
+        </ul>
+        <p class="card-text mb-0"><strong>Guía de observación activa:</strong> Analizá cómo en el modelo del quirófano las jerarquías formales se diluyen operativamente porque cada especialista (cirujano, anestesiólogo, instrumentador, enfermero, personal de bioseguridad) domina su faceta en pos del paciente.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-success">
+  <h4><i class="fa-solid fa-fw fa-lightbulb" aria-hidden="true"></i> Regla de Oro de la Comunicación Clínica</h4>
+  <p class="mb-0">En la comunicación asistencial, el <strong>profesional emisor es siempre el responsable</strong> de diagnosticar las características socioculturales y emocionales de su perceptor y adecuar la codificación del mensaje para garantizar su eficacia.</p>
+</div>
+
+          <hr>
+          <h5><i class="fa-solid fa-film text-success"></i> Reproductores Locales Directos — Video Shorts Unidad 2 (NotebookLM + HyperFrames)</h5>
+          <div class="video-grid-preview">
+            <div class="video-card-preview">
+              <div class="mb-2"><strong>1. Video Short NotebookLM (Unidad 2)</strong> <span class="badge badge-info float-right">6.8 MB • MP4</span></div>
+              <video src="../../media/u2_video_short_comunicacion_liderazgo.mp4" controls preload="metadata"></video>
+            </div>
+            <div class="video-card-preview">
+              <div class="mb-2"><strong>2. Video Short HyperFrames GSAP (Unidad 2)</strong> <span class="badge badge-success float-right">5.5 MB • 1080p 30fps</span></div>
+              <video src="../../media/u2_hyperframes_short.mp4" controls preload="metadata"></video>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. LA LECTURA U2 -->
+        <div class="moodle-activity-box" id="sec-u2-lectura">
+          <div class="moodle-activity-header">
+            <h4 class="mb-0 text-success"><i class="fa-solid fa-book-open mr-2"></i> Página Moodle: 2. La Lectura (Unidad 2 — Texto Completo + 2 Infografías + 20 FAQs)</h4>
+            <a href="08_u2_la_lectura.html" target="_blank" class="btn btn-sm btn-success">Abrir Página 08_u2_la_lectura.html</a>
+          </div>
+          <h3><i class="fa-solid fa-fw fa-book-open" aria-hidden="true"></i> 2. La Lectura: Comunicación, Equipos Interdependientes y Liderazgo (Unidad 2)</h3>
+<p><span class="badge badge-primary">Etapa 2 del Modelo Tripartito</span> <span class="badge badge-success">3 Lecturas Completas + 2 Infografías NotebookLM + Glosario + 20 FAQs</span></p>
+<p class="lead">Explorá el desarrollo académico completo de las tres lecturas de la Unidad 2 basado en la cátedra de la Lic. Carla Nani, analizá las dos infografías generadas en NotebookLM, descargá los documentos de estudio y consultá el glosario de 10 términos y las 20 preguntas frecuentes sobre comunicación clínica, trabajo en equipo y liderazgo situacional.</p>
+
+<h3>Infografía 2.1: El Proceso de Comunicación y Equipos en Salud</h3>
+<p><img src="../../img/u2_infografia_01_comunicacion_y_equipos.png" alt="Infografía Unidad 2: Proceso de comunicación Emisor-Perceptor y diferencias entre grupo y equipo en salud" class="img-fluid rounded-lg mb-3"></p>
+
+<h3>Lectura 2.1: Gestión del Talento Humano, Imponderables y el Proceso de Comunicación en Salud</h3>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title text-primary">1. La Premisa del Factor Humano en Salud: Por qué «2 + 2 nunca es 4»</h4>
+    <p>Al igual que las ciencias médicas trabajan con seres humanos singulares, en el manejo del personal y la gestión del talento humano rige una premisa fundamental: <strong>dos más dos nunca va a ser cuatro</strong> (\(2 + 2 \neq 4\)). A diferencia de los recursos materiales o financieros, las personas actúan atravesadas por emociones, vivencias y circunstancias imprevistas.</p>
+    <p>En todo servicio hospitalario existen los <strong>imponderables</strong>: emergencias clínicas no programadas, crisis subjetivas de pacientes o familiares y bajas imprevistas en el plantel que alteran cualquier planificación rígida. Por ello, la competencia basal para dirigir equipos en salud es la capacidad de <strong>acomodarse y adaptarse rápidamente</strong> ante la contingencia sin perder el objetivo asistencial.</p>
+
+    <h4 class="card-title text-primary mt-3">2. El Proceso de Comunicación: Verbal y No Verbal</h4>
+    <p>La comunicación es un proceso relacional e interactivo que se establece entre dos o más personas para transmitir pensamientos, ideas, conceptos, indicaciones y emociones; por definición, nunca puede ser un fenómeno aislado o individual. Comprende dos dimensiones permanentes:</p>
+    <ul>
+      <li><strong>Comunicación Verbal:</strong> Se instrumenta a través de la palabra oral o escrita mediante un código lingüístico compartido.</li>
+      <li><strong>Comunicación No Verbal:</strong> Abarca la gestualidad, la mirada, el tono de voz y la postura corporal. En las profesiones de la salud resulta decisiva porque nos permite evaluar en tiempo real si estamos llegando adecuadamente al otro o si existe un bloqueo emocional.</li>
+    </ul>
+
+    <h4 class="card-title text-primary mt-3">3. Del «Receptor Pasivo» al «Perceptor Activo»</h4>
+    <p>La Lic. Carla Nani introduce una distinción epistemológica y práctica central para la clínica y la gestión:</p>
+    <ul>
+      <li><strong>El Emisor y la Codificación:</strong> El emisor es la persona que inicia el mensaje a través de un canal (oral o escrito) y un código. Antes de emitirlo realiza un trabajo mental —habitualmente automático, pero que el profesional de la salud debe volver <strong>consciente y deliberado</strong>— denominado <strong>codificación</strong>: pensar y elaborar el mensaje para que sea comprendido por su interlocutor específico.</li>
+      <li><strong>Por qué NO existe el «Receptor» en la comunicación humana:</strong> Un <em>receptor</em> es un artefacto mecánico (como la casilla de correo de voz de un teléfono) que reproduce literalmente la señal recibida sin otorgarle ningún sentido propio más allá del que emitió la fuente.</li>
+      <li><strong>El Perceptor y la Decodificación:</strong> La persona que recibe el mensaje es siempre un <strong>perceptor</strong>, porque percibe, procesa y <strong>decodifica</strong> la información interpretándola desde su propio punto de vista y subjetividad.</li>
+    </ul>
+
+    <h4 class="card-title text-primary mt-3">4. Condicionantes del Perceptor y Responsabilidad Ética del Emisor</h4>
+    <p>La decodificación que realiza el perceptor puede diferir drásticamente de la intención original del emisor porque está atravesada por sus <strong>condicionantes</strong>:</p>
+    <ol>
+      <li><strong>Edad y ciclo vital:</strong> Dar el mismo diagnóstico patológico a un joven de 20 años o a un adulto mayor de 70 años exige codificaciones completamente distintas.</li>
+      <li><strong>Sexo, contexto socioeconómico y cultural:</strong> Lugar donde vive, entorno en el que se ha desarrollado y nivel de alfabetización sanitaria.</li>
+      <li><strong>Vivencias previas, miedos y prejuicios:</strong> Experiencias hospitalarias anteriores y vulnerabilidad emocional aguda.</li>
+    </ol>
+    <p class="mb-0"><strong>Comunicación Eficaz y Responsabilidad del Especialista:</strong> El mensaje es <strong>eficaz</strong> únicamente cuando el perceptor lo interpreta con la misma intención con que lo envió el emisor. En la interacción con pacientes, familiares y compañeros de guardia, <strong>los responsables de la eficacia comunicacional somos siempre nosotros como emisores y especialistas</strong>. No es válido excusarse diciendo <em>«yo soy así y doy las noticias siempre igual con tecnicismos y dibujos para todos»</em>; es el profesional emisor quien debe ubicarse y adecuarse a las características de su perceptor.</p>
+  </div>
+</div>
+
+<h3>Lectura 2.2: Trabajo en Equipo vs. Grupo de Trabajo y el Paradigma del Quirófano</h3>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title text-primary">1. Diferencias Estructurales entre Grupo y Equipo de Trabajo</h4>
+    <p>En el ámbito cotidiano suelen confundirse los conceptos de <em>grupo</em> y <em>equipo</em>, pero en las organizaciones sanitarias presentan dinámicas opuestas:</p>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Dimensión Analítica</th>
+          <th scope="col">Grupo de Trabajo</th>
+          <th scope="col">Equipo de Trabajo en Salud</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Origen y formación</strong></td>
+          <td>Surge en forma espontánea o inconsciente por afinidades sociales, simpatía o coincidencias personales (ej. venir de la misma ciudad o compartir gustos).</td>
+          <td>Se estructura en el ámbito laboral a partir de especialidades diversas unidas por un objetivo asistencial común.</td>
+        </tr>
+        <tr>
+          <td><strong>Perfil y habilidades</strong></td>
+          <td>Sus miembros suelen tener formación similar y realizan el mismo tipo de tarea de modo paralelo.</td>
+          <td>Integrado por personas con <strong>habilidades complementarias</strong>: no son iguales, se complementan entre sí.</td>
+        </tr>
+        <tr>
+          <td><strong>Estructura jerárquica</strong></td>
+          <td>Mantiene niveles jerárquicos rígidos y formales.</td>
+          <td>Las jerarquías formales se diluyen operativamente porque cada miembro domina su faceta y rol técnico.</td>
+        </tr>
+        <tr>
+          <td><strong>Responsabilidad</strong></td>
+          <td>Cada persona responde de manera estrictamente individual por su franja de tarea.</td>
+          <td><strong>Corresponsabilidad colectiva:</strong> los miembros se responsabilizan por el conjunto y respaldan solidariamente las decisiones tomadas.</td>
+        </tr>
+        <tr>
+          <td><strong>Cohesión y creatividad</strong></td>
+          <td>La cohesión es contingente; no transmite soluciones creativas colectivas.</td>
+          <td>La cohesión y la colaboración estrecha son indispensables; genera soluciones innovadoras y mayor productividad.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 class="card-title text-primary mt-3">2. El Quirófano como Modelo Paradigmático de Equipo de Trabajo</h4>
+    <p class="mb-0">Para las ciencias de los recursos humanos y la gestión hospitalaria, el <strong>quirófano</strong> constituye el ejemplo más claro y acabado de un verdadero equipo de trabajo. En una intervención quirúrgica convergen el cirujano, el anestesiólogo, las instrumentadoras quirúrgicas, el personal de enfermería y el personal de limpieza y bioseguridad. No se eligieron por amistad, pero cada uno conoce con exactitud su función y se distribuyen las tareas y responsabilidades naturalmente sin necesidad de órdenes constantes. Todos actúan alineados detrás de una <strong>meta común implícita y explícita: sacar adelante al paciente</strong>. En ese escenario, la comunicación fluye con eficacia y cada especialista aporta su saber complementario sosteniendo colectivamente el resultado.</p>
+  </div>
+</div>
+
+<h3>Infografía 2.2: Liderazgo Situacional en el Sector Salud</h3>
+<p><img src="../../img/u2_infografia_02_liderazgo_situacional.png" alt="Infografía Unidad 2: Liderazgo situacional en salud, empatía genuina, Maslow y causas de fracaso" class="img-fluid rounded-lg mb-3"></p>
+
+<h3>Lectura 2.3: Liderazgo Situacional, Empatía Genuina y Prevención del Fracaso Directivo</h3>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title text-primary">1. El Liderazgo Situacional y la Persuasión sin Coerción</h4>
+    <p>El <strong>liderazgo</strong> es la capacidad de guiar, motivar e influir en un equipo para alcanzar metas compartidas. Influir es sinónimo de <strong>persuadir</strong>: lograr que otra persona modifique una actitud o curso de acción por convicción, <strong>sin utilizar jamás la fuerza bruta, la coerción ni la manipulación</strong>.</p>
+    <p>No existe un único líder universal para todas las circunstancias; el liderazgo en salud es <strong>situacional</strong> y emerge de acuerdo con la coyuntura y las competencias requeridas. Mientras un líder negativo es egoísta, esconde información para sentirse indispensable o busca beneficio personal haciendo caer al equipo, el <strong>líder positivo</strong> inspira, comparte el saber y empodera a los demás para que crezcan en pos del colectivo.</p>
+
+    <h4 class="card-title text-primary mt-3">2. Competencias del Líder Positivo y Empatía Genuina vs. Permisividad</h4>
+    <ul>
+      <li><strong>Empatía Genuina vs. Permisividad:</strong> Ser empático consiste en ponerse en el lugar del otro para comprender qué le sucede (por ejemplo, entender que un profesional atraviesa una crisis familiar grave y reasignar temporalmente una tarea crítica a otro miembro del equipo hablando con honestidad). Esto no significa dejar pasar errores ni decir a todo que sí: <strong>decir a todo que sí no es empatía, es permisividad</strong>, y la permisividad destruye el respeto y la conducción del equipo.</li>
+      <li><strong>Escucha Activa y Comunicación Asertiva:</strong> Escuchar genuinamente las necesidades y propuestas de los colaboradores antes de decidir.</li>
+      <li><strong>Integridad, Ética y Transparencia:</strong> No ocultar la realidad asistencial, sostener la palabra dada y predicar con el ejemplo.</li>
+      <li><strong>Reconocimiento de Necesidades (Pirámide de Maslow) y Empoderamiento:</strong> El líder eficaz recuerda la Pirámide de Maslow: las personas en su trabajo buscan satisfacer necesidades superiores de <strong>pertenencia, reconocimiento y desarrollo personal</strong>. Reconocer explícitamente las habilidades y aciertos de los residentes y delegar responsabilidades con respaldo los empodera y multiplica su compromiso.</li>
+    </ul>
+
+    <h4 class="card-title text-primary mt-3">3. Las 10 Causas Comunes por las que Fracasa un Líder en Salud</h4>
+    <ol class="mb-0">
+      <li><strong>No escuchar (sordera directiva):</strong> Ignorar las alertas o necesidades de los colaboradores.</li>
+      <li><strong>Tomar decisiones impulsivas:</strong> Actuar de manera arrebatada sin reflexionar ni evaluar consecuencias.</li>
+      <li><strong>No delegar:</strong> Querer absorber y controlar personalmente todas las tareas operativas.</li>
+      <li><strong>Mal manejo de conflictos:</strong> Evadir las tensiones del servicio o escalarlas con agresión.</li>
+      <li><strong>Falta de actualización y desarrollo:</strong> Estancarse técnicamente y no promover el aprendizaje del equipo.</li>
+      <li><strong>Falta de visión clara:</strong> No saber hacia dónde se conduce al servicio o unidad.</li>
+      <li><strong>Comunicación ineficaz:</strong> Emitir mensajes ambiguos sin considerar al perceptor.</li>
+      <li><strong>Estilo autocrático o autoritario:</strong> Imponer órdenes por mera jerarquía anulando la participación.</li>
+      <li><strong>Incapacidad para adaptarse a los cambios:</strong> Rigidez frente a los imponderables del contexto sanitario.</li>
+      <li><strong>Falta de ética, ausencia de empatía e incumplimiento de la palabra.</strong></li>
+    </ol>
+  </div>
+</div>
+
+<h3><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Carpeta Temática de Lecturas Descargables — Unidad 2</h3>
+<div class="card border-primary mb-4">
+  <div class="card-body">
+    <h4 class="card-title text-primary">Repositorio Documental: Comunicación, Equipos y Liderazgo</h4>
+    <p class="card-text">Descargá las tres lecturas completas en formato Word (DOCX) y las diapositivas oficiales de la Unidad 2:</p>
+    <ul class="mb-0">
+      <li><a href="../../lecturas/unidad_2/lectura_2_1_talento_humano_imponderables_y_comunicacion.docx" target="_blank">Lectura 2.1: Gestión del Talento Humano, Imponderables y Comunicación (DOCX)</a></li>
+      <li><a href="../../lecturas/unidad_2/lectura_2_2_trabajo_en_equipo_vs_grupo_y_quirofano.docx" target="_blank">Lectura 2.2: Trabajo en Equipo vs. Grupo y el Paradigma del Quirófano (DOCX)</a></li>
+      <li><a href="../../lecturas/unidad_2/lectura_2_3_liderazgo_situacional_empatia_y_maslow.docx" target="_blank">Lectura 2.3: Liderazgo Situacional, Empatía Genuina y Pirámide de Maslow (DOCX)</a></li>
+      <li><a href="../../diapositivas/u2_diapositivas_comunicacion_liderazgo.pdf" target="_blank">Diapositivas de Cátedra Unidad 2: Gestión del Talento Humano en Salud (PDF)</a></li>
+      <li><a href="../../diapositivas/u2_diapositivas_comunicacion_liderazgo.pptx" target="_blank">Presentación Editable Unidad 2: Gestión del Talento Humano en Salud (PPTX)</a></li>
+    </ul>
+  </div>
+</div>
+
+<h3><i class="fa-solid fa-fw fa-book" aria-hidden="true"></i> Glosario Terminológico Completo de la Unidad 2 (10 Términos)</h3>
+<table class="table table-striped mb-4">
+  <thead>
+    <tr>
+      <th scope="col">N°</th>
+      <th scope="col">Término Clave</th>
+      <th scope="col">Definición Académica Aplicada en Salud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Imponderables (\(2+2 \neq 4\))</strong></td>
+      <td>Contingencias emocionales, humanas y clínicas imprevistas que impiden aplicar fórmulas exactas en la gestión de personas y exigen rápida adaptabilidad.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Codificación Consciente</strong></td>
+      <td>Proceso mental deliberado mediante el cual el profesional emisor piensa, selecciona el lenguaje y estructura el mensaje adaptándolo a su interlocutor.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Perceptor Activo</strong></td>
+      <td>Interlocutor humano (paciente, familiar o colega) que percibe y decodifica el mensaje desde su subjetividad, en contraposición a un aparato receptor pasivo.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Decodificación</strong></td>
+      <td>Interpretación activa que realiza el perceptor sobre el mensaje recibido a través del filtro de su edad, cultura, nivel socioeconómico y vivencias.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>Condicionantes Comunicacionales</strong></td>
+      <td>Factores etarios, socioculturales, educativos, emocionales y prejuicios que determinan cómo un perceptor comprende una indicación o diagnóstico.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>Comunicación Eficaz</strong></td>
+      <td>Logro comunicacional que se alcanza cuando el perceptor interpreta el mensaje exactamente con la misma intención con que lo emitió el profesional.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><strong>Equipo de Trabajo Asistencial</strong></td>
+      <td>Conjunto de profesionales con habilidades complementarias que actúan con cohesión, meta común y responsabilidad colectiva (paradigma del quirófano).</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><strong>Liderazgo Situacional</strong></td>
+      <td>Capacidad de guiar, motivar e influir adaptando el estilo directivo a cada situación y equipo, sin emplear fuerza ni coerción.</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td><strong>Persuasión</strong></td>
+      <td>Habilidad de lograr que los colaboradores o pacientes adhieran a una conducta u objetivo por convicción argumentativa y confianza.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td><strong>Empatía Genuina</strong></td>
+      <td>Competencia directiva de ponerse en el lugar del otro para tomar decisiones justas y eficaces sin caer en la permisividad ni perder la autoridad.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><i class="fa-solid fa-fw fa-circle-question" aria-hidden="true"></i> 20 Preguntas Frecuentes (FAQs) sobre Comunicación, Equipos y Liderazgo en Salud</h3>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">1. ¿Por qué sostiene la Lic. Carla Nani que en recursos humanos «dos más dos nunca es cuatro»?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque tanto en la clínica médica como en la conducción de personas trabajamos con seres humanos sujetos a emociones, crisis e imponderables que alteran cualquier programación lineal, exigiendo flexibilidad constante.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">2. ¿En qué se diferencia sustancialmente un «receptor pasivo» de un «perceptor»?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Un receptor es un dispositivo mecánico (como un buzón de voz telefónico) que reproduce el mensaje tal cual fue grabado sin darle sentido propio. Una persona es siempre un perceptor porque filtra, interpreta y decodifica desde su historia y contexto.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">3. Si ocurre un malentendido al dar una indicación médica a un paciente o familiar, ¿de quién es la responsabilidad primaria?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">La responsabilidad recae siempre en el profesional emisor. Nosotros somos los especialistas formados para diagnosticar las características del perceptor y codificar el mensaje de modo comprensible.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">4. ¿Por qué es un error decir «yo soy así y explico el diagnóstico siempre de la misma manera con dibujos y tecnicismos»?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque desconoce que cada perceptor tiene condicionantes distintos (un paciente de 70 años no decodifica igual que uno de 20). Mantener un discurso único e inflexible garantiza el fracaso de la comunicación clínica.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">5. ¿Qué importancia tiene la comunicación no verbal en la relación con pacientes y colegas?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Es determinante: los gestos, el contacto visual y la postura revelan de inmediato la apertura o el rechazo y permiten detectar si el perceptor está comprendiendo el mensaje o atraviesa un bloqueo de angustia.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">6. ¿Por qué la mera suma de residentes en una sala no constituye automáticamente un «equipo de trabajo»?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque pueden funcionar apenas como un grupo donde cada uno responde individualmente por su tarea o se agrupa por afinidad amistosa. El equipo requiere complementariedad técnica, cohesión y responsabilidad colectiva por el paciente.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">7. ¿Por qué el quirófano es considerado el mejor paradigma de equipo de trabajo en salud?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque integra especialidades diversas (cirujano, anestesiólogo, instrumentador, enfermería, limpieza) donde cada integrante conoce y ejecuta su rol de forma natural y coordinada detrás de un único objetivo común: sacar adelante al paciente.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">8. ¿Qué significa que en un equipo de trabajo eficaz «las jerarquías se diluyen»?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Significa que, aunque la autoridad máxima conserva la responsabilidad institucional última, durante la acción asistencial cada especialista domina su faceta técnica y sus decisiones son respaldadas y valoradas horizontalmente por todo el equipo.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">9. ¿Puede delegarse totalmente la responsabilidad final cuando se conduce un servicio hospitalario?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Se delegan las tareas y funciones operativas para empoderar al equipo, pero la responsabilidad última de conducción de la autoridad máxima no se deslinda; por eso en un verdadero equipo las decisiones se sostienen solidariamente.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">10. ¿Qué diferencia existe entre persuadir y ejercer coerción en la conducción de personas?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Persuadir es lograr que el colaborador adhiera o cambie de actitud por convicción y solidez de argumentos; la coerción apela al miedo, la sanción o la fuerza bruta, destruyendo la motivación interna.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">11. ¿El líder nace o se hace según el enfoque trabajado en la cátedra?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Aunque existen personas con carisma y predisposición innata, el liderazgo es fundamentalmente situacional y sus competencias clave (escucha activa, comunicación asertiva, delegación, empatía) se entrenan y desarrollan profesionalmente.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">12. ¿Cómo se distingue un «líder positivo» de un «líder negativo» dentro de una residencia?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">El líder positivo comparte información, enseña y empodera a sus compañeros para que crezcan en pos del equipo; el líder negativo utiliza su capacidad de influencia con egoísmo, oculta información para volverse indispensable y prioriza su beneficio personal.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">13. ¿Cuál es el límite concreto entre la empatía genuina y la permisividad directiva?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">La empatía genuina escucha y comprende la situación personal del profesional para reorganizar el trabajo sin descuidar la calidad asistencial; la permisividad dice a todo que sí por temor al conflicto, provocando anarquía e injusticia en el equipo.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">14. ¿Qué debe hacer un líder empático si un miembro del equipo atraviesa una crisis familiar aguda que afecta su concentración?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Hablar con honestidad y transparencia, contenerlo emocionalmente y reasignar de manera transitoria las tareas de alto riesgo a otro colega del equipo, explicándole que se lo cuida tanto a él como a la seguridad del paciente.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">15. ¿Cómo se aplica la Pirámide de Necesidades de Maslow para motivar a médicos residentes y enfermeros?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Comprendiendo que el talento humano necesita satisfacer escalones superiores de pertenencia al equipo, reconocimiento explícito por el trabajo bien hecho, confianza y oportunidades reales de desarrollo académico.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">16. ¿Por qué la «incapacidad de delegar» es una de las causas más frecuentes de fracaso de un jefe de servicio?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque satura operativamente al jefe, le impide pensar estratégicamente y transmite desconfianza hacia los residentes y colaboradores, bloqueando su autonomía y crecimiento profesional.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">17. ¿Qué consecuencias genera un líder que toma decisiones impulsivas en momentos de tensión hospitalaria?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Multiplica la incertidumbre del equipo, comete errores de diagnóstico organizacional por no escuchar las voces técnicas del servicio y erosiona la confianza psicológica de sus colaboradores.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">18. ¿Por qué el estilo autocrático fracasa sistemáticamente en la conducción de equipos interdisciplinarios de salud?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">Porque anula el aporte de las especialidades complementarias, silencia las alertas tempranas de seguridad y convierte a un potencial equipo cohesivo en un grupo sumiso o defensivo.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-2">
+  <div class="card-body">
+    <h4 class="card-title">19. ¿Cómo se articula la comunicación asertiva en el pase de guardia entre distintos niveles de residencia?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">El residente superior o jefe de guardia (emisor) debe estructurar la información sin dar por supuestos implícitos y verificar activamente cómo decodificó la indicación el residente entrante (perceptor), promoviendo preguntas sin temor a represalias.</p>
+    </details>
+  </div>
+</div>
+
+<div class="card bg-light mb-4">
+  <div class="card-body">
+    <h4 class="card-title">20. ¿Cómo se integran los aprendizajes de la Unidad 1 (Dra. Salomón) y la Unidad 2 (Lic. Nani) en la práctica diaria?</h4>
+    <details>
+      <summary>Ver respuesta fundamentada</summary>
+      <p class="mt-2 mb-0">La identidad y cultura institucional (Unidad 1: SER, HACER y ESTAR) cobran vida real a través de la comunicación eficaz centrada en el perceptor, el trabajo en equipo con lógica de quirófano y el liderazgo situacional empático (Unidad 2).</p>
+    </details>
+  </div>
+</div>
+
+<h3><i class="fa-solid fa-fw fa-book" aria-hidden="true"></i> Bibliografía y Fuentes Oficiales de la Unidad 2</h3>
+<div class="card border-secondary">
+  <div class="card-body">
+    <ul class="mb-0">
+      <li><strong>Nani, C. (2024).</strong> <em>Módulo 4: Video 2. Gestión de Personas, Comunicación, Motivación, Trabajo en Equipo y Liderazgo Situacional</em> [Videoclase magistral y material de cátedra]. Programa de Capacitación en Competencias Transversales para Residencias del Equipo de Salud, Ministerio de Salud y Deportes de Mendoza.</li>
+      <li><strong>Maslow, A. H. (1943).</strong> <em>A Theory of Human Motivation</em>. Psychological Review (Jerarquía de necesidades humanas aplicada a la motivación y reconocimiento del talento en organizaciones).</li>
+      <li><strong>Hersey, P., &amp; Blanchard, K. H. (1982).</strong> <em>Management of Organizational Behavior: Utilizing Human Resources</em> (Fundamentos del Liderazgo Situacional y adaptación del estilo de conducción al contexto y madurez del equipo).</li>
+      <li><strong>Ministerio de Salud y Deportes de Mendoza — ESALUD.</strong> <em>Programa Académico Oficial del Curso 3: Gestión de Personas y Talento Humano en Salud (Circular N° 5)</em>.</li>
+    </ul>
+  </div>
+</div>
+        </div>
+
+        <!-- 3. LA PRÁCTICA U2 -->
+        <div class="moodle-activity-box" id="sec-u2-practica">
+          <div class="moodle-activity-header">
+            <h4 class="mb-0 text-success"><i class="fa-solid fa-puzzle-piece mr-2"></i> Página Moodle: 3. La Práctica + Cuestionario Gamificado (Unidad 2)</h4>
+            <div>
+              <a href="09_u2_la_practica.html" target="_blank" class="btn btn-sm btn-outline-success mr-1">Abrir Página 09</a>
+              <a href="10_u2_conecta_bloques_y_trivia.html" target="_blank" class="btn btn-sm btn-success">Abrir Cuestionario 10 (Conecta Bloques + Trivia U2)</a>
+            </div>
+          </div>
+          <h3><i class="fa-solid fa-fw fa-puzzle-piece" aria-hidden="true"></i> 3. La Práctica: Comunicación, Equipos y Liderazgo en Acción</h3>
+<p><span class="badge badge-primary">Etapa 3 del Modelo Tripartito</span> <span class="badge badge-success">Conecta Bloques + Trivia + Caso UTI</span></p>
+
+<div class="alert alert-warning">
+  <h4><i class="fa-solid fa-fw fa-triangle-exclamation" aria-hidden="true"></i> Importante: Consigna Orientadora Obligatoria</h4>
+  <p class="mb-0">Esta actividad práctica se resuelve integrando los conceptos de la videoclase magistral de la Lic. Carla Nani, el video short microlearning y las tres lecturas teóricas de la Unidad 2. Analizá el proceso de comunicación reconociendo al interlocutor como un <strong>perceptor activo</strong> y evaluá la dinámica de tu servicio bajo el <strong>paradigma del quirófano</strong> y el <strong>liderazgo situacional</strong>.</p>
+</div>
+
+<h3>Ficha de Desafíos Interactivos de la Unidad 2</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Desafío</th>
+      <th scope="col">Objetivo de Aprendizaje</th>
+      <th scope="col">Modalidad en el Aula</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Conecta Bloques (8 pares)</strong></td>
+      <td>Unir los 8 conceptos clave de la Unidad 2 (Factor humano \(2+2 \neq 4\), Emisor, Perceptor, Equipo, Grupo, Quirófano, Liderazgo Situacional y Empatía) con sus definiciones.</td>
+      <td>Actividad interactiva de emparejamiento / Paquete SCORM <code>u2_conecta_bloques_SCORM.zip</code></td>
+    </tr>
+    <tr>
+      <td><strong>2. Trivia Gamificada Unidad 2</strong></td>
+      <td>Superar 10 situaciones prácticas sobre comunicación asertiva, equipos y causas de fracaso directivo sin numeración rígida.</td>
+      <td>Cuestionario formativo con intentos ilimitados / Paquete SCORM <code>u2_trivia_SCORM.zip</code></td>
+    </tr>
+    <tr>
+      <td><strong>3. Caso Situado en UTI</strong></td>
+      <td>Resolver una crisis de comunicación en el pase de guardia y liderazgo autocrático en Terapia Intensiva.</td>
+      <td>Análisis situado con rúbrica de evaluación de 3 criterios.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Caso Situado de Gestión Hospitalaria: Falla Comunicacional y Liderazgo Autocrático en UTI</h3>
+<div class="card border-primary mb-3">
+  <div class="card-body">
+    <h4 class="card-title text-primary">Escenario Clínico-Institucional</h4>
+    <p class="card-text">En la Unidad de Terapia Intensiva (UTI) se registraron cuatro eventos adversos vinculados a la entrega de guardia en el último mes. El Jefe de Servicio ejerce un estilo <strong>autocrático e impulsivo</strong>: impone directivas sin escuchar a enfermería ni a los residentes. Durante el pase de sala emite indicaciones rápidas con siglas ambiguas sin corroborar cómo las decodifican los residentes de primer año (tratándolos como receptores pasivos en vez de <strong>perceptores</strong>). Ante el último evento adverso, sancionó individualmente al residente saliente, quebrando la cohesión del servicio.</p>
+    <details>
+      <summary>Ver guía de resolución sugerida</summary>
+      <p class="mt-2 mb-0"><strong>Claves de intervención:</strong> 1) Reformular el pase de guardia desde la responsabilidad del emisor, verificando la decodificación de cada perceptor. 2) Migrar de la lógica de grupo fragmentado (culpa individual) a la de equipo interdependiente como el quirófano (responsabilidad compartida y respaldo mutuo). 3) Adoptar un liderazgo situacional que escuche activamente, delegue con formación y empodere según las necesidades de pertenencia y estima (Maslow).</p>
+    </details>
+  </div>
+</div>
+
+<h3>Rúbrica Analítica de Evaluación del Caso (Unidad 2)</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Criterio</th>
+      <th scope="col">Excelente (4 pts)</th>
+      <th scope="col">Satisfactorio (3 pts)</th>
+      <th scope="col">En Proceso (2 pts)</th>
+      <th scope="col">Inicial (1 pt)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Esquema Emisor-Perceptor</strong></td>
+      <td>Fundamenta la diferencia entre receptor y perceptor, identifica los condicionantes de los residentes y asigna la responsabilidad comunicacional al emisor.</td>
+      <td>Reconoce el rol del perceptor y propone mejoras en la claridad del pase de guardia.</td>
+      <td>Menciona problemas de comunicación general sin aplicar las categorías de codificación, decodificación y condicionantes.</td>
+      <td>Trata la comunicación como una transmisión mecánica unidireccional.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Transición de Grupo a Equipo (Quirófano)</strong></td>
+      <td>Aplica el paradigma del quirófano para restituir la complementariedad interdisciplinaria y la corresponsabilidad colectiva en la UTI.</td>
+      <td>Distingue grupo de equipo y sugiere integrar a enfermería y residentes en la toma de decisiones.</td>
+      <td>Define teóricamente al equipo pero mantiene un enfoque de responsabilidad exclusivamente individual.</td>
+      <td>Convalida la fragmentación del servicio y el castigo aislado.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Liderazgo Situacional y Prevención del Fracaso</strong></td>
+      <td>Diagnostica las causas de fracaso (autocracia, falta de escucha, impulsividad) y diseña un plan basado en empatía genuina y Pirámide de Maslow.</td>
+      <td>Identifica los errores del jefe y propone incorporar escucha activa y delegación progresiva.</td>
+      <td>Critica el autoritarismo del jefe pero propone soluciones permisivas que diluyen la conducción.</td>
+      <td>No aplica los principios del liderazgo situacional ni la motivación del talento humano.</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: CIERRE Y EVALUACIÓN FINAL -->
+      <section class="moodle-section" id="sec-cierre">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge badge-warning px-3 py-2">SECCIÓN 3 • EVALUACIÓN FINAL INTEGRADORA Y CERTIFICACIÓN (DOBLE CANDADO)</span>
+          <div>
+            <a href="11_cierre_encabezado.html" target="_blank" class="btn btn-sm btn-outline-dark mr-1">Abrir Etiqueta 11</a>
+            <a href="12_examen_final_integrador.html" target="_blank" class="btn btn-sm btn-danger"><i class="fa-solid fa-award mr-1"></i> Abrir Examen Final Integrador (16 Casos Clínicos)</a>
+          </div>
+        </div>
+        <p><img src="../../img/banner_cierre_evaluacion.png" alt="Banner de Evaluación Final Integradora y Certificación de 30 Horas" class="img-fluid rounded-lg mb-3"></p>
+
+<h3><i class="fa-solid fa-fw fa-star" aria-hidden="true"></i> Evaluación Final Integradora y Certificación Oficial (30 Horas Reloj)</h3>
+<p><span class="badge badge-warning">Sistema de Doble Candado Automatizado</span> <span class="badge badge-primary">Circular N° 5 ESALUD</span></p>
+
+<div class="alert alert-warning">
+  <h4><i class="fa-solid fa-fw fa-list-check" aria-hidden="true"></i> Requisitos de Acreditación y Desbloqueo del Certificado</h4>
+  <ul class="mb-0">
+    <li><strong>Condición Preliminar (Candado Académico):</strong> Haber completado las actividades de lectura y práctica gamificada de la Unidad 1 y la Unidad 2.</li>
+    <li><strong>Condición 1 (Examen Final Integrador):</strong> Aprobar el cuestionario sumativo integrador de 16 casos clínico-institucionales con una calificación <strong>mayor o igual al 70%</strong> (máximo 2 intentos permitidos, computándose la nota más alta).</li>
+    <li><strong>Condición 2 (Encuesta de Calidad Educativa):</strong> Completar la encuesta institucional obligatoria de satisfacción y mejora continua para habilitar la descarga automática del Certificado Oficial por <strong>30 Horas Reloj</strong>.</li>
+  </ul>
+</div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

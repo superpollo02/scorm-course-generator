@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo 3: Governance e controlli minimi - EU AI Act: essentials e azioni pratiche per PMI</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scorm_api.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Modulo 3: Governance e controlli minimi</h1>
+            <div class="subtitle">EU AI Act: essentials e azioni pratiche per PMI</div>
+            <div class="progress-indicator">30-35 minuti</div>
+        </div>
+
+        <div class="content">
+            <h1>Modulo 3: Governance e controlli minimi</h1>
+
+<strong>Durata:</strong> 30-35 minuti
+
+<strong>Obiettivi del modulo:</strong>
+<ul>
+<li>Implementare una AI policy aziendale conforme all'AI Act</li>
+<li>Gestire dataset e mitigare bias nei sistemi AI</li>
+<li>Stabilire meccanismi di trasparenza e registri AI</li>
+<li>Applicare human oversight e valutazioni d'impatto (DPIA/IAIA)</li>
+<li>Raggiungere 70% nel quiz sommativo su governance AI</li>
+</ul>
+
+<hr>
+
+<h2>Introduzione al Modulo</h2>
+
+Nei Moduli 1 e 2 hai imparato <strong>cosa</strong> dice l'AI Act e <strong>come classificare</strong> i tuoi sistemi AI. Ora è il momento di passare all'azione: <strong>come implementare i controlli di governance minimi</strong> richiesti dalla normativa.
+
+Questo modulo è il più operativo del corso. Ti fornisce:
+<ul>
+<li><strong>Template pronti all'uso</strong> (AI policy, registri, checklist)</li>
+<li><strong>Istruzioni passo-passo</strong> per ciascun controllo</li>
+<li><strong>Esempi già compilati</strong> da PMI italiane fittizie</li>
+</ul>
+
+<p>Alla fine del modulo completerai un <strong>quiz sommativo</strong> (10 domande, soglia 70%) che certifica la tua comprensione. Superare questo quiz è obbligatorio per accedere al Modulo 4 (Piano 90 giorni).</p>
+
+<strong>Tempo di lettura:</strong> 18-20 minuti | <strong>Quiz finale:</strong> 12-15 minuti
+
+<hr>
+
+<h2>3.1 AI Policy Aziendale</h2>
+
+<h3>Cos'è e perché serve</h3>
+
+Una <strong>AI policy</strong> è un documento interno (1-2 pagine) che definisce le regole aziendali per l'uso di intelligenza artificiale. È il tuo "manuale operativo" che risponde a domande chiave:
+<ul>
+<li>Chi può approvare l'acquisto di nuovi tool AI?</li>
+<li>Come valutiamo i rischi di un sistema AI prima di usarlo?</li>
+<li>Quali principi etici guidano il nostro uso di AI?</li>
+<li>Cosa facciamo se un sistema AI causa un problema (incident management)?</li>
+</ul>
+
+<strong>Perché è importante:</strong>
+<ul>
+<li><strong>Compliance AI Act:</strong> Dimostra che hai un framework di governance (richiesto per sistemi ad alto rischio).</li>
+<li><strong>Gestione rischio:</strong> Previene uso improprio di AI che potrebbe danneggiare l'azienda (legal, reputazione, operativo).</li>
+<li><strong>Chiarezza interna:</strong> Tutti sanno cosa è permesso e cosa no (evita zona grigia).</li>
+</ul>
+
+<h3>Cosa deve contenere (5 punti chiave)</h3>
+
+<strong>1. Principi etici e valori aziendali</strong>
+
+Dichiara i valori che guidano l'uso di AI nella tua azienda. Esempio:
+
+<blockquote><strong>Principi guida:</strong></blockquote>
+<blockquote>- <strong>Trasparenza:</strong> Siamo chiari con dipendenti e clienti quando usiamo AI.</blockquote>
+<blockquote>- <strong>Fairness:</strong> I nostri sistemi AI non discriminano persone in base a genere, età, etnia, disabilità.</blockquote>
+<blockquote>- <strong>Privacy:</strong> Proteggiamo i dati personali e rispettiamo GDPR in ogni uso di AI.</blockquote>
+<blockquote>- <strong>Supervisione umana:</strong> Le decisioni critiche su persone sono sempre prese da umani, non da AI.</blockquote>
+<blockquote>- <strong>Responsabilità:</strong> Identifichiamo sempre un responsabile umano per ciascun sistema AI.</blockquote>
+
+<strong>2. Ruoli e responsabilità</strong>
+
+Definisci chi fa cosa. Esempio tabella:
+
+<table>
+<thead>
+<tr>
+<th><strong>Ruolo</strong></th>
+<th><strong>Responsabilità AI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CEO / Board</strong></td>
+<td>Approva AI policy, budget per conformità, sponsorizza cultura AI responsabile</td>
+</tr>
+<tr>
+<td><strong>AI Owner / Compliance</strong></td>
+<td>Coordina conformità AI Act, mantiene registro AI, conduce valutazioni rischio</td>
+</tr>
+<tr>
+<td><strong>IT / Data</strong></td>
+<td>Gestisce infrastruttura AI, dataset quality, log sistemi, sicurezza</td>
+</tr>
+<tr>
+<td><strong>Legal</strong></td>
+<td>Redige policy, contratti vendor, coordina DPIA, gestisce incident legali</td>
+</tr>
+<tr>
+<td><strong>DPO</strong></td>
+<td>Valuta conformità GDPR + AI Act, approva DPIA, audit privacy</td>
+</tr>
+<tr>
+<td><strong>Manager funzioni</strong></td>
+<td>Responsabili uso AI nelle loro aree (HR, marketing, operations), training team</td>
+</tr>
+</tbody>
+</table>
+
+<strong>3. Processo approvazione nuovi sistemi AI</strong>
+
+<p>Stabilisci un workflow chiaro per introdurre nuovi tool AI. Esempio:</p>
+
+<blockquote><strong>Procedura approvazione:</strong></blockquote>
+<blockquote>1. <strong>Richiesta:</strong> Manager funzione compila "scheda proposta AI" (descrive tool, fornitore, uso previsto)</blockquote>
+<blockquote>2. <strong>Classificazione rischio:</strong> IT + Compliance classificano sistema nelle 4 categorie AI Act</blockquote>
+<blockquote>3. <strong>Valutazione:</strong></blockquote>
+<blockquote>   - Se <strong>alto rischio</strong> → DPIA obbligatoria + approvazione CEO/Board</blockquote>
+<blockquote>   - Se <strong>rischio limitato</strong> → Valutazione rapida + approvazione Compliance</blockquote>
+<blockquote>   - Se <strong>rischio minimo</strong> → Approvazione Manager + notifica IT</blockquote>
+<blockquote>4. <strong>Contratto vendor:</strong> Legal negozia clausole AI Act</blockquote>
+<blockquote>5. <strong>Go-live:</strong> Solo dopo completamento step 1-4 e training utenti</blockquote>
+
+<strong>4. Gestione rischi e incidenti</strong>
+
+Definisci cosa fare se qualcosa va storto. Esempio:
+
+<blockquote><strong>Incident AI (cosa considerare incidente):</strong></blockquote>
+<blockquote>- Decisione AI errata che danneggia una persona (es. candidato scartato ingiustamente)</blockquote>
+<blockquote>- Bias rilevato in sistema già in uso (es. AI discrimina donne)</blockquote>
+<blockquote>- Violazione dati personali tramite sistema AI</blockquote>
+<blockquote>- Malfunzionamento tecnico con impatto operativo significativo</blockquote>
+>
+<blockquote><strong>Procedura incident:</strong></blockquote>
+<blockquote>1. Chi rileva problema notifica immediatamente AI Owner + Manager funzione</blockquote>
+<blockquote>2. AI Owner valuta gravità (critico/medio/basso)</blockquote>
+<blockquote>3. Se critico: sospendi uso sistema, notifica DPO/Legal, analisi root cause</blockquote>
+<blockquote>4. Documenta incident in registro (data, sistema, descrizione, azioni correttive)</blockquote>
+<blockquote>5. Se necessario, notifica autorità (Garante Privacy, autorità AI Act nazionale)</blockquote>
+
+<strong>5. Formazione e awareness</strong>
+
+Impegno a formare il personale. Esempio:
+
+<blockquote><strong>Piano formazione:</strong></blockquote>
+<blockquote>- <strong>Tutti i dipendenti:</strong> Awareness generale AI Act (30 min, annuale)</blockquote>
+<blockquote>- <strong>Manager e utenti AI:</strong> Training specifico su uso responsabile tool AI (60 min, annuale)</blockquote>
+<blockquote>- <strong>Team compliance/IT/Legal:</strong> Workshop approfondito su governance AI (mezza giornata, annuale)</blockquote>
+<blockquote>- <strong>Nuovi assunti:</strong> AI policy inclusa in onboarding</blockquote>
+
+<h3>Template policy (esempio outline 1 pagina)</h3>
+
+<pre><code>
+POLICY AZIENDALE - USO INTELLIGENZA ARTIFICIALE
+
+1. SCOPO E AMBITO
+   Questa policy regola l'uso di sistemi di intelligenza artificiale in [Nome Azienda],
+   garantendo conformità all'EU AI Act e promuovendo uso responsabile.
+
+2. PRINCIPI GUIDA
+   - Trasparenza
+   - Fairness
+   - Privacy
+   - Supervisione umana
+   - Responsabilità
+
+3. RUOLI E RESPONSABILITÀ
+   [Tabella come sopra]
+
+4. PROCESSO APPROVAZIONE NUOVI SISTEMI AI
+   [Workflow come sopra]
+
+5. SISTEMI AD ALTO RISCHIO - REQUISITI SPECIALI
+   - Human oversight obbligatorio
+   - DPIA prima di go-live
+   - Trasparenza verso utenti
+   - Registro decisioni
+   - Audit annuale
+
+6. GESTIONE INCIDENTI
+   [Procedura come sopra]
+
+7. FORMAZIONE
+   [Piano formazione come sopra]
+
+8. REVISIONE POLICY
+   Questa policy è rivista annualmente o quando cambiano normative/sistemi aziendali.
+   Responsabile: AI Owner / Compliance
+
+Data approvazione: [Data]
+Approvata da: [CEO / Board]
+Versione: 1.0
+</code></pre>
+
+<h3>Chi approva la policy</h3>
+
+<strong>Raccomandazione:</strong> CEO o Board (massimo livello aziendale) per dare peso e sponsorship.
+
+<strong>Processo:</strong> Legal + Compliance redigono bozza → Consultazione manager funzioni → Approvazione formale CEO/Board → Comunicazione dipendenti.
+
+<h3>Frequenza revisione</h3>
+
+<strong>Minimo annuale.</strong> Oppure quando:
+<ul>
+<li>Introduci un nuovo sistema AI ad alto rischio</li>
+<li>Cambia la normativa (es. linee guida nazionali AI Act)</li>
+<li>Dopo un incident grave</li>
+</ul>
+
+<hr>
+
+<strong>🔹 Domanda in-line 1:</strong>
+
+<strong>Chi deve approvare formalmente la AI policy aziendale?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Il team IT</li>
+<li>B) Il CEO o Board</li>
+<li>C) Il fornitore del software AI</li>
+<li>D) Ogni singolo manager di funzione</li>
+</ul>
+
+<strong>Risposta corretta:</strong> B
+
+<strong>Feedback corretto:</strong> ✓ Giusto! La AI policy deve essere approvata al massimo livello aziendale (CEO/Board) per garantire sponsorship e autorevolezza.
+
+<strong>Feedback errato:</strong> ✗ La AI policy deve essere approvata da <strong>CEO o Board</strong>, non da IT o manager di funzione. Questo garantisce che la policy abbia peso aziendale e risorse dedicate. IT e manager possono contribuire alla redazione, ma l'approvazione formale è top-down.
+
+<hr>
+
+<h2>3.2 Dataset Quality e Mitigazione Bias</h2>
+
+<h3>Perché i dataset sono critici</h3>
+
+L'AI Act richiede che i dataset usati per training o input di sistemi AI siano:
+<ul>
+<li><strong>Di qualità:</strong> Accurati, completi, aggiornati</li>
+<li><strong>Rappresentativi:</strong> Coprono tutte le categorie rilevanti (no campioni squilibrati)</li>
+<li><strong>Privi di bias:</strong> Non contengono discriminazioni illegali nascoste</li>
+</ul>
+
+<strong>Esempio pratico:</strong> Se usi AI per recruitment e il dataset contiene solo CV di uomini, l'AI impara che "candidato ideale = uomo" → discrimina donne → violazione AI Act + rischio legal.
+
+<h3>Come identificare bias (3 tipi con esempi)</h3>
+
+<strong>1. Bias nei dati storici</strong>
+
+<strong>Definizione:</strong> I dati riflettono discriminazioni del passato.
+
+<strong>Esempio:</strong> Negli ultimi 10 anni la tua azienda ha assunto solo 5% di donne in ruoli tecnici (perché riceveva pochi CV femminili o per bias inconsci recruiter). Se alleni un AI su questi dati, l'AI impara che "donna = meno adatta a ruoli tecnici".
+
+<strong>Come rilevare:</strong>
+<ul>
+<li>Analisi demografica dataset: Conta quante donne/uomini, giovani/senior, nazionalità diverse.</li>
+<li>Se una categoria è sotto-rappresentata (<10-15%), rischio bias alto.</li>
+</ul>
+
+<strong>2. Bias di selezione</strong>
+
+<strong>Definizione:</strong> Il campione di dati non rappresenta la popolazione reale.
+
+<strong>Esempio:</strong> Usi AI per credit scoring allenata solo su clienti attuali (che già hanno superato approvazione umana). L'AI non ha mai visto candidati rifiutati → non sa riconoscere rischi reali → approva troppi prestiti o rifiuta troppi.
+
+<strong>Come rilevare:</strong>
+<ul>
+<li>Chiedi: "Il dataset copre TUTTE le situazioni che il sistema incontrerà?" Se no, bias di selezione.</li>
+<li>Confronta distribuzione dataset vs distribuzione popolazione target.</li>
+</ul>
+
+<strong>3. Bias di misurazione</strong>
+
+<strong>Definizione:</strong> Usi proxy variables (variabili indirette) che correlano con categorie protette.
+
+<strong>Esempio:</strong> L'AI valuta candidati in base a "università frequentata". Ma se solo università costose sono considerate top, l'AI discrimina indirettamente candidati da famiglie a basso reddito → correlazione con status socioeconomico (categoria protetta).
+
+<strong>Come rilevare:</strong>
+<ul>
+<li>Identifica variabili input: Quali features usa l'AI?</li>
+<li>Chiedi: "Questa feature può correlate con genere/etnia/disabilità/età?" Se sì, rischio bias.</li>
+</ul>
+
+<h3>Tecniche pratiche di mitigazione (4 tecniche)</h3>
+
+<strong>1. Audit dataset pre-training</strong>
+
+<strong>Cosa fare:</strong>
+<ul>
+<li>Prima di usare un dataset per training AI, conduci analisi statistica:</li>
+</ul>
+<p>- Distribuzione demografica (genere, età, nazionalità se rilevanti)</p>
+<p>- Missing data (campi vuoti, errori)</p>
+<p>- Outlier (valori anomali che possono distorcere AI)</p>
+<ul>
+<li><strong>Tool:</strong> Excel per dataset piccoli (<1000 righe), Python (pandas) per grandi.</li>
+</ul>
+
+<strong>Tempo:</strong> 2-4 ore per dataset medio (1000-10000 righe).
+
+<strong>2. Diversificazione fonti dati</strong>
+
+<strong>Cosa fare:</strong>
+<ul>
+<li>Non usare un'unica fonte. Esempio recruitment: Non solo LinkedIn (bias verso certi profili), ma anche altre piattaforme, candidature dirette, università.</li>
+<li>Mix dataset storici con dataset "bilanciati artificialmente" (es. aggiungi CV femminili se sotto-rappresentate).</li>
+</ul>
+
+<strong>Attenzione:</strong> Bilanciamento artificiale deve essere fatto con cautela per non distorcere AI in direzione opposta.
+
+<strong>3. Test su sottogruppi (fairness testing)</strong>
+
+<strong>Cosa fare:</strong>
+<ul>
+<li>Dopo training AI, testa performance su sottogruppi demografici separati.</li>
+<li>Esempio: Se l'AI ha accuracy 90% su uomini ma 70% su donne, c'è bias.</li>
+<li>Calcola metriche fairness:</li>
+</ul>
+<p>- <strong>Equal opportunity:</strong> Tasso approvazione simile per tutti i gruppi (a parità di qualifiche)</p>
+<p>- <strong>Calibration:</strong> AI non sovrastima/sottostima sistematicamente un gruppo</p>
+
+<strong>Tool:</strong> Python (fairlearn, AIF360), o chiedi al vendor software di fornirti report fairness.
+
+<strong>Tempo:</strong> 4-8 ore (prima volta), poi automatizzabile.
+
+<strong>4. Monitoraggio continuo output</strong>
+
+<strong>Cosa fare:</strong>
+<ul>
+<li>Non fidarti solo del training. Monitora output AI in produzione:</li>
+</ul>
+<p>- Ogni mese, analizza decisioni AI: % approvazioni per genere, età, etc.</p>
+<p>- Se noti drift (es. AI inizia a scartare più donne del solito), investiga subito.</p>
+<ul>
+<li><strong>Alert:</strong> Imposta soglie (es. "se % approvazioni donne scende sotto 40%, alert automatico").</li>
+</ul>
+
+<strong>Tool:</strong> Dashboard Excel o BI tool (Power BI, Tableau) con grafici.
+
+<h3>Checklist: "Il tuo dataset è AI Act-compliant?"</h3>
+
+Usa questa checklist prima di usare un dataset per AI ad alto rischio:
+
+<ul>
+<li>[ ] <strong>Qualità:</strong> Dataset aggiornato (ultimi 1-2 anni, non 10 anni fa)</li>
+<li>[ ] <strong>Completezza:</strong> Meno del 10% di dati mancanti per campi critici</li>
+<li>[ ] <strong>Rappresentatività:</strong> Copre almeno 3 categorie demografiche rilevanti (genere, età, provenienza se applicabile)</li>
+<li>[ ] <strong>No bias evidente:</strong> Nessuna categoria sotto-rappresentata (<15%) senza giustificazione</li>
+<li>[ ] <strong>Fonti diverse:</strong> Dati provengono da almeno 2 fonti indipendenti</li>
+<li>[ ] <strong>Audit bias condotto:</strong> Hai fatto analisi statistica o fairness test</li>
+<li>[ ] <strong>Documentazione:</strong> Hai documentato origine dati, pre-processing, eventuali bias noti</li>
+<li>[ ] <strong>Consenso GDPR:</strong> Se dati personali, hai consenso/base legale per uso AI</li>
+</ul>
+
+<strong>Punteggio:</strong> 8/8 = Ottimo | 6-7/8 = Buono | <6 = Rischio alto, migliora prima di usare.
+
+<hr>
+
+<strong>🔹 Domanda in-line 2:</strong>
+
+<strong>Il tuo dataset di recruitment include solo CV degli ultimi 5 anni, tutti da LinkedIn. Quale bias potrebbe esserci?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Bias di misurazione (proxy variables)</li>
+<li>B) Bias di selezione (campione non rappresentativo)</li>
+<li>C) Bias nei dati storici (discriminazioni passate)</li>
+<li>D) Nessun bias, LinkedIn è una fonte affidabile</li>
+</ul>
+
+<strong>Risposta corretta:</strong> B
+
+<strong>Feedback corretto:</strong> ✓ Esatto! Usare solo LinkedIn crea <strong>bias di selezione</strong>: LinkedIn ha demografia specifica (più uomini in tech, più senior, certe nazionalità). Non rappresenta tutti i candidati potenziali (chi non usa LinkedIn, chi usa altre piattaforme, candidati junior). Devi diversificare le fonti.
+
+<strong>Feedback errato:</strong> ✗ Il problema principale è <strong>bias di selezione</strong>. LinkedIn non è un campione rappresentativo di tutti i candidati: ha più uomini in certi settori, più profili senior, certi background formativi. Se alleni AI solo su LinkedIn, escluderai candidati validi da altre fonti. <strong>Soluzione:</strong> Diversifica fonti (InfoJobs, Indeed, candidature dirette, università).
+
+<hr>
+
+<h2>3.3 Trasparenza e Informazione Utenti</h2>
+
+<h3>Obbligo trasparenza per sistemi a rischio limitato</h3>
+
+Se usi AI che <strong>interagisce con utenti</strong> (chatbot, assistenti virtuali) o <strong>genera contenuti</strong> (testi, immagini, video), devi informare gli utenti che si tratta di AI.
+
+<strong>Come farlo (3 esempi pratici):</strong>
+
+<strong>1. Disclaimer chatbot</strong>
+
+Sul widget del chatbot, aggiungi testo chiaro:
+
+<blockquote>"Ciao! Sono un assistente virtuale basato su intelligenza artificiale. Sono qui per rispondere alle tue domande. Se preferisci parlare con un operatore umano, scrivimi 'operatore'."</blockquote>
+
+<strong>Dove:</strong> Prima frase del chatbot, oppure intestazione widget.
+
+<strong>Tempo implementazione:</strong> 10-15 minuti (modifica configurazione chatbot).
+
+<strong>2. Notice email/contenuti AI-generated</strong>
+
+Se usi AI per scrivere email marketing o contenuti pubblici:
+
+<strong>Opzione A (trasparenza totale):</strong>
+<blockquote>"Questa email è stata scritta con l'assistenza di intelligenza artificiale."</blockquote>
+
+<strong>Opzione B (disclosure footer):</strong>
+<blockquote>"Alcuni contenuti di questa comunicazione possono essere generati o supportati da AI."</blockquote>
+
+<strong>Dove:</strong> Footer email, disclaimer sito web, caption social media.
+
+<strong>Nota:</strong> Per email interne o documenti non critici, la disclosure è opzionale (rischio minimo). Per contenuti pubblici o marketing verso clienti, è consigliata.
+
+<strong>3. Watermark immagini/video AI-generated</strong>
+
+Se generi immagini o video con AI (Midjourney, DALL-E, Runway):
+
+<strong>Opzione A (watermark visivo):</strong>
+<ul>
+<li>Piccolo testo/logo in angolo: "AI-generated"</li>
+</ul>
+
+<strong>Opzione B (metadata):</strong>
+<ul>
+<li>Inserisci tag nei metadati file: "CreatedByAI: true"</li>
+</ul>
+
+<strong>Opzione C (caption):</strong>
+<ul>
+<li>Didascalia sotto immagine: "Immagine creata con intelligenza artificiale."</li>
+</ul>
+
+<strong>Dove:</strong> Prodotti, pubblicità, materiali marketing.
+
+<h3>Obbligo trasparenza per sistemi ad alto rischio</h3>
+
+Per sistemi che <strong>decidono su persone</strong> (recruitment, credit scoring, valutazione dipendenti), la trasparenza è più rigorosa.
+
+<strong>Cosa devi garantire:</strong>
+
+<strong>1. Spiegabilità decisioni automatizzate</strong>
+
+Se l'AI prende (o influenza) una decisione negativa su una persona, devi poter <strong>spiegare perché</strong> in linguaggio comprensibile.
+
+<strong>Esempio recruitment:</strong>
+
+<blockquote>"Gentile candidato, la tua candidatura non è stata selezionata per il colloquio. Il nostro sistema di screening AI ha valutato i CV ricevuti in base a: esperienza nel settore (peso 40%), competenze tecniche (peso 30%), formazione (peso 20%), soft skills (peso 10%). Il tuo punteggio è risultato insufficiente principalmente a causa di: esperienza <2 anni (richiesta minima 3 anni) e mancanza certificazione X (preferenziale). Hai diritto a chiedere una revisione umana entro 30 giorni."</blockquote>
+
+<strong>Cosa serve tecnicamente:</strong>
+<ul>
+<li>Il sistema AI deve fornire "spiegazione" (feature importance, decision rationale).</li>
+<li>Se usi black box totali (es. neural network complesse), implementa tool di explainability (SHAP, LIME).</li>
+</ul>
+
+<strong>2. Diritto a contestazione e intervento umano</strong>
+
+<p>L'utente deve poter:</p>
+<ul>
+<li><strong>Chiedere spiegazione:</strong> "Perché sono stato scartato?"</li>
+<li><strong>Contestare decisione:</strong> "Penso ci sia un errore, voglio revisione umana."</li>
+<li><strong>Parlare con un umano:</strong> Non può essere costretto a interagire solo con AI.</li>
+</ul>
+
+<strong>Come implementarlo:</strong>
+<ul>
+<li><strong>Recruitment:</strong> Inserisci in ogni email di rifiuto: "Per contestare questa decisione o chiedere revisione, contatta hr@azienda.it."</li>
+<li><strong>Credit scoring:</strong> Offri numero verde o sportello fisico dove parlare con loan officer umano.</li>
+<li><strong>Valutazione dipendenti:</strong> Policy interna che permette dipendente di chiedere riunione con manager per discutere valutazione AI.</li>
+</ul>
+
+<strong>Tempi risposta:</strong> Entro 30 giorni dalla richiesta (standard GDPR per diritti interessati).
+
+<strong>3. Informativa privacy specifica</strong>
+
+<p>Integra la tua privacy policy (GDPR) con sezione AI:</p>
+
+<blockquote><strong>USO DI INTELLIGENZA ARTIFICIALE</strong></blockquote>
+<blockquote>La nostra azienda utilizza sistemi di intelligenza artificiale per [recruitment/credit scoring/altra funzione]. I tuoi dati personali [specificare quali: CV, storico pagamenti, etc.] sono elaborati da algoritmi automatizzati per [scopo]. Hai diritto a:</blockquote>
+<blockquote>- Ricevere spiegazione delle decisioni automatizzate</blockquote>
+<blockquote>- Contestare decisioni e richiedere intervento umano</blockquote>
+<blockquote>- Revocare il consenso in qualsiasi momento (dove applicabile)</blockquote>
+<blockquote>Per esercitare questi diritti, contatta: [email DPO].</blockquote>
+
+<strong>Dove:</strong> Privacy policy sito web, informative pre-contratto, disclaimer applicazioni.
+
+<hr>
+
+<strong>🔹 Domanda in-line 3 (Vero/Falso):</strong>
+
+<strong>"Un chatbot sul sito deve sempre informare l'utente che è un assistente AI."</strong>
+
+<strong>Vero o Falso?</strong>
+
+<strong>Risposta corretta:</strong> Vero
+
+<strong>Feedback corretto:</strong> ✓ Corretto! L'AI Act richiede trasparenza per sistemi che interagiscono con utenti. Un chatbot deve dichiarare la sua natura AI (es. "Sono un assistente virtuale AI"). Questo permette all'utente di decidere consapevolmente se continuare con AI o parlare con umano.
+
+<strong>Feedback errato:</strong> ✗ Falso. È <strong>obbligatorio</strong> informare l'utente che sta interagendo con un'AI. Questo è un requisito esplicito dell'AI Act per sistemi a rischio limitato. <strong>Soluzione:</strong> Aggiungi disclaimer nel primo messaggio o intestazione chatbot. Tempo implementazione: 10-15 minuti.
+
+<hr>
+
+<h2>3.4 Registri e Documentazione AI</h2>
+
+<h3>Cosa tracciare in registro AI (6 item)</h3>
+
+Un <strong>registro AI</strong> è un file (Excel, Google Sheet, o database semplice) che elenca tutti i sistemi AI usati in azienda.
+
+<strong>Colonne minime:</strong>
+
+1. <strong>Nome sistema/tool AI:</strong> Es. "ChatGPT Enterprise", "Software X per recruitment", "Chatbot sito web"
+2. <strong>Fornitore:</strong> Es. "OpenAI", "Software House Y", "Vendor Z"
+3. <strong>Categoria rischio AI Act:</strong> 🔴 Proibito / 🟠 Alto Rischio / 🟡 GPAI / 🟢 Limitato / 🟢 Minimo
+4. <strong>Funzione aziendale e responsabile:</strong> Es. "Marketing - Resp. Mario Rossi", "HR - Resp. Laura Bianchi"
+5. <strong>Dataset utilizzati:</strong> Es. "Nessuno (tool generico)", "CV candidati 2020-2024", "Storico vendite 2018-2024"
+6. <strong>Log modifiche e incident:</strong> Es. "Attivato 01/2024 | Upgrade 06/2024 | Incident bias rilevato 09/2024 (risolto)"
+
+<strong>Colonne opzionali aggiuntive:</strong>
+<ul>
+<li>Data attivazione / disattivazione</li>
+<li>Contratto vendor (link documento)</li>
+<li>DPIA condotta (sì/no, data)</li>
+<li>Audit ultimo (data)</li>
+<li>Note</li>
+</ul>
+
+<h3>Template registro AI (tabella markdown)</h3>
+
+<table>
+<thead>
+<tr>
+<th><strong>Nome Sistema</strong></th>
+<th><strong>Fornitore</strong></th>
+<th><strong>Categoria Rischio</strong></th>
+<th><strong>Funzione / Responsabile</strong></th>
+<th><strong>Dataset</strong></th>
+<th><strong>Log Modifiche</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ChatGPT Enterprise</td>
+<td>OpenAI</td>
+<td>🟢 Rischio Limitato</td>
+<td>Marketing / Mario Rossi</td>
+<td>Nessuno (tool generico)</td>
+<td>Attivato 03/2024</td>
+</tr>
+<tr>
+<td>Software ATS Recruiting</td>
+<td>HRTech SRL</td>
+<td>🟠 Alto Rischio</td>
+<td>HR / Laura Bianchi</td>
+<td>CV candidati 2020-2024</td>
+<td>Attivato 01/2024, DPIA 02/2024</td>
+</tr>
+<tr>
+<td>Chatbot sito web</td>
+<td>ChatBot Inc.</td>
+<td>🟢 Rischio Limitato</td>
+<td>Customer Service / Luca Verdi</td>
+<td>FAQ aziendali</td>
+<td>Attivato 11/2023, Upgrade 05/2024</td>
+</tr>
+<tr>
+<td>AI previsioni vendite</td>
+<td>SalesAI</td>
+<td>🟢 Rischio Minimo</td>
+<td>Operations / Anna Neri</td>
+<td>Storico vendite 2018-2024</td>
+<td>Attivato 06/2023</td>
+</tr>
+</tbody>
+</table>
+
+<strong>Formato file:</strong> Excel o Google Sheet (facilita aggiornamenti collaborativi).
+
+<strong>Chi aggiorna:</strong> AI Owner / Compliance (coordinatore) + Manager funzioni (notificano nuovi tool).
+
+<strong>Frequenza aggiornamento:</strong> Ogni trimestre (revisione completa) + in tempo reale quando si aggiunge/rimuove un sistema.
+
+<h3>Documentazione tecnica per sistemi ad alto rischio</h3>
+
+Per sistemi 🟠 <strong>Alto Rischio</strong>, oltre al registro, serve <strong>documentazione tecnica dettagliata</strong>.
+
+<strong>Cosa documentare:</strong>
+
+<strong>1. Descrizione funzionamento (anche black box: input/output)</strong>
+
+Anche se non conosci l'algoritmo interno (black box del vendor), descrivi:
+<ul>
+<li><strong>Input:</strong> Quali dati inserisci (es. CV formato PDF, dati anagrafici, esperienze lavorative)</li>
+<li><strong>Processo:</strong> Cosa fa il sistema (es. "Analizza CV, estrae competenze, assegna punteggio 0-100")</li>
+<li><strong>Output:</strong> Cosa produce (es. "Lista candidati con punteggio, top 20 raccomandati")</li>
+</ul>
+
+<strong>2. Valutazione performance e accuracy</strong>
+
+<p>Documenta metriche chiave:</p>
+<ul>
+<li><strong>Accuracy:</strong> Quante decisioni AI sono corrette? (es. "85% dei candidati raccomandati da AI vengono effettivamente assunti")</li>
+<li><strong>False positives/negatives:</strong> Quanti errori fa? (es. "10% candidati scartati da AI risultano validi dopo revisione umana")</li>
+<li><strong>Bias metrics:</strong> Differenze performance tra gruppi demografici (vedi sezione 3.2)</li>
+</ul>
+
+<strong>Come ottenere:</strong> Chiedi al vendor documentazione, oppure calcola internamente dopo 3-6 mesi uso.
+
+<strong>3. Misure sicurezza e robustezza</strong>
+
+<p>Documenta:</p>
+<ul>
+<li><strong>Cybersecurity:</strong> Come è protetto il sistema (encryption, accesso autenticato, backup)</li>
+<li><strong>Robustezza:</strong> Cosa succede se AI riceve input anomalo (es. CV in lingua straniera, campi mancanti)</li>
+<li><strong>Disaster recovery:</strong> Se sistema va offline, cosa succede? (fallback manuale)</li>
+</ul>
+
+<strong>Formato:</strong> File Word/PDF (5-10 pagine per sistema), salvato in repository aziendale (Sharepoint, Google Drive).
+
+<strong>Aggiornamento:</strong> Annuale o quando sistema viene aggiornato significativamente.
+
+<hr>
+
+<strong>🔹 Domanda in-line 4:</strong>
+
+<strong>Quale informazione NON è necessaria nel registro AI aziendale?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Nome sistema e fornitore</li>
+<li>B) Categoria rischio AI Act</li>
+<li>C) Responsabile funzione aziendale</li>
+<li>D) Codice sorgente dell'algoritmo AI</li>
+</ul>
+
+<strong>Risposta corretta:</strong> D
+
+<strong>Feedback corretto:</strong> ✓ Esatto! Il <strong>codice sorgente</strong> non è necessario nel registro (spesso è proprietà del vendor e non accessibile). Il registro deve contenere: nome, fornitore, categoria rischio, responsabile, dataset, log modifiche. La documentazione tecnica (per alto rischio) descrive funzionamento ma non richiede codice.
+
+<strong>Feedback errato:</strong> ✗ Il registro AI NON richiede il <strong>codice sorgente</strong> dell'algoritmo (spesso inaccessibile per sistemi vendor). Serve: nome sistema, fornitore, categoria rischio, responsabile, dataset, log. Anche per sistemi ad alto rischio, la documentazione tecnica descrive input/output/funzionamento, ma non codice. <strong>Rivedi template registro sezione 3.4.</strong>
+
+<hr>
+
+<h2>3.5 Human Oversight (Supervisione Umana)</h2>
+
+<h3>Definizioni: tre livelli di supervisione</h3>
+
+<strong>Human-in-the-loop (nel ciclo):</strong>
+<ul>
+<li><strong>Definizione:</strong> Un umano rivede e approva <strong>ogni singola decisione AI</strong> prima che venga applicata.</li>
+<li><strong>Esempio:</strong> Recruiter rivede ogni CV shortlist AI prima di inviare inviti a colloquio.</li>
+<li><strong>Quando:</strong> Sistemi ad alto rischio con decisioni critiche e irreversibili (recruitment, licenziamenti, diniego credito).</li>
+</ul>
+
+<strong>Human-on-the-loop (sul ciclo):</strong>
+<ul>
+<li><strong>Definizione:</strong> Un umano <strong>monitora</strong> l'AI durante l'operazione e può <strong>intervenire</strong> se rileva anomalie.</li>
+<li><strong>Esempio:</strong> Operatore customer service monitora chatbot, se chatbot dà risposta errata può correggerla in tempo reale.</li>
+<li><strong>Quando:</strong> Sistemi a rischio limitato/medio dove decisioni AI sono frequenti ma non tutte critiche.</li>
+</ul>
+
+<strong>Human-in-command (al comando):</strong>
+<ul>
+<li><strong>Definizione:</strong> Un umano <strong>controlla</strong> il sistema AI (può disattivarlo, modificare parametri) ma non rivede ogni decisione.</li>
+<li><strong>Esempio:</strong> IT manager può spegnere sistema AI se malfunziona, ma non controlla ogni output.</li>
+<li><strong>Quando:</strong> Sistemi a rischio minimo o per controllo tecnico generale.</li>
+</ul>
+
+<strong>Tabella riassuntiva:</strong>
+
+<table>
+<thead>
+<tr>
+<th><strong>Livello</strong></th>
+<th><strong>Controllo</strong></th>
+<th><strong>Quando obbligatorio</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Human-in-the-loop</td>
+<td>Approva ogni decisione</td>
+<td>Alto rischio (HR, credit, salute)</td>
+<td>Recruiter valida shortlist AI</td>
+</tr>
+<tr>
+<td>Human-on-the-loop</td>
+<td>Monitora e interviene</td>
+<td>Rischio limitato (chatbot, scoring)</td>
+<td>Operatore corregge chatbot se sbaglia</td>
+</tr>
+<tr>
+<td>Human-in-command</td>
+<td>Controllo sistema</td>
+<td>Tutti i sistemi (backup generale)</td>
+<td>IT può disattivare AI se malfunziona</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Quando è obbligatorio</h3>
+
+<strong>Human oversight è OBBLIGATORIO per sistemi 🟠 Alto Rischio.</strong>
+
+Livello minimo richiesto: <strong>Human-in-the-loop</strong> (approvazione decisioni) o <strong>Human-on-the-loop</strong> (monitoraggio con possibilità override).
+
+<strong>Non è sufficiente:</strong> "C'è un umano da qualche parte nell'azienda che in teoria potrebbe controllare." Serve supervisione <strong>attiva e documentata</strong>.
+
+<h3>Come implementarlo (4 modalità)</h3>
+
+<strong>1. Decisioni critiche sempre revisionate da umano</strong>
+
+<strong>Setup:</strong>
+<ul>
+<li>Configura sistema AI in modalità "suggerimento" (recommendation), non "decisione finale" (auto-decision).</li>
+<li>Workflow: AI analizza → Output va a umano → Umano approva/rifiuta/modifica → Decisione applicata.</li>
+</ul>
+
+<strong>Esempio recruitment:</strong>
+<ul>
+<li>AI genera shortlist top 20 candidati</li>
+<li>Recruiter rivede lista, legge almeno 3-5 CV anche fuori top 20, decide finale</li>
+<li>Documenta eventuali override ("Ho invitato anche candidato #25 perché...")</li>
+</ul>
+
+<strong>Tool:</strong> Software ATS con opzione "manual approval" attivata.
+
+<strong>2. Possibilità override decisione AI</strong>
+
+<strong>Setup:</strong>
+<ul>
+<li>L'operatore umano ha sempre un bottone "Override" o "Manual mode".</li>
+<li>Se AI propone decisione che sembra errata, umano può scavalcarla.</li>
+</ul>
+
+<strong>Esempio credit scoring:</strong>
+<ul>
+<li>AI dice "Rifiuta prestito (punteggio 45/100)"</li>
+<li>Loan officer vede che cliente ha reddito stabile recente (non catturato da AI)</li>
+<li>Loan officer clicca "Override" e approva manualmente con motivazione scritta</li>
+</ul>
+
+<strong>Tool:</strong> Dashboard con pulsante override + campo note obbligatorio.
+
+<strong>3. Alert per decisioni anomale</strong>
+
+<strong>Setup:</strong>
+<ul>
+<li>Sistema AI genera alert automatici per decisioni "fuori norma".</li>
+<li>Alert attiva revisione umana obbligatoria.</li>
+</ul>
+
+<strong>Esempio performance evaluation:</strong>
+<ul>
+<li>AI valuta dipendente con punteggio molto basso (< 30/100)</li>
+<li>Alert automatico a manager: "Revisione richiesta: punteggio anomalo per dipendente X"</li>
+<li>Manager rivede dati manualmente prima di confermare valutazione</li>
+</ul>
+
+<strong>Tool:</strong> Sistema con regole alert (if score < 30 OR score > 95, trigger human review).
+
+<strong>4. Training operatori su limiti AI</strong>
+
+<strong>Setup:</strong>
+<ul>
+<li>Forma gli operatori umani a:</li>
+</ul>
+<p>- Riconoscere quando AI può sbagliare (es. CV non standard, dati mancanti)</p>
+<p>- Non fidarsi ciecamente dell'AI ("automation bias")</p>
+<p>- Usare giudizio critico</p>
+
+<strong>Esempio:</strong>
+<ul>
+<li>Training recruiter (2 ore): "L'AI favorisce candidati con CV strutturati in modo standard. Se vedi CV creativi o percorsi non lineari, valutali tu personalmente. Non scartare automaticamente chi ha punteggio basso."</li>
+</ul>
+
+<strong>Frequenza:</strong> Training iniziale (prima di usare AI) + refresh annuale.
+
+<hr>
+
+<strong>🔹 Domanda in-line 5 (Scenario):</strong>
+
+<strong>Scenario:</strong> Un sistema AI per credit scoring assegna punteggi ai clienti. Un loan officer rivede tutti i punteggi ma nella pratica approva sempre le decisioni AI senza analisi. Questo è human oversight conforme?**
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Sì, c'è un umano nel processo</li>
+<li>B) No, è solo "rubber stamp" senza vera supervisione</li>
+<li>C) Sì, se il loan officer è formato</li>
+<li>D) Dipende dal punteggio AI</li>
+</ul>
+
+<strong>Risposta corretta:</strong> B
+
+<strong>Feedback corretto:</strong> ✓ Corretto! Questo è <strong>"rubber stamp" oversight</strong> (supervisione nominale). L'AI Act richiede supervisione <strong>effettiva</strong>: il loan officer deve analizzare i casi, avere potere di override, e usarlo quando necessario. Approvare sempre in automatico senza analisi non è conforme.
+
+<strong>Feedback errato:</strong> ✗ Questo è un caso di <strong>"rubber stamp"</strong> (timbro automatico), NON vera supervisione. L'AI Act richiede human oversight <strong>effettivo</strong>: l'operatore deve analizzare le decisioni, avere potere di override, e usarlo quando necessario. Se approva sempre senza pensare, è come se l'AI decidesse da sola. <strong>Soluzione:</strong> Il loan officer deve effettivamente analizzare almeno il 20-30% delle pratiche, override quando ha dubbi, e documentare le motivazioni.
+
+<hr>
+
+<h2>3.6 Valutazioni d'Impatto: DPIA e IAIA</h2>
+
+<h3>DPIA (Data Protection Impact Assessment) per GDPR + AI</h3>
+
+<strong>Cos'è:</strong> Una <strong>valutazione d'impatto sulla privacy</strong> richiesta dal GDPR quando tratti dati personali in modo ad alto rischio.
+
+<strong>Quando obbligatoria per AI:</strong>
+<ul>
+<li>Sistema AI tratta dati personali sensibili (salute, orientamento sessuale, biometria, etc.)</li>
+<li>Sistema AI prende decisioni automatizzate su persone (recruitment, credit scoring, profiling)</li>
+<li>Sistema AI monitora comportamenti su larga scala (es. videosorveglianza con analisi AI)</li>
+</ul>
+
+<strong>Come integrarla con AI Act:</strong>
+
+<p>Aggiungi sezione <strong>"AI-specific"</strong> alla DPIA standard:</p>
+
+<strong>Template DPIA con sezione AI:</strong>
+
+<pre><code>
+DPIA - SISTEMA AI [Nome Sistema]
+
+1. DESCRIZIONE TRATTAMENTO DATI
+   - Quali dati personali raccoglie il sistema AI?
+   - Finalità trattamento
+   - Base legale (consenso, contratto, legittimo interesse, obblighi legali)
+
+2. NECESSITÀ E PROPORZIONALITÀ
+   - Perché serve AI per questo scopo?
+   - Alternative considerate (soluzioni non-AI)?
+   - Minimizzazione dati (usiamo solo dati necessari)?
+
+3. RISCHI PER DIRITTI E LIBERTÀ
+   - Rischio discriminazione (bias AI)
+   - Rischio privacy (re-identificazione, inferenza dati sensibili)
+   - Rischio decisioni errate (false positive/negative)
+   - Rischio trasparenza (black box incomprensibile)
+
+4. MISURE MITIGAZIONE RISCHI (AI-specific)
+   - Dataset quality (audit bias condotti)
+   - Human oversight implementato (livello: in-the-loop/on-the-loop)
+   - Trasparenza (utenti informati che AI è usata)
+   - Diritto a contestazione (processo formale esistente)
+   - Accuracy testing (performance monitorata)
+
+5. VALUTAZIONE RISCHIO RESIDUO
+   - Dopo mitigazioni, rischio resta alto/medio/basso?
+   - Decisione: Procedere / Non procedere / Consultare DPO/Autorità
+
+6. APPROVAZIONE
+   - Data valutazione: [Data]
+   - Condotta da: [Nome, ruolo]
+   - Approvata da: DPO [Nome]
+   - Revisione prevista: [Data, annuale]
+</code></pre>
+
+<strong>Chi conduce:</strong> DPO + AI Owner/Compliance + Manager funzione.
+
+<strong>Tempo:</strong> 4-8 ore (prima volta per sistema nuovo), poi revisioni più rapide.
+
+<h3>IAIA (Impact Assessment IA) per AI Act</h3>
+
+<strong>Cos'è:</strong> Una <strong>valutazione d'impatto sui diritti fondamentali</strong> specifica per AI, richiesta dall'AI Act per sistemi ad alto rischio.
+
+<strong>Quando obbligatoria:</strong>
+<ul>
+<li>Sistemi 🟠 <strong>Alto Rischio</strong> che influiscono su lavoro, credito, istruzione, accesso servizi essenziali, sicurezza.</li>
+</ul>
+
+<strong>Cosa valuta (focus AI Act, non solo GDPR):</strong>
+<ul>
+<li><strong>Impatto su diritti fondamentali:</strong> Non solo privacy, ma anche lavoro, non-discriminazione, dignità, accesso giustizia.</li>
+<li><strong>Fairness algoritmica:</strong> Il sistema tratta tutti equamente?</li>
+<li><strong>Robustezza e sicurezza:</strong> Il sistema resiste ad attacchi (adversarial AI, data poisoning)?</li>
+<li><strong>Accountability:</strong> C'è sempre un responsabile umano identificabile?</li>
+</ul>
+
+<strong>Template IAIA (outline):</strong>
+
+<pre><code>
+IAIA - IMPACT ASSESSMENT AI ACT [Nome Sistema]
+
+1. CONTESTO E SCOPO
+   - Descrizione sistema AI
+   - Finalità uso
+   - Categoria rischio AI Act: 🟠 Alto Rischio
+
+2. DIRITTI FONDAMENTALI COINVOLTI
+   - Quali diritti sono impattati? (lavoro, credito, salute, etc.)
+   - Intensità impatto (alto/medio/basso)
+
+3. RISCHI SPECIFICI AI ACT
+   - Discriminazione algoritmica (bias genere/età/etnia)
+   - Opacità decisionale (black box)
+   - Errori sistematici (accuracy insufficiente)
+   - Assenza supervisione umana
+
+4. MISURE CONFORMITÀ AI ACT
+   - Human oversight: [Descrizione implementazione]
+   - Dataset quality: [Audit condotti, risultati]
+   - Trasparenza: [Come informiamo utenti]
+   - Explainability: [Capacità spiegare decisioni]
+   - Log e registro: [Sistema tracciamento esistente]
+
+5. CONSULTAZIONI
+   - Stakeholder consultati (dipendenti, sindacati, DPO, esperti esterni)
+   - Feedback ricevuto e azioni correttive
+
+6. DECISIONE FINALE
+   - Rischio residuo accettabile? SÌ / NO
+   - Sistema può essere usato? SÌ / NO / SÌ CON CONDIZIONI
+   - Condizioni: [es. Solo con supervisione rafforzata per primi 6 mesi]
+
+7. MONITORAGGIO
+   - KPI monitorati: [es. Tasso errori, distribuzione decisioni per genere]
+   - Frequenza revisione: Trimestrale primi 12 mesi, poi annuale
+</code></pre>
+
+<strong>Chi conduce:</strong> Legal + Compliance + DPO + Manager funzione + (opzionale) consulente esterno esperto AI.
+
+<strong>Tempo:</strong> 8-16 ore (prima volta), poi revisioni annuali più rapide.
+
+<h3>Confronto DPIA vs IAIA</h3>
+
+<table>
+<thead>
+<tr>
+<th><strong>Aspetto</strong></th>
+<th><strong>DPIA (GDPR)</strong></th>
+<th><strong>IAIA (AI Act)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Privacy e protezione dati personali</td>
+<td>Diritti fondamentali (lavoro, credito, etc.)</td>
+</tr>
+<tr>
+<td><strong>Quando obbligatoria</strong></td>
+<td>Trattamento dati ad alto rischio</td>
+<td>Sistemi AI ad alto rischio</td>
+</tr>
+<tr>
+<td><strong>Chi approva</strong></td>
+<td>DPO</td>
+<td>AI Owner / Compliance (coordinamento DPO)</td>
+</tr>
+<tr>
+<td><strong>Contenuto chiave</strong></td>
+<td>Dati trattati, rischi privacy, mitigazioni GDPR</td>
+<td>Diritti impattati, bias, human oversight, fairness</td>
+</tr>
+<tr>
+<td><strong>Normativa</strong></td>
+<td>GDPR (Regolamento UE 2016/679)</td>
+<td>AI Act (Regolamento UE 2024/1689)</td>
+</tr>
+</tbody>
+</table>
+
+<strong>Best practice:</strong> Condurre <strong>DPIA e IAIA insieme</strong> per sistemi AI ad alto rischio che trattano dati personali. Usare un unico documento integrato per evitare duplicazioni.
+
+<h3>Chi conduce e frequenza</h3>
+
+<strong>Chi:</strong>
+<ul>
+<li><strong>DPIA:</strong> DPO (obbligatorio) + Manager funzione + IT/Data</li>
+<li><strong>IAIA:</strong> Legal/Compliance + DPO + AI Owner + Manager funzione + (opzionale) esperto esterno AI ethics</li>
+</ul>
+
+<strong>Frequenza:</strong>
+<ul>
+<li><strong>Prima di attivare</strong> un sistema ad alto rischio (obbligatorio)</li>
+<li><strong>Revisione annuale</strong> (consigliato)</li>
+<li><strong>Revisione ad-hoc</strong> quando:</li>
+</ul>
+<p>- Sistema viene aggiornato significativamente (nuove features, nuovo dataset)</p>
+<p>- Si verifica un incident (bias rilevato, errore grave)</p>
+<p>- Cambiano normative o linee guida</p>
+
+<hr>
+
+<strong>🔹 Domanda in-line 6:</strong>
+
+<strong>Qual è la differenza principale tra DPIA e IAIA?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) DPIA è solo per dati, IAIA è solo per algoritmi</li>
+<li>B) DPIA focalizza su privacy (GDPR), IAIA su diritti fondamentali più ampi (AI Act)</li>
+<li>C) DPIA è obbligatoria, IAIA è opzionale</li>
+<li>D) DPIA è per grandi aziende, IAIA per PMI</li>
+</ul>
+
+<strong>Risposta corretta:</strong> B
+
+<strong>Feedback corretto:</strong> ✓ Esatto! <strong>DPIA</strong> (GDPR) si concentra su <strong>privacy e protezione dati personali</strong>. <strong>IAIA</strong> (AI Act) ha focus più ampio: <strong>diritti fondamentali</strong> (lavoro, non-discriminazione, accesso servizi, dignità). Per sistemi AI ad alto rischio, spesso servono entrambe. Best practice: documento integrato DPIA+IAIA.
+
+<strong>Feedback errato:</strong> ✗ La differenza chiave è il <strong>focus</strong>: DPIA (GDPR) = <strong>privacy e dati personali</strong>. IAIA (AI Act) = <strong>diritti fondamentali</strong> più ampi (lavoro, non-discriminazione, accesso servizi, equità algoritmica). Entrambe possono essere obbligatorie per sistemi AI ad alto rischio. <strong>Soluzione:</strong> Conduci documento integrato che copre entrambi gli aspetti. <strong>Rivedi sezione 3.6 - Confronto DPIA vs IAIA.</strong>
+
+<hr>
+
+<h2>Quiz Sommativo - Modulo 3</h2>
+
+<strong>Istruzioni:</strong>
+<ul>
+<li><strong>10 domande</strong> che coprono tutti i 6 topic del modulo (3.1-3.6)</li>
+<li><strong>Soglia superamento: 70%</strong> (7/10 risposte corrette)</li>
+<li><strong>Massimo 2 tentativi</strong></li>
+<li>Riceverai feedback immediato dopo ogni domanda</li>
+<li>Al termine: recap errori con link a sezioni da rivedere</li>
+</ul>
+
+<strong>Tempo stimato:</strong> 12-15 minuti
+
+<hr>
+
+<h3>Domanda 1 di 10 (Multiple Choice)</h3>
+
+<strong>Quale elemento NON deve essere incluso in una AI policy aziendale?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Principi etici e valori aziendali</li>
+<li>B) Ruoli e responsabilità per gestione AI</li>
+<li>C) Codice sorgente di tutti gli algoritmi AI usati</li>
+<li>D) Processo approvazione nuovi sistemi AI</li>
+</ul>
+
+<strong>Risposta corretta:</strong> C
+
+<strong>Feedback corretto:</strong> ✓ Corretto! Una AI policy <strong>non</strong> include codice sorgente (spesso proprietà vendor e non accessibile). Include: principi etici, ruoli, processo approvazione, gestione incident, formazione.
+
+<strong>Feedback errato:</strong> ✗ Il <strong>codice sorgente</strong> non appartiene alla policy (spesso inaccessibile per sistemi vendor). La policy include: principi etici, ruoli/responsabilità, workflow approvazione, gestione rischi/incident, piano formazione. <strong>Rivedi sezione 3.1.</strong>
+
+<hr>
+
+<h3>Domanda 2 di 10 (Multiple Choice)</h3>
+
+<strong>Quale tipo di bias si verifica quando il dataset contiene solo candidati già assunti (e non include rifiutati)?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Bias nei dati storici</li>
+<li>B) Bias di selezione</li>
+<li>C) Bias di misurazione</li>
+<li>D) Bias di conferma</li>
+</ul>
+
+<strong>Risposta corretta:</strong> B
+
+<strong>Feedback corretto:</strong> ✓ Esatto! <strong>Bias di selezione</strong>: il campione non rappresenta la popolazione reale. Se l'AI vede solo assunti, non impara a riconoscere candidati da rifiutare → decisioni distorte.
+
+<strong>Feedback errato:</strong> ✗ Questo è <strong>bias di selezione</strong>. Il dataset include solo un sottogruppo (assunti) e non rappresenta l'intera popolazione (tutti i candidati). L'AI non ha mai visto esempi negativi → non sa distinguere bene. <strong>Soluzione:</strong> Include anche candidati rifiutati nel training (se possibile e legale). <strong>Rivedi sezione 3.2.</strong>
+
+<hr>
+
+<h3>Domanda 3 di 10 (Multiple Response - 2 risposte corrette)</h3>
+
+<strong>Quali sono obblighi trasparenza per un chatbot su e-commerce? (Seleziona 2)</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Informare utente che è un assistente AI</li>
+<li>B) Condurre DPIA prima di attivarlo</li>
+<li>C) Consentire opzione parlare con umano</li>
+<li>D) Pubblicare codice sorgente chatbot</li>
+</ul>
+
+<strong>Risposte corrette:</strong> A, C
+
+<strong>Feedback corretto:</strong> ✓ Corretto! Un chatbot (rischio limitato) deve: <strong>A) Informare l'utente che è AI</strong> e <strong>C) Permettere escalation a umano</strong> (best practice, non sempre obbligatorio ma consigliato). DPIA è solo per alto rischio. Pubblicare codice non è richiesto.
+
+<strong>Feedback errato:</strong> ✗ Le risposte corrette sono <strong>A e C</strong>. Un chatbot deve <strong>informare utente che è AI</strong> (obbligo trasparenza) e <strong>permettere parlare con umano</strong> (best practice). DPIA è solo per sistemi ad alto rischio. Pubblicare codice non è mai richiesto. <strong>Rivedi sezione 3.3.</strong>
+
+<hr>
+
+<h3>Domanda 4 di 10 (Multiple Choice)</h3>
+
+<strong>Quale informazione è obbligatoria nel registro AI aziendale?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Nome sistema e fornitore</li>
+<li>B) Prezzo pagato per licenza software</li>
+<li>C) Nome tutti i dipendenti che lo usano</li>
+<li>D) Codice fiscale del fornitore</li>
+</ul>
+
+<strong>Risposta corretta:</strong> A
+
+<strong>Feedback corretto:</strong> ✓ Esatto! Il registro deve contenere almeno: <strong>nome sistema, fornitore, categoria rischio, funzione/responsabile, dataset, log modifiche</strong>. Prezzo e dettagli fiscali non sono richiesti.
+
+<strong>Feedback errato:</strong> ✗ Il registro AI deve tracciare: <strong>nome sistema, fornitore, categoria rischio, responsabile, dataset, log modifiche</strong>. Prezzo, elenco completo utenti, e dati fiscali vendor non sono necessari. <strong>Rivedi sezione 3.4 - Template Registro.</strong>
+
+<hr>
+
+<h3>Domanda 5 di 10 (Vero/Falso)</h3>
+
+<strong>"Human-in-the-loop significa che un umano monitora il sistema AI ma non rivede ogni singola decisione."</strong>
+
+<strong>Vero o Falso?</strong>
+
+<strong>Risposta corretta:</strong> Falso
+
+<strong>Feedback corretto:</strong> ✓ Corretto! È <strong>FALSO</strong>. <strong>Human-in-the-loop</strong> significa che un umano <strong>approva ogni decisione</strong> prima che venga applicata. Quello che monitorare senza approvare tutte le decisioni è <strong>human-on-the-loop</strong>.
+
+<strong>Feedback errato:</strong> ✗ È <strong>FALSO</strong>. <strong>Human-in-the-loop</strong> = umano approva <strong>ogni singola decisione</strong>. <strong>Human-on-the-loop</strong> = monitora e può intervenire (ma non rivede tutto). Per sistemi ad alto rischio serve almeno human-in-the-loop. <strong>Rivedi sezione 3.5 - Definizioni.</strong>
+
+<hr>
+
+<h3>Domanda 6 di 10 (Multiple Response - 2 risposte corrette)</h3>
+
+<strong>Quali tecniche aiutano a mitigare bias nei dataset AI? (Seleziona 2)</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Diversificare fonti dati</li>
+<li>B) Usare solo dati degli ultimi 10 anni</li>
+<li>C) Test fairness su sottogruppi demografici</li>
+<li>D) Aumentare dimensione dataset senza controllare bias</li>
+</ul>
+
+<strong>Risposte corrette:</strong> A, C
+
+<strong>Feedback corretto:</strong> ✓ Perfetto! <strong>A) Diversificare fonti</strong> (non solo LinkedIn, mix canali) e <strong>C) Test fairness</strong> (verificare che AI funzioni equamente per tutti i gruppi) sono tecniche efficaci. Usare solo dati vecchi (B) o aumentare volume senza controllo (D) non risolve bias.
+
+<strong>Feedback errato:</strong> ✗ Le risposte corrette sono <strong>A e C</strong>. <strong>Diversificare fonti</strong> riduce bias di selezione. <strong>Test fairness</strong> rileva se AI discrimina gruppi. Usare solo dati vecchi (B) può perpetuare bias storici. Aumentare volume senza audit (D) non risolve bias, lo amplifica. <strong>Rivedi sezione 3.2 - Tecniche Mitigazione.</strong>
+
+<hr>
+
+<h3>Domanda 7 di 10 (Scenario - Multiple Choice)</h3>
+
+<strong>Scenario:</strong> Un sistema AI per credit scoring rifiuta il 60% delle richieste di donne ma solo il 30% di uomini (a parità di reddito). Cosa devi fare immediatamente?
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Continuare a usare il sistema, è solo casualità statistica</li>
+<li>B) Sospendere il sistema, condurre audit bias, correggere dataset</li>
+<li>C) Informare solo il DPO, ma continuare uso</li>
+<li>D) Cambiare solo la soglia di approvazione per bilanciare</li>
+</ul>
+
+<strong>Risposta corretta:</strong> B
+
+<strong>Feedback corretto:</strong> ✓ Corretto! Un bias così evidente (discriminazione di genere) è <strong>illegale</strong> (GDPR + AI Act + leggi anti-discriminazione). Devi <strong>sospendere immediatamente</strong> il sistema, condurre audit approfondito, correggere dataset/algoritmo, e ripartire solo dopo fix verificato.
+
+<strong>Feedback errato:</strong> ✗ Questo è un caso grave di <strong>discriminazione di genere</strong> (illegale). Non puoi ignorarlo (A) o solo informare DPO continuando uso (C). Cambiare soglia senza capire causa (D) è "patch" insufficiente. <strong>Azione corretta:</strong> <strong>B) Sospendi sistema, audit bias, correggi dataset/algoritmo, testa fairness, riattiva solo dopo fix</strong>. <strong>Rivedi sezione 3.2 - Identificare Bias.</strong>
+
+<hr>
+
+<h3>Domanda 8 di 10 (Multiple Choice)</h3>
+
+<strong>Quando è obbligatoria una DPIA per sistemi AI?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Per tutti i sistemi AI senza eccezioni</li>
+<li>B) Solo per sistemi AI che costano più di 50.000 euro</li>
+<li>C) Per sistemi AI che trattano dati personali ad alto rischio (es. decisioni automatizzate su persone)</li>
+<li>D) Solo per aziende con più di 250 dipendenti</li>
+</ul>
+
+<strong>Risposta corretta:</strong> C
+
+<strong>Feedback corretto:</strong> ✓ Esatto! DPIA è obbligatoria quando tratti <strong>dati personali ad alto rischio</strong>, inclusi sistemi AI che prendono <strong>decisioni automatizzate su persone</strong> (recruitment, credit scoring, profiling). Non dipende da costo o dimensione azienda.
+
+<strong>Feedback errato:</strong> ✗ DPIA (GDPR) è obbligatoria per <strong>trattamento dati personali ad alto rischio</strong>, inclusi sistemi AI con decisioni automatizzate su persone (recruitment, scoring, profiling). Non dipende da costo sistema (B) o dimensione azienda (D). Non serve per TUTTI i sistemi (A), solo alto rischio. <strong>Rivedi sezione 3.6 - DPIA.</strong>
+
+<hr>
+
+<h3>Domanda 9 di 10 (Multiple Choice)</h3>
+
+<strong>Qual è il focus principale della IAIA (Impact Assessment AI Act) rispetto alla DPIA?</strong>
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) IAIA si concentra solo su privacy, DPIA su diritti fondamentali</li>
+<li>B) IAIA valuta impatto su diritti fondamentali ampi (lavoro, equità), DPIA su privacy</li>
+<li>C) Sono identiche, solo nomi diversi</li>
+<li>D) IAIA è per AI generativa, DPIA per AI predittiva</li>
+</ul>
+
+<strong>Risposta corretta:</strong> B
+
+<strong>Feedback corretto:</strong> ✓ Perfetto! <strong>IAIA</strong> (AI Act) valuta impatto su <strong>diritti fondamentali ampi</strong>: lavoro, non-discriminazione, accesso servizi, dignità, fairness algoritmica. <strong>DPIA</strong> (GDPR) focalizza su <strong>privacy e dati personali</strong>. Per sistemi AI ad alto rischio servono spesso entrambe.
+
+<strong>Feedback errato:</strong> ✗ La risposta corretta è <strong>B</strong>. <strong>IAIA</strong> = diritti fondamentali ampi (lavoro, equità, accesso servizi). <strong>DPIA</strong> = privacy e protezione dati. Non sono identiche (C), e la distinzione non è per tipo AI (D). <strong>Rivedi sezione 3.6 - Confronto DPIA vs IAIA.</strong>
+
+<hr>
+
+<h3>Domanda 10 di 10 (Scenario - Multiple Response - 3 risposte corrette)</h3>
+
+<strong>Scenario:</strong> Vuoi implementare un sistema AI per valutazione performance dipendenti (sistema ad alto rischio). Quali azioni sono obbligatorie? (Seleziona 3)**
+
+<strong>Opzioni:</strong>
+<ul>
+<li>A) Human oversight (manager rivede valutazioni AI)</li>
+<li>B) DPIA prima di attivare sistema</li>
+<li>C) Trasparenza verso dipendenti (informarli che AI è usata)</li>
+<li>D) Pubblicare AI policy sul sito web pubblico</li>
+<li>E) Assumere un data scientist a tempo pieno</li>
+</ul>
+
+<strong>Risposte corrette:</strong> A, B, C
+
+<strong>Feedback corretto:</strong> ✓ Eccellente! Per un sistema ad alto rischio (valutazione dipendenti) sono obbligatori: <strong>A) Human oversight</strong> (manager approva valutazioni), <strong>B) DPIA</strong> (valutazione impatto privacy + diritti), <strong>C) Trasparenza</strong> (informare dipendenti). Pubblicare policy pubblicamente (D) e assumere data scientist (E) non sono obbligatori.
+
+<strong>Feedback errato:</strong> ✗ Le risposte corrette sono <strong>A, B, C</strong>. Per sistemi ad alto rischio (valutazione dipendenti) servono: <strong>Human oversight</strong> (manager rivede valutazioni AI), <strong>DPIA</strong> (obbligatoria per decisioni automatizzate su persone), <strong>Trasparenza</strong> (informare dipendenti). Pubblicare policy pubblicamente e assumere data scientist non sono obblighi legali (anche se possono essere utili). <strong>Rivedi sezioni 3.5 (Human Oversight) e 3.6 (DPIA).</strong>
+
+<hr>
+
+<h2>Feedback Finale Quiz</h2>
+
+<strong>Se hai totalizzato 7-10/10 (≥70%):</strong>
+<blockquote>🎉 <strong>Complimenti! Hai superato il quiz sommativo del Modulo 3.</strong></blockquote>
+>
+<blockquote>Hai dimostrato di comprendere i controlli di governance minimi richiesti dall'AI Act: AI policy, dataset quality, trasparenza, registri, human oversight, e valutazioni d'impatto.</blockquote>
+>
+<blockquote><strong>Prossimo passo:</strong> Accedi al <strong>Modulo 4 - Piano 90 giorni</strong> per pianificare le azioni concrete di conformità nella tua azienda.</blockquote>
+>
+<blockquote><strong>Punteggio registrato:</strong> [X]/10 | <strong>Status:</strong> SUPERATO ✓</blockquote>
+
+<strong>Se hai totalizzato <7/10 (<70%):</strong>
+<blockquote>⚠️ <strong>Non hai ancora raggiunto la soglia del 70%.</strong></blockquote>
+>
+<blockquote><strong>Punteggio:</strong> [X]/10 | <strong>Soglia:</strong> 7/10</blockquote>
+>
+<blockquote><strong>Tentativi:</strong> [1 o 2]/2</blockquote>
+>
+<blockquote><strong>Aree da rivedere:</strong></blockquote>
+<blockquote>[Lista automatica delle sezioni con errori, es. "Hai sbagliato 2 domande su Human Oversight (3.5) e 1 su DPIA (3.6). Ti consigliamo di rivedere queste sezioni."]</blockquote>
+>
+<blockquote><strong>Cosa fare ora:</strong></blockquote>
+<blockquote>- <strong>Se è il tuo 1° tentativo:</strong> Rivedi le sezioni indicate sopra (10-15 min) e riprova il quiz.</blockquote>
+<blockquote>- <strong>Se è il tuo 2° tentativo:</strong> Rivedi tutto il Modulo 3 (20-25 min) prima di procedere. Puoi comunque accedere al Modulo 4, ma ti consigliamo di consolidare le basi di governance prima di pianificare azioni concrete.</blockquote>
+
+<hr>
+
+<h2>Riepilogo Modulo 3</h2>
+
+<strong>Hai imparato:</strong>
+<ul>
+<li>✓ <strong>Cosa deve contenere una AI policy aziendale</strong> (5 elementi chiave: principi, ruoli, processo approvazione, gestione incident, formazione)</li>
+<li>✓ <strong>Come identificare e mitigare bias nei dataset</strong> (3 tipi bias + 4 tecniche mitigazione)</li>
+<li>✓ <strong>Obblighi trasparenza</strong> per rischio limitato (disclaimer chatbot, watermark) e alto rischio (spiegabilità, diritto contestazione)</li>
+<li>✓ <strong>Come tenere registri AI</strong> (6 colonne minime) e documentazione tecnica per alto rischio</li>
+<li>✓ <strong>3 livelli human oversight</strong> (in-the-loop, on-the-loop, in-command) e quando è obbligatorio</li>
+<li>✓ <strong>Differenza tra DPIA e IAIA</strong> e quando condurle</li>
+</ul>
+
+<strong>Competenze acquisite:</strong>
+<ul>
+<li>○ Redigere una AI policy aziendale (usando template fornito)</li>
+<li>○ Condurre audit dataset per rilevare bias</li>
+<li>○ Implementare trasparenza verso utenti (disclaimer, spiegazioni)</li>
+<li>○ Creare un registro AI aziendale completo</li>
+<li>○ Configurare human oversight per sistemi ad alto rischio</li>
+<li>○ Pianificare e condurre DPIA/IAIA per sistemi AI</li>
+</ul>
+
+<strong>Materiali scaricabili (disponibili al termine del modulo):</strong>
+<ul>
+<li>Template AI Policy (Word, 2 pagine)</li>
+<li>Checklist Dataset Quality (PDF, 10 item)</li>
+<li>Template Registro AI (Excel)</li>
+<li>Template DPIA integrata con AI (Word, 5 pagine)</li>
+<li>Checklist IAIA (PDF, 15 item)</li>
+<li>Guida Human Oversight (PDF, 3 pagine con esempi)</li>
+</ul>
+
+<strong>Prossimo modulo:</strong>
+<p>Nel <strong>Modulo 4</strong> metterai in pratica tutto quello che hai imparato costruendo un <strong>piano operativo 90 giorni</strong> per la tua azienda. Identificherai 5 azioni prioritarie, assegnerai ruoli e responsabilità, valuterai fornitori AI, organizzerai comunicazione interna, e definirai KPI di monitoraggio. Alla fine avrai un piano concreto pronto da presentare al tuo management.</p>
+
+<hr>
+
+<strong>Fine Modulo 3</strong>
+
+        </div>
+
+        <div class="navigation">
+  <a href="modulo2.html" class="nav-button">← Anterior: Modulo 2: Mappa dei casi d'uso e rischio</a>
+  <div class="nav-center">
+    <a href="index.html" class="nav-button">📚 Índice</a>
+  </div>
+  <a href="modulo4.html" class="nav-button">Siguiente: Modulo 4: Piano 90 giorni →</a>
+</div>
+
+    </div>
+
+    <script>
+        // Initialize SCORM
+        window.addEventListener('load', function() {
+            initializeSCORM();
+        });
+
+        window.addEventListener('beforeunload', function() {
+            completeSCORM();
+        });
+    </script>
+</body>
+</html>

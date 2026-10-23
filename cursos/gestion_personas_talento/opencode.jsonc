@@ -1,0 +1,110 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "webfetch",
+      "resource": "*",
+      "effect": "deny"
+    },
+    {
+      "action": "websearch",
+      "resource": "*",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Local/Google/Chrome/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Roaming/Mozilla/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Local/Mozilla/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Local/Microsoft/Edge/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Local/BraveSoftware/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Local/Vivaldi/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Roaming/Opera Software/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Roaming/Thunderbird/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Local/Thunderbird/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Roaming/Microsoft/Credentials/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/AppData/Local/Microsoft/Credentials/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "~/Downloads/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "C:/Users/mfischer/AppData/Local/tiza/tiza/**",
+      "effect": "deny"
+    },
+    {
+      "action": "write",
+      "resource": "C:/Users/mfischer/AppData/Local/tiza/tiza/**",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "C:/Users/mfischer/AppData/Local/tiza/tiza/Cache/**",
+      "effect": "deny"
+    },
+    {
+      "action": "write",
+      "resource": "C:/Users/mfischer/AppData/Local/tiza/tiza/Cache/**",
+      "effect": "deny"
+    }
+  ]
+}

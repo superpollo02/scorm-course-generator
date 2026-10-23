@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="com.aiprincipanti.scorm" version="1.0"
+          xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                              http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+                              http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+  <organizations default="org_01">
+    <organization identifier="org_01">
+      <title>Introduzione all'Intelligenza Artificiale per Principianti</title>
+      <item identifier="item_index" identifierref="resource_index">
+        <title>Indice del Corso</title>
+      </item>
+      <item identifier="item_01" identifierref="resource_01">
+        <title>Modulo 1: Cos'è l'Intelligenza Artificiale</title>
+      </item>
+      <item identifier="item_02" identifierref="resource_02">
+        <title>Modulo 2: Come Funziona l'Intelligenza Artificiale</title>
+      </item>
+      <item identifier="item_03" identifierref="resource_03">
+        <title>Modulo 3: Tipi di Intelligenza Artificiale e Machine Learning</title>
+      </item>
+      <item identifier="item_04" identifierref="resource_04">
+        <title>Modulo 7: Etica e Responsabilità nell'AI</title>
+      </item>
+      <item identifier="item_05" identifierref="resource_05">
+        <title>Modulo 8: AI e Dati: Privacy, Sicurezza e Qualità</title>
+      </item>
+      <item identifier="item_06" identifierref="resource_06">
+        <title>Modulo 9: Strumenti e Piattaforme AI per Tutti</title>
+      </item>
+      <item identifier="item_07" identifierref="resource_07">
+        <title>Modulo 10: Il Futuro dell'AI e Come Continuare ad Imparare</title>
+      </item>
+
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="resource_index" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html"/>
+    </resource>
+    <resource identifier="resource_01" type="webcontent" adlcp:scormtype="sco" href="modulo_01.html">
+      <file href="modulo_01.html"/>
+    </resource>
+    <resource identifier="resource_02" type="webcontent" adlcp:scormtype="sco" href="modulo_02.html">
+      <file href="modulo_02.html"/>
+    </resource>
+    <resource identifier="resource_03" type="webcontent" adlcp:scormtype="sco" href="modulo_03.html">
+      <file href="modulo_03.html"/>
+    </resource>
+    <resource identifier="resource_04" type="webcontent" adlcp:scormtype="sco" href="modulo_04.html">
+      <file href="modulo_04.html"/>
+    </resource>
+    <resource identifier="resource_05" type="webcontent" adlcp:scormtype="sco" href="modulo_05.html">
+      <file href="modulo_05.html"/>
+    </resource>
+    <resource identifier="resource_06" type="webcontent" adlcp:scormtype="sco" href="modulo_06.html">
+      <file href="modulo_06.html"/>
+    </resource>
+    <resource identifier="resource_07" type="webcontent" adlcp:scormtype="sco" href="modulo_07.html">
+      <file href="modulo_07.html"/>
+    </resource>
+
+  </resources>
+</manifest>

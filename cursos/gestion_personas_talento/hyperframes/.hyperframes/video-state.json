@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "historyId": null,
+  "currentRevision": null,
+  "pendingChanges": true,
+  "files": {},
+  "revisions": {},
+  "checks": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "4a241d7e-0234-4206-96fa-488f799af44d",
+      "completedAt": 1792692932654,
+      "output": "C:\\Users\\mfischer\\Documents\\antigravitiy proyectos\\aula nueva con moodle\\cursos\\gestion_personas_talento\\media\\u2_hyperframes_short.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
+}

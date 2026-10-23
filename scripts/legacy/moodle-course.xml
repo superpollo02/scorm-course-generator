@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<course id="1" contextid="2">
+  <shortname>AI-Principianti</shortname>
+  <fullname>Introduzione all'Intelligenza Artificiale per Principianti</fullname>
+  <idnumber></idnumber>
+  <summary><![CDATA[Corso introduttivo all'intelligenza artificiale per principianti. Impara le nozioni base dell'AI per farne un uso razionale ed efficiente.]]></summary>
+  <summaryformat>1</summaryformat>
+  <format>topics</format>
+  <showgrades>1</showgrades>
+  <newsitems>5</newsitems>
+  <startdate>1761289308</startdate>
+  <enddate>0</enddate>
+  <marker>0</marker>
+  <maxbytes>0</maxbytes>
+  <legacyfiles>0</legacyfiles>
+  <showreports>0</showreports>
+  <visible>1</visible>
+  <groupmode>0</groupmode>
+  <groupmodeforce>0</groupmodeforce>
+  <defaultgroupingid>0</defaultgroupingid>
+  <lang></lang>
+  <theme></theme>
+  <timecreated>1761289308</timecreated>
+  <timemodified>1761289308</timemodified>
+  <requested>0</requested>
+  <enablecompletion>1</enablecompletion>
+  <completionnotify>0</completionnotify>
+  <hiddensections>0</hiddensections>
+  <coursedisplay>0</coursedisplay>
+  <category id="1" name="Technology / AI" />
+</course>

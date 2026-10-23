@@ -1,0 +1,7 @@
+# Exclude generated output directories for the aula
+cursos/gestion_personas_talento/output/
+cursos/gestion_personas_talento/scorm/
+cursos/gestion_personas_talento/media/
+cursos/gestion_personas_talento/lecturas/
+cursos/gestion_personas_talento/img/
+cursos/gestion_personas_talento/diapositivas/

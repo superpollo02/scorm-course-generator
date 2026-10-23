@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "comando": "ordenar",
+  "entorno": "pruebas",
+  "curso": 143,
+  "resultado": "ok",
+  "pasos": [
+    {
+      "codigo": "LOGIN",
+      "resultado": "ok",
+      "detalle": null
+    },
+    {
+      "codigo": "ORDENAR",
+      "resultado": "ok",
+      "detalle": "13 ficheros"
+    }
+  ],
+  "ficheros": [
+    {
+      "nombre": "00_encabezado_general_curso.html",
+      "tipo": "etiqueta",
+      "cmid": 7525,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/label/view.php?id=7525",
+      "seccion": "Presentación y Programa Académico",
+      "hash": "7da63fd99491390d5280cb1cd2a6c303475538496f5142e3c79dffb38c737a5a",
+      "curso": 143
+    },
+    {
+      "nombre": "01_u1_encabezado.html",
+      "tipo": "etiqueta",
+      "cmid": 7526,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/label/view.php?id=7526",
+      "seccion": "Unidad 1: Cultura Organizacional y Gestión",
+      "hash": "3296c933bbc9781d381c9381001c14dfb53158d95607b115379b223d839781e7",
+      "curso": 143
+    },
+    {
+      "nombre": "02_u1_la_clase.html",
+      "tipo": "pagina",
+      "cmid": 7527,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/page/view.php?id=7527",
+      "seccion": "Unidad 1: Cultura Organizacional y Gestión",
+      "hash": "61c47e2d557be35b3d1542c8a6468e94e026116294c730ff007f93f59f423ace",
+      "curso": 143
+    },
+    {
+      "nombre": "03_u1_la_lectura.html",
+      "tipo": "pagina",
+      "cmid": 7528,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/page/view.php?id=7528",
+      "seccion": "Unidad 1: Cultura Organizacional y Gestión",
+      "hash": "2afe4ff2c2cd094d9782b266cdfcf35a5a8f36ab3eab3019fdb33949e3dd5b38",
+      "curso": 143
+    },
+    {
+      "nombre": "04_u1_la_practica.html",
+      "tipo": "pagina",
+      "cmid": 7529,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/page/view.php?id=7529",
+      "seccion": "Unidad 1: Cultura Organizacional y Gestión",
+      "hash": "209a991dde2c55b97eb477049089754d17b35a9ae7a0d302b9f6d2461a7c1a29",
+      "curso": 143
+    },
+    {
+      "nombre": "05_u1_conecta_bloques_y_trivia.md",
+      "tipo": "cuestionario",
+      "cmid": 7530,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/quiz/view.php?id=7530",
+      "seccion": "Unidad 1: Cultura Organizacional y Gestión",
+      "hash": "be9e0ddd4445d65476c24f25c68b3a3e7d7bca9fda6d9e1d940e23775217b729",
+      "curso": 143
+    },
+    {
+      "nombre": "06_u2_encabezado.html",
+      "tipo": "etiqueta",
+      "cmid": 7531,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/label/view.php?id=7531",
+      "seccion": "Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo",
+      "hash": "b11fb3820b5fc3a87e0d6a766ed98cadd93d72c145309a218642a31167f9cd48",
+      "curso": 143
+    },
+    {
+      "nombre": "07_u2_la_clase.html",
+      "tipo": "pagina",
+      "cmid": 7532,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/page/view.php?id=7532",
+      "seccion": "Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo",
+      "hash": "96a470e4c7f4479e9fec3fb35dfed0b91136bb3022dfe5fe30a7230b49eb783d",
+      "curso": 143
+    },
+    {
+      "nombre": "08_u2_la_lectura.html",
+      "tipo": "pagina",
+      "cmid": 7533,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/page/view.php?id=7533",
+      "seccion": "Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo",
+      "hash": "b61c20e2c0ff77de9db89bd44ebaffed383e4b77cdbd2db1d5d6e04eb495cb93",
+      "curso": 143
+    },
+    {
+      "nombre": "09_u2_la_practica.html",
+      "tipo": "pagina",
+      "cmid": 7534,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/page/view.php?id=7534",
+      "seccion": "Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo",
+      "hash": "174402f3a4635f0254511db6fd900a27f50b4bd71031db53ef6fe9542baf5f5e",
+      "curso": 143
+    },
+    {
+      "nombre": "10_u2_conecta_bloques_y_trivia.md",
+      "tipo": "cuestionario",
+      "cmid": 7535,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/quiz/view.php?id=7535",
+      "seccion": "Unidad 2: Comunicación, Trabajo en Equipo y Liderazgo",
+      "hash": "5f26d1652c22536be85ae7feddb118a3a34e0d9382b255f4e47c77443cd03b01",
+      "curso": 143
+    },
+    {
+      "nombre": "11_cierre_encabezado.html",
+      "tipo": "etiqueta",
+      "cmid": 7536,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/label/view.php?id=7536",
+      "seccion": "Evaluación Final Integradora y Certificación",
+      "hash": "c5116c6ee70aed32ac47d8764629a10058efdc2fce3338b66f250f4f01e6cd65",
+      "curso": 143
+    },
+    {
+      "nombre": "12_examen_final_integrador.md",
+      "tipo": "cuestionario",
+      "cmid": 7537,
+      "accion": "sin_cambios",
+      "oculto": null,
+      "url": "https://capacitaciones-salud.mendoza.gov.ar/mod/quiz/view.php?id=7537",
+      "seccion": "Evaluación Final Integradora y Certificación",
+      "hash": "7a5d491481b01f734fcaa5aa771b8d7f55939088bce494f271b677655a95c82e",
+      "curso": 143
+    }
+  ],
+  "errores": []
+}

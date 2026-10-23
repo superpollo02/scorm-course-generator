@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo 2: Come Funziona l'Intelligenza Artificiale</title>
+    
+<script type="text/javascript">
+    var API = null;
+
+    function findAPI(win) {
+        while (win.API == null && win.parent != null && win.parent != win) {
+            win = win.parent;
+        }
+        return win.API;
+    }
+
+    function initSCORM() {
+        API = findAPI(window);
+        if (API != null) {
+            API.LMSInitialize("");
+            API.LMSSetValue("cmi.core.lesson_status", "incomplete");
+        }
+    }
+
+    function finishSCORM() {
+        if (API != null) {
+            API.LMSSetValue("cmi.core.lesson_status", "completed");
+            API.LMSSetValue("cmi.core.score.raw", "100");
+            API.LMSFinish("");
+        }
+    }
+
+    function gotoPrevious() {
+        window.location.href = "modulo_01.html";
+    }
+
+    function gotoNext() {
+        window.location.href = "modulo_03.html";
+    }
+
+    function gotoIndex() {
+        window.location.href = "index.html";
+    }
+
+    window.onload = initSCORM;
+    window.onbeforeunload = finishSCORM;
+</script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1f77b4;
+            border-bottom: 3px solid #1f77b4;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            color: #2ca02c;
+            margin-top: 30px;
+            border-left: 4px solid #2ca02c;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #ff7f0e;
+            margin-top: 25px;
+        }
+        h4 {
+            color: #d62728;
+            margin-top: 20px;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        strong {
+            color: #000;
+            font-weight: 600;
+        }
+        em {
+            color: #555;
+        }
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+        .navigation {
+            position: sticky;
+            top: 0;
+            background: #1f77b4;
+            padding: 15px;
+            margin: -30px -30px 30px -30px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            z-index: 100;
+        }
+        .navigation button {
+            background: white;
+            color: #1f77b4;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .navigation button:hover {
+            background: #f0f8ff;
+            transform: translateY(-2px);
+        }
+        .index-list {
+            list-style: none;
+            padding: 0;
+        }
+        .index-list li {
+            margin: 15px 0;
+        }
+        .index-list a {
+            display: block;
+            padding: 15px;
+            background: #f0f8ff;
+            color: #1f77b4;
+            text-decoration: none;
+            border-radius: 5px;
+            border-left: 4px solid #1f77b4;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        .index-list a:hover {
+            background: #1f77b4;
+            color: white;
+            transform: translateX(10px);
+        }
+        .course-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1f77b4, #2ca02c);
+            color: white;
+            border-radius: 8px;
+        }
+        .course-header h1 {
+            color: white;
+            border: none;
+            margin: 0;
+        }
+        .course-header p {
+            margin: 10px 0 0 0;
+            font-size: 18px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .data-table thead {
+            background: linear-gradient(135deg, #1f77b4, #2ca02c);
+            color: white;
+        }
+        .data-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #ddd;
+        }
+        .data-table td {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .data-table tbody tr:hover {
+            background: #f0f8ff;
+            transition: background 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation"><button onclick="gotoPrevious()">&larr; Precedente</button><button onclick="gotoIndex()">&#8962; Indice</button><button onclick="gotoNext()">Successivo &rarr;</button></div>
+        <h2>Introduzione al Modulo</h2>
+Ora che sai cos'è l'AI e dove la incontri ogni giorno, è il momento di guardare sotto il cofano: come funziona davvero? Come fa un computer a "imparare" a riconoscere un volto, tradurre una lingua o suggerire un film?
+In questo modulo scoprirai che l'AI non è magia, ma il risultato di processi ben precisi che combinano dati, algoritmi e potenza di calcolo. Non preoccuparti: non è necessario essere programmatori o matematici per capire i concetti fondamentali! Useremo analogie semplici e esempi concreti per rendere tutto chiaro.
+Alla fine di questo modulo, avrai una comprensione solida di come i sistemi AI "pensano" e "imparano", e sarai in grado di identificare i componenti chiave che fanno funzionare qualsiasi applicazione di intelligenza artificiale. Preparati a svelare i segreti dell'AI!
+---
+<h2>2.1 Dati: Il Carburante dell'AI</h2>
+<h3>Perché i Dati Sono Così Importanti?</h3>
+Se l'AI fosse un'automobile, i <strong>dati</strong> sarebbero la benzina. Senza dati, anche l'algoritmo più sofisticato non può funzionare. Ecco perché:
+L'AI moderna si basa sull'<strong>apprendimento dai dati</strong>. A differenza dei programmi tradizionali, dove un programmatore scrive regole esplicite per ogni situazione, i sistemi AI analizzano enormi quantità di esempi e scoprono da soli i pattern e le regole.
+<h3>Analogia: Come Impara un Bambino</h3>
+Pensa a come un bambino impara a riconoscere un cane:
+<ul>
+  <li><strong>Approccio tradizionale</strong> (programmare regole): Un genitore cerca di spiegare "Un cane ha quattro zampe, pelo, abbaia, ha la coda..." Ma quante caratteristiche servono? E i cani senza coda? E quelli con tre zampe?</li>
+</ul>
+<ul>
+  <li><strong>Approccio AI</strong> (apprendimento dai dati): Il bambino vede decine, centinaia di cani diversi. Dopo un po', senza che nessuno gli spieghi le regole esatte, riconosce istintivamente un cane quando ne vede uno, anche se è di una razza mai vista prima.</li>
+</ul>
+L'AI funziona allo stesso modo: ha bisogno di <strong>esempi</strong>, tanti esempi, per imparare.
+<h3>Che Tipi di Dati Usa l'AI?</h3>
+I dati possono avere forme diverse:
+<ol>
+  <li><strong>Dati Strutturati</strong>:</li>
+<ul>
+  <li>Tabelle con numeri e categorie (come un foglio Excel)</li>
+  <li>Esempio: Database di clienti con età, città, acquisti</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Immagini</strong>:</li>
+<ul>
+  <li>Foto e video</li>
+  <li>Esempio: Milioni di immagini per insegnare a un sistema a riconoscere oggetti</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Testo</strong>:</li>
+<ul>
+  <li>Documenti, email, post sui social, libri</li>
+  <li>Esempio: Testi per insegnare a un chatbot a conversare</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Audio</strong>:</li>
+<ul>
+  <li>Registrazioni vocali, musica</li>
+  <li>Esempio: Conversazioni per addestrare assistenti vocali</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Dati Comportamentali</strong>:</li>
+<ul>
+  <li>Click, visualizzazioni, tempo trascorso su una pagina</li>
+  <li>Esempio: Le tue interazioni su Netflix per suggerirti contenuti</li>
+</ul>
+</ol>
+<h3>Qualità vs Quantità: Cosa Conta di Più?</h3>
+Entrambe! Un sistema AI ha bisogno di:
+<ul>
+  <li><strong>Molti dati</strong>: Più esempi vede, meglio impara a generalizzare</li>
+  <li><strong>Dati di qualità</strong>: Dati accurati, rilevanti e rappresentativi</li>
+</ul>
+<strong>Esempio pratico</strong>:
+Immagina di voler creare un'AI che riconosca tumori in radiografie:
+<ul>
+  <li>Se usi solo 50 immagini, il sistema non imparerà abbastanza (poca quantità)</li>
+  <li>Se usi 100.000 immagini ma sono tutte sfocate o mal etichettate, il sistema imparerà male (scarsa qualità)</li>
+  <li>L'ideale sono 100.000 immagini chiare, accuratamente etichettate da medici esperti (alta quantità + alta qualità)</li>
+</ul>
+<h3>Il Problema dei Dati: Bias e Rappresentatività</h3>
+Un concetto fondamentale: <strong>l'AI impara dai dati che le forniamo</strong>. Se i dati contengono bias (pregiudizi) o non rappresentano bene la realtà, anche l'AI avrà quei problemi.
+<strong>Esempio reale</strong>: Un sistema di riconoscimento facciale addestrato principalmente su volti caucasici funzionerà peggio su persone di altre etnie. Non per "cattiveria" dell'AI, ma perché i dati di addestramento non erano rappresentativi.
+---
+<h2>2.2 Algoritmi e Modelli</h2>
+<h3>Cosa Sono gli Algoritmi?</h3>
+Un <strong>algoritmo</strong> è semplicemente una sequenza di istruzioni per risolvere un problema. È come una ricetta di cucina:
+<strong>Ricetta per fare il caffè</strong>:
+<ol>
+  <li>Metti acqua nella macchinetta</li>
+  <li>Aggiungi caffè nel filtro</li>
+  <li>Accendi la macchina</li>
+  <li>Aspetta che il caffè sia pronto</li>
+  <li>Versa nelle tazze</li>
+</ol>
+Un algoritmo di AI è più complesso, ma il concetto è lo stesso: una serie di passaggi per arrivare a un risultato.
+<h3>Algoritmi Tradizionali vs Algoritmi di Machine Learning</h3>
+<strong>Algoritmo tradizionale</strong> (esempio: ordinare una lista di numeri):
+<ul>
+  <li>Le istruzioni sono esplicite e fisse</li>
+  <li>L'algoritmo fa sempre la stessa cosa</li>
+  <li>Non "impara" dall'esperienza</li>
+</ul>
+<strong>Algoritmo di Machine Learning</strong>:
+<ul>
+  <li>Impara dai dati</li>
+  <li>Migliora con l'esperienza</li>
+  <li>Si adatta a situazioni nuove</li>
+</ul>
+<h3>Cosa Sono i Modelli?</h3>
+Un <strong>modello</strong> è il risultato dell'addestramento di un algoritmo sui dati. È la "conoscenza" che l'AI ha acquisito.
+<strong>Analogia dello studente</strong>:
+<ul>
+  <li><strong>Algoritmo</strong> = Il metodo di studio (come lo studente apprende)</li>
+  <li><strong>Dati</strong> = I libri e le lezioni (cosa studia)</li>
+  <li><strong>Modello</strong> = La conoscenza acquisita dopo aver studiato (cosa ha imparato)</li>
+</ul>
+Quando usi un sistema AI, in realtà stai usando un modello già addestrato. Ad esempio:
+<ul>
+  <li>Il modello di riconoscimento vocale di Siri</li>
+  <li>Il modello di raccomandazione di Netflix</li>
+  <li>Il modello linguistico di ChatGPT</li>
+</ul>
+<h3>Come Funziona un Algoritmo di Machine Learning?</h3>
+Vediamo un esempio concreto e semplice: insegnare all'AI a distinguere email spam da email legittime.
+<strong>Fase 1: Raccolta Dati</strong>
+<ul>
+  <li>Raccogli migliaia di email, alcune spam e alcune legittime</li>
+  <li>Ogni email è etichettata: "spam" o "non spam"</li>
+</ul>
+<strong>Fase 2: Identificazione Pattern</strong>
+L'algoritmo analizza le email e scopre pattern, come:
+<ul>
+  <li>Le email spam contengono spesso parole come "gratis", "vinci", "clicca qui"</li>
+  <li>Le email spam hanno spesso molti punti esclamativi</li>
+  <li>Le email legittime hanno spesso mittenti conosciuti</li>
+  <li>Le email legittime hanno un linguaggio più formale</li>
+</ul>
+<strong>Fase 3: Creazione del Modello</strong>
+L'algoritmo crea un modello che "codifica" questi pattern. Il modello può essere visto come un insieme di regole pesate:
+<ul>
+  <li>Se contiene "gratis" → +10 punti spam</li>
+  <li>Se mittente conosciuto → -20 punti spam</li>
+  <li>Se molti punti esclamativi → +5 punti spam</li>
+</ul>
+-...
+<strong>Fase 4: Applicazione</strong>
+Quando arriva una nuova email, il modello calcola un punteggio:
+<ul>
+  <li>Se il punteggio supera una certa soglia → Spam</li>
+  <li>Altrimenti → Non spam</li>
+</ul>
+<h3>Tipi Comuni di Algoritmi</h3>
+Esistono molti tipi di algoritmi di Machine Learning. Eccone alcuni tra i più comuni:
+<ol>
+  <li><strong>Alberi Decisionali</strong>: Prendono decisioni seguendo una serie di domande (come un diagramma di flusso)</li>
+<ul>
+  <li>Esempio: "È un mammifero?" → Sì → "Ha le ali?" → No → "Ha quattro zampe?" → Sì → Probabilmente un cane o gatto</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Reti Neurali</strong>: Ispirate al cervello umano, fatte di neuroni artificiali interconnessi</li>
+<ul>
+  <li>Esempio: Riconoscimento di immagini, elaborazione linguaggio naturale</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Regressione</strong>: Prevede valori numerici basandosi su relazioni tra variabili</li>
+<ul>
+  <li>Esempio: Prevedere il prezzo di una casa in base a dimensione, posizione, età</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Clustering</strong>: Raggruppa dati simili senza etichette predefinite</li>
+<ul>
+  <li>Esempio: Segmentare clienti in gruppi con comportamenti simili</li>
+</ul>
+</ol>
+Non preoccuparti di memorizzare tutti questi nomi! L'importante è capire che esistono diversi "strumenti" e che si sceglie quello più adatto al problema da risolvere.
+---
+<h2>2.3 Training e Inferenza</h2>
+<h3>Le Due Fasi Fondamentali dell'AI</h3>
+Ogni sistema AI passa attraverso due fasi distinte:
+<ol>
+  <li><strong>Training (Addestramento)</strong>: La fase di apprendimento</li>
+  <li><strong>Inferenza (Applicazione)</strong>: La fase di utilizzo</li>
+</ol>
+È come la differenza tra andare a scuola (training) e poi usare ciò che hai imparato sul lavoro (inferenza).
+<h3>Fase 1: Training - Come l'AI Impara</h3>
+Il training è il processo in cui l'algoritmo analizza i dati e costruisce il modello.
+<strong>Processo di Training (passo per passo)</strong>:
+<ol>
+  <li><strong>Inizializzazione</strong>: Il modello parte "ignorante", con parametri casuali</li>
+</ol>
+<ol>
+  <li><strong>Presentazione dei Dati</strong>: Vengono mostrati al modello migliaia o milioni di esempi</li>
+<ul>
+  <li>Esempio: Migliaia di foto di gatti e cani, etichettate correttamente</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Predizione</strong>: Il modello prova a indovinare (all'inizio sbaglierà spesso!)</li>
+<ul>
+  <li>Modello vede foto → "Credo sia un gatto"</li>
+  <li>Etichetta reale → "È un cane"</li>
+  <li>Errore!</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Calcolo dell'Errore</strong>: Si misura quanto le predizioni del modello sono lontane dalla realtà</li>
+</ol>
+<ol>
+  <li><strong>Aggiustamento</strong>: Il modello modifica i suoi parametri interni per ridurre l'errore</li>
+<ul>
+  <li>"Ho sbagliato, devo dare più peso alle orecchie lunghe per riconoscere i cani"</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Ripetizione</strong>: Questo processo si ripete migliaia di volte, con il modello che migliora gradualmente</li>
+</ol>
+<ol>
+  <li><strong>Validazione</strong>: Si testa il modello su dati nuovi, mai visti durante il training, per verificare se ha davvero imparato o ha solo "memorizzato"</li>
+</ol>
+<strong>Analogia dello studente che impara la matematica</strong>:
+<ul>
+  <li>Studia esempi di equazioni risolte (dati di training)</li>
+  <li>Prova a risolvere nuove equazioni (predizione)</li>
+  <li>Controlla se la soluzione è corretta (calcolo errore)</li>
+  <li>Capisce dove ha sbagliato e corregge il suo approccio (aggiustamento)</li>
+  <li>Ripete con molti altri esercizi (iterazione)</li>
+  <li>Alla fine sostiene un esame con problemi nuovi (validazione)</li>
+</ul>
+<h3>Fase 2: Inferenza - Come l'AI Lavora</h3>
+Una volta che il modello è addestrato, è pronto per essere usato. Questa fase si chiama <strong>inferenza</strong>.
+Durante l'inferenza:
+<ul>
+  <li>Il modello riceve <strong>nuovi dati</strong> (che non ha mai visto durante il training)</li>
+  <li>Usa la <strong>conoscenza acquisita</strong> per fare predizioni o prendere decisioni</li>
+  <li>Fornisce un <strong>output</strong> (una classificazione, una predizione, una risposta, ecc.)</li>
+</ul>
+<strong>Esempio: Filtro Spam</strong>
+<ul>
+  <li>Training: Il modello impara analizzando 100.000 email</li>
+  <li>Inferenza: Quando arriva una nuova email nella tua casella, il modello la analizza in pochi millisecondi e decide se è spam</li>
+</ul>
+<strong>Differenze Chiave tra Training e Inferenza</strong>:
+<table class="data-table">
+<thead>
+<tr>
+  <th>Aspetto</th>
+  <th>Training</th>
+  <th>Inferenza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Quando avviene</td>
+  <td>Una volta (o periodicamente per aggiornare)</td>
+  <td>Ogni volta che usi il sistema</td>
+</tr>
+<tr>
+  <td>Durata</td>
+  <td>Può richiedere ore, giorni o settimane</td>
+  <td>Millisecondi o secondi</td>
+</tr>
+<tr>
+  <td>Dati usati</td>
+  <td>Grandi quantità di dati etichettati</td>
+  <td>Un singolo nuovo esempio</td>
+</tr>
+<tr>
+  <td>Risorse necessarie</td>
+  <td>Molta potenza di calcolo (GPU, server)</td>
+  <td>Meno risorse (può girare su smartphone)</td>
+</tr>
+<tr>
+  <td>Obiettivo</td>
+  <td>Imparare dai dati</td>
+  <td>Applicare ciò che è stato imparato</td>
+</tr>
+</tbody>
+</table>
+<h3>Overfitting e Underfitting: Quando l'Apprendimento Va Storto</h3>
+Come per gli esseri umani, anche l'AI può "studiare male".
+<strong>Underfitting</strong> - Ha studiato troppo poco:
+<ul>
+  <li>Il modello è troppo semplice o non ha avuto abbastanza dati/tempo</li>
+  <li>Performa male sia sui dati di training che su quelli nuovi</li>
+  <li>Analogia: Uno studente che ha dato un'occhiata veloce al libro e non sa rispondere né agli esempi né a domande nuove</li>
+</ul>
+<strong>Overfitting</strong> - Ha "memorizzato" invece di capire:
+<ul>
+  <li>Il modello ha imparato troppo bene i dati di training, memorizzando anche il "rumore" (dettagli irrilevanti)</li>
+  <li>Performa benissimo sui dati di training, ma male su dati nuovi</li>
+  <li>Analogia: Uno studente che ha imparato a memoria tutti gli esercizi del libro, ma non sa risolvere problemi leggermente diversi</li>
+</ul>
+<strong>Il modello ideale</strong> - Ha imparato davvero:
+<ul>
+  <li>Ha estratto i pattern generali dai dati</li>
+  <li>Performa bene sia sui dati di training che su quelli nuovi</li>
+  <li>Analogia: Uno studente che ha capito i concetti e sa applicarli in contesti nuovi</li>
+</ul>
+---
+<h2>2.4 Il Ciclo di Vita di un Sistema AI</h2>
+Creare un sistema AI non significa solo scrivere codice. È un processo articolato che include diverse fasi.
+<h3>1. Definizione del Problema</h3>
+Prima di tutto, bisogna capire:
+<ul>
+  <li>Quale problema vogliamo risolvere?</li>
+  <li>L'AI è l'approccio giusto?</li>
+  <li>Quali metriche useremo per misurare il successo?</li>
+</ul>
+<strong>Esempio</strong>: "Vogliamo ridurre il tempo di risposta all'assistenza clienti, rispondendo automaticamente alle domande più frequenti."
+<h3>2. Raccolta e Preparazione dei Dati</h3>
+Questa fase spesso richiede il 70-80% del tempo totale!
+Attività:
+<ul>
+  <li>Raccogliere dati rilevanti</li>
+  <li>Pulire i dati (rimuovere errori, duplicati, valori mancanti)</li>
+  <li>Etichettare i dati (se necessario)</li>
+  <li>Dividere i dati in set di training, validazione e test</li>
+</ul>
+<strong>Esempio</strong>: Raccogliere migliaia di conversazioni passate con clienti, pulire dati incompleti, categorizzare le domande per tipo.
+<h3>3. Scelta e Sviluppo del Modello</h3>
+<ul>
+  <li>Scegliere l'algoritmo più adatto al problema</li>
+  <li>Configurare i parametri del modello</li>
+  <li>Spesso si provano diversi modelli e si confrontano i risultati</li>
+</ul>
+<strong>Esempio</strong>: Provare un modello di classificazione testuale e un modello di conversazione, confrontare quale risponde meglio.
+<h3>4. Training</h3>
+<ul>
+  <li>Addestrare il modello sui dati di training</li>
+  <li>Monitorare le metriche di performance</li>
+  <li>Aggiustare parametri se necessario (fine-tuning)</li>
+</ul>
+<strong>Esempio</strong>: Addestrare il chatbot su 50.000 conversazioni, verificare che impari a riconoscere le diverse categorie di domande.
+<h3>5. Valutazione</h3>
+<ul>
+  <li>Testare il modello su dati mai visti</li>
+  <li>Verificare che il modello soddisfi i requisiti di accuratezza</li>
+  <li>Identificare eventuali problemi o bias</li>
+</ul>
+<strong>Esempio</strong>: Testare il chatbot su 10.000 conversazioni nuove, verificare che risponda correttamente almeno al 90% delle domande frequenti.
+<h3>6. Deployment (Messa in Produzione)</h3>
+<ul>
+  <li>Integrare il modello nell'applicazione o nel servizio</li>
+  <li>Rendere il sistema accessibile agli utenti finali</li>
+  <li>Configurare l'infrastruttura per gestire le richieste in tempo reale</li>
+</ul>
+<strong>Esempio</strong>: Integrare il chatbot nel sito web aziendale, permettendo ai clienti di interagire con esso 24/7.
+<h3>7. Monitoraggio e Manutenzione</h3>
+Il lavoro non finisce con il deployment!
+<ul>
+  <li>Monitorare le performance in tempo reale</li>
+  <li>Raccogliere feedback degli utenti</li>
+  <li>Identificare quando il modello inizia a degradarsi (model drift)</li>
+  <li>Ri-addestrare periodicamente il modello con nuovi dati</li>
+</ul>
+<strong>Esempio</strong>: Monitorare che il chatbot continui a rispondere accuratamente, raccogliere nuove domande dei clienti, ri-addestrare il modello ogni 3 mesi con i nuovi dati.
+<h3>Il Ciclo Continua</h3>
+L'AI non è un progetto "una tantum" ma un processo continuo:
+```
+Problema → Dati → Modello → Training → Valutazione → Deployment → Monitoraggio
+  ↓
+  (Feedback e miglioramenti)
+  ↓
+  ← Raccolta nuovi dati
+```
+---
+<h2>Attività del Modulo 2</h2>
+<h3>Attività 1: Simulazione Interattiva - Come una Rete Neurale "Impara"</h3>
+<strong>Obiettivo</strong>: Comprendere intuitivamente il processo di training attraverso un'esperienza pratica.
+<strong>Scenario</strong>: Tu sei una rete neurale che deve imparare a riconoscere se un frutto è una mela o un'arancia, basandosi su due caratteristiche: <strong>colore</strong> (da 1=rosso a 10=arancione) e <strong>dimensione</strong> (da 1=piccolo a 10=grande).
+<strong>Istruzioni</strong>:
+<strong>Fase 1: Inizializzazione (Sei "ignorante")</strong>
+<ul>
+  <li>All'inizio, non hai idea di come distinguere mele e arance</li>
+  <li>La tua strategia iniziale è tirare a indovinare a caso</li>
+</ul>
+<strong>Fase 2: Training (Impari dagli esempi)</strong>
+Ti vengono presentati questi esempi etichettati:
+<table class="data-table">
+<thead>
+<tr>
+  <th>Frutto</th>
+  <th>Colore</th>
+  <th>Dimensione</th>
+  <th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>2 (rosso)</td>
+  <td>5</td>
+  <td>Mela</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>3 (rosso)</td>
+  <td>6</td>
+  <td>Mela</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>8 (arancione)</td>
+  <td>4</td>
+  <td>Arancia</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>9 (arancione)</td>
+  <td>5</td>
+  <td>Arancia</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>1 (rosso)</td>
+  <td>7</td>
+  <td>Mela</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>7 (arancione)</td>
+  <td>3</td>
+  <td>Arancia</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>4 (rosso-arancione)</td>
+  <td>5</td>
+  <td>Mela</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>10 (arancione)</td>
+  <td>6</td>
+  <td>Arancia</td>
+</tr>
+</tbody>
+</table>
+Dopo aver visto questi esempi, prova a identificare i pattern:
+<ol>
+  <li>Quali caratteristiche sembrano più importanti?</li>
+  <li>C'è una regola semplice che puoi derivare?</li>
+  <li>Scrivi la tua "regola mentale" per distinguere mele da arance</li>
+</ol>
+<strong>Esempio di regola</strong>: "Se il colore è minore di 5, probabilmente è una mela; se è maggiore di 6, probabilmente è un'arancia."
+<strong>Fase 3: Test (Applichi ciò che hai imparato)</strong>
+Ora ti vengono presentati nuovi frutti (senza etichetta). Prova a classificarli usando la tua regola:
+<table class="data-table">
+<thead>
+<tr>
+  <th>Frutto</th>
+  <th>Colore</th>
+  <th>Dimensione</th>
+  <th>La tua predizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td>3</td>
+  <td>4</td>
+  <td>?</td>
+</tr>
+<tr>
+  <td>B</td>
+  <td>8</td>
+  <td>7</td>
+  <td>?</td>
+</tr>
+<tr>
+  <td>C</td>
+  <td>5</td>
+  <td>5</td>
+  <td>?</td>
+</tr>
+<tr>
+  <td>D</td>
+  <td>9</td>
+  <td>3</td>
+  <td>?</td>
+</tr>
+</tbody>
+</table>
+<strong>Fase 4: Feedback e Aggiustamento</strong>
+Le risposte corrette erano:
+<ul>
+  <li>A = Mela</li>
+  <li>B = Arancia</li>
+  <li>C = Mela (caso difficile! Colore ambiguo, ma più verso il rosso)</li>
+  <li>D = Arancia</li>
+</ul>
+Confronta le tue predizioni con le risposte corrette:
+<ul>
+  <li>Quante ne hai indovinate?</li>
+  <li>Dove hai sbagliato?</li>
+  <li>Come potresti migliorare la tua regola?</li>
+</ul>
+<strong>Fase 5: Riflessione</strong>
+Rispondi a queste domande:
+<ol>
+  <li>Quanto è stato difficile trovare una regola iniziale?</li>
+  <li>Ci sono stati casi ambigui? Come li hai gestiti?</li>
+  <li>Pensi che con più esempi avresti imparato meglio?</li>
+  <li>Questa esperienza ti ha fatto capire come "impara" un algoritmo di Machine Learning?</li>
+</ol>
+<strong>Nota per lo studente</strong>: Questo è esattamente quello che fa una rete neurale! Analizza esempi, trova pattern, crea regole, le testa e le affina. L'unica differenza è che lo fa con milioni di parametri invece di una semplice regola, e può gestire problemi molto più complessi.
+---
+<h3>Attività 2: Esercizio - Identificare Dati, Algoritmo e Output in Esempi Reali</h3>
+<strong>Obiettivo</strong>: Saper riconoscere i tre componenti fondamentali di un sistema AI in applicazioni reali.
+<strong>Istruzioni</strong>: Per ciascuno dei seguenti sistemi AI, identifica:
+<ol>
+  <li><strong>I Dati</strong> usati per il training</li>
+  <li><strong>L'Algoritmo/Modello</strong> (il tipo di AI usato)</li>
+  <li><strong>L'Output</strong> fornito all'utente</li>
+</ol>
+<strong>Esempio Risolto</strong>:
+<strong>Sistema</strong>: Filtro antispam di Gmail
+<ol>
+  <li><strong>Dati</strong>: Milioni di email etichettate come "spam" o "non spam", caratteristiche del mittente, contenuto del testo, link presenti</li>
+  <li><strong>Algoritmo/Modello</strong>: Algoritmi di classificazione del testo (probabilmente una combinazione di varie tecniche di Machine Learning)</li>
+  <li><strong>Output</strong>: Decisione binaria - l'email viene messa nella casella principale o nella cartella spam</li>
+</ol>
+---
+<strong>Ora tocca a te! Completa i seguenti esempi:</strong>
+<h3>Caso 1: Riconoscimento Facciale per Sbloccare lo Smartphone</h3>
+<ol>
+  <li><strong>Dati</strong>: ______________________________________________</li>
+  <li><strong>Algoritmo/Modello</strong>: ______________________________________________</li>
+  <li><strong>Output</strong>: ______________________________________________</li>
+</ol>
+<details>
+<summary>Clicca per vedere la soluzione</summary>
+<ol>
+  <li><strong>Dati</strong>: Immagini del volto dell'utente catturate durante la configurazione iniziale, da diverse angolazioni e in diverse condizioni di illuminazione</li>
+  <li><strong>Algoritmo/Modello</strong>: Rete neurale convoluzionale (CNN) addestrata per il riconoscimento di volti</li>
+  <li><strong>Output</strong>: Decisione binaria - sblocca il telefono (se il volto corrisponde) o richiede metodo alternativo</li>
+</ol>
+</details>
+---
+<h3>Caso 2: Raccomandazioni di Netflix</h3>
+<ol>
+  <li><strong>Dati</strong>: ______________________________________________</li>
+  <li><strong>Algoritmo/Modello</strong>: ______________________________________________</li>
+  <li><strong>Output</strong>: ______________________________________________</li>
+</ol>
+<details>
+<summary>Clicca per vedere la soluzione</summary>
+<ol>
+  <li><strong>Dati</strong>: Cronologia di visualizzazione di milioni di utenti, valutazioni, preferenze dichiarate, tempo di visualizzazione, ricerche, metadati dei contenuti (genere, attori, registi, anno, ecc.)</li>
+  <li><strong>Algoritmo/Modello</strong>: Sistema di raccomandazione basato su collaborative filtering e content-based filtering</li>
+  <li><strong>Output</strong>: Lista personalizzata di film e serie TV suggeriti all'utente</li>
+</ol>
+</details>
+---
+<h3>Caso 3: Google Translate</h3>
+<ol>
+  <li><strong>Dati</strong>: ______________________________________________</li>
+  <li><strong>Algoritmo/Modello</strong>: ______________________________________________</li>
+  <li><strong>Output</strong>: ______________________________________________</li>
+</ol>
+<details>
+<summary>Clicca per vedere la soluzione</summary>
+<ol>
+  <li><strong>Dati</strong>: Miliardi di testi paralleli (stessi contenuti in diverse lingue), documenti ufficiali multilingua, sottotitoli di film, pagine web tradotte</li>
+  <li><strong>Algoritmo/Modello</strong>: Reti neurali con architettura Transformer specializzate in traduzione automatica neurale (Neural Machine Translation)</li>
+  <li><strong>Output</strong>: Testo tradotto nella lingua di destinazione</li>
+</ol>
+</details>
+---
+<h3>Caso 4: Alexa / Google Assistant (Comprensione Vocale)</h3>
+<ol>
+  <li><strong>Dati</strong>: ______________________________________________</li>
+  <li><strong>Algoritmo/Modello</strong>: ______________________________________________</li>
+  <li><strong>Output</strong>: ______________________________________________</li>
+</ol>
+<details>
+<summary>Clicca per vedere la soluzione</summary>
+<ol>
+  <li><strong>Dati</strong>: Milioni di ore di registrazioni vocali con trascrizioni, in diverse lingue, accenti, condizioni di rumore</li>
+  <li><strong>Algoritmo/Modello</strong>: Reti neurali ricorrenti (RNN) o Transformer per il riconoscimento vocale (Speech-to-Text) + modelli di elaborazione del linguaggio naturale (NLP) per comprendere l'intento</li>
+  <li><strong>Output</strong>: Testo trascritto + comprensione dell'intento dell'utente + risposta appropriata (testuale o azione)</li>
+</ol>
+</details>
+---
+<h3>Caso 5: Sistema di Diagnosi Medica da Immagini Radiografiche</h3>
+<ol>
+  <li><strong>Dati</strong>: ______________________________________________</li>
+  <li><strong>Algoritmo/Modello</strong>: ______________________________________________</li>
+  <li><strong>Output</strong>: ______________________________________________</li>
+</ol>
+<details>
+<summary>Clicca per vedere la soluzione</summary>
+<ol>
+  <li><strong>Dati</strong>: Decine o centinaia di migliaia di immagini radiografiche etichettate da medici specialisti, indicando presenza/assenza di patologie specifiche</li>
+  <li><strong>Algoritmo/Modello</strong>: Reti neurali convoluzionali profonde (Deep CNN) specializzate in analisi di immagini mediche</li>
+  <li><strong>Output</strong>: Probabilità di presenza di una o più patologie, aree di interesse evidenziate nell'immagine, livello di confidenza della diagnosi</li>
+</ol>
+</details>
+---
+<h3>Caso 6: Auto a Guida Autonoma (es. Tesla)</h3>
+<ol>
+  <li><strong>Dati</strong>: ______________________________________________</li>
+  <li><strong>Algoritmo/Modello</strong>: ______________________________________________</li>
+  <li><strong>Output</strong>: ______________________________________________</li>
+</ol>
+<details>
+<summary>Clicca per vedere la soluzione</summary>
+<ol>
+  <li><strong>Dati</strong>: Miliardi di miglia di registrazioni di guida (telecamere, sensori, lidar, radar), immagini etichettate di strade, veicoli, pedoni, segnali, diverse condizioni meteo e di illuminazione</li>
+  <li><strong>Algoritmo/Modello</strong>: Combinazione complessa di reti neurali per visione artificiale, pianificazione del percorso, decision-making, controllo del veicolo</li>
+  <li><strong>Output</strong>: Decisioni di guida in tempo reale (accelerare, frenare, sterzare), identificazione di ostacoli, previsione di comportamenti di altri veicoli/pedoni</li>
+</ol>
+</details>
+---
+<strong>Riflessione Finale</strong>:
+Dopo aver completato questi esercizi, rispondi:
+<ol>
+  <li>Quali elementi comuni hai notato in tutti questi sistemi?</li>
+  <li>Quale componente pensi sia il più critico (dati, algoritmo o output)? Perché?</li>
+  <li>In quali casi la qualità dei dati è particolarmente cruciale?</li>
+</ol>
+---
+<h2>Riepilogo del Modulo 2</h2>
+Ottimo lavoro! Hai completato il secondo modulo. Ecco cosa hai imparato:
+<h3>Concetti Chiave</h3>
+<ol>
+  <li><strong>I Dati sono il Carburante dell'AI</strong>: Senza dati di qualità e in quantità sufficiente, anche l'algoritmo migliore non può funzionare.</li>
+</ol>
+<ol>
+  <li><strong>Algoritmi e Modelli</strong>:</li>
+<ul>
+  <li>Gli algoritmi sono le "ricette" che elaborano i dati</li>
+  <li>I modelli sono la "conoscenza" acquisita dopo il training</li>
+  <li>Esistono molti tipi di algoritmi, ognuno adatto a problemi diversi</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Training vs Inferenza</strong>:</li>
+<ul>
+  <li><strong>Training</strong>: La fase di apprendimento (lunga, costosa in risorse)</li>
+  <li><strong>Inferenza</strong>: La fase di applicazione (veloce, efficiente)</li>
+  <li>Problemi comuni: overfitting (memorizzazione) e underfitting (apprendimento insufficiente)</li>
+</ul>
+</ol>
+<ol>
+  <li><strong>Ciclo di Vita di un Sistema AI</strong>:</li>
+<ul>
+  <li>Definizione problema → Raccolta dati → Sviluppo modello → Training → Valutazione → Deployment → Monitoraggio</li>
+  <li>È un processo continuo, non un progetto "una tantum"</li>
+</ul>
+</ol>
+<h3>Cosa Hai Acquisito</h3>
+<ul>
+  <li>Comprensione di come i sistemi AI "imparano" dai dati</li>
+  <li>Capacità di identificare i componenti chiave di un sistema AI</li>
+  <li>Consapevolezza che l'AI non è "magia" ma un processo ingegneristico concreto</li>
+  <li>Intuizione su quando e come i sistemi AI possono funzionare o fallire</li>
+</ul>
+<h3>Prossimi Passi</h3>
+Nel prossimo modulo, esplorerai i <strong>diversi tipi di apprendimento automatico</strong>: supervisionato, non supervisionato, per rinforzo e altro. Scoprirai quando e perché usare ciascun approccio, con esempi pratici che ti permetteranno di riconoscere quale tipo di AI sta dietro le applicazioni che usi ogni giorno.
+---
+---
+    </div>
+</body>
+</html>

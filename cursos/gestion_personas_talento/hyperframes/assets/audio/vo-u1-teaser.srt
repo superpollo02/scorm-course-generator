@@ -1,0 +1,48 @@
+1
+00:00:00,100 --> 00:00:06,833
+Alguna vez te pusiste a pensar cómo funciona realmente la estructura en la que te toca atender todos los días?
+
+2
+00:00:06,783 --> 00:00:15,585
+Entender el sistema sanitario no es un tema abstracto ni de escritorio: es una herramienta clave para tu práctica diaria en la residencia.
+
+3
+00:00:15,585 --> 00:00:20,703
+En esta primera unidad nos metemos de lleno en el sistema de salud argentino.
+
+4
+00:00:20,703 --> 00:00:34,283
+Un entramado complejo, fragmentado y con profundas asimetrías, donde conviven tres subsectores con lógicas de financiamiento y cobertura muy distintas: el público, la seguridad social y el sector privado.
+
+5
+00:00:34,283 --> 00:00:41,002
+Vamos a analizar el rol rector del Estado y la articulación entre Nación y provincias a través del COFESA.
+
+6
+00:00:41,002 --> 00:00:46,757
+Pero también vamos a bajar a tierra: ¿qué diferencia a un servicio de un bien tangible?
+
+7
+00:00:46,757 --> 00:00:49,361
+Quiénes son nuestros usuarios?
+
+8
+00:00:49,361 --> 00:00:56,914
+Desde el paciente que espera en la sala, hasta el colega del laboratorio del que dependés para tomar una conducta quirúrgica.
+
+9
+00:00:56,914 --> 00:01:11,250
+Repasamos las Funciones Esenciales de la Salud Pública y desarmamos un error muy frecuente: la Atención Primaria no es un espacio físico ni solo una salita periférica; es un enfoque integral que atraviesa todos los niveles de atención.
+
+10
+00:01:11,250 --> 00:01:16,848
+Porque una buena gestión clínica empieza cuando entendés el entorno en el que decidís.
+
+11
+00:01:16,848 --> 00:01:19,973
+Te damos la bienvenida a la Unidad 1.
+
+12
+00:01:19,973 --> 00:01:25,312
+Preparate, acomodate y empezá a mirar tu hospital con otra perspectiva.
+

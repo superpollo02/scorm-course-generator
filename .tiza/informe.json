@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "comando": "comprobar",
+  "entorno": null,
+  "curso": null,
+  "resultado": "error",
+  "pasos": [
+    {
+      "codigo": "ESTRUCTURA",
+      "resultado": "fallo",
+      "detalle": "ESTRUCTURA_AUSENTE"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "*.html: FICHERO_AUSENTE"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "*.md: FICHERO_AUSENTE"
+    }
+  ],
+  "ficheros": [],
+  "errores": [
+    "ESTRUCTURA_AUSENTE",
+    "FICHERO_AUSENTE",
+    "FICHERO_AUSENTE"
+  ]
+}

@@ -7,6 +7,7 @@ Converts 4 modules from markdown to beautifully styled HTML SCORM 1.2 package
 import re
 import zipfile
 from pathlib import Path
+from scorm_core import generar_manifest_scorm_unificado
 
 # Base paths
 CONTENT_DIR = Path("content/eu-ai-act-pmi")
@@ -405,65 +406,23 @@ function completeSCORM() {
 
 
 def create_imsmanifest():
-    """Create SCORM 1.2 manifest file"""
-
-    # Build resources
-    resources_xml = ""
-    for i, module in enumerate(MODULES):
-        resources_xml += f'''
-    <resource identifier="{module['id']}" type="webcontent" adlcp:scormtype="sco" href="{module['id']}.html">
-      <file href="{module['id']}.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
-    </resource>'''
-
-    # Build organization items
-    items_xml = ""
-    for i, module in enumerate(MODULES, 1):
-        items_xml += f'''
-      <item identifier="item_{module['id']}" identifierref="{module['id']}">
-        <title>Módulo {i}: {module['title']}</title>
-      </item>'''
-
-    manifest = f'''<?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="eu_ai_act_pmi" version="1.0"
-          xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
-          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
-                              http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
-                              http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
-
-  <metadata>
-    <schema>ADL SCORM</schema>
-    <schemaversion>1.2</schemaversion>
-  </metadata>
-
-  <organizations default="org_default">
-    <organization identifier="org_default">
-      <title>{COURSE_TITLE}</title>
-      <item identifier="item_index" identifierref="index">
-        <title>Índice del Curso</title>
-      </item>{items_xml}
-    </organization>
-  </organizations>
-
-  <resources>
-    <resource identifier="index" type="webcontent" adlcp:scormtype="sco" href="index.html">
-      <file href="index.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
-    </resource>{resources_xml}
-  </resources>
-
-</manifest>'''
-
+    """Create SCORM 1.2 manifest file using canonical scorm_core."""
+    items = [{"id": "index", "title": "Índice del Curso", "href": "index.html"}]
+    for i, m in enumerate(MODULES, 1):
+        items.append({
+            "id": m["id"],
+            "title": f"Módulo {i}: {m['title']}",
+            "href": f"{m['id']}.html"
+        })
+    manifest = generar_manifest_scorm_unificado(
+        identifier="eu_ai_act_pmi",
+        title=COURSE_TITLE,
+        items=items,
+        generator_name="Aula Lista EDUCAI Monolithic Course Builder"
+    )
     output_file = OUTPUT_DIR / "imsmanifest.xml"
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(manifest)
-
-    print(f"Created: {output_file.name}")
-
+    output_file.write_text(manifest, encoding="utf-8")
+    print(f"  [OK] Creado: {output_file.name}")
 
 def create_zip_package():
     """Create final SCORM ZIP package"""

@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #06151f; /* Deep Clinical Teal / Obsidian */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #f1f8fa;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Clinical Ambient Background with Soft Cyan Glow */
+      .ambient-glow {
+        position: absolute;
+        width: 800px; height: 800px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(6, 21, 31, 0) 70%);
+        top: -200px; right: -100px;
+        pointer-events: none;
+      }
+      .ambient-glow-bottom {
+        position: absolute;
+        width: 600px; height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, rgba(6, 21, 31, 0) 70%);
+        bottom: -150px; left: -100px;
+        pointer-events: none;
+      }
+
+      /* Top Header: Clean Clinical Minimal */
+      .top-banner {
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 84px;
+        background: rgba(10, 31, 46, 0.85);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(45, 212, 191, 0.2);
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 54px; z-index: 100;
+      }
+      .brand-title {
+        display: flex; align-items: center; gap: 14px;
+        font-weight: 800; font-size: 24px; color: #38bdf8;
+        letter-spacing: -0.02em;
+      }
+      .cross-icon {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+        border-radius: 8px;
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-weight: 900; font-size: 20px;
+      }
+      .header-meta {
+        display: flex; align-items: center; gap: 16px;
+      }
+      .meta-tag {
+        background: rgba(14, 165, 233, 0.12);
+        border: 1px solid rgba(14, 165, 233, 0.35);
+        color: #38bdf8; font-size: 14px; font-weight: 700;
+        padding: 6px 14px; border-radius: 20px;
+      }
+
+      /* Bottom Narrative / Subtitle */
+      .bottom-bar {
+        position: absolute;
+        bottom: 0; left: 0; right: 0; height: 110px;
+        background: rgba(6, 21, 31, 0.95);
+        border-top: 1px solid rgba(45, 212, 191, 0.15);
+        display: flex; align-items: center; justify-content: center;
+        padding: 0 80px; z-index: 100;
+      }
+      .caption-text {
+        font-size: 27px; font-weight: 600;
+        text-align: center; color: #f1f8fa;
+        letter-spacing: -0.01em;
+      }
+      .hl-cyan { color: #38bdf8; font-weight: 700; }
+      .hl-teal { color: #2dd4bf; font-weight: 700; }
+      .hl-amber { color: #f59e0b; font-weight: 700; }
+
+      /* Scene Viewport Base */
+      .scene-view {
+        position: absolute;
+        top: 84px; left: 0; right: 0; bottom: 110px;
+        padding: 40px 64px;
+        overflow: hidden;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 1: INTRODUCCIÓN (00:00 - 00:06)
+         ---------------------------------------------------- */
+      #scene-1 {
+        display: flex; align-items: center; justify-content: space-between; gap: 48px;
+      }
+      .intro-content {
+        flex: 1.2; display: flex; flex-direction: column; gap: 18px;
+      }
+      .academic-badge {
+        background: rgba(45, 212, 191, 0.15);
+        border: 1px solid #2dd4bf;
+        color: #2dd4bf; font-size: 14px; font-weight: 800;
+        padding: 6px 14px; border-radius: 6px; width: fit-content;
+        text-transform: uppercase; letter-spacing: 1px;
+      }
+      .intro-content h1 {
+        font-size: 52px; font-weight: 800; line-height: 1.15;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #ffffff 0%, #bae6fd 100%);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      }
+      .intro-content p {
+        font-size: 22px; color: #94a3b8; font-weight: 400; line-height: 1.4;
+      }
+      .intro-stats-card {
+        flex: 0.8;
+        background: rgba(15, 36, 52, 0.7);
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        border-radius: 20px; padding: 40px;
+        display: flex; flex-direction: column; gap: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+      .stat-row {
+        display: flex; align-items: center; gap: 18px;
+      }
+      .stat-icon-circle {
+        width: 58px; height: 58px;
+        background: rgba(14, 165, 233, 0.15);
+        border: 1px solid #0284c7;
+        border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 26px;
+      }
+      .stat-num {
+        font-size: 32px; font-weight: 800; color: #fff; line-height: 1;
+      }
+      .stat-lbl {
+        font-size: 15px; color: #94a3b8; margin-top: 4px;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 2: BLOQUE 1 - SISTEMA Y ORGANIZACIONES (00:06 - 00:17)
+         ---------------------------------------------------- */
+      #scene-2 {
+        opacity: 0; display: flex; flex-direction: column; gap: 24px;
+      }
+      .block-header {
+        display: flex; justify-content: space-between; align-items: flex-end;
+      }
+      .block-pill {
+        font-size: 14px; font-weight: 700; color: #38bdf8;
+        text-transform: uppercase; letter-spacing: 1px;
+      }
+      .cards-grid-3 {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; flex: 1;
+      }
+      .clinical-card {
+        background: rgba(15, 36, 52, 0.65);
+        border: 1px solid rgba(56, 189, 248, 0.18);
+        border-radius: 16px; padding: 32px;
+        display: flex; flex-direction: column; justify-content: space-between;
+        position: relative; overflow: hidden;
+      }
+      .card-accent-bar {
+        position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      }
+      .unit-tag {
+        font-size: 13px; font-weight: 800; color: #94a3b8; text-transform: uppercase;
+        margin-bottom: 12px; display: block;
+      }
+      .clinical-card h3 {
+        font-size: 24px; font-weight: 700; line-height: 1.25; color: #fff;
+        margin-bottom: 12px;
+      }
+      .clinical-card p {
+        font-size: 16px; color: #94a3b8; line-height: 1.45;
+      }
+      .clinical-card .card-footer {
+        margin-top: 20px; padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 14px; font-weight: 600; color: #38bdf8;
+        display: flex; align-items: center; gap: 8px;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 3: BLOQUE 2 - OPERATIVA Y MARCO LEGAL (00:17 - 00:29)
+         ---------------------------------------------------- */
+      #scene-3 {
+        opacity: 0; display: flex; flex-direction: column; gap: 24px;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 4: BLOQUE 3 - PLANIFICACIÓN Y CERTIFICACIÓN (00:29 - 00:40)
+         ---------------------------------------------------- */
+      #scene-4 {
+        opacity: 0; display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px;
+      }
+      .strategic-box {
+        background: rgba(15, 36, 52, 0.7);
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        border-radius: 18px; padding: 34px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .levels-stack {
+        display: flex; flex-direction: column; gap: 10px; margin-top: 14px;
+      }
+      .level-row {
+        background: rgba(6, 21, 31, 0.7);
+        border-left: 4px solid #38bdf8;
+        padding: 12px 18px; border-radius: 8px;
+        font-size: 16px; font-weight: 600;
+        display: flex; justify-content: space-between; align-items: center;
+      }
+      .cert-banner-card {
+        background: linear-gradient(135deg, rgba(13, 148, 136, 0.2) 0%, rgba(2, 132, 199, 0.15) 100%);
+        border: 2px solid #2dd4bf;
+        border-radius: 20px; padding: 36px;
+        display: flex; flex-direction: column; justify-content: space-between;
+        box-shadow: 0 16px 40px rgba(45, 212, 191, 0.12);
+      }
+      .cert-check-item {
+        background: rgba(6, 21, 31, 0.8);
+        border: 1px solid rgba(45, 212, 191, 0.3);
+        border-radius: 10px; padding: 16px 20px;
+        display: flex; align-items: center; gap: 16px;
+      }
+      .check-circle {
+        width: 32px; height: 32px;
+        background: #2dd4bf; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: #06151f; font-weight: 900; font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="40"
+      data-width="1920"
+      data-height="1080"
+      data-fps="30"
+    >
+      <!-- Ambient Glow Overlays -->
+      <div class="ambient-glow"></div>
+      <div class="ambient-glow-bottom"></div>
+
+      <!-- Audio Track: Nuevo fondo ambiental melódico tech + SFX limpios -->
+      <audio id="bgm" src="assets/audio/bgm-ambient-40s.wav" data-start="0" data-duration="40" data-volume="0.12"></audio>
+    <!-- Voiceover Elena Neural (es-AR) -->
+    <audio id="vo" src="assets/audio/vo-gestion-salud-40s.mp3" data-start="0.5" data-duration="37.7" data-volume="1.0"></audio>
+      <!-- SFX diegéticos sincronizados -->
+      <audio id="sfx-chime" src="assets/audio/chime.mp3" data-start="0.5" data-duration="1.8" data-volume="0.8"></audio>
+      <audio id="sfx-whoosh-1" src="assets/audio/whoosh-cinematic.mp3" data-start="5.5" data-duration="1.2" data-volume="0.75"></audio>
+      <audio id="sfx-pop-1" src="assets/audio/pop.mp3" data-start="16.5" data-duration="0.6" data-volume="0.7"></audio>
+      <audio id="sfx-ping" src="assets/audio/ping.mp3" data-start="28.5" data-duration="1.0" data-volume="0.75"></audio>
+      <audio id="sfx-impact" src="assets/audio/impact-bass-1.mp3" data-start="35.0" data-duration="2.12" data-volume="0.7"></audio>
+
+      <!-- Top Header -->
+      <header class="top-banner">
+        <div class="brand-title">
+          <div class="cross-icon">+</div>
+          Herramientas de Gestión en Salud
+        </div>
+        <div class="header-meta">
+          <span class="meta-tag">Edición 2026</span>
+          <span class="meta-tag" style="border-color: #2dd4bf; color: #2dd4bf;">Modalidad 100% Asincrónica</span>
+        </div>
+      </header>
+
+      <!-- ========================================================
+           ESCENA 1: INTRODUCCIÓN (00:00 - 00:06)
+           ======================================================== -->
+      <div id="scene-1" class="scene-view">
+        <div class="intro-content">
+          <span class="academic-badge">Trayecto Formativo Superior</span>
+          <h1>Herramientas de Gestión en Salud 2026</h1>
+          <p>Un programa técnico especializado para líderes sanitarios, diseñado para fortalecer y modernizar tu práctica profesional.</p>
+        </div>
+        <div class="intro-stats-card">
+          <div class="stat-row">
+            <div class="stat-icon-circle">⏱️</div>
+            <div>
+              <div class="stat-num">54 hs</div>
+              <div class="stat-lbl">Reloj Acreditadas</div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-icon-circle">🌐</div>
+            <div>
+              <div class="stat-num">100% Virtual</div>
+              <div class="stat-lbl">Modalidad Asincrónica</div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-icon-circle">📜</div>
+            <div>
+              <div class="stat-num">Certificación</div>
+              <div class="stat-lbl">Oficial y Descargable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 2: BLOQUE 1 - SISTEMA Y ORGANIZACIONES (00:06 - 00:17)
+           ======================================================== -->
+      <div id="scene-2" class="scene-view">
+        <div class="block-header">
+          <div>
+            <span class="block-pill">Bloque Temático 1</span>
+            <h2 style="font-size: 32px; font-weight: 800; color: #fff;">Sistema y Organizaciones de Salud</h2>
+          </div>
+          <span style="color: #38bdf8; font-weight: 700; font-size: 16px;">Unidades 1 a 3</span>
+        </div>
+        <div class="cards-grid-3">
+          <div class="clinical-card" id="c2-1">
+            <div class="card-accent-bar" style="background: #38bdf8;"></div>
+            <div>
+              <span class="unit-tag">Unidad 1</span>
+              <h3>Bases del Sistema Sanitario y APS</h3>
+              <p>Modelos sanitarios comparados, financiamiento y estrategia de Atención Primaria de la Salud (APS).</p>
+            </div>
+            <div class="card-footer">Fundamentos Sanitarios →</div>
+          </div>
+          <div class="clinical-card" id="c2-2">
+            <div class="card-accent-bar" style="background: #2dd4bf;"></div>
+            <div>
+              <span class="unit-tag">Unidad 2</span>
+              <h3>Gestión y Administración Sanitaria</h3>
+              <p>Diferenciación conceptual clave entre administrar recursos y gestionar procesos clínicos eficientes.</p>
+            </div>
+            <div class="card-footer">Eficiencia y Procesos →</div>
+          </div>
+          <div class="clinical-card" id="c2-3">
+            <div class="card-accent-bar" style="background: #818cf8;"></div>
+            <div>
+              <span class="unit-tag">Unidad 3</span>
+              <h3>El Hospital como Organización</h3>
+              <p>Complejidad institucional, estructura funcional, organigramas y coordinación interdepartamental.</p>
+            </div>
+            <div class="card-footer">Estructura Hospitalaria →</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 3: BLOQUE 2 - OPERATIVA Y MARCO LEGAL (00:17 - 00:29)
+           ======================================================== -->
+      <div id="scene-3" class="scene-view">
+        <div class="block-header">
+          <div>
+            <span class="block-pill" style="color: #2dd4bf;">Bloque Temático 2</span>
+            <h2 style="font-size: 32px; font-weight: 800; color: #fff;">Operativa, Redes y Marco Legal</h2>
+          </div>
+          <span style="color: #2dd4bf; font-weight: 700; font-size: 16px;">Unidades 4 a 6</span>
+        </div>
+        <div class="cards-grid-3">
+          <div class="clinical-card" id="c3-1">
+            <div class="card-accent-bar" style="background: #2dd4bf;"></div>
+            <div>
+              <span class="unit-tag">Unidad 4</span>
+              <h3>Gestión de CAPS y Redes</h3>
+              <p>Centros de salud, articulación en redes asistenciales, referencia y contrarreferencia de pacientes.</p>
+            </div>
+            <div class="card-footer">Integración Territorial →</div>
+          </div>
+          <div class="clinical-card" id="c3-2">
+            <div class="card-accent-bar" style="background: #38bdf8;"></div>
+            <div>
+              <span class="unit-tag">Unidad 5</span>
+              <h3>Consultorios Externos</h3>
+              <p>Optimización del flujo ambulatorio, demanda contenida, gestión de agendas y tiempos de espera.</p>
+            </div>
+            <div class="card-footer">Atención Ambulatoria →</div>
+          </div>
+          <div class="clinical-card" id="c3-3">
+            <div class="card-accent-bar" style="background: #f59e0b;"></div>
+            <div>
+              <span class="unit-tag">Unidad 6</span>
+              <h3>Marco Legal y Prevención de Error Médico</h3>
+              <p>Derechos del paciente, compliance normativo, consentimiento informado y seguridad asistencial.</p>
+            </div>
+            <div class="card-footer" style="color: #f59e0b;">Seguridad del Paciente →</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 4: BLOQUE 3 - PLANIFICACIÓN Y CERTIFICACIÓN (00:29 - 00:40)
+           ======================================================== -->
+      <div id="scene-4" class="scene-view">
+        <div class="strategic-box">
+          <div>
+            <span class="unit-tag" style="color: #38bdf8;">Unidad 7 · Módulo Final</span>
+            <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 8px;">Planificación Estratégica</h2>
+            <p style="font-size: 16px; color: #94a3b8;">Desarrollo integral de los tres niveles directivos en salud:</p>
+            <div class="levels-stack">
+              <div class="level-row" style="border-left-color: #38bdf8;">
+                <span>1. Planificación Estratégica</span>
+                <span style="font-size: 13px; color: #38bdf8;">Visión a Largo Plazo</span>
+              </div>
+              <div class="level-row" style="border-left-color: #2dd4bf;">
+                <span>2. Planificación Táctica</span>
+                <span style="font-size: 13px; color: #2dd4bf;">Coordinación por Áreas</span>
+              </div>
+              <div class="level-row" style="border-left-color: #f59e0b;">
+                <span>3. Planificación Operacional</span>
+                <span style="font-size: 13px; color: #f59e0b;">Acción en Terreno</span>
+              </div>
+            </div>
+          </div>
+          <div style="font-size: 14px; color: #94a3b8; margin-top: 16px;">
+            Herramientas metodológicas de aplicación inmediata.
+          </div>
+        </div>
+
+        <div class="cert-banner-card">
+          <div>
+            <span class="academic-badge" style="background: rgba(45, 212, 191, 0.2); border-color: #2dd4bf; color: #2dd4bf;">REQUISITOS DE ACREDITACIÓN</span>
+            <h2 style="font-size: 34px; font-weight: 800; color: #fff; margin: 12px 0 6px 0;">Certificación Oficial</h2>
+            <p style="font-size: 16px; color: #cbd5e1;">Completa los dos hitos obligatorios para la emisión del certificado:</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin: 20px 0;">
+            <div class="cert-check-item">
+              <div class="check-circle">✓</div>
+              <div>
+                <strong style="font-size: 17px; color: #fff;">Evaluación Final Integradora</strong>
+                <div style="font-size: 14px; color: #94a3b8;">Aprobación con 70% o más de aciertos</div>
+              </div>
+            </div>
+            <div class="cert-check-item">
+              <div class="check-circle">✓</div>
+              <div>
+                <strong style="font-size: 17px; color: #fff;">Encuesta de Satisfacción</strong>
+                <div style="font-size: 14px; color: #94a3b8;">Formulario breve de retroalimentación obligatoria</div>
+              </div>
+            </div>
+          </div>
+          <div style="background: #0284c7; color: white; padding: 14px 24px; border-radius: 10px; font-weight: 800; text-align: center; font-size: 17px; letter-spacing: 0.5px;">
+            Descarga Inmediata de Certificado Oficial
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Narrativa Inferior -->
+      <footer class="bottom-bar">
+        <div id="caption" class="caption-text">
+          Bienvenido a <span class="hl-cyan">Herramientas de Gestión en Salud 2026</span> (54 horas reloj).
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ==========================================
+      // ESCENA 1: INTRODUCCIÓN (00:00 - 00:06)
+      // ==========================================
+      tl.fromTo("#scene-1 .intro-content", 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 
+        0.2
+      );
+      tl.fromTo("#scene-1 .intro-stats-card", 
+        { opacity: 0, scale: 0.95 }, 
+        { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.4)" }, 
+        0.5
+      );
+      tl.to("#scene-1", { opacity: 0, duration: 0.45 }, 5.55);
+
+      // ==========================================
+      // ESCENA 2: BLOQUE 1 (00:06 - 00:17)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Bloque 1: <span class="hl-cyan">Bases del Sistema y APS</span>, Gestión vs. Administración y el <span class="hl-cyan">Hospital</span>.';
+      }, null, 6.0);
+
+      tl.to("#scene-2", { opacity: 1, duration: 0.45 }, 6.0);
+      tl.fromTo("#c2-1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 6.3);
+      tl.fromTo("#c2-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 7.0);
+      tl.fromTo("#c2-3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 7.7);
+      tl.to("#scene-2", { opacity: 0, duration: 0.45 }, 16.55);
+
+      // ==========================================
+      // ESCENA 3: BLOQUE 2 (00:17 - 00:29)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Bloque 2: Gestión de <span class="hl-teal">CAPS</span>, Consultorios Externos y <span class="hl-amber">Marco Legal / Compliance</span>.';
+      }, null, 17.0);
+
+      tl.to("#scene-3", { opacity: 1, duration: 0.45 }, 17.0);
+      tl.fromTo("#c3-1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 17.3);
+      tl.fromTo("#c3-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 18.0);
+      tl.fromTo("#c3-3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 18.7);
+      tl.to("#scene-3", { opacity: 0, duration: 0.45 }, 28.55);
+
+      // ==========================================
+      // ESCENA 4: BLOQUE 3 Y CIERRE (00:29 - 00:40)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = '<span class="hl-cyan">Planificación Estratégica</span>. Evaluación Final (70%+) y encuesta para descargar tu certificado.';
+      }, null, 29.0);
+
+      tl.to("#scene-4", { opacity: 1, duration: 0.45 }, 29.0);
+      tl.fromTo("#scene-4 .strategic-box", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6 }, 29.3);
+      tl.fromTo("#scene-4 .cert-banner-card", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6 }, 29.7);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

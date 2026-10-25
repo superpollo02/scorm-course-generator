@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #090d14;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #f0f6fc;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Global Header Banner */
+      .top-banner {
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 80px;
+        background: #111722;
+        border-bottom: 1px solid #252f40;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 48px; z-index: 100;
+      }
+      .brand {
+        display: flex; align-items: center; gap: 14px;
+        font-weight: 800; font-size: 24px; color: #58a6ff;
+      }
+      .brand-badge {
+        background: #238636; color: #ffffff;
+        font-size: 13px; font-weight: 700;
+        padding: 4px 10px; border-radius: 20px;
+      }
+
+      /* Step Progress Bar */
+      .step-bar {
+        display: flex; align-items: center; gap: 8px;
+      }
+      .step-node {
+        background: #182232; border: 1px solid #2c3a50;
+        color: #8b949e; font-size: 13px; font-weight: 600;
+        padding: 6px 14px; border-radius: 8px;
+      }
+      .step-node.active {
+        background: rgba(88, 166, 255, 0.15); border-color: #58a6ff; color: #58a6ff;
+      }
+      .step-node.completed {
+        background: rgba(35, 134, 54, 0.15); border-color: #238636; color: #3fb950;
+      }
+
+      /* Animated Cursor */
+      #virtual-cursor {
+        position: absolute;
+        width: 28px; height: 28px;
+        pointer-events: none;
+        z-index: 200;
+        opacity: 0;
+      }
+      .cursor-ring {
+        position: absolute;
+        top: -10px; left: -10px;
+        width: 44px; height: 44px;
+        border: 2px solid #58a6ff;
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Stage view base */
+      .scene-view {
+        position: absolute;
+        top: 80px; left: 0; right: 0; bottom: 110px;
+        padding: 36px 60px;
+        overflow: hidden;
+      }
+
+      /* Bottom Narrative / Subtitle */
+      .bottom-bar {
+        position: absolute;
+        bottom: 0; left: 0; right: 0; height: 110px;
+        background: #090d14;
+        border-top: 1px solid #252f40;
+        display: flex; align-items: center; justify-content: center;
+        padding: 0 80px; z-index: 100;
+      }
+      .caption-text {
+        font-size: 26px; font-weight: 600;
+        text-align: center; color: #f0f6fc;
+      }
+      .hl-blue { color: #58a6ff; font-weight: 700; }
+      .hl-gold { color: #e3b341; font-weight: 700; }
+      .hl-green { color: #3fb950; font-weight: 700; }
+      .hl-red { color: #ff7b72; font-weight: 700; }
+
+      /* Mockup Windows & Cards */
+      .browser-card {
+        background: #111722; border: 1px solid #252f40;
+        border-radius: 14px; padding: 28px;
+        display: flex; flex-direction: column; gap: 18px;
+        height: 100%; position: relative;
+      }
+      .window-header {
+        display: flex; justify-content: space-between; align-items: center;
+        border-bottom: 1px solid #252f40; padding-bottom: 12px;
+      }
+      .traffic-lights { display: flex; gap: 8px; }
+      .dot { width: 12px; height: 12px; border-radius: 50%; }
+      .dot-r { background: #ff5f56; } .dot-y { background: #ffbd2e; } .dot-g { background: #27c93f; }
+
+      /* Buttons & Chips */
+      .btn-moodle-green {
+        background: #238636; color: #fff;
+        font-size: 14px; font-weight: 700;
+        padding: 8px 16px; border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.2);
+        display: inline-flex; align-items: center; gap: 8px;
+      }
+      .callout-box {
+        background: rgba(227, 179, 65, 0.12);
+        border: 1px solid #e3b341;
+        border-radius: 10px; padding: 14px 20px;
+        color: #e3b341; font-size: 15px; font-weight: 600;
+        display: flex; align-items: center; gap: 12px;
+      }
+
+      /* Step 0 Layout */
+      #scene-0 { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+      .drive-folder-list {
+        background: #0d121c; border: 1px solid #252f40;
+        border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+      }
+      .folder-item {
+        background: #161f2e; border: 1px solid #2c3a50;
+        border-radius: 8px; padding: 12px 16px;
+        display: flex; justify-content: space-between; align-items: center;
+        font-size: 15px;
+      }
+
+      /* Step 1 Layout */
+      #scene-1 { opacity: 0; display: flex; flex-direction: column; gap: 20px; }
+      .tripartite-columns {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex: 1;
+      }
+      .tri-col {
+        background: #111722; border: 1px solid #252f40;
+        border-radius: 14px; padding: 24px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .tri-pill {
+        font-size: 12px; font-weight: 700; padding: 4px 10px;
+        border-radius: 6px; width: fit-content; margin-bottom: 12px;
+      }
+
+      /* Step 2 Layout */
+      #scene-2 { opacity: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+
+      /* Step 3 Layout */
+      #scene-3 { opacity: 0; display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; }
+
+      /* Step 4 Layout */
+      #scene-4 { opacity: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+      .drag-drop-zone {
+        border: 2px dashed #58a6ff; border-radius: 12px;
+        background: rgba(88, 166, 255, 0.05); padding: 36px;
+        text-align: center; display: flex; flex-direction: column;
+        align-items: center; gap: 14px; position: relative;
+      }
+      .zip-floating-card {
+        background: #161f2e; border: 2px solid #58a6ff;
+        border-radius: 10px; padding: 12px 20px;
+        display: inline-flex; align-items: center; gap: 10px;
+        font-weight: 700; font-size: 15px; color: #58a6ff;
+        position: absolute; top: 20px;
+      }
+
+      /* Step 5 Layout */
+      #scene-5 { opacity: 0; display: flex; flex-direction: column; gap: 24px; }
+      .student-view-grid {
+        display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; flex: 1;
+      }
+
+      /* Step 6 Layout (Cierre + Llave en Mano) */
+      #scene-6 {
+        opacity: 0; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 32px;
+        background: radial-gradient(circle at center, #161f2e 0%, #090d14 100%);
+      }
+      .service-addon-box {
+        background: #111722; border: 2px solid #238636;
+        border-radius: 16px; padding: 32px 48px;
+        text-align: center; max-width: 900px;
+        display: flex; flex-direction: column; gap: 14px;
+      }
+      .cta-button {
+        background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        color: #ffffff; font-size: 26px; font-weight: 700;
+        padding: 18px 48px; border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 30px rgba(35, 134, 54, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="120"
+      data-width="1920"
+      data-height="1080"
+      data-fps="30"
+    >
+      <!-- Audio Tracks (BGM + VO Elena + SFX) -->
+      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="120" data-volume="0.12"></audio>
+      <audio id="vo" src="assets/audio/vo-tutorial-120s.mp3" data-start="0.5" data-duration="110" data-volume="1.0"></audio>
+      <!-- SFX sincronizados -->
+      <audio id="sfx-click-1" src="assets/audio/click.mp3" data-start="12.0" data-duration="0.5" data-volume="0.8"></audio>
+      <audio id="sfx-ping-1" src="assets/audio/ping.mp3" data-start="18.0" data-duration="1.0" data-volume="0.75"></audio>
+      <audio id="sfx-pop-1" src="assets/audio/pop.mp3" data-start="34.0" data-duration="0.6" data-volume="0.75"></audio>
+      <audio id="sfx-whoosh-1" src="assets/audio/whoosh.mp3" data-start="54.0" data-duration="0.6" data-volume="0.75"></audio>
+      <audio id="sfx-click-2" src="assets/audio/click.mp3" data-start="66.0" data-duration="0.5" data-volume="0.8"></audio>
+      <audio id="sfx-pop-2" src="assets/audio/pop.mp3" data-start="78.0" data-duration="0.6" data-volume="0.75"></audio>
+      <audio id="sfx-chime" src="assets/audio/chime.mp3" data-start="90.0" data-duration="1.8" data-volume="0.85"></audio>
+      <audio id="sfx-click-3" src="assets/audio/click.mp3" data-start="98.0" data-duration="0.5" data-volume="0.8"></audio>
+      <audio id="sfx-sparkle" src="assets/audio/sparkle.mp3" data-start="106.0" data-duration="1.8" data-volume="0.8"></audio>
+      <audio id="sfx-impact" src="assets/audio/impact-bass-1.mp3" data-start="111.0" data-duration="2.5" data-volume="0.75"></audio>
+
+      <!-- Cursor Virtual Animado -->
+      <div id="virtual-cursor">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#58a6ff" stroke="#ffffff" stroke-width="1.5">
+          <path d="M3 3l7 18 3-7 7-3L3 3z" />
+        </svg>
+        <div id="cursor-ring" class="cursor-ring"></div>
+      </div>
+
+      <!-- Top Banner Global + Step Progress Bar -->
+      <header class="top-banner">
+        <div class="brand">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          EducAI
+          <span class="brand-badge">Tutorial Oficial</span>
+        </div>
+
+        <nav class="step-bar">
+          <div class="step-node active" id="node-0">0. Preparación</div>
+          <div class="step-node" id="node-1">1. Tripartita</div>
+          <div class="step-node" id="node-2">2. Textos/Banners</div>
+          <div class="step-node" id="node-3">3. Videos</div>
+          <div class="step-node" id="node-4">4. SCORM</div>
+          <div class="step-node" id="node-5">5. Verificación</div>
+        </nav>
+      </header>
+
+      <!-- ========================================================
+           ESCENA 0: PREPARACIÓN PREVIA (0:00 - 0:18)
+           ======================================================== -->
+      <div id="scene-0" class="scene-view">
+        <div class="browser-card">
+          <div class="window-header">
+            <div class="traffic-lights"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <span style="font-size: 14px; color: #8b949e;">Google Drive / Materiales_EducAI</span>
+          </div>
+          <h3 style="font-size: 22px;">1. Descarga de Materiales por Unidad</h3>
+          <div class="drive-folder-list">
+            <div class="folder-item"><span>📁 Unidad_1_Introduccion_IA/</span><span style="color: #3fb950;">✓ Descargado</span></div>
+            <div class="folder-item"><span>📁 Unidad_2_Modelos_LLM/</span><span style="color: #3fb950;">✓ Descargado</span></div>
+            <div class="folder-item"><span>📁 Recursos_Graficos_e_Infografias/</span><span style="color: #3fb950;">✓ Descargado</span></div>
+          </div>
+        </div>
+        <div class="browser-card">
+          <div class="window-header">
+            <div class="traffic-lights"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <span style="font-size: 14px; color: #8b949e;">Moodle LMS 4.0 / Diplomado IA</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 22px;">2. Acceso y Modo Edición</h3>
+            <div class="btn-moodle-green" id="btn-edit-mode">
+              <span>⚙️</span> Activar edición
+            </div>
+          </div>
+          <p style="font-size: 15px; color: #8b949e; line-height: 1.5;">
+            Ingresa a tu curso con perfil docente y haz clic en la esquina superior derecha para habilitar la carga de recursos y actividades.
+          </p>
+          <div style="background: rgba(35, 134, 54, 0.15); border: 1px solid #238636; border-radius: 8px; padding: 14px; color: #3fb950; font-weight: 700; text-align: center;">
+            ✓ Modo edición habilitado correctamente
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 1: ESTRUCTURA TRIPARTITA (0:18 - 0:34)
+           ======================================================== -->
+      <div id="scene-1" class="scene-view">
+        <h2 style="font-size: 26px; text-align: center; margin-bottom: 8px;">Paso 1: Configurar la Estructura Tripartita del Curso</h2>
+        <div class="tripartite-columns">
+          <div class="tri-col" id="col-intro">
+            <div>
+              <span class="tri-pill" style="background: rgba(88, 166, 255, 0.15); color: #58a6ff;">BLOQUE 1</span>
+              <h3 style="font-size: 22px; margin-bottom: 8px;">Sección General</h3>
+              <p style="font-size: 14px; color: #8b949e;">Presentación del curso, programa docente y foro de novedades.</p>
+            </div>
+            <div style="background: #182232; padding: 10px; border-radius: 8px; font-size: 13px; color: #58a6ff;">
+              Bienvenida e Instrucciones
+            </div>
+          </div>
+          <div class="tri-col" id="col-units" style="border: 2px solid #58a6ff;">
+            <div>
+              <span class="tri-pill" style="background: rgba(210, 153, 34, 0.15); color: #e3b341;">BLOQUE 2 (MODELO)</span>
+              <h3 style="font-size: 22px; margin-bottom: 8px;">Unidades Temáticas</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+                <div style="background: #182232; padding: 8px 12px; border-radius: 6px; font-size: 13px; border-left: 3px solid #58a6ff;">1. La Clase (Video Microlearning)</div>
+                <div style="background: #182232; padding: 8px 12px; border-radius: 6px; font-size: 13px; border-left: 3px solid #e3b341;">2. La Lectura (Libro & Infografía)</div>
+                <div style="background: #182232; padding: 8px 12px; border-radius: 6px; font-size: 13px; border-left: 3px solid #3fb950;">3. La Práctica (Trivias SCORM)</div>
+              </div>
+            </div>
+            <div style="color: #3fb950; font-weight: 700; font-size: 13px; text-align: center;">Secuencia Estandarizada</div>
+          </div>
+          <div class="tri-col" id="col-close">
+            <div>
+              <span class="tri-pill" style="background: rgba(63, 185, 80, 0.15); color: #3fb950;">BLOQUE 3</span>
+              <h3 style="font-size: 22px; margin-bottom: 8px;">Sección de Cierre</h3>
+              <p style="font-size: 14px; color: #8b949e;">Examen final integrador, encuesta docente y certificado de aprobación.</p>
+            </div>
+            <div style="background: #182232; padding: 10px; border-radius: 8px; font-size: 13px; color: #3fb950;">
+              Evaluación Sumativa
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 2: BANNERS, TEXTOS E INFOGRAFÍAS (0:34 - 0:54)
+           ======================================================== -->
+      <div id="scene-2" class="scene-view">
+        <div class="browser-card">
+          <div class="window-header">
+            <span style="font-weight: 700; color: #58a6ff;">A. Banners e Imágenes de Encabezado</span>
+            <span style="font-size: 13px; color: #8b949e;">Recurso: Etiqueta / Área de texto</span>
+          </div>
+          <h3 style="font-size: 20px;">Subida de Banner Institucional</h3>
+          <p style="font-size: 14px; color: #8b949e;">Clic en 'Añadir actividad o recurso' ➔ Etiqueta ➔ Icono Imagen 🖼️.</p>
+          <div style="background: #182232; border: 1px solid #2c3a50; border-radius: 10px; padding: 20px; text-align: center;">
+            <div style="background: linear-gradient(135deg, #1f6feb 0%, #0d419d 100%); padding: 24px; border-radius: 8px; font-weight: 800; font-size: 22px;">
+              DIPLOMADO EN INTELIGENCIA ARTIFICIAL
+            </div>
+          </div>
+          <div class="btn-moodle-green" style="align-self: flex-start;">Guardar cambios y regresar</div>
+        </div>
+        <div class="browser-card">
+          <div class="window-header">
+            <span style="font-weight: 700; color: #e3b341;">B. Carga de Glosarios e Infografías</span>
+            <span style="font-size: 13px; color: #8b949e;">Recurso: Página o Libro Moodle</span>
+          </div>
+          <h3 style="font-size: 20px;">Cuerpo de Texto Diagramado</h3>
+          <p style="font-size: 14px; color: #8b949e;">Copia el archivo .docx provisto y pega directamente en el editor.</p>
+          <div style="background: #0d121c; border: 1px solid #252f40; border-radius: 8px; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 8px;">
+            <strong style="color: #e3b341;">📖 Glosario Conceptual Integrado</strong>
+            <span>Insertar la infografía conceptual como imagen dentro del módulo.</span>
+            <span style="color: #58a6ff;">📊 infografia_unidad_1.png (Cargada con éxito)</span>
+          </div>
+          <div class="btn-moodle-green" style="align-self: flex-start;">Guardar cambios y regresar</div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 3: INTEGRACIÓN DE VIDEOS CLASE (0:54 - 1:12)
+           ======================================================== -->
+      <div id="scene-3" class="scene-view">
+        <div class="browser-card">
+          <div class="window-header">
+            <span style="font-weight: 700; color: #58a6ff;">Paso 3: Bloque 'La Clase'</span>
+            <span style="font-size: 13px; color: #8b949e;">Recurso: URL Externa</span>
+          </div>
+          <h3 style="font-size: 22px;">Configuración de Video-lección</h3>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+            <div>
+              <label style="font-size: 13px; color: #8b949e; display: block; margin-bottom: 4px;">Nombre de la actividad:</label>
+              <input type="text" value="Clase 1: Exposición Principal (Microlearning)" readonly style="width: 100%; background: #0d121c; border: 1px solid #252f40; color: #fff; padding: 10px; border-radius: 6px; font-size: 14px;" />
+            </div>
+            <div>
+              <label style="font-size: 13px; color: #8b949e; display: block; margin-bottom: 4px;">URL externa:</label>
+              <input type="text" value="https://drive.google.com/file/d/educai-clase1-video" readonly style="width: 100%; background: #0d121c; border: 1px solid #252f40; color: #58a6ff; padding: 10px; border-radius: 6px; font-size: 14px;" />
+            </div>
+          </div>
+          <div class="callout-box" id="callout-embed" style="border: 2px solid #58a6ff; background: rgba(88, 166, 255, 0.15); color: #fff;">
+            <span>⚠️</span>
+            <div>
+              <strong>Menú Apariencia ➔ Selecciona obligatoriamente: "Incrustar"</strong>
+              <div style="font-size: 13px; color: #8b949e; margin-top: 2px;">Garantiza que el alumno no cierre Moodle ni abandone la sesión.</div>
+            </div>
+          </div>
+        </div>
+        <div class="browser-card" style="align-items: center; justify-content: center; text-align: center;">
+          <div style="width: 100%; height: 260px; background: #010409; border-radius: 12px; border: 1px solid #252f40; display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="width: 70px; height: 70px; background: #58a6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z" /></svg>
+            </div>
+            <div style="position: absolute; bottom: 16px; background: rgba(0,0,0,0.8); padding: 6px 14px; border-radius: 20px; font-size: 13px; color: #3fb950; font-weight: 700;">
+              ✓ Reproducción Incrustada en el Aula
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 4: ACTIVIDADES GAMIFICADAS SCORM (1:12 - 1:36)
+           ======================================================== -->
+      <div id="scene-4" class="scene-view">
+        <div class="browser-card">
+          <div class="window-header">
+            <span style="font-weight: 700; color: #3fb950;">Paso 4: Bloque 'La Práctica'</span>
+            <span style="font-size: 13px; color: #8b949e;">Recurso: Paquete SCORM 📦</span>
+          </div>
+          <h3 style="font-size: 20px;">Carga de Paquete Comprimido .zip</h3>
+          <div class="drag-drop-zone" id="drop-zone" data-layout-allow-overlap="true" data-layout-allow-occlusion="true">
+            <div style="font-size: 40px;" data-layout-allow-overlap="true">📦</div>
+            <div data-layout-allow-overlap="true" data-layout-allow-occlusion="true">
+              <strong style="font-size: 16px;" data-layout-allow-overlap="true" data-layout-allow-occlusion="true">Arrastra aquí el archivo .zip de EducAI</strong>
+              <div style="font-size: 13px; color: #8b949e; margin-top: 4px;">Compatible con SCORM 1.2</div>
+            </div>
+            <div class="zip-floating-card" id="zip-file" data-layout-allow-overlap="true" data-layout-allow-occlusion="true">
+              <span>🗜️</span> trivia_u1.zip
+            </div>
+          </div>
+        </div>
+        <div class="browser-card">
+          <div class="window-header">
+            <span style="font-weight: 700; color: #3fb950;">Configuración de Calificaciones</span>
+            <span style="font-size: 13px; color: #8b949e;">Libro de Notas Automático</span>
+          </div>
+          <h3 style="font-size: 20px;">Vincular al Calificador</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+            <div style="background: #182232; padding: 14px; border-radius: 8px;">
+              <span style="font-size: 13px; color: #8b949e; display: block;">Método de calificación:</span>
+              <strong style="color: #3fb950; font-size: 16px;">Calificación más alta</strong>
+            </div>
+            <div style="background: #182232; padding: 14px; border-radius: 8px;">
+              <span style="font-size: 13px; color: #8b949e; display: block;">Calificación máxima:</span>
+              <strong style="color: #58a6ff; font-size: 16px;">100 puntos (Escala automática)</strong>
+            </div>
+          </div>
+          <div style="background: rgba(35, 134, 54, 0.15); border: 1px solid #238636; border-radius: 8px; padding: 12px; color: #3fb950; font-weight: 700; text-align: center; margin-top: 10px;">
+            ✓ Puntajes sincronizados directamente al calificador
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 5: VERIFICACIÓN Y VISTA ESTUDIANTE (1:36 - 1:50)
+           ======================================================== -->
+      <div id="scene-5" class="scene-view">
+        <div class="window-header" style="border: none; padding: 0;">
+          <h2 style="font-size: 26px;">Paso 5: Desactivar Edición y Cambiar Rol a Estudiante</h2>
+          <div class="btn-moodle-green">Desactivar edición</div>
+        </div>
+        <div class="student-view-grid">
+          <div class="browser-card">
+            <h3 style="font-size: 20px; color: #58a6ff;">Experiencia del Estudiante Validada</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+              <div style="background: #161f2e; padding: 14px; border-radius: 8px; border-left: 4px solid #58a6ff;">
+                <strong>1. Clase:</strong> Video microlearning reproduce perfectamente incrustado.
+              </div>
+              <div style="background: #161f2e; padding: 14px; border-radius: 8px; border-left: 4px solid #e3b341;">
+                <strong>2. Lectura:</strong> Glosario e infografía nítidos y legibles.
+              </div>
+              <div style="background: #161f2e; padding: 14px; border-radius: 8px; border-left: 4px solid #3fb950;">
+                <strong>3. Práctica:</strong> Trivia SCORM abre con temporizador y registra notas.
+              </div>
+            </div>
+          </div>
+          <div class="browser-card" style="align-items: center; justify-content: center; text-align: center; gap: 20px;">
+            <div style="font-size: 64px;">🎓</div>
+            <h3 style="font-size: 24px; color: #3fb950;">Aula 100% Funcional y Lista</h3>
+            <p style="font-size: 15px; color: #8b949e;">
+              Tus estudiantes disfrutarán de una experiencia guiada, moderna y sin fricción técnica.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           ESCENA 6: SERVICIO LLAVE EN MANO Y CIERRE (1:50 - 2:00)
+           ======================================================== -->
+      <div id="scene-6" class="scene-view">
+        <div class="service-addon-box">
+          <div style="font-size: 40px;">🛠️</div>
+          <h2 style="font-size: 32px; color: #58a6ff;">¿Prefieres ahorrar tiempo técnico?</h2>
+          <p style="font-size: 18px; color: #8b949e; line-height: 1.5;">
+            Si contrataste el <strong style="color: #3fb950;">Servicio Adicional de Carga e Implementación (+30%)</strong>, nuestro equipo técnico ingresa con tus credenciales y deja toda el aula maquetada y lista para tus alumnos.
+          </p>
+          <div style="font-size: 15px; color: #e3b341; font-weight: 700;">
+            ● Entrega llave en mano sin esfuerzo para ti
+          </div>
+        </div>
+        <div class="cta-button" id="cta-btn">
+          [ Solicitar Asistencia o Implementación EducAI ]
+        </div>
+      </div>
+
+      <!-- Narrativa Inferior -->
+      <footer class="bottom-bar">
+        <div id="caption" class="caption-text">
+          Guía Oficial de Integración: <span class="hl-blue">aprende a cargar tu kit en Moodle</span> paso a paso.
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Configuración de Cursor
+      const cursor = "#virtual-cursor";
+      const ring = "#cursor-ring";
+
+      function moveCursorAndClick(x, y, time) {
+        tl.to(cursor, { opacity: 1, duration: 0.2 }, time);
+        tl.to(cursor, { x: x, y: y, duration: 0.8, ease: "power2.out" }, time + 0.1);
+        tl.to(ring, { opacity: 1, scale: 1.4, duration: 0.2, ease: "power1.out" }, time + 0.9);
+        tl.to(ring, { opacity: 0, scale: 1.8, duration: 0.2 }, time + 1.1);
+      }
+
+      // ==========================================
+      // ESCENA 0: PREPARACIÓN (0:00 - 0:18)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Paso 0: <span class="hl-blue">Descarga tus archivos</span> desde Google Drive y activa el Modo Edición en Moodle.';
+      }, null, 0.5);
+
+      // Mover cursor a "Activar edición"
+      moveCursorAndClick(1620, 240, 10.5);
+
+      tl.to("#scene-0", { opacity: 0, duration: 0.5 }, 17.5);
+
+      // ==========================================
+      // ESCENA 1: TRIPARTITA (0:18 - 0:34)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("node-0").className = "step-node completed";
+        document.getElementById("node-1").className = "step-node active";
+        document.getElementById("caption").innerHTML = 'Paso 1: Configura la <span class="hl-blue">Estructura Tripartita</span> (Clase ➔ Lectura ➔ Práctica) en cada unidad.';
+      }, null, 18.0);
+
+      tl.to("#scene-1", { opacity: 1, duration: 0.5 }, 18.0);
+      tl.to("#scene-1", { opacity: 0, duration: 0.5 }, 33.5);
+
+      // ==========================================
+      // ESCENA 2: BANNERS Y TEXTOS (0:34 - 0:54)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("node-1").className = "step-node completed";
+        document.getElementById("node-2").className = "step-node active";
+        document.getElementById("caption").innerHTML = 'Paso 2: Sube los <span class="hl-blue">banners institucionales</span> con Etiqueta y los textos/glosarios en Página o Libro.';
+      }, null, 34.0);
+
+      tl.to("#scene-2", { opacity: 1, duration: 0.5 }, 34.0);
+      moveCursorAndClick(480, 520, 42.0);
+      tl.to("#scene-2", { opacity: 0, duration: 0.5 }, 53.5);
+
+      // ==========================================
+      // ESCENA 3: VIDEOS (0:54 - 1:12)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("node-2").className = "step-node completed";
+        document.getElementById("node-3").className = "step-node active";
+        document.getElementById("caption").innerHTML = 'Paso 3: En \'La Clase\', agrega tu video con URL y <span class="hl-blue">selecciona obligatoriamente \'Incrustar\'</span>.';
+      }, null, 54.0);
+
+      tl.to("#scene-3", { opacity: 1, duration: 0.5 }, 54.0);
+      // Destacar aviso Incrustar
+      tl.to("#callout-embed", { scale: 1.03, borderColor: "#3fb950", duration: 0.4, repeat: 3, yoyo: true }, 64.0);
+      moveCursorAndClick(550, 480, 65.0);
+      tl.to("#scene-3", { opacity: 0, duration: 0.5 }, 71.5);
+
+      // ==========================================
+      // ESCENA 4: SCORM (1:12 - 1:36)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("node-3").className = "step-node completed";
+        document.getElementById("node-4").className = "step-node active";
+        document.getElementById("caption").innerHTML = 'Paso 4: En \'La Práctica\', crea un <span class="hl-green">Paquete SCORM</span>, arrastra el .zip y fija escala a 100 puntos.';
+      }, null, 72.0);
+
+      tl.to("#scene-4", { opacity: 1, duration: 0.5 }, 72.0);
+      // Animación drag & drop del archivo zip
+      tl.fromTo("#zip-file", 
+        { y: -60, opacity: 0 }, 
+        { y: 60, opacity: 1, duration: 1.2, ease: "bounce.out" }, 
+        77.0
+      );
+      tl.to("#scene-4", { opacity: 0, duration: 0.5 }, 95.5);
+
+      // ==========================================
+      // ESCENA 5: VERIFICACIÓN (1:36 - 1:50)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("node-4").className = "step-node completed";
+        document.getElementById("node-5").className = "step-node active";
+        document.getElementById("caption").innerHTML = 'Paso 5: <span class="hl-green">Desactiva edición</span> y cambia el rol a Estudiante para comprobar la experiencia final.';
+      }, null, 96.0);
+
+      tl.to("#scene-5", { opacity: 1, duration: 0.5 }, 96.0);
+      moveCursorAndClick(1480, 140, 97.0);
+      tl.to("#scene-5", { opacity: 0, duration: 0.5 }, 109.5);
+
+      // ==========================================
+      // ESCENA 6: CIERRE Y LLAVE EN MANO (1:50 - 2:00)
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("node-5").className = "step-node completed";
+        document.getElementById("caption").innerHTML = '¿Prefieres que lo hagamos por ti? Activa el <span class="hl-green">Servicio de Carga Directa (+30%)</span>.';
+      }, null, 110.0);
+
+      tl.to("#scene-6", { opacity: 1, duration: 0.6 }, 110.0);
+      tl.fromTo("#cta-btn", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.5)" }, 112.0);
+      tl.to("#cta-btn", { scale: 1.04, duration: 0.8, repeat: 4, yoyo: true }, 113.0);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

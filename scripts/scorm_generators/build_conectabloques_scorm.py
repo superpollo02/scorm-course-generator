@@ -21,6 +21,14 @@ import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path
 
+# Importación unificada del manifest
+try:
+    from scorm_core.manifest import generar_manifest_scorm_unificado
+except ImportError:
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+    from scorm_core.manifest import generar_manifest_scorm_unificado
+
 
 THEMES = {
     "modern-mint": {
@@ -434,6 +442,11 @@ def generar_html_conectabloques(data: ConectabloquesData) -> str:
       osc.connect(gain);
       gain.connect(ctx.destination);
 
+      // Auto-desconexión para evitar fugas de memoria en Web Audio API
+      osc.onended = function() {{
+        try {{ osc.disconnect(); gain.disconnect(); }} catch (e) {{}}
+      }};
+
       if (type === 'select') {{
         osc.frequency.setValueAtTime(440, now);
         osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
@@ -464,6 +477,9 @@ def generar_html_conectabloques(data: ConectabloquesData) -> str:
           var g = ctx.createGain();
           o.connect(g);
           g.connect(ctx.destination);
+          o.onended = function() {{
+            try {{ o.disconnect(); g.disconnect(); }} catch(e) {{}}
+          }};
           o.frequency.setValueAtTime(f, now + i * 0.12);
           g.gain.setValueAtTime(0.12, now + i * 0.12);
           g.gain.linearRampToValueAtTime(0.01, now + i * 0.12 + 0.3);
@@ -494,6 +510,9 @@ def generar_html_conectabloques(data: ConectabloquesData) -> str:
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
       osc.connect(gain);
       gain.connect(ctx.destination);
+      osc.onended = function() {{
+        try {{ osc.disconnect(); gain.disconnect(); }} catch (e) {{}}
+      }};
       osc.start();
       osc.stop(ctx.currentTime + 0.8);
       ambientStep++;
@@ -750,36 +769,14 @@ def generar_html_conectabloques(data: ConectabloquesData) -> str:
 
 
 def generar_manifest_scorm_conectabloques(data: ConectabloquesData, identifier: str = "CONECTABLOQUES_SCORM") -> str:
-    """Construye imsmanifest.xml estándar SCORM 1.2."""
-    titulo_escaped = html.escape(data.titulo)
-    return f"""<?xml version="1.0" standalone="no" ?>
-<!-- Generator: Conectabloques SCORM Builder / Antigravity -->
-<manifest identifier="{identifier}" version="1.2"
-          xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
-          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
-                              http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
-  <metadata>
-    <schema>ADL SCORM</schema>
-    <schemaversion>1.2</schemaversion>
-  </metadata>
-  <organizations default="org_{identifier}">
-    <organization identifier="org_{identifier}">
-      <title>{titulo_escaped}</title>
-      <item identifier="item_conectabloques" identifierref="res_conectabloques">
-        <title>{titulo_escaped}</title>
-        <adlcp:masteryscore>{data.puntaje_minimo}</adlcp:masteryscore>
-      </item>
-    </organization>
-  </organizations>
-  <resources>
-    <resource identifier="res_conectabloques" type="webcontent" adlcp:scormtype="sco" href="index.html">
-      <file href="index.html"/>
-    </resource>
-  </resources>
-</manifest>
-"""
+    """Construye imsmanifest.xml estándar SCORM 1.2 delegando al generador unificado."""
+    return generar_manifest_scorm_unificado(
+        identifier=identifier,
+        title=data.titulo,
+        masteryscore=data.puntaje_minimo,
+        default_href="index.html",
+        generator_name="Aula Lista EDUCAI / Conectabloques Builder"
+    )
 
 
 def empaquetar_conectabloques_scorm(ruta_md: Path, salida_zip: Path | None = None, tema: str | None = None) -> Path:

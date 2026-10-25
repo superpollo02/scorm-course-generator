@@ -1,4 +1,4 @@
-# {{PROJECT_NAME}} — Universal AI Workflow (Updated 26/08/2026)
+# Aula Lista EDUCAI — Universal AI Workflow (Updated 26/08/2026)
 
 This file is the single, canonical entry point for all AI agents (Gemini, Antigravity, Claude, GPT/Codex, Cursor, Copilot, etc.). The workflow is 100% agent-agnostic and tool-independent.
 
@@ -150,6 +150,28 @@ Antes de responder al usuario, el agente DEBE autoauditar la existencia de los 1
 10. `Examen Final Sumativo`: Si la unidad solicitada es la de cierre del programa, debe incluir el banner de examen final (`banner_examen_final.png`), la consigna formal de acreditación (45-50 min, nota mínima 70%), banco aleatorizado y restricción de acceso con candado en Moodle hasta completar las prácticas.
 11. `tiza comprobar *.html`: Auditoría ejecutada con éxito (`Paso COMPROBAR: ok`) en todos los ficheros HTML.
 
-### C. Regla de Autocorrección (Self-Healing)
-Si durante la autoauditoría se detecta que **falta cualquiera de estos 10 componentes**, el agente **NO debe pedir confirmación ni dejarlo pendiente en su respuesta**: debe proceder inmediatamente a generarlo o compilarlo hasta satisfacer el 100% del checklist.
+### C. Regla de Cierre Obligatorio y Autocorrección (Zero-Missing Gate & Self-Healing)
+**DIRECTIVA DE CIERRE OBLIGATORIO**: Una vez generados los contenidos de cualquier unidad didáctica o curso completo, el agente DEBE realizar una **revisión exhaustiva de verificación física en disco** de todos y cada uno de los componentes canónicos antes de dar la tarea por concluida.
+- Si se detecta que **falta cualquiera de los 10 componentes canónicos o el examen final de cierre**:
+  - **ESTÁ ESTRICTAMENTE PROHIBIDO DAR POR TERMINADA LA TAREA O PREGUNTAR AL USUARIO SI DESEA GENERARLO**.
+  - El agente debe auto-repararse inmediatamente (*Self-Healing*), invocando al agente o script especializado correspondiente para crearlo, renderizarlo o compilarlo en el acto.
+  - La auto-auditoría se repetirá hasta verificar el 100% de los archivos físicos requeridos.
 
+### D. Protocolo de Consulta Obligatoria de Modo de Trivia y Examen
+Al momento de generar la **Gran Trivia SCORM** de cada unidad y el **Examen Final Sumativo**, el agente **DEBE pausar y preguntar expresamente al usuario qué modo prefiere utilizar**, presentándole de forma clara las opciones disponibles:
+
+1. **🚀 Modo Turbo 1 (Automático 1-Click)**:
+   - 10 preguntas de dificultad intermedia, 60% de aprobación, 30 minutos de tiempo límite, orden aleatorio (shuffle), estilo Neón accesible de alto contraste y retroalimentación inmediata. Empaquetado automático directo a SCORM 1.2 ZIP en 1 solo paso.
+2. **🎮 Modo Turno Estándar (Interactivo con Navegación por Pasos)**:
+   - Navegación bidireccional (`← Anterior` y `Siguiente →`), barra interactiva superior de turnos para saltar libremente y revisar preguntas antes de entregar, 70% de aprobación, sin límite de tiempo estricto y retroalimentación pedagógica contextual inmediata.
+3. **⚡ Modo Turbo 2 (Generación Masiva por Lotes / Batch)**:
+   - Procesa automáticamente todas las unidades o cuestionarios existentes en el directorio y genera todos los paquetes SCORM 1.2 correspondientes en una sola pasada.
+4. **🎨 Personalización Total**:
+   - Selección libre y a medida por el docente:
+     - Tema visual (`neon`, `corporate`, `minimal`, `high-contrast`, `sunset`, `forest`, `cosmic`).
+     - Paleta de colores (`--neon-primary`, `--neon-accent`).
+     - Tiempo límite (en minutos o sin límite).
+     - Momento del feedback (`immediate` o `end`).
+     - Puntaje de aprobación (ej. 70%, 75%, 80%).
+     - Barajado de preguntas y opciones.
+     - Exportación simultánea a formato GIFT para el banco de preguntas de Moodle.

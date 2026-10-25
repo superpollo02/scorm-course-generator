@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #080c14;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #f0f6fc;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Top Header */
+      .top-banner {
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 80px;
+        background: #111620;
+        border-bottom: 1px solid #28303f;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 48px; z-index: 100;
+      }
+      .brand {
+        display: flex; align-items: center; gap: 14px;
+        font-weight: 800; font-size: 24px; color: #58a6ff;
+      }
+      .brand-badge {
+        background: #238636; color: #ffffff;
+        font-size: 13px; font-weight: 700;
+        padding: 4px 10px; border-radius: 20px;
+      }
+      .kit-title { font-size: 18px; color: #8b949e; font-weight: 600; }
+
+      /* Bottom Narrative / Subtitle */
+      .bottom-bar {
+        position: absolute;
+        bottom: 0; left: 0; right: 0; height: 110px;
+        background: #080c14;
+        border-top: 1px solid #28303f;
+        display: flex; align-items: center; justify-content: center;
+        padding: 0 80px; z-index: 100;
+      }
+      .caption-text {
+        font-size: 26px; font-weight: 600;
+        text-align: center; color: #f0f6fc;
+      }
+      .hl-blue { color: #58a6ff; font-weight: 700; }
+      .hl-gold { color: #e3b341; font-weight: 700; }
+      .hl-green { color: #3fb950; font-weight: 700; }
+      .hl-red { color: #ff7b72; font-weight: 700; }
+
+      /* Stage view base */
+      .scene-view {
+        position: absolute;
+        top: 80px; left: 0; right: 0; bottom: 110px;
+        padding: 36px 60px;
+        overflow: hidden;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 1: EL IMPACTO Y ANTES / DESPUÉS (0:00 - 0:11)
+         ---------------------------------------------------- */
+      #scene-1 { display: flex; gap: 30px; }
+      .split-card {
+        flex: 1; border-radius: 16px; padding: 32px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .card-before {
+        background: #f4f6f8; color: #24292f;
+        border: 2px dashed #cf222e;
+      }
+      .card-after {
+        background: #111620; border: 2px solid #58a6ff;
+        color: #f0f6fc; box-shadow: 0 16px 40px rgba(88, 166, 255, 0.15);
+      }
+      .pdf-chip {
+        background: #ffffff; border: 1px solid #d0d7de;
+        border-radius: 8px; padding: 10px 14px;
+        display: flex; align-items: center; gap: 10px;
+        font-size: 15px; color: #0969da; text-decoration: underline; margin-bottom: 8px;
+      }
+      .pdf-icon {
+        background: #cf222e; color: white;
+        font-size: 11px; font-weight: bold;
+        padding: 3px 6px; border-radius: 4px; text-decoration: none;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 2: DIAGNÓSTICO INICIAL (0:11 - 0:22)
+         ---------------------------------------------------- */
+      #scene-2 { opacity: 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+      .mock-window {
+        background: #111620; border-radius: 14px;
+        border: 1px solid #28303f; padding: 24px;
+        display: flex; flex-direction: column; gap: 16px;
+      }
+      .window-bar {
+        display: flex; gap: 8px; border-bottom: 1px solid #28303f; padding-bottom: 12px;
+      }
+      .dot { width: 12px; height: 12px; border-radius: 50%; }
+      .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
+      .audio-card {
+        background: #161f30; border: 1px solid #2b4263;
+        border-radius: 12px; padding: 24px;
+        display: flex; flex-direction: column; gap: 16px; align-items: center;
+      }
+      .waveform {
+        display: flex; align-items: center; gap: 6px; height: 50px;
+      }
+      .wave-bar {
+        width: 8px; background: #58a6ff; border-radius: 4px;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 3: AUDITORÍA CON IA (0:22 - 0:34)
+         ---------------------------------------------------- */
+      #scene-3 { opacity: 0; display: flex; flex-direction: column; gap: 24px; }
+      .ai-agent-header {
+        background: linear-gradient(135deg, #1f3554 0%, #161f30 100%);
+        border: 1px solid #2b4263; border-radius: 14px;
+        padding: 24px 32px; display: flex; justify-content: space-between; align-items: center;
+      }
+      .agent-badge {
+        background: #8957e5; color: #ffffff;
+        font-size: 13px; font-weight: 700;
+        padding: 6px 14px; border-radius: 20px;
+      }
+      .audit-metrics-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex: 1;
+      }
+      .metric-box {
+        background: #111620; border: 1px solid #28303f;
+        border-radius: 14px; padding: 24px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .progress-bg {
+        width: 100%; height: 10px; background: #1c2331;
+        border-radius: 6px; overflow: hidden; margin-top: 12px;
+      }
+      .progress-fill {
+        height: 100%; width: 0%; border-radius: 6px;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 4: REORGANIZACIÓN VISUAL Y LIBRO (0:34 - 0:47)
+         ---------------------------------------------------- */
+      #scene-4 { opacity: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+      .book-presentation {
+        background: #111620; border: 1px solid #28303f;
+        border-radius: 14px; padding: 28px;
+        display: flex; flex-direction: column; gap: 16px;
+      }
+      .book-table {
+        width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px;
+      }
+      .book-table th, .book-table td {
+        border: 1px solid #28303f; padding: 10px 14px; text-align: left;
+      }
+      .book-table th { background: #161f30; color: #58a6ff; }
+      .assets-display {
+        display: flex; flex-direction: column; gap: 18px;
+      }
+      .asset-card {
+        background: #111620; border: 1px solid #28303f;
+        border-radius: 12px; padding: 20px;
+        display: flex; align-items: center; gap: 16px;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 5: GAMIFICACIÓN Y TRIVIAS SCORM (0:47 - 1:00)
+         ---------------------------------------------------- */
+      #scene-5 { opacity: 0; display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; }
+      .trivia-card {
+        background: #111620; border: 1px solid #28303f;
+        border-radius: 14px; padding: 28px;
+        display: flex; flex-direction: column; gap: 16px; position: relative;
+      }
+      .trivia-opt {
+        background: #0d121c; border: 2px solid #28303f;
+        border-radius: 8px; padding: 12px 18px; font-size: 15px;
+      }
+      .trivia-opt.correct {
+        border-color: #238636; background: rgba(35, 134, 54, 0.15); color: #3fb950;
+      }
+      .grade-sync-card {
+        background: #111620; border: 2px solid #238636;
+        border-radius: 14px; padding: 28px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 6: LA ESTRUCTURA TRIPARTITA (1:00 - 1:12)
+         ---------------------------------------------------- */
+      #scene-6 { opacity: 0; display: flex; flex-direction: column; gap: 20px; }
+      .tripartite-flow {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex: 1;
+      }
+      .flow-card {
+        background: #111620; border: 1px solid #28303f;
+        border-radius: 14px; padding: 28px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .pill-badge {
+        font-size: 12px; font-weight: 700; padding: 4px 10px;
+        border-radius: 6px; width: fit-content; margin-bottom: 12px;
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 7: MODALIDADES DE ENTREGA (1:12 - 1:22)
+         ---------------------------------------------------- */
+      #scene-7 { opacity: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+      .delivery-card {
+        background: #111620; border: 1px solid #28303f;
+        border-radius: 16px; padding: 36px;
+        display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;
+      }
+      .delivery-card.featured {
+        border: 2px solid #58a6ff;
+        background: linear-gradient(135deg, rgba(88, 166, 255, 0.08) 0%, #111620 100%);
+      }
+
+      /* ----------------------------------------------------
+         ESCENA 8: GARANTÍA Y CIERRE (1:22 - 1:35)
+         ---------------------------------------------------- */
+      #scene-8 {
+        opacity: 0; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 36px;
+        background: radial-gradient(circle at center, #161f30 0%, #080c14 100%);
+      }
+      .badges-row {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; width: 100%;
+      }
+      .badge-box {
+        background: #111620; border: 1px solid #28303f;
+        border-radius: 14px; padding: 28px; text-align: center;
+      }
+      .cta-button {
+        background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        color: #ffffff; font-size: 26px; font-weight: 700;
+        padding: 18px 48px; border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 30px rgba(35, 134, 54, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="90"
+      data-width="1920"
+      data-height="1080"
+      data-fps="30"
+    >
+      <!-- Audio Tracks: BGM + VO Elena + SFX -->
+      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="90" data-volume="0.12"></audio>
+      <audio id="vo" src="assets/audio/vo-makeover-90s.mp3" data-start="0.5" data-duration="70" data-volume="1.0"></audio>
+      <audio id="sfx-whoosh-1" src="assets/audio/whoosh.mp3" data-start="5.5" data-duration="1.5" data-volume="0.8"></audio>
+      <audio id="sfx-ping-1" src="assets/audio/ping.mp3" data-start="11.2" data-duration="1.5" data-volume="0.75"></audio>
+      <audio id="sfx-sparkle-1" src="assets/audio/sparkle.mp3" data-start="22.2" data-duration="2.0" data-volume="0.8"></audio>
+      <audio id="sfx-pop-1" src="assets/audio/pop.mp3" data-start="34.2" data-duration="1.0" data-volume="0.75"></audio>
+      <audio id="sfx-chime" src="assets/audio/chime.mp3" data-start="52.0" data-duration="2.0" data-volume="0.9"></audio>
+      <audio id="sfx-notification" src="assets/audio/notification.mp3" data-start="57.0" data-duration="2.0" data-volume="0.9"></audio>
+      <audio id="sfx-impact" src="assets/audio/impact-bass-1.mp3" data-start="82.0" data-duration="3.0" data-volume="0.75"></audio>
+
+      <!-- Header Global -->
+      <header class="top-banner">
+        <div class="brand">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          EducAI
+          <span class="brand-badge">Kit Makeover</span>
+        </div>
+        <div class="kit-title">Renovación de Aula: Modernización e Innovación Moodle</div>
+      </header>
+
+      <!-- ESCENA 1: EL IMPACTO Y ANTES / DESPUÉS (0:00 - 0:11) -->
+      <div id="scene-1" class="scene-view">
+        <div class="split-card card-before" id="s1-card-before">
+          <div>
+            <h2 style="font-size: 26px; color: #cf222e; margin-bottom: 8px;">Antes: Aula Tradicional</h2>
+            <p style="font-size: 15px; color: #57606a; margin-bottom: 16px;">Saturación de enlaces y dispersión de materiales.</p>
+            <div class="pdf-chip"><span class="pdf-icon">PDF</span> Unidad1_Lectura_Obligatoria.pdf</div>
+            <div class="pdf-chip"><span class="pdf-icon">PDF</span> Diapositivas_Semana1_2025.pdf</div>
+            <div class="pdf-chip"><span class="pdf-icon">PDF</span> Ejercicios_Practicos_Guia.pdf</div>
+          </div>
+          <div style="background: rgba(207, 34, 46, 0.1); padding: 12px; border-radius: 8px; color: #cf222e; font-weight: 700; text-align: center;">
+            Sobrecarga Cognitiva y Deserción
+          </div>
+        </div>
+        <div class="split-card card-after" id="s1-card-after">
+          <div>
+            <h2 style="font-size: 26px; color: #58a6ff; margin-bottom: 8px;">Ahora: Aula Renovada EducAI</h2>
+            <p style="font-size: 15px; color: #8b949e; margin-bottom: 16px;">Diseño modular ordenado y centrado en el estudiante adulto.</p>
+            <div style="background: #161f30; border: 1px solid #2b4263; border-radius: 10px; padding: 16px; margin-bottom: 10px;">
+              <span style="color: #3fb950; font-weight: 700;">✓ Estructura Tripartita</span>: Clase ➔ Lectura ➔ Práctica
+            </div>
+            <div style="background: #161f30; border: 1px solid #2b4263; border-radius: 10px; padding: 16px;">
+              <span style="color: #3fb950; font-weight: 700;">✓ Sin empezar de cero</span>: Valorizamos tu experiencia previa
+            </div>
+          </div>
+          <div style="background: rgba(35, 134, 54, 0.15); border: 1px solid #238636; padding: 12px; border-radius: 8px; color: #3fb950; font-weight: 700; text-align: center;">
+            Entorno Atractivo y Predictible
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCENA 2: DIAGNÓSTICO INICIAL (0:11 - 0:22) -->
+      <div id="scene-2" class="scene-view">
+        <div class="mock-window">
+          <div class="window-bar">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+            <span style="font-size: 13px; color: #8b949e; margin-left: 10px;">Etapa 1: Relevamiento del Aula Virtual</span>
+          </div>
+          <h3 style="font-size: 22px;">Captura de Pantalla Panorámica</h3>
+          <p style="font-size: 15px; color: #8b949e;">Muestra visual de la secuencia vertical completa del curso.</p>
+          <div style="background: #0d121c; border: 2px dashed #28303f; border-radius: 10px; padding: 40px; text-align: center; color: #58a6ff; font-weight: 600;">
+            [ Vista con Zoom Reducido ]
+          </div>
+        </div>
+        <div class="audio-card">
+          <div style="font-size: 40px;">🎙️</div>
+          <h3 style="font-size: 22px;">Audio de Observación Docente</h3>
+          <p style="font-size: 14px; color: #8b949e; text-align: center;">
+            Breve mensaje de voz donde el docente relata la estética, los elementos actuales y los puntos de dolor.
+          </p>
+          <div class="waveform">
+            <div class="wave-bar" style="height: 20px;"></div>
+            <div class="wave-bar" style="height: 40px;"></div>
+            <div class="wave-bar" style="height: 28px;"></div>
+            <div class="wave-bar" style="height: 48px;"></div>
+            <div class="wave-bar" style="height: 32px;"></div>
+            <div class="wave-bar" style="height: 18px;"></div>
+          </div>
+          <span style="color: #3fb950; font-weight: 700; font-size: 14px;">● Grabación recibida y analizada</span>
+        </div>
+      </div>
+
+      <!-- ESCENA 3: AUDITORÍA CON IA (0:22 - 0:34) -->
+      <div id="scene-3" class="scene-view">
+        <div class="ai-agent-header">
+          <div>
+            <span class="agent-badge">AGENTE PEDAGÓGICO DE IA</span>
+            <h2 style="font-size: 26px; margin-top: 6px;">Etapa 2: Auditoría con Enfoque Andragógico</h2>
+          </div>
+          <div style="color: #3fb950; font-weight: 700; font-size: 15px;">● Inspección automatizada activa</div>
+        </div>
+        <div class="audit-metrics-grid">
+          <div class="metric-box">
+            <div>
+              <h3 style="font-size: 20px; color: #58a6ff;">Coherencia Gráfica</h3>
+              <p style="font-size: 14px; color: #8b949e; margin-top: 6px;">Estandarización de banners, fuentes e iconografía.</p>
+            </div>
+            <div>
+              <div style="font-size: 24px; font-weight: 800; color: #fff;">96%</div>
+              <div class="progress-bg"><div class="progress-fill" id="fill-m1" style="background: #58a6ff;"></div></div>
+            </div>
+          </div>
+          <div class="metric-box">
+            <div>
+              <h3 style="font-size: 20px; color: #e3b341;">Flujo de Navegación</h3>
+              <p style="font-size: 14px; color: #8b949e; margin-top: 6px;">Claridad en la secuencia y reducción de clics innecesarios.</p>
+            </div>
+            <div>
+              <div style="font-size: 24px; font-weight: 800; color: #fff;">94%</div>
+              <div class="progress-bg"><div class="progress-fill" id="fill-m2" style="background: #e3b341;"></div></div>
+            </div>
+          </div>
+          <div class="metric-box">
+            <div>
+              <h3 style="font-size: 20px; color: #3fb950;">Reducción de Carga</h3>
+              <p style="font-size: 14px; color: #8b949e; margin-top: 6px;">Segmentación conceptual orientada al estudiante adulto.</p>
+            </div>
+            <div>
+              <div style="font-size: 24px; font-weight: 800; color: #fff;">98%</div>
+              <div class="progress-bg"><div class="progress-fill" id="fill-m3" style="background: #3fb950;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCENA 4: REORGANIZACIÓN VISUAL Y LIBRO (0:34 - 0:47) -->
+      <div id="scene-4" class="scene-view">
+        <div class="book-presentation">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 22px;">Módulo "Libro Moodle" (.zip)</h3>
+            <span style="background: rgba(88, 166, 255, 0.15); color: #58a6ff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">INTERACTIVO</span>
+          </div>
+          <p style="font-size: 15px; color: #8b949e;">Síntesis de bibliografías dispersas en formato diagramado y estructurado.</p>
+          <table class="book-table">
+            <thead>
+              <tr><th>Aspecto</th><th>Antes</th><th>Con EducAI</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Lecturas</td><td>PDFs sueltos</td><td>Capítulos web dinámicos</td></tr>
+              <tr><td>Formato</td><td>Texto plano</td><td>Tablas y destacados</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="assets-display">
+          <div class="asset-card">
+            <div style="font-size: 32px;">🎨</div>
+            <div>
+              <h4 style="font-size: 18px; color: #58a6ff;">Nuevos Banners de Encabezado</h4>
+              <p style="font-size: 13px; color: #8b949e;">Identidad institucional clara y atractiva.</p>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div style="font-size: 32px;">📊</div>
+            <div>
+              <h4 style="font-size: 18px; color: #e3b341;">Infografías y Glosarios</h4>
+              <p style="font-size: 13px; color: #8b949e;">Mapas conceptuales de síntesis para cada módulo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCENA 5: GAMIFICACIÓN Y TRIVIAS SCORM (0:47 - 1:00) -->
+      <div id="scene-5" class="scene-view">
+        <div class="trivia-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="background: rgba(63, 185, 80, 0.15); color: #3fb950; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">SCORM 1.2</span>
+            <div style="background: #cf222e; color: #fff; padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 13px;">00:15</div>
+          </div>
+          <h3 style="font-size: 20px;">Trivia Gamificada desde Banco GIFT/XML</h3>
+          <div class="trivia-opt">Opción A: Formato estático sin feedback</div>
+          <div class="trivia-opt correct" id="t-correct">Opción B: Desafío interactivo con límite de tiempo</div>
+          <div style="background: #238636; color: white; padding: 12px; border-radius: 8px; font-size: 14px; text-align: center; font-weight: 600;">
+            ¡Respuesta Correcta! Retroalimentación Inmediata
+          </div>
+        </div>
+        <div class="grade-sync-card">
+          <div>
+            <h3 style="font-size: 22px; color: #3fb950;">Integración al Calificador Moodle</h3>
+            <p style="font-size: 15px; color: #8b949e; margin-top: 8px;">
+              Las notas de las trivias y de la actividad Conecta Bloques se sincronizan automáticamente.
+            </p>
+          </div>
+          <div style="background: #0d121c; border: 1px solid #28303f; border-radius: 10px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; font-size: 15px;">
+              <span>Calificación Registrada:</span>
+              <strong style="color: #3fb950;">100 / 100</strong>
+            </div>
+            <div style="font-size: 12px; color: #8b949e; margin-top: 6px;">Sincronizado vía API SCORM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCENA 6: LA ESTRUCTURA TRIPARTITA (1:00 - 1:12) -->
+      <div id="scene-6" class="scene-view">
+        <h2 style="font-size: 26px; text-align: center;">Etapa 3: Rediseño bajo la Estructura Tripartita</h2>
+        <div class="tripartite-flow">
+          <div class="flow-card">
+            <div>
+              <span class="pill-badge" style="background: rgba(88, 166, 255, 0.15); color: #58a6ff;">1. LA CLASE</span>
+              <h3 style="font-size: 20px; margin-bottom: 8px;">Mediación Audiovisual</h3>
+              <p style="font-size: 14px; color: #8b949e;">Video-lecciones en microlearning y cápsulas dinámicas.</p>
+            </div>
+            <div style="color: #58a6ff; font-weight: 600; font-size: 13px;">Foco y Explicación →</div>
+          </div>
+          <div class="flow-card">
+            <div>
+              <span class="pill-badge" style="background: rgba(210, 153, 34, 0.15); color: #e3b341;">2. LA LECTURA</span>
+              <h3 style="font-size: 20px; margin-bottom: 8px;">Profundización Conceptual</h3>
+              <p style="font-size: 14px; color: #8b949e;">Módulos Libro Moodle diagramados sin enlaces dispersos.</p>
+            </div>
+            <div style="color: #e3b341; font-weight: 600; font-size: 13px;">Síntesis y Tablas →</div>
+          </div>
+          <div class="flow-card">
+            <div>
+              <span class="pill-badge" style="background: rgba(63, 185, 80, 0.15); color: #3fb950;">3. LA PRÁCTICA</span>
+              <h3 style="font-size: 20px; margin-bottom: 8px;">Autoevaluación Formativa</h3>
+              <p style="font-size: 14px; color: #8b949e;">Trivias SCORM y actividades lúdicas con retroalimentación.</p>
+            </div>
+            <div style="color: #3fb950; font-weight: 600; font-size: 13px;">Comprobación Activa →</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCENA 7: MODALIDADES DE ENTREGA (1:12 - 1:22) -->
+      <div id="scene-7" class="scene-view">
+        <div class="delivery-card">
+          <div style="font-size: 48px;">📦</div>
+          <h3 style="font-size: 24px;">Entrega en Google Drive</h3>
+          <p style="font-size: 15px; color: #8b949e;">
+            Todos los paquetes y recursos ordenados por carpetas con instructivo paso a paso para su carga.
+          </p>
+          <div style="background: #161f30; padding: 8px 18px; border-radius: 20px; font-size: 13px; color: #58a6ff; font-weight: 600;">
+            Modalidad Estándar
+          </div>
+        </div>
+        <div class="delivery-card featured">
+          <div style="font-size: 48px;">🛠️</div>
+          <h3 style="font-size: 24px; color: #58a6ff;">Implementación en Moodle (+30%)</h3>
+          <p style="font-size: 15px; color: #8b949e;">
+            Servicio opcional donde ingresamos con tus credenciales y dejamos el aula 100% maquetada y lista.
+          </p>
+          <div style="background: #238636; color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 700;">
+            Servicio Llave en Mano
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCENA 8: GARANTÍA Y CIERRE (1:22 - 1:35) -->
+      <div id="scene-8" class="scene-view">
+        <div style="text-align: center;">
+          <h1 style="font-size: 44px; font-weight: 800; color: #58a6ff; margin-bottom: 6px;">Renueva tu Aula Virtual con EducAI</h1>
+          <p style="font-size: 18px; color: #8b949e;">Tiempos transparentes, garantía asegurada y acompañamiento integral</p>
+        </div>
+        <div class="badges-row">
+          <div class="badge-box">
+            <div style="font-size: 36px; margin-bottom: 8px;">⏱️</div>
+            <h4 style="font-size: 20px; color: #58a6ff;">Plazos Claros</h4>
+            <p style="font-size: 13px; color: #8b949e; margin-top: 4px;">Ajustados al volumen de unidades.</p>
+          </div>
+          <div class="badge-box">
+            <div style="font-size: 36px; margin-bottom: 8px;">🛡️</div>
+            <h4 style="font-size: 20px; color: #3fb950;">Garantía de 5 Días</h4>
+            <p style="font-size: 13px; color: #8b949e; margin-top: 4px;">Ronda completa de revisiones sin costo.</p>
+          </div>
+          <div class="badge-box">
+            <div style="font-size: 36px; margin-bottom: 8px;">💳</div>
+            <h4 style="font-size: 20px; color: #e3b341;">Condición 50/50</h4>
+            <p style="font-size: 13px; color: #8b949e; margin-top: 4px;">Pago inicial y saldo contra entrega.</p>
+          </div>
+        </div>
+        <div class="cta-button" id="cta-btn">
+          [ Solicitar Diagnóstico Gratuito ]
+        </div>
+      </div>
+
+      <!-- Narrativa Inferior -->
+      <footer class="bottom-bar">
+        <div id="caption" class="caption-text">
+          Kit Renovación de Aula: <span class="hl-blue">moderniza tu entorno virtual</span> sin empezar de cero.
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Escena 1 (0:00 - 0:11)
+      tl.fromTo("#s1-card-before", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6 }, 0);
+      tl.fromTo("#s1-card-after", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6 }, 0.4);
+      tl.to("#scene-1", { opacity: 0, duration: 0.5 }, 10.5);
+
+      // Escena 2 (0:11 - 0:22)
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Etapa 1: <span class="hl-blue">Diagnóstico Inicial</span> con captura panorámica y audio docente.';
+      }, null, 11.0);
+      tl.to("#scene-2", { opacity: 1, duration: 0.5 }, 11.0);
+      tl.to("#scene-2", { opacity: 0, duration: 0.5 }, 21.5);
+
+      // Escena 3 (0:22 - 0:34)
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Etapa 2: <span class="hl-gold">Auditoría con IA</span> bajo enfoque andragógico y reducción de carga cognitiva.';
+      }, null, 22.0);
+      tl.to("#scene-3", { opacity: 1, duration: 0.5 }, 22.0);
+      tl.to("#fill-m1", { width: "96%", duration: 1.0, ease: "power2.out" }, 23.0);
+      tl.to("#fill-m2", { width: "94%", duration: 1.0, ease: "power2.out" }, 23.5);
+      tl.to("#fill-m3", { width: "98%", duration: 1.0, ease: "power2.out" }, 24.0);
+      tl.to("#scene-3", { opacity: 0, duration: 0.5 }, 33.5);
+
+      // Escena 4 (0:34 - 0:47)
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Contenidos del Kit: Reorganización en <span class="hl-blue">Libros Moodle (.zip)</span>, banners e infografías.';
+      }, null, 34.0);
+      tl.to("#scene-4", { opacity: 1, duration: 0.5 }, 34.0);
+      tl.to("#scene-4", { opacity: 0, duration: 0.5 }, 46.5);
+
+      // Escena 5 (0:47 - 1:00)
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Evaluación y Gamificación: <span class="hl-green">Trivias SCORM</span> con sincronización al calificador Moodle.';
+      }, null, 47.0);
+      tl.to("#scene-5", { opacity: 1, duration: 0.5 }, 47.0);
+      tl.to("#t-correct", { scale: 1.03, duration: 0.3 }, 51.5);
+      tl.to("#scene-5", { opacity: 0, duration: 0.5 }, 59.5);
+
+      // Escena 6 (1:00 - 1:12)
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Etapa 3: Rediseño bajo la <span class="hl-blue">Estructura Tripartita</span> (Clase ➔ Lectura ➔ Práctica).';
+      }, null, 60.0);
+      tl.to("#scene-6", { opacity: 1, duration: 0.5 }, 60.0);
+      tl.to("#scene-6", { opacity: 0, duration: 0.5 }, 71.5);
+
+      // Escena 7 (1:12 - 1:22)
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Etapa 4: Entrega en <span class="hl-blue">Google Drive</span> o <span class="hl-green">Implementación Directa en Moodle (+30%)</span>.';
+      }, null, 72.0);
+      tl.to("#scene-7", { opacity: 1, duration: 0.5 }, 72.0);
+      tl.to("#scene-7", { opacity: 0, duration: 0.5 }, 81.5);
+
+      // Escena 8 (1:22 - 1:35)
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Plazos claros y <span class="hl-green">5 días de garantía</span>. ¡Renueva tu aula virtual con EducAI!';
+      }, null, 82.0);
+      tl.to("#scene-8", { opacity: 1, duration: 0.6 }, 82.0);
+      tl.fromTo("#cta-btn", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.5)" }, 83.5);
+      tl.to("#cta-btn", { scale: 1.04, duration: 0.8, repeat: 7, yoyo: true }, 84.5);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

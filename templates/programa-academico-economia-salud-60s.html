@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Economía de la Salud 2026 - Presentación Oficial del Programa Académico (60s)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body { background-color: #050d1a; color: #ffffff; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; width: 1920px; height: 1080px; }
+    #root { position: relative; width: 1920px; height: 1080px; background: #061122; overflow: hidden; }
+
+    /* Ambient Institutional Lighting */
+    .ambient-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(14, 165, 233, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 90% 25%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+        linear-gradient(180deg, #040914 0%, #061122 100%);
+      z-index: 1;
+    }
+    .ambient-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 2;
+    }
+
+    /* Top Persistent Government & Academic Header */
+    .top-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 90px;
+      background: rgba(6, 17, 34, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 70px; z-index: 100;
+    }
+    .brand-group {
+      display: flex; align-items: center; gap: 20px;
+    }
+    .mendoza-badge {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff; font-weight: 900; font-size: 14px;
+      padding: 8px 16px; border-radius: 8px;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
+    .brand-text {
+      font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff;
+    }
+    .brand-text span { color: #38bdf8; }
+
+    .norm-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;
+      color: #cbd5e1; background: rgba(255, 255, 255, 0.06);
+      padding: 8px 18px; border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .norm-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981; }
+
+    /* Scene Base */
+    .scene {
+      position: absolute; top: 90px; left: 0; width: 1920px; height: 890px;
+      padding: 50px 90px; opacity: 0; z-index: 10;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    /* SCENE 1: Portada e Identidad Oficial (Puntos 1, 2 y 3) */
+    .inst-pill {
+      align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(14, 165, 233, 0.4);
+      color: #38bdf8; padding: 8px 22px; border-radius: 30px;
+      font-size: 16px; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .main-title {
+      font-size: 54px; font-weight: 900; line-height: 1.15;
+      letter-spacing: -1.5px; max-width: 1550px; margin-bottom: 28px;
+    }
+    .main-title .hl-blue {
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .metrics-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+      max-width: 1600px; margin-top: 10px;
+    }
+    .metric-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px; padding: 26px 28px;
+      display: flex; align-items: center; gap: 20px;
+      backdrop-filter: blur(12px);
+    }
+    .metric-icon {
+      width: 58px; height: 58px; border-radius: 14px;
+      background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(14, 165, 233, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; flex-shrink: 0;
+    }
+    .metric-data h4 { font-size: 26px; font-weight: 900; color: #ffffff; }
+    .metric-data p { font-size: 14px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* SCENE 2: Fundamentación y Competencias Clave (Puntos 4, 5 y 6) */
+    .section-header h2 { font-size: 40px; font-weight: 900; color: #ffffff; margin-bottom: 6px; }
+    .section-header p { font-size: 19px; color: #94a3b8; margin-bottom: 24px; }
+    .pillars-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px;
+      max-width: 1700px;
+    }
+    .competency-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px; padding: 34px;
+      position: relative; backdrop-filter: blur(12px);
+    }
+    .card-top-bar { height: 4px; width: 60px; border-radius: 2px; margin-bottom: 20px; }
+    .competency-card h3 { font-size: 22px; font-weight: 800; color: #ffffff; margin-bottom: 12px; }
+    .competency-card p { font-size: 16px; color: #94a3b8; line-height: 1.5; }
+
+    /* SCENE 3: Las 8 Unidades Académicas (Punto 7) */
+    .units-table-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+      max-width: 1740px; margin-top: 15px;
+    }
+    .unit-badge-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px; padding: 22px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .u-tag { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 800; color: #38bdf8; text-transform: uppercase; }
+    .u-name { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.3; }
+    .u-docente { font-size: 13px; color: #94a3b8; }
+
+    /* SCENE 4: Metodología Tripartita y Sistema de Doble Candado (Puntos 8, 10, 11) */
+    .methodology-lock-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+      max-width: 1650px;
+    }
+    .method-box {
+      background: rgba(14, 165, 233, 0.08);
+      border: 2px solid rgba(14, 165, 233, 0.3);
+      border-radius: 24px; padding: 36px;
+    }
+    .method-box h3 { font-size: 26px; font-weight: 900; color: #38bdf8; margin-bottom: 20px; }
+    .tripartite-step {
+      display: flex; align-items: center; gap: 18px; margin-bottom: 16px;
+      background: rgba(255, 255, 255, 0.04); padding: 14px 20px; border-radius: 12px;
+    }
+    .step-num { width: 34px; height: 34px; border-radius: 50%; background: #0284c7; color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; }
+    .step-info strong { font-size: 17px; color: white; display: block; }
+    .step-info span { font-size: 14px; color: #94a3b8; }
+
+    .lock-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(14, 165, 233, 0.08) 100%);
+      border: 2px solid #10b981;
+      border-radius: 24px; padding: 36px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .lock-header { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 800; color: #10b981; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .lock-title { font-size: 28px; font-weight: 900; color: #ffffff; margin-bottom: 16px; }
+    .lock-items-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .lock-item { display: flex; align-items: center; gap: 14px; font-size: 17px; font-weight: 700; color: #e2e8f0; }
+    .lock-badge-icon { width: 28px; height: 28px; border-radius: 50%; background: #10b981; color: #040914; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; }
+    .unlock-banner {
+      background: #0284c7; color: #ffffff; padding: 14px; border-radius: 12px;
+      font-weight: 800; text-align: center; font-size: 16px; letter-spacing: 0.5px;
+    }
+
+    /* SCENE 5: Cronograma Tentativo y Cierre Institucional (Puntos 12 y 13) */
+    .gantt-summary-box {
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px; padding: 46px 54px; max-width: 1500px; margin: 0 auto;
+      text-align: center;
+    }
+    .gantt-header-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 800;
+      color: #38bdf8; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .gantt-title { font-size: 42px; font-weight: 900; color: #ffffff; margin-bottom: 26px; }
+    .timeline-strip {
+      display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; margin-bottom: 34px;
+    }
+    .time-slot {
+      background: rgba(14, 165, 233, 0.12); border: 1px solid rgba(14, 165, 233, 0.3);
+      padding: 14px 8px; border-radius: 12px;
+    }
+    .time-slot .w-num { font-size: 13px; font-weight: 800; color: #38bdf8; display: block; margin-bottom: 4px; }
+    .time-slot .w-desc { font-size: 13px; font-weight: 700; color: #ffffff; }
+
+    .cta-final-banner {
+      display: inline-flex; align-items: center; gap: 20px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff; padding: 18px 46px; border-radius: 50px;
+      font-size: 24px; font-weight: 800; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .cta-final-banner .campus-pill {
+      background: #ffffff; color: #040914; padding: 6px 16px;
+      border-radius: 20px; font-size: 17px; font-weight: 900;
+    }
+
+    /* Subtitles Rail */
+    .subtitles-bar {
+      position: absolute; bottom: 20px; left: 90px; right: 90px; height: 68px;
+      background: rgba(6, 17, 34, 0.94); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px; backdrop-filter: blur(16px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 40px; z-index: 120;
+    }
+    .caption-line {
+      font-size: 22px; font-weight: 700; color: #f8fafc;
+      text-align: center; letter-spacing: -0.2px; opacity: 0;
+      position: absolute; width: calc(100% - 80px);
+    }
+    .caption-line .highlight { color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="60" data-width="1920" data-height="1080" data-fps="30" data-layout-allow-overlap="true" data-layout-allow-occlusion="true">
+    <div class="ambient-bg"></div>
+    <div class="ambient-grid"></div>
+
+    <!-- Audio Track: Institutional 60s BGM -->
+    <audio id="bgm" src="assets/audio/bgm-institucional-esalud-60s.wav" data-start="0" data-duration="60" data-volume="0.12"></audio>
+    <!-- Voiceover Elena Neural (es-AR) -->
+    <audio id="vo" src="assets/audio/vo-programa-academico-60s.mp3" data-start="0.5" data-duration="48.7" data-volume="1.0"></audio>
+    <audio id="sfx-whoosh1" src="assets/audio/whoosh-cinematic.mp3" data-start="0.2" data-duration="2.8" data-volume="0.30"></audio>
+    <audio id="sfx-chime" src="assets/audio/chime.mp3" data-start="12.0" data-duration="2.5" data-volume="0.40"></audio>
+    <audio id="sfx-pop" src="assets/audio/pop.mp3" data-start="24.0" data-duration="0.72" data-volume="0.35"></audio>
+    <audio id="sfx-ping" src="assets/audio/ping.mp3" data-start="36.0" data-duration="1.0" data-volume="0.45"></audio>
+    <audio id="sfx-sparkle" src="assets/audio/sparkle.mp3" data-start="48.0" data-duration="1.8" data-volume="0.45"></audio>
+
+    <!-- Top Navigation Header -->
+    <header class="top-bar">
+      <div class="brand-group">
+        <div class="mendoza-badge">Gobierno de Mendoza</div>
+        <div class="brand-text">Ministerio de Salud y Deportes • <span>ESALUD 2.0</span></div>
+      </div>
+      <div class="norm-tag">
+        <div class="dot"></div>
+        ESTÁNDAR CIRCULAR N° 5 / EXPEDIENTE ELECTRÓNICO
+      </div>
+    </header>
+
+    <!-- SCENE 1: Identidad Institucional y Ficha General (0s - 12s) -->
+    <div class="scene" id="scene-1">
+      <div class="inst-pill">📘 Trayecto Formativo Oficial 2026</div>
+      <h1 class="main-title">
+        Economía de la Salud, Financiamiento y <span class="hl-blue">Gestión Sanitaria</span>
+      </h1>
+      <div class="metrics-row">
+        <div class="metric-card" id="m1">
+          <div class="metric-icon">⏱️</div>
+          <div class="metric-data">
+            <h4>8 Semanas</h4>
+            <p>Duración Continua</p>
+          </div>
+        </div>
+        <div class="metric-card" id="m2">
+          <div class="metric-icon">📜</div>
+          <div class="metric-data">
+            <h4>60 Horas</h4>
+            <p>Acreditadas Reloj</p>
+          </div>
+        </div>
+        <div class="metric-card" id="m3">
+          <div class="metric-icon">💻</div>
+          <div class="metric-data">
+            <h4>100% Virtual</h4>
+            <p>Modalidad Asincrónica</p>
+          </div>
+        </div>
+        <div class="metric-card" id="m4">
+          <div class="metric-icon">👨‍⚕️</div>
+          <div class="metric-data">
+            <h4>Leyes 7857/9526</h4>
+            <p>Residencias y Red</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 2: Fundamentación y Competencias (12s - 24s) -->
+    <div class="scene" id="scene-2">
+      <div class="section-header">
+        <h2>Competencias Profesionales y Fundamentación Andragógica</h2>
+        <p>Herramientas económicas y juicio bioético para optimizar decisiones en la red pública</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="competency-card" id="p1">
+          <div class="card-top-bar" style="background: #38bdf8;"></div>
+          <h3>Costo de Oportunidad Bioético</h3>
+          <p>Superar la falsa dicotomía entre ética y economía: los recursos son finitos y el ahorro eficiente es la base de la justicia distributiva.</p>
+        </div>
+        <div class="competency-card" id="p2">
+          <div class="card-top-bar" style="background: #10b981;"></div>
+          <h3>Fallas del Mercado (Arrow, 1963)</h3>
+          <p>Asimetría de información médico-paciente, demanda inducida por el prescriptor y justificación del rol rector del hospital público.</p>
+        </div>
+        <div class="competency-card" id="p3">
+          <div class="card-top-bar" style="background: #f59e0b;"></div>
+          <h3>Gestión de Costos y ETS</h3>
+          <p>Centros de costos en sala y quirófano, formulación de proyectos SMART y evaluación económica mediante QALYs y AVAC.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 3: Estructura Temática de las 8 Unidades (24s - 36s) -->
+    <div class="scene" id="scene-3">
+      <div class="section-header">
+        <h2>Estructura Académica Secuencial (Unidades 1 a 8)</h2>
+        <p>Docente de Referencia: Lic. Gustavo Muñoz Gatón</p>
+      </div>
+      <div class="units-table-grid">
+        <div class="unit-badge-box"><span class="u-tag">Unidad 1</span><div class="u-name">Esencia de la Economía y Salud</div><div class="u-docente">Escasez y Eficiencia Social</div></div>
+        <div class="unit-badge-box"><span class="u-tag">Unidad 2</span><div class="u-name">Bioética y Economía</div><div class="u-docente">Principios y Comités Éticos</div></div>
+        <div class="unit-badge-box"><span class="u-tag">Unidad 3</span><div class="u-name">Macroeconomía y Salud</div><div class="u-docente">PBI, Inflación e Insumos</div></div>
+        <div class="unit-badge-box"><span class="u-tag">Unidad 4</span><div class="u-name">Microeconomía Sanitaria</div><div class="u-docente">Oferta, Demanda y Producción</div></div>
+        <div class="unit-badge-box"><span class="u-tag">Unidad 5</span><div class="u-name">Mercado Imperfecto</div><div class="u-docente">Asimetrías y Riesgo Moral</div></div>
+        <div class="unit-badge-box"><span class="u-tag">Unidad 6</span><div class="u-name">Gestión de Costos</div><div class="u-docente">Fijos, Variables y Quirófano</div></div>
+        <div class="unit-badge-box"><span class="u-tag">Unidad 7</span><div class="u-name">Formulación de Proyectos</div><div class="u-docente">Árbol de Problemas y Gantt</div></div>
+        <div class="unit-badge-box"><span class="u-tag">Unidad 8</span><div class="u-name">Evaluación de Tecnologías</div><div class="u-docente">QALYs/AVAC y CONETEC</div></div>
+      </div>
+    </div>
+
+    <!-- SCENE 4: Metodología Tripartita y Doble Candado (36s - 48s) -->
+    <div class="scene" id="scene-4">
+      <div class="methodology-lock-grid">
+        <div class="method-box" id="mb-1">
+          <h3>Metodología Pedagógica (Circular N° 5)</h3>
+          <div class="tripartite-step">
+            <div class="step-num">1</div>
+            <div class="step-info"><strong>La Clase</strong><span>Video-lecciones de 20-30 min + Shorts de microlearning</span></div>
+          </div>
+          <div class="tripartite-step">
+            <div class="step-num">2</div>
+            <div class="step-info"><strong>La Lectura</strong><span>Libro Moodle estructurado, Glosario y Preguntas Frecuentes</span></div>
+          </div>
+          <div class="tripartite-step">
+            <div class="step-num">3</div>
+            <div class="step-info"><strong>La Práctica</strong><span>Conecta Bloques y Trivias SCORM con reintentos formativos</span></div>
+          </div>
+        </div>
+
+        <div class="lock-box" id="mb-2">
+          <div>
+            <div class="lock-header">Acreditación Ministerial</div>
+            <h3 class="lock-title">Sistema de Doble Candado</h3>
+            <div class="lock-items-list">
+              <div class="lock-item"><div class="lock-badge-icon">✓</div> Candado 1: Examen Final Integrador (≥ 70%)</div>
+              <div class="lock-item"><div class="lock-badge-icon">✓</div> Candado 2: Encuesta de Calidad Educativa obligatoria</div>
+            </div>
+          </div>
+          <div class="unlock-banner">🔓 Desbloqueo Automático: Certificado Oficial (60 Hs Reloj)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 5: Cronograma de Cursado y Cierre (48s - 60s) -->
+    <div class="scene" id="scene-5">
+      <div class="gantt-summary-box" id="gb-1">
+        <div class="gantt-header-tag">Cronograma Oficial de Cursado</div>
+        <h2 class="gantt-title">8 Semanas Planificadas sin Sobresaltos</h2>
+        <div class="timeline-strip">
+          <div class="time-slot"><span class="w-num">SEM 1</span><span class="w-desc">Unidad 1</span></div>
+          <div class="time-slot"><span class="w-num">SEM 2</span><span class="w-desc">Unidad 2</span></div>
+          <div class="time-slot"><span class="w-num">SEM 3</span><span class="w-desc">Unidad 3</span></div>
+          <div class="time-slot"><span class="w-num">SEM 4</span><span class="w-desc">Unidad 4</span></div>
+          <div class="time-slot"><span class="w-num">SEM 5</span><span class="w-desc">Unidad 5</span></div>
+          <div class="time-slot"><span class="w-num">SEM 6</span><span class="w-desc">Unidad 6</span></div>
+          <div class="time-slot"><span class="w-num">SEM 7</span><span class="w-desc">Unidad 7</span></div>
+          <div class="time-slot"><span class="w-num">SEM 8</span><span class="w-desc">Unidad 8</span></div>
+        </div>
+        <div class="cta-final-banner">
+          <span>Iniciá tu cursado asincrónico en</span>
+          <span class="campus-pill">Campus Virtual ESALUD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtitle Rail Sincronizado -->
+    <div class="subtitles-bar">
+      <div class="caption-line" id="cap-1">Bienvenidos al trayecto en <span class="highlight">Economía de la Salud y Gestión Sanitaria</span>: 60 hs reloj en 8 semanas.</div>
+      <div class="caption-line" id="cap-2">Adquirí competencias clave: <span class="highlight">costo de oportunidad bioético</span>, fallas de mercado y gestión de costos.</div>
+      <div class="caption-line" id="cap-3">8 unidades temáticas guiadas por el <span class="highlight">Lic. Gustavo Muñoz Gatón</span> para transformar tu práctica diaria.</div>
+      <div class="caption-line" id="cap-4">Metodología Circular N° 5 y <span class="highlight">Doble Candado</span>: Examen Integrador (70%+) más Encuesta de Calidad.</div>
+      <div class="caption-line" id="cap-5">Organizate a tu ritmo y descargá tu <span class="highlight">Certificado Oficial</span> en el Campus ESALUD.</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["main"] = tl;
+
+    // SCENE 1: 0s - 12s
+    tl.to("#scene-1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2)
+      .from("#scene-1 .inst-pill", { y: -20, opacity: 0, duration: 0.6, ease: "back.out(1.5)" }, 0.4)
+      .from("#scene-1 .main-title", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.6)
+      .from("#scene-1 .metric-card", { y: 30, opacity: 0, stagger: 0.2, duration: 0.6, ease: "power2.out" }, 1.5)
+      .to("#scene-1", { opacity: 0, scale: 0.96, duration: 0.5, ease: "power2.in" }, 11.5);
+
+    // SCENE 2: 12s - 24s
+    tl.to("#scene-2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 12.0)
+      .from("#scene-2 .section-header", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, 12.3)
+      .from("#scene-2 .competency-card", { y: 40, opacity: 0, stagger: 0.25, duration: 0.7, ease: "back.out(1.4)" }, 13.0)
+      .to("#scene-2", { opacity: 0, scale: 1.04, duration: 0.5, ease: "power2.in" }, 23.5);
+
+    // SCENE 3: 24s - 36s
+    tl.to("#scene-3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 24.0)
+      .from("#scene-3 .section-header", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, 24.3)
+      .from("#scene-3 .unit-badge-box", { scale: 0.85, opacity: 0, stagger: 0.1, duration: 0.5, ease: "power2.out" }, 25.0)
+      .to("#scene-3", { opacity: 0, duration: 0.5, ease: "power2.in" }, 35.5);
+
+    // SCENE 4: 36s - 48s
+    tl.to("#scene-4", { opacity: 1, duration: 0.6, ease: "power2.out" }, 36.0)
+      .from("#mb-1", { x: -40, opacity: 0, duration: 0.7, ease: "power3.out" }, 36.4)
+      .from("#mb-2", { x: 40, opacity: 0, duration: 0.7, ease: "power3.out" }, 36.8)
+      .to("#scene-4", { opacity: 0, duration: 0.5, ease: "power2.in" }, 47.5);
+
+    // SCENE 5: 48s - 60s
+    tl.to("#scene-5", { opacity: 1, duration: 0.6, ease: "power2.out" }, 48.0)
+      .from("#gb-1", { scale: 0.9, opacity: 0, duration: 0.8, ease: "back.out(1.5)" }, 48.4)
+      .from("#gb-1 .cta-final-banner", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, 50.0)
+      .to("#root", { opacity: 0, duration: 0.8, ease: "power2.in" }, 59.2);
+
+    // Captions track
+    tl.to("#cap-1", { opacity: 1, duration: 0.4 }, 0.4)
+      .to("#cap-1", { opacity: 0, duration: 0.3 }, 11.5)
+      .to("#cap-2", { opacity: 1, duration: 0.4 }, 12.0)
+      .to("#cap-2", { opacity: 0, duration: 0.3 }, 23.5)
+      .to("#cap-3", { opacity: 1, duration: 0.4 }, 24.0)
+      .to("#cap-3", { opacity: 0, duration: 0.3 }, 35.5)
+      .to("#cap-4", { opacity: 1, duration: 0.4 }, 36.0)
+      .to("#cap-4", { opacity: 0, duration: 0.3 }, 47.5)
+      .to("#cap-5", { opacity: 1, duration: 0.4 }, 48.0)
+      .to("#cap-5", { opacity: 0, duration: 0.4 }, 59.2);
+
+    tl.seek(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #090d13;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #f0f6fc;
+      }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Global Header Banner */
+      .top-banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: #161b22;
+        border-bottom: 1px solid #30363d;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 48px;
+        z-index: 100;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: -0.02em;
+        color: #58a6ff;
+      }
+      .brand-badge {
+        background: #238636;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+      }
+      .course-title {
+        font-size: 18px;
+        color: #8b949e;
+        font-weight: 500;
+      }
+
+      /* Bottom Narrative / Subtitle Bar */
+      .bottom-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 110px;
+        background: #090d13;
+        border-top: 1px solid #30363d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 80px;
+        z-index: 100;
+      }
+      .caption-text {
+        font-size: 26px;
+        font-weight: 600;
+        text-align: center;
+        color: #f0f6fc;
+        letter-spacing: -0.01em;
+      }
+      .hl-blue { color: #58a6ff; font-weight: 700; }
+      .hl-gold { color: #e3b341; font-weight: 700; }
+      .hl-green { color: #3fb950; font-weight: 700; }
+      .hl-red { color: #ff7b72; font-weight: 700; }
+
+      /* Scene Container Base */
+      .scene-view {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        bottom: 110px;
+        padding: 36px 60px;
+        overflow: hidden;
+      }
+
+      /* ========================================================
+         ESCENA 1: EL GANCHO (0:00 - 0:10)
+         ======================================================== */
+      #scene-1 {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      #s1-before {
+        position: absolute;
+        inset: 36px 60px;
+        background: #f4f6f8;
+        border-radius: 16px;
+        padding: 36px;
+        color: #24292f;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .moodle-header {
+        border-bottom: 2px solid #d0d7de;
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .moodle-header h2 { font-size: 24px; color: #0969da; }
+      .before-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .pdf-item {
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 8px;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        color: #0969da;
+        text-decoration: underline;
+      }
+      .pdf-icon {
+        background: #cf222e;
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 3px 6px;
+        border-radius: 4px;
+        text-decoration: none;
+      }
+      .stamp-chaos {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        margin-left: -200px;
+        margin-top: -45px;
+        width: 400px;
+        padding: 14px 24px;
+        background: rgba(207, 34, 46, 0.95);
+        color: white;
+        font-size: 28px;
+        font-weight: 800;
+        text-align: center;
+        border-radius: 12px;
+        text-transform: uppercase;
+        border: 4px solid #fff;
+        opacity: 0;
+      }
+
+      #s1-after {
+        position: absolute;
+        inset: 36px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        opacity: 0;
+      }
+      .educai-hero {
+        background: linear-gradient(135deg, #1f6feb 0%, #0d419d 100%);
+        border-radius: 16px;
+        padding: 30px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .educai-hero h1 { font-size: 34px; font-weight: 800; margin-bottom: 6px; }
+      .educai-hero p { font-size: 17px; color: #e9ecef; }
+      .stat-chip {
+        background: rgba(255, 255, 255, 0.12);
+        padding: 10px 18px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .stat-chip span { font-size: 22px; font-weight: 700; color: #fff; display: block; }
+      .stat-chip label { font-size: 11px; color: #d9dcdf; text-transform: uppercase; }
+
+      .tripartite-preview {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        flex: 1;
+      }
+      .preview-card {
+        background: #161b22;
+        border-radius: 14px;
+        border: 1px solid #30363d;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .pill {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 6px;
+        width: fit-content;
+        margin-bottom: 12px;
+      }
+      .pill-blue { background: rgba(88, 166, 255, 0.15); color: #58a6ff; }
+      .pill-gold { background: rgba(210, 153, 34, 0.15); color: #e3b341; }
+      .pill-green { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+
+      /* ========================================================
+         ESCENA 2: LA NAVEGACIÓN TRIPARTITA (0:10 - 0:25)
+         ======================================================== */
+      #scene-2 {
+        opacity: 0;
+        display: flex;
+        gap: 28px;
+      }
+      .unit-sidebar {
+        width: 320px;
+        background: #161b22;
+        border-radius: 14px;
+        border: 1px solid #30363d;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-step {
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: #0d1117;
+        border-left: 4px solid #30363d;
+        font-size: 14px;
+      }
+      .nav-step.active {
+        border-left-color: #58a6ff;
+        background: rgba(88, 166, 255, 0.08);
+      }
+      .unit-viewport {
+        flex: 1;
+        background: #161b22;
+        border-radius: 14px;
+        border: 1px solid #30363d;
+        padding: 28px 36px;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Sub-bloques Escena 2 */
+      .s2-block {
+        position: absolute;
+        inset: 28px 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        opacity: 0;
+      }
+      /* Clase / Video */
+      .video-player-mock {
+        width: 100%;
+        height: 380px;
+        background: #010409;
+        border-radius: 12px;
+        border: 1px solid #30363d;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .play-btn {
+        width: 72px;
+        height: 72px;
+        background: #58a6ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ai-short-tag {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #a371f7 0%, #8957e5 100%);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(137, 87, 229, 0.35);
+      }
+      /* Lectura / Módulo Libro */
+      .book-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        flex: 1;
+      }
+      .book-content {
+        background: #0d1117;
+        border-radius: 10px;
+        border: 1px solid #30363d;
+        padding: 20px;
+      }
+      .book-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 14px;
+        font-size: 13px;
+      }
+      .book-content th, .book-content td {
+        border: 1px solid #30363d;
+        padding: 8px 12px;
+        text-align: left;
+      }
+      .book-content th { background: #161b22; color: #58a6ff; }
+      .book-side {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .side-card {
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        padding: 16px;
+      }
+      /* Práctica Preview */
+      .practice-banner {
+        background: linear-gradient(135deg, rgba(63, 185, 80, 0.15) 0%, rgba(35, 134, 54, 0.2) 100%);
+        border: 2px solid #238636;
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      /* ========================================================
+         ESCENA 3: GAMIFICACIÓN SCORM (0:25 - 0:45)
+         ======================================================== */
+      #scene-3 {
+        opacity: 0;
+        position: absolute;
+        inset: 80px 0 110px 0;
+        padding: 30px 60px;
+        display: flex;
+        gap: 30px;
+      }
+      /* Trivia SCORM */
+      #trivia-container {
+        position: absolute;
+        inset: 30px 60px;
+        background: #161b22;
+        border-radius: 16px;
+        border: 1px solid #30363d;
+        padding: 36px 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        opacity: 0;
+      }
+      .scorm-badge-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #30363d;
+        padding-bottom: 16px;
+      }
+      .timer-box {
+        background: #cf222e;
+        color: #fff;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 15px;
+        letter-spacing: 1px;
+      }
+      .options-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .option-item {
+        background: #0d1117;
+        border: 2px solid #30363d;
+        border-radius: 10px;
+        padding: 18px 24px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .option-item.correct {
+        border-color: #238636;
+        background: rgba(35, 134, 54, 0.15);
+        color: #3fb950;
+      }
+      .feedback-modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -240px;
+        margin-top: -90px;
+        width: 480px;
+        background: #238636;
+        color: white;
+        padding: 24px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+        border: 2px solid #fff;
+        opacity: 0;
+      }
+
+      /* Conecta Bloques */
+      #conecta-container {
+        position: absolute;
+        inset: 30px 60px;
+        background: #161b22;
+        border-radius: 16px;
+        border: 1px solid #30363d;
+        padding: 36px 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        opacity: 0;
+      }
+      .matching-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        position: relative;
+      }
+      .match-card {
+        background: #0d1117;
+        border: 2px solid #30363d;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 14px;
+        font-size: 15px;
+      }
+      .match-card.matched {
+        border-color: #3fb950;
+        background: rgba(63, 185, 80, 0.12);
+      }
+      .connector-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      /* Sincronización Grader */
+      #grader-container {
+        position: absolute;
+        inset: 30px 60px;
+        background: #0d1117;
+        border-radius: 16px;
+        border: 2px solid #58a6ff;
+        padding: 36px 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        opacity: 0;
+        box-shadow: 0 20px 50px rgba(88, 166, 255, 0.2);
+      }
+      .grader-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+      .grader-table th, .grader-table td {
+        border: 1px solid #30363d;
+        padding: 12px 18px;
+        text-align: left;
+      }
+      .grader-table th { background: #161b22; color: #58a6ff; }
+      .grade-pill {
+        background: #238636;
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: 700;
+      }
+
+      /* ========================================================
+         ESCENA 4: CIERRE Y LLAMADO A LA ACCIÓN (0:45 - 0:60)
+         ======================================================== */
+      #scene-4 {
+        opacity: 0;
+        position: absolute;
+        inset: 80px 0 110px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 100px;
+        gap: 36px;
+        background: radial-gradient(circle at center, #161b22 0%, #090d13 100%);
+      }
+      .badges-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        width: 100%;
+      }
+      .badge-card {
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 14px;
+        padding: 32px 24px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .badge-icon {
+        font-size: 40px;
+        margin-bottom: 4px;
+      }
+      .badge-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #58a6ff;
+      }
+      .badge-desc {
+        font-size: 15px;
+        color: #8b949e;
+      }
+      .cta-button {
+        background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        color: #ffffff;
+        font-size: 26px;
+        font-weight: 700;
+        padding: 18px 48px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 30px rgba(35, 134, 54, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="60"
+      data-width="1920"
+      data-height="1080"
+      data-fps="30"
+    >
+      <!-- Audio Tracks: BGM + VO Elena + SFX sincronizados -->
+      <audio id="bgm" src="assets/audio/bgm.mp3" data-start="0" data-duration="60" data-volume="0.12"></audio>
+      <audio id="vo" src="assets/audio/vo-moodle-showcase-60s.mp3" data-start="0.5" data-duration="45" data-volume="1.0"></audio>
+      <!-- Swoosh transición Antes -> Ahora (2.8s) -->
+      <audio id="sfx-swoosh-1" src="assets/audio/whoosh.mp3" data-start="2.8" data-duration="1.5" data-volume="0.8"></audio>
+      <!-- Acierto en Trivia SCORM (29.5s) -->
+      <audio id="sfx-chime" src="assets/audio/chime.mp3" data-start="29.5" data-duration="2.5" data-volume="0.9"></audio>
+      <!-- Conecta Bloques enlace (36.5s) -->
+      <audio id="sfx-sparkle" src="assets/audio/sparkle.mp3" data-start="36.5" data-duration="2.0" data-volume="0.85"></audio>
+      <!-- Sincronización Calificador Moodle (42.0s) -->
+      <audio id="sfx-notification" src="assets/audio/notification.mp3" data-start="42.0" data-duration="2.0" data-volume="0.9"></audio>
+      <!-- Impacto Entrada Placa Final CTA (50.0s) -->
+      <audio id="sfx-impact" src="assets/audio/impact-bass-1.mp3" data-start="50.0" data-duration="3.0" data-volume="0.75"></audio>
+
+      <!-- Top Banner Global -->
+      <header class="top-banner">
+        <div class="brand">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          Moodle LMS 4.0
+          <span class="brand-badge">EducAI</span>
+        </div>
+        <div class="course-title">Diplomado en Inteligencia Artificial Aplicada</div>
+      </header>
+
+      <!-- ==========================================
+           ESCENA 1: EL GANCHO (0:00 - 0:10)
+           ========================================== -->
+      <div id="scene-1" class="scene-view">
+        <!-- Antes -->
+        <div id="s1-before">
+          <div class="moodle-header">
+            <h2>Sección 1: Materiales de Estudio (Versión Clásica)</h2>
+            <span style="font-size: 14px; color: #57606a;">Modo edición activado</span>
+          </div>
+          <div class="before-list" data-layout-allow-occlusion="true">
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Unidad1_Lectura_Obligatoria_v2_final.pdf</div>
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Presentacion_Clase_Semana_1.pdf</div>
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Guia_de_Ejercicios_Practicos_2026.pdf</div>
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Lectura_Complementaria_AI_Etica.pdf</div>
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Enlace_Zoom_Grabacion_Repeticion.pdf</div>
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Anexo_Formato_APA_Instrucciones.pdf</div>
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Cronograma_Evaluaciones_Actualizado.pdf</div>
+            <div class="pdf-item" data-layout-allow-occlusion="true"><span class="pdf-icon" data-layout-allow-occlusion="true">PDF</span> Bibliografia_General_Curso.pdf</div>
+          </div>
+          <div id="stamp-chaos" class="stamp-chaos" data-layout-allow-occlusion="true">
+            ¡Depósito de PDFs!
+          </div>
+        </div>
+
+        <!-- Ahora -->
+        <div id="s1-after">
+          <div class="educai-hero" id="s1-hero">
+            <div>
+              <h1>Aula Piloto EducAI</h1>
+              <p>Estructura modular optimizada para el aprendizaje continuo.</p>
+            </div>
+            <div class="stat-chip">
+              <span>98%</span>
+              <label>Retención</label>
+            </div>
+          </div>
+          <div class="tripartite-preview">
+            <div class="preview-card" id="s1-c1">
+              <span class="pill pill-blue">1. CLASE</span>
+              <h3>Sesión Interactiva</h3>
+              <p style="color: #8b949e; font-size: 14px;">Video lecciones microlearning guiadas.</p>
+            </div>
+            <div class="preview-card" id="s1-c2">
+              <span class="pill pill-gold">2. LECTURA</span>
+              <h3>Libro Moodle</h3>
+              <p style="color: #8b949e; font-size: 14px;">Contenido diagramado e infografías.</p>
+            </div>
+            <div class="preview-card" id="s1-c3">
+              <span class="pill pill-green">3. PRÁCTICA</span>
+              <h3>SCORM Gamificado</h3>
+              <p style="color: #8b949e; font-size: 14px;">Trivias y evaluación formativa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           ESCENA 2: LA NAVEGACIÓN TRIPARTITA (0:10 - 0:25)
+           ========================================== -->
+      <div id="scene-2" class="scene-view">
+        <aside class="unit-sidebar">
+          <h3 style="font-size: 16px; color: #8b949e; text-transform: uppercase;">Unidad Temática 1</h3>
+          <div class="nav-step active" id="nav-s1">
+            <strong>1. La Clase</strong>
+            <div style="font-size: 12px; color: #8b949e;">Video cápsula 20 min</div>
+          </div>
+          <div class="nav-step" id="nav-s2">
+            <strong>2. La Lectura</strong>
+            <div style="font-size: 12px; color: #8b949e;">Módulo Libro & Infografía</div>
+          </div>
+          <div class="nav-step" id="nav-s3">
+            <strong>3. La Práctica</strong>
+            <div style="font-size: 12px; color: #8b949e;">Actividad Formativa</div>
+          </div>
+        </aside>
+
+        <main class="unit-viewport">
+          <!-- Bloque 1: Clase -->
+          <div class="s2-block" id="s2-clase">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h2>1. Sesión Principal: Introducción a Modelos LLM</h2>
+              <span style="color: #58a6ff; font-weight: 600;">Duración: 20 min</span>
+            </div>
+            <div class="video-player-mock">
+              <div class="play-btn">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffffff">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <div class="ai-short-tag">⚡ Resumen Short IA Incluido</div>
+            </div>
+          </div>
+
+          <!-- Bloque 2: Lectura -->
+          <div class="s2-block" id="s2-lectura">
+            <h2>2. Módulo Libro Moodle: Arquitectura de Redes</h2>
+            <div class="book-layout">
+              <div class="book-content">
+                <h3 style="font-size: 18px; margin-bottom: 8px;">Conceptos Fundamentales</h3>
+                <p style="font-size: 14px; color: #8b949e; line-height: 1.5;">Estructuración pedagógica por capas de atención y transformers.</p>
+                <table>
+                  <thead>
+                    <tr><th>Criterio</th><th>Tradicional</th><th>Modelo EducAI</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Formato</td><td>PDF suelto</td><td>Libro Interactivo</td></tr>
+                    <tr><td>Diagramación</td><td>Estática</td><td>Tablas y Destacados</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="book-side">
+                <div class="side-card">
+                  <h4 style="color: #e3b341; margin-bottom: 6px;">📖 Glosario</h4>
+                  <p style="font-size: 12px; color: #8b949e;">Términos clave y taxonomías.</p>
+                </div>
+                <div class="side-card">
+                  <h4 style="color: #58a6ff; margin-bottom: 6px;">📊 Infografía</h4>
+                  <p style="font-size: 12px; color: #8b949e;">Mapa conceptual descargable.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bloque 3: Práctica -->
+          <div class="s2-block" id="s2-practica">
+            <h2>3. Bloque de Ejercitación Formativa</h2>
+            <div class="practice-banner">
+              <div style="font-size: 40px;">🎯</div>
+              <h3>Módulo de Gamificación Preparado</h3>
+              <p style="font-size: 16px; color: #8b949e; max-width: 600px;">
+                Evaluación activa y sin fricción técnica: los estudiantes validan su comprensión jugando.
+              </p>
+              <div style="background: #238636; color: white; padding: 10px 24px; border-radius: 8px; font-weight: 700;">
+                Abrir Trivia SCORM →
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <!-- ==========================================
+           ESCENA 3: GAMIFICACIÓN SCORM (0:25 - 0:45)
+           ========================================== -->
+      <div id="scene-3">
+        <!-- 3A: Trivia SCORM -->
+        <div id="trivia-container">
+          <div class="scorm-badge-bar">
+            <div>
+              <span class="pill pill-green">PAQUETE SCORM 1.2</span>
+              <h2 style="margin-top: 4px;">Trivia EducAI: Desafío de Redes Neuronales</h2>
+            </div>
+            <div class="timer-box" id="trivia-timer">00:15</div>
+          </div>
+          <div style="font-size: 20px; font-weight: 600; margin: 10px 0;">
+            Pregunta 1 de 5: ¿Cuál es el rol del mecanismo de atención en un Transformer?
+          </div>
+          <div class="options-grid">
+            <div class="option-item">A) Comprimir el archivo en formato ZIP</div>
+            <div class="option-item correct" id="trivia-opt-correct">B) Ponderar la relevancia entre palabras clave</div>
+            <div class="option-item">C) Enlazar un hipervínculo externo</div>
+            <div class="option-item">D) Reiniciar el servidor de Moodle</div>
+          </div>
+          <div class="feedback-modal" id="trivia-feedback">
+            <h3 style="font-size: 22px; margin-bottom: 6px;">¡Excelente Respuesta! +100 Pts</h3>
+            <p style="font-size: 14px;">El mecanismo de autoatención permite captar dependencias contextuales complejas.</p>
+          </div>
+        </div>
+
+        <!-- 3B: Conecta Bloques -->
+        <div id="conecta-container">
+          <div style="border-bottom: 1px solid #30363d; padding-bottom: 12px;">
+            <span class="pill pill-gold">ACTIVIDAD INTERACTIVA</span>
+            <h2 style="margin-top: 4px;">Juego: Conecta Conceptos</h2>
+          </div>
+          <div class="matching-columns">
+            <svg class="connector-svg">
+              <line id="match-line" x1="420" y1="52" x2="420" y2="52" stroke="#3fb950" stroke-width="4" stroke-dasharray="6" />
+            </svg>
+            <div>
+              <div class="match-card matched" id="card-col-a">
+                <strong>Concepto: Microlearning</strong>
+              </div>
+              <div class="match-card">
+                <strong>Concepto: SCORM</strong>
+              </div>
+            </div>
+            <div>
+              <div class="match-card matched" id="card-col-b">
+                <strong>Definición: Cápsulas breves de alto foco pedagógico</strong>
+              </div>
+              <div class="match-card">
+                <strong>Definición: Estándar para comunicar puntajes al LMS</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3C: Sincronización al Calificador -->
+        <div id="grader-container">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #30363d; padding-bottom: 14px;">
+            <div>
+              <h2 style="color: #58a6ff;">Libro de Calificaciones de Moodle</h2>
+              <p style="font-size: 14px; color: #8b949e;">Registro sincrónico inmediato de actividades interactivas</p>
+            </div>
+            <div style="background: rgba(35, 134, 54, 0.2); border: 1px solid #238636; color: #3fb950; padding: 6px 14px; border-radius: 8px; font-weight: 700;">
+              ● Sincronizado vía SCORM API
+            </div>
+          </div>
+          <table class="grader-table">
+            <thead>
+              <tr>
+                <th>Estudiante</th>
+                <th>Trivia SCORM</th>
+                <th>Conecta Bloques</th>
+                <th>Estado Calificador</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alejandro Morales</td>
+                <td><span class="grade-pill" id="grade-val-1">100 / 100</span></td>
+                <td><span class="grade-pill" id="grade-val-2">100 / 100</span></td>
+                <td style="color: #3fb950; font-weight: 600;">✓ Registrado Automáticamente</td>
+              </tr>
+              <tr>
+                <td>Camila Valenzuela</td>
+                <td><span class="grade-pill">90 / 100</span></td>
+                <td><span class="grade-pill">100 / 100</span></td>
+                <td style="color: #3fb950; font-weight: 600;">✓ Registrado Automáticamente</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           ESCENA 4: CIERRE Y LLAMADO A LA ACCIÓN (0:45 - 0:60)
+           ========================================== -->
+      <div id="scene-4">
+        <div style="text-align: center;">
+          <h1 style="font-size: 48px; font-weight: 800; color: #58a6ff; margin-bottom: 8px;">EducAI Suite para Moodle</h1>
+          <p style="font-size: 20px; color: #8b949e;">Moderniza tu oferta académica sin fricción técnica</p>
+        </div>
+
+        <div class="badges-grid">
+          <div class="badge-card" id="b1">
+            <div class="badge-icon">⏱️</div>
+            <div class="badge-title">+70% Ahorro</div>
+            <div class="badge-desc">En tiempo técnico y diagramación docente.</div>
+          </div>
+          <div class="badge-card" id="b2">
+            <div class="badge-icon">📦</div>
+            <div class="badge-title">100% Compatible</div>
+            <div class="badge-desc">Moodle 3.x, 4.x y arquitecturas cloud.</div>
+          </div>
+          <div class="badge-card" id="b3">
+            <div class="badge-icon">🛠️</div>
+            <div class="badge-title">Llave en Mano</div>
+            <div class="badge-desc">Servicio integral o paquete ZIP auto-instalable.</div>
+          </div>
+        </div>
+
+        <div class="cta-button" id="cta-btn">
+          [ Solicitar Diagnóstico Gratuito ]
+        </div>
+      </div>
+
+      <!-- Barra de Narrativa Inferior -->
+      <footer class="bottom-bar">
+        <div id="caption" class="caption-text">
+          ¿Tu aula Moodle parece un <span class="hl-red">depósito de PDFs</span>?
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ==========================================
+      // ESCENA 1 (0:00 - 0:10)
+      // ==========================================
+      tl.fromTo("#s1-before .pdf-item", 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power2.out" }, 
+        0
+      );
+      tl.to("#stamp-chaos", { opacity: 1, scale: 1.05, duration: 0.35, ease: "back.out(1.7)" }, 1.5);
+      tl.to("#s1-before", { opacity: 0, scale: 0.95, duration: 0.45, ease: "power2.in" }, 2.8);
+
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Así se ve con la <span class="hl-blue">Estructura Tripartita</span> de EducAI.';
+      }, null, 2.9);
+
+      tl.to("#s1-after", { opacity: 1, duration: 0.4 }, 3.2);
+      tl.fromTo("#s1-hero", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5 }, 3.3);
+      tl.fromTo("#s1-c1", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.5 }, 4.0);
+      tl.fromTo("#s1-c2", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.5 }, 4.6);
+      tl.fromTo("#s1-c3", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.5 }, 5.2);
+
+      // Cierre de Escena 1
+      tl.to("#scene-1", { opacity: 0, duration: 0.5 }, 9.5);
+
+      // ==========================================
+      // ESCENA 2 (0:10 - 0:25): NAVEGACIÓN TRIPARTITA
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Secuencia predecible: <span class="hl-blue">Clase</span> ➔ <span class="hl-gold">Lectura</span> ➔ <span class="hl-green">Práctica</span>. Menos carga cognitiva.';
+      }, null, 10.0);
+
+      tl.to("#scene-2", { opacity: 1, duration: 0.5 }, 10.0);
+
+      // Paso 1: La Clase (10.0 - 15.0)
+      tl.to("#s2-clase", { opacity: 1, duration: 0.4 }, 10.2);
+
+      // Paso 2: La Lectura (15.0 - 20.0)
+      tl.to("#s2-clase", { opacity: 0, duration: 0.3 }, 15.0);
+      tl.call(() => {
+        document.getElementById("nav-s1").classList.remove("active");
+        document.getElementById("nav-s2").classList.add("active");
+      }, null, 15.1);
+      tl.to("#s2-lectura", { opacity: 1, duration: 0.4 }, 15.3);
+
+      // Paso 3: La Práctica (20.0 - 24.5)
+      tl.to("#s2-lectura", { opacity: 0, duration: 0.3 }, 20.0);
+      tl.call(() => {
+        document.getElementById("nav-s2").classList.remove("active");
+        document.getElementById("nav-s3").classList.add("active");
+      }, null, 20.1);
+      tl.to("#s2-practica", { opacity: 1, duration: 0.4 }, 20.3);
+
+      tl.to("#scene-2", { opacity: 0, duration: 0.5 }, 24.5);
+
+      // ==========================================
+      // ESCENA 3 (0:25 - 0:45): GAMIFICACIÓN SCORM
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Trivias contrarreloj y juegos Conecta Bloques. <span class="hl-green">Integración automática</span> al calificador.';
+      }, null, 25.0);
+
+      tl.to("#scene-3", { opacity: 1, duration: 0.4 }, 25.0);
+
+      // 3A: Trivia SCORM (25.0 - 34.5)
+      tl.to("#trivia-container", { opacity: 1, duration: 0.4 }, 25.2);
+      // Animación cuenta atrás temporizador
+      tl.call(() => { document.getElementById("trivia-timer").innerText = "00:12"; }, null, 27.0);
+      tl.call(() => { document.getElementById("trivia-timer").innerText = "00:09"; }, null, 28.5);
+      // Acierto y feedback pedagógico
+      tl.to("#trivia-opt-correct", { scale: 1.03, duration: 0.2 }, 29.5);
+      tl.to("#trivia-feedback", { opacity: 1, scale: 1.05, duration: 0.4, ease: "back.out(1.7)" }, 30.0);
+      tl.to("#trivia-container", { opacity: 0, duration: 0.4 }, 34.5);
+
+      // 3B: Conecta Bloques (35.0 - 41.5)
+      tl.to("#conecta-container", { opacity: 1, duration: 0.4 }, 35.0);
+      // Animación de línea que une concepto A con definición B
+      tl.fromTo("#match-line", 
+        { attr: { x2: 420, y2: 52 } }, 
+        { attr: { x2: 500, y2: 52 }, duration: 0.6, ease: "power2.out" }, 
+        36.5
+      );
+      tl.to("#card-col-a, #card-col-b", { borderColor: "#3fb950", duration: 0.3 }, 37.2);
+      tl.to("#conecta-container", { opacity: 0, duration: 0.4 }, 41.5);
+
+      // 3C: Calificador Moodle (42.0 - 44.5)
+      tl.to("#grader-container", { opacity: 1, y: 0, duration: 0.4 }, 42.0);
+      tl.fromTo("#grade-val-1, #grade-val-2", 
+        { scale: 0.8, opacity: 0 }, 
+        { scale: 1, opacity: 1, duration: 0.4, stagger: 0.15 }, 
+        42.5
+      );
+      tl.to("#scene-3", { opacity: 0, duration: 0.5 }, 44.5);
+
+      // ==========================================
+      // ESCENA 4 (0:45 - 0:60): CIERRE Y CTA
+      // ==========================================
+      tl.call(() => {
+        document.getElementById("caption").innerHTML = 'Transforma tus contenidos docentes sin perder tiempo técnico. <span class="hl-green">Solicita tu cotización</span>.';
+      }, null, 45.0);
+
+      tl.to("#scene-4", { opacity: 1, duration: 0.6 }, 45.0);
+      tl.fromTo("#b1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 46.0);
+      tl.fromTo("#b2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 47.0);
+      tl.fromTo("#b3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 48.0);
+      tl.fromTo("#cta-btn", 
+        { opacity: 0, scale: 0.9 }, 
+        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.5)" }, 
+        50.0
+      );
+
+      // Pulsación sutil del botón CTA en el final
+      tl.to("#cta-btn", { scale: 1.04, duration: 0.8, repeat: 5, yoyo: true }, 52.0);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

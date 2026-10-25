@@ -1,64 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="eu_ai_act_pmi" version="1.0"
+<?xml version="1.0" standalone="no" ?>
+<!-- Generator: Aula Lista EDUCAI Monolithic Course Builder -->
+<manifest identifier="eu_ai_act_pmi" version="1.2"
           xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
           xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
-                              http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
                               http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
-
   <metadata>
     <schema>ADL SCORM</schema>
     <schemaversion>1.2</schemaversion>
   </metadata>
-
-  <organizations default="org_default">
-    <organization identifier="org_default">
+  <organizations default="org_eu_ai_act_pmi">
+    <organization identifier="org_eu_ai_act_pmi">
       <title>EU AI Act: essentials e azioni pratiche per PMI</title>
-      <item identifier="item_index" identifierref="index">
+      <item identifier="item_index" identifierref="res_index">
         <title>Índice del Curso</title>
       </item>
-      <item identifier="item_modulo1" identifierref="modulo1">
+      <item identifier="item_modulo1" identifierref="res_modulo1">
         <title>Módulo 1: Modulo 1: Panoramica rapida e timeline AI Act</title>
       </item>
-      <item identifier="item_modulo2" identifierref="modulo2">
-        <title>Módulo 2: Modulo 2: Mappa dei casi d'uso e rischio</title>
+      <item identifier="item_modulo2" identifierref="res_modulo2">
+        <title>Módulo 2: Modulo 2: Mappa dei casi d&#x27;uso e rischio</title>
       </item>
-      <item identifier="item_modulo3" identifierref="modulo3">
+      <item identifier="item_modulo3" identifierref="res_modulo3">
         <title>Módulo 3: Modulo 3: Governance e controlli minimi</title>
       </item>
-      <item identifier="item_modulo4" identifierref="modulo4">
+      <item identifier="item_modulo4" identifierref="res_modulo4">
         <title>Módulo 4: Modulo 4: Piano 90 giorni</title>
       </item>
     </organization>
   </organizations>
-
   <resources>
-    <resource identifier="index" type="webcontent" adlcp:scormtype="sco" href="index.html">
+    <resource identifier="res_index" type="webcontent" adlcp:scormtype="sco" href="index.html">
       <file href="index.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="modulo1" type="webcontent" adlcp:scormtype="sco" href="modulo1.html">
+    <resource identifier="res_modulo1" type="webcontent" adlcp:scormtype="sco" href="modulo1.html">
       <file href="modulo1.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="modulo2" type="webcontent" adlcp:scormtype="sco" href="modulo2.html">
+    <resource identifier="res_modulo2" type="webcontent" adlcp:scormtype="sco" href="modulo2.html">
       <file href="modulo2.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="modulo3" type="webcontent" adlcp:scormtype="sco" href="modulo3.html">
+    <resource identifier="res_modulo3" type="webcontent" adlcp:scormtype="sco" href="modulo3.html">
       <file href="modulo3.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="modulo4" type="webcontent" adlcp:scormtype="sco" href="modulo4.html">
+    <resource identifier="res_modulo4" type="webcontent" adlcp:scormtype="sco" href="modulo4.html">
       <file href="modulo4.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
   </resources>
-
 </manifest>

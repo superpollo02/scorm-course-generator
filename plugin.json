@@ -1,0 +1,15 @@
+{
+  "name": "aula-lista-educai",
+  "displayName": "Aula Lista EDUCAI - Suite Integral E-Learning & Video Render",
+  "version": "1.1.0",
+  "description": "Ecosistema integral de ingeniería instruccional, maquetación Moodle 4.5 (Aula Tripartita), gamificación SCORM 1.2 interactiva y suite audiovisual programática con HyperFrames.",
+  "author": "superpollo02",
+  "suggestedPrompts": [
+    "Genera la Unidad X con el protocolo Kit Aula Lista completo",
+    "Construir un video short de microlearning para Moodle con HyperFrames",
+    "Generar actividad interactiva Conectabloques SCORM 1.2",
+    "Compilar Trivia formativa anti-trampa SCORM 1.2",
+    "Create a 120-second Moodle integration tutorial with step progress bar and audio",
+    "Build a 60-second tripartite course showcase with SCORM gamification demo"
+  ]
+}

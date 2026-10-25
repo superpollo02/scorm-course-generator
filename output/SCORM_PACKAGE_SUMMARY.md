@@ -6,7 +6,7 @@
 
 **Format:** SCORM 1.2 (Universal LMS Compatibility)
 
-**Package Location:** `C:/Users/utente/scorm-course-generator/output/eu-ai-act-pmi-scorm.zip`
+**Package Location:** `C:/Users/utente/aula lista EDUCAI/output/eu-ai-act-pmi-scorm.zip`
 
 **Package Size:** 61 KB (200 KB uncompressed)
 
@@ -300,7 +300,7 @@ For questions or issues with this SCORM package:
 ✅ **SCORM Package Successfully Created**
 
 - **Package:** eu-ai-act-pmi-scorm.zip (61 KB)
-- **Location:** C:/Users/utente/scorm-course-generator/output/
+- **Location:** C:/Users/utente/aula lista EDUCAI/output/
 - **Status:** Ready for import into any SCORM 1.2-compliant LMS
 - **Quality:** Professional design, validated content, fully functional
 - **Compatibility:** Universal (Moodle, Canvas, Blackboard, all major LMS)

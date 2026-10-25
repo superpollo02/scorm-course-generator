@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Unidad 2: Gestión vs. Administración Sanitaria - 16:9 (45s)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: #0b0f19;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden;
+      width: 1920px;
+      height: 1080px;
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      background: #0d1322;
+      overflow: hidden;
+    }
+
+    /* Ambient Warm Glow */
+    .ambient-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #090d16 0%, #0d1322 100%);
+      z-index: 1;
+    }
+
+    .ambient-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      z-index: 2;
+    }
+
+    /* Top Persistent Header Bar */
+    .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background: rgba(13, 19, 34, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 70px;
+      z-index: 100;
+    }
+
+    .brand-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+      font-weight: 900;
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    .brand-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+
+    .brand-text span {
+      color: #f59e0b;
+    }
+
+    .course-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .course-tag .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    /* Scene Container */
+    .scene {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      width: 1920px;
+      height: 890px;
+      padding: 60px 100px;
+      opacity: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* SCENE 1: Hook & Conflict */
+    .hook-badge {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      max-width: 1400px;
+      margin-bottom: 30px;
+      color: #ffffff;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .conflict-cards-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-top: 20px;
+      max-width: 1400px;
+    }
+
+    .conflict-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .conflict-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .conflict-text h4 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .conflict-text p {
+      font-size: 18px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* SCENE 2: The Core Dilemma (Side by Side Comparison) */
+    .dual-arena {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      width: 100%;
+      max-width: 1720px;
+    }
+
+    .pillar-box {
+      border-radius: 24px;
+      padding: 44px 48px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .pillar-admin {
+      background: linear-gradient(160deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border: 2px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .pillar-gestion {
+      background: linear-gradient(160deg, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 2px solid #3b82f6;
+      box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+    }
+
+    .pillar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .pillar-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .pillar-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .badge-admin {
+      background: rgba(148, 163, 184, 0.15);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .badge-gestion {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.5);
+    }
+
+    .motto-banner {
+      font-size: 26px;
+      font-weight: 800;
+      padding: 16px 24px;
+      border-radius: 14px;
+      margin-bottom: 28px;
+    }
+
+    .motto-admin {
+      background: rgba(255, 255, 255, 0.05);
+      color: #94a3b8;
+      border-left: 5px solid #64748b;
+    }
+
+    .motto-gestion {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      border-left: 5px solid #3b82f6;
+    }
+
+    .pillar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pillar-list li {
+      font-size: 20px;
+      font-weight: 600;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dot-bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .bullet-admin { background: #64748b; }
+    .bullet-gestion { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
+
+    /* SCENE 3: Faculty & Pedagogical Authority */
+    .faculty-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .faculty-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .faculty-title {
+      font-size: 54px;
+      font-weight: 900;
+      margin-bottom: 48px;
+      color: #ffffff;
+      letter-spacing: -1px;
+    }
+
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .faculty-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      text-align: left;
+      backdrop-filter: blur(10px);
+    }
+
+    .faculty-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+      border: 3px solid #60a5fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+      flex-shrink: 0;
+    }
+
+    .faculty-info h3 {
+      font-size: 30px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .faculty-info p {
+      font-size: 19px;
+      color: #94a3b8;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .faculty-info .org-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.12);
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+
+    /* SCENE 4: Golden Rule & Call to Action */
+    .golden-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(239, 68, 68, 0.08) 100%);
+      border: 2px solid rgba(245, 158, 11, 0.4);
+      border-radius: 28px;
+      padding: 56px 64px;
+      text-align: center;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .golden-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 800;
+      color: #f59e0b;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .golden-quote {
+      font-size: 46px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      margin-bottom: 36px;
+    }
+
+    .golden-quote span {
+      color: #fbbf24;
+    }
+
+    .cta-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      color: #ffffff;
+      padding: 20px 48px;
+      border-radius: 50px;
+      font-size: 26px;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .cta-banner .campus-pill {
+      background: #ffffff;
+      color: #1e3a8a;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    /* Subtitle Overlay bar (at the lower third) */
+    .subtitles-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 100px;
+      right: 100px;
+      height: 72px;
+      background: rgba(10, 15, 25, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 40px;
+      z-index: 120;
+    }
+
+    .caption-line {
+      font-size: 23px;
+      font-weight: 700;
+      color: #f8fafc;
+      text-align: center;
+      letter-spacing: -0.2px;
+      opacity: 0;
+      position: absolute;
+      width: calc(100% - 80px);
+    }
+
+    .caption-line .highlight {
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+
+  <div 
+    id="root" 
+    data-composition-id="main"
+    data-start="0"
+    data-duration="45"
+    data-width="1920"
+    data-height="1080"
+    data-fps="30"
+    data-layout-allow-overlap="true"
+    data-layout-allow-occlusion="true">
+
+    <!-- Ambient Overlays -->
+    <div class="ambient-bg"></div>
+    <div class="ambient-grid"></div>
+
+    <!-- Audio Track: Warm Focus synth chords + arps -->
+    <audio 
+      id="bgm" 
+      src="assets/audio/bgm-warm-focus-45s.wav" 
+      data-start="0" 
+      data-duration="45" 
+      data-volume="0.12">
+    </audio>
+
+    <!-- SFX sync markers -->
+    <audio id="sfx-whoosh1" src="assets/audio/whoosh-cinematic.mp3" data-start="0.2" data-duration="2.8" data-volume="0.30"></audio>
+    <audio id="sfx-pop" src="assets/audio/pop.mp3" data-start="2.2" data-duration="0.72" data-volume="0.40"></audio>
+    <audio id="sfx-whoosh2" src="assets/audio/whoosh.mp3" data-start="11.8" data-duration="0.57" data-volume="0.35"></audio>
+    <audio id="sfx-chime" src="assets/audio/chime.mp3" data-start="17.0" data-duration="2.50" data-volume="0.45"></audio>
+    <audio id="sfx-whoosh3" src="assets/audio/whoosh.mp3" data-start="25.8" data-duration="0.57" data-volume="0.35"></audio>
+    <audio id="sfx-sparkle" src="assets/audio/sparkle.mp3" data-start="35.5" data-duration="1.80" data-volume="0.45"></audio>
+
+    <!-- Top Persistent Navigation Header -->
+    <header class="top-bar">
+      <div class="brand-badge">
+        <div class="brand-logo-icon">E</div>
+        <div class="brand-text">Educ<span>AI</span> | Formación Médica Continua</div>
+      </div>
+      <div class="course-tag">
+        <div class="live-dot"></div>
+        UNIDAD 2: GESTIÓN VS. ADMINISTRACIÓN
+      </div>
+    </header>
+
+    <!-- SCENE 1: Hook & Hospital Friction (0s - 12s) -->
+    <div class="scene" id="scene-1">
+      <div class="hook-badge">⚡ Desafío Operativo en Residencias</div>
+      <h1 class="hero-title">
+        ¿Te asignaron la coordinación de camas o el stock de tu servicio y sentís que <span class="gradient-text">solo apagás incendios todo el día</span>?
+      </h1>
+      <div class="conflict-cards-container">
+        <div class="conflict-card" id="card-1">
+          <div class="conflict-icon">📋</div>
+          <div class="conflict-text">
+            <h4>La Inercia de la Rutina</h4>
+            <p>Completar planillas, repartir guardias y pedir insumos sin poder resolver los cuellos de botella.</p>
+          </div>
+        </div>
+        <div class="conflict-card" id="card-2">
+          <div class="conflict-icon">🔥</div>
+          <div class="conflict-text">
+            <h4>La Pregunta Decisiva</h4>
+            <p>¿Estás simplemente administrando el procedimiento... o estás gestionando la salud real del paciente?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 2: The Core Difference - Dual Arena (12s - 26s) -->
+    <div class="scene" id="scene-2">
+      <div class="dual-arena">
+        <!-- Pillar Administrar -->
+        <div class="pillar-box pillar-admin" id="box-admin">
+          <div class="pillar-header">
+            <h2 class="pillar-title" style="color: #cbd5e1;">ADMINISTRAR</h2>
+            <span class="pillar-badge badge-admin">Procedimiento</span>
+          </div>
+          <div class="motto-banner motto-admin">
+            "Hacer las cosas bien"
+          </div>
+          <ul class="pillar-list">
+            <li><div class="dot-bullet bullet-admin"></div> Cumplir el protocolo y la norma preestablecida.</li>
+            <li><div class="dot-bullet bullet-admin"></div> Cuidar los recursos dados y asignar tareas.</li>
+            <li><div class="dot-bullet bullet-admin"></div> Si solo administrás, la demanda incierta te desborda.</li>
+          </ul>
+        </div>
+
+        <!-- Pillar Gestionar -->
+        <div class="pillar-box pillar-gestion" id="box-gestion">
+          <div class="pillar-header">
+            <h2 class="pillar-title" style="color: #60a5fa;">GESTIONAR</h2>
+            <span class="pillar-badge badge-gestion">Impacto Clínico</span>
+          </div>
+          <div class="motto-banner motto-gestion">
+            "Hacer las cosas correctas"
+          </div>
+          <ul class="pillar-list">
+            <li><div class="dot-bullet bullet-gestion"></div> Definir prioridades y liderar al equipo multidisciplinario.</li>
+            <li><div class="dot-bullet bullet-gestion"></div> Anticipar y resolver cuellos de botella del servicio.</li>
+            <li><div class="dot-bullet bullet-gestion"></div> Transformar recursos limitados en valor real para el paciente.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 3: Pedagogical Authority & Faculty (26s - 36s) -->
+    <div class="scene" id="scene-3">
+      <div class="faculty-container">
+        <div class="faculty-badge">🏛️ Docentes de Referencia Provincial</div>
+        <h2 class="faculty-title">Modelos y Diferenciación Operativa Sanitaria</h2>
+        <div class="faculty-grid">
+          <div class="faculty-card" id="fac-1">
+            <div class="faculty-avatar">👩‍⚕️</div>
+            <div class="faculty-info">
+              <h3>Dra. Susana Salomón</h3>
+              <p>Especialista en Sistemas Sanitarios y Políticas de Gestión de la Salud.</p>
+              <span class="org-tag">ESALUD • Mendoza</span>
+            </div>
+          </div>
+          <div class="faculty-card" id="fac-2">
+            <div class="faculty-avatar">👩‍⚕️</div>
+            <div class="faculty-info">
+              <h3>Dra. Laura Piovano</h3>
+              <p>Experta en Gestión Clínica, Liderazgo de Equipos y Andragogía Médica.</p>
+              <span class="org-tag">ESALUD • Mendoza</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 4: Golden Rule & Call to Action (36s - 45s) -->
+    <div class="scene" id="scene-4">
+      <div class="golden-box" id="gold-card">
+        <div class="golden-label">⭐ REGLA DE ORO DE LA UNIDAD 2</div>
+        <p class="golden-quote">
+          "No te limites a ser un tramitador de la inercia: <span>mirá el circuito integral</span> de tu servicio y gestioná para generar valor."
+        </p>
+        <div class="cta-banner">
+          <span>Ingresá a la Unidad 2 en</span>
+          <span class="campus-pill">Campus ESALUD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verbatim Synchronized Subtitle Rail -->
+    <div class="subtitles-bar">
+      <div class="caption-line" id="cap-1">
+        ¿Te asignaron la coordinación de camas o stock y sentís que <span class="highlight">solo apagás incendios</span> todo el día?
+      </div>
+      <div class="caption-line" id="cap-2">
+        <span class="highlight">Administrar es hacer las cosas bien:</span> cumplir protocolos, repartir guardias y cuidar insumos.
+      </div>
+      <div class="caption-line" id="cap-3">
+        <span class="highlight">Gestionar es hacer las cosas correctas:</span> liderar procesos y resolver cuellos de botella para el paciente.
+      </div>
+      <div class="caption-line" id="cap-4">
+        Descubrí los modelos sanitarios junto a la <span class="highlight">Dra. Susana Salomón</span> y la <span class="highlight">Dra. Laura Piovano</span>.
+      </div>
+      <div class="caption-line" id="cap-5">
+        <span class="highlight">REGLA DE ORO:</span> No te limites a la inercia. Mirá el circuito completo y liderá el cambio en ESALUD.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // HyperFrames Pure Deterministic Clock Engine
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["main"] = tl;
+
+    // SCENE 1: 0.0s -> 12.0s
+    tl.to("#scene-1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2)
+      .from("#scene-1 .hook-badge", { y: -20, opacity: 0, duration: 0.6, ease: "back.out(1.5)" }, 0.4)
+      .from("#scene-1 .hero-title", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.6)
+      .from("#card-1", { x: -40, opacity: 0, duration: 0.7, ease: "power2.out" }, 2.0)
+      .from("#card-2", { x: 40, opacity: 0, duration: 0.7, ease: "power2.out" }, 2.4)
+      .to("#scene-1", { opacity: 0, scale: 0.96, duration: 0.5, ease: "power2.in" }, 11.5);
+
+    // SCENE 2: 12.0s -> 26.0s
+    tl.to("#scene-2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 12.0)
+      .from("#box-admin", { x: -60, opacity: 0, duration: 0.8, ease: "power3.out" }, 12.3)
+      .from("#box-gestion", { x: 60, opacity: 0, duration: 0.8, ease: "power3.out" }, 16.5)
+      .from("#box-gestion .pillar-list li", { x: 30, opacity: 0, stagger: 0.3, duration: 0.5, ease: "power2.out" }, 17.5)
+      .to("#scene-2", { opacity: 0, scale: 1.04, duration: 0.5, ease: "power2.in" }, 25.5);
+
+    // SCENE 3: 26.0s -> 36.0s
+    tl.to("#scene-3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 26.0)
+      .from("#scene-3 .faculty-badge", { y: -20, opacity: 0, duration: 0.5, ease: "power2.out" }, 26.3)
+      .from("#scene-3 .faculty-title", { y: 20, opacity: 0, duration: 0.7, ease: "power2.out" }, 26.6)
+      .from("#fac-1", { y: 40, opacity: 0, duration: 0.6, ease: "back.out(1.4)" }, 27.2)
+      .from("#fac-2", { y: 40, opacity: 0, duration: 0.6, ease: "back.out(1.4)" }, 27.6)
+      .to("#scene-3", { opacity: 0, duration: 0.5, ease: "power2.in" }, 35.5);
+
+    // SCENE 4: 36.0s -> 45.0s
+    tl.to("#scene-4", { opacity: 1, duration: 0.6, ease: "power2.out" }, 36.0)
+      .from("#gold-card", { scale: 0.9, opacity: 0, duration: 0.8, ease: "back.out(1.5)" }, 36.3)
+      .from("#gold-card .cta-banner", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, 38.0)
+      .to("#root", { opacity: 0, duration: 0.8, ease: "power2.in" }, 44.2);
+
+    // Synchronized Captions Track
+    tl.to("#cap-1", { opacity: 1, duration: 0.4 }, 0.4)
+      .to("#cap-1", { opacity: 0, duration: 0.3 }, 6.2)
+      .to("#cap-2", { opacity: 1, duration: 0.4 }, 6.5)
+      .to("#cap-2", { opacity: 0, duration: 0.3 }, 15.8)
+      .to("#cap-3", { opacity: 1, duration: 0.4 }, 16.2)
+      .to("#cap-3", { opacity: 0, duration: 0.3 }, 25.4)
+      .to("#cap-4", { opacity: 1, duration: 0.4 }, 25.8)
+      .to("#cap-4", { opacity: 0, duration: 0.3 }, 35.4)
+      .to("#cap-5", { opacity: 1, duration: 0.4 }, 35.8)
+      .to("#cap-5", { opacity: 0, duration: 0.4 }, 44.2);
+
+    tl.seek(0);
+  </script>
+</body>
+</html>

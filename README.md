@@ -1,4 +1,4 @@
-# SCORM Course Generator
+# Aula Lista EDUCAI
 
 Sistema profesional para la generación de contenidos didácticos en formato SCORM 1.2, compatible con cualquier LMS (Learning Management System).
 
@@ -92,6 +92,21 @@ Usuario: «Genera la Unidad X»
          • Consolidación en directorio único jerarquizado y validación con tiza comprobar.
 ```
 
+### 🗣️ Consulta Obligatoria de Modo de Trivia y Examen al Usuario
+
+Al momento de generar la **Gran Trivia SCORM** de cada unidad o el **Examen Final Sumativo**, el agente de IA **debe pausar y preguntar expresamente al usuario qué modo prefiere utilizar**, describiéndole las características y configuraciones de cada uno:
+
+1. **🚀 Modo Turbo 1 (Automático 1-Click)**:
+   - *Configuración*: 10 preguntas de dificultad intermedia, 60% de aprobación, 30 minutos de tiempo límite, orden aleatorio (shuffle), estilo Neón accesible de alto contraste y retroalimentación inmediata. Empaquetado directo sin pasos intermedios.
+2. **🎮 Modo Turno Estándar (Interactivo con Navegación por Pasos)**:
+   - *Configuración*: Navegación bidireccional (`← Anterior` y `Siguiente →`), barra interactiva superior de turnos para saltar libremente y revisar preguntas antes de entregar, 70% de aprobación, sin límite de tiempo estricto y retroalimentación pedagógica contextual inmediata.
+3. **⚡ Modo Turbo 2 (Generación Masiva por Lotes / Batch)**:
+   - *Configuración*: Procesa automáticamente todas las unidades o cuestionarios existentes en el directorio y genera todos los paquetes SCORM 1.2 correspondientes en una sola pasada.
+4. **🎨 Personalización Total**:
+   - *Configuración a medida del docente*: Selección libre de Tema visual (`neon`, `corporate`, `minimal`, `high-contrast`, `sunset`, `forest`, `cosmic`), paleta de colores hexadecimales (`--neon-primary`, `--neon-accent`), tiempo límite en minutos, momento del feedback (`immediate` o `end`), puntaje de aprobación (ej. 75%, 80%) y exportación paralela a formato GIFT para el banco nativo de Moodle.
+
+---
+
 ### 🎯 Detalle de Actividades Formativas, Consignas y Examen Final
 
 | Componente | Fase de Creación | Ubicación y Archivo | Regla Técnica & Pedagógica (Kit Aula Lista) |
@@ -146,7 +161,9 @@ Antes de responder al usuario, el agente auto-audita 10 puntos canónicos:
 9. `conectabloques-SCORM.zip` y `trivia-SCORM.zip`: Paquetes SCORM 1.2 interactivos compilados.
 10. `tiza comprobar *.html`: Auditoría ejecutada con éxito (`Paso COMPROBAR: ok`) en todos los ficheros HTML.
 
-> **Regla de Autocorrección (Self-Healing):** Si falta cualquiera de estos 10 componentes, el sistema procede de inmediato a generarlo o compilarlo hasta satisfacer el 100% de la lista sin dejarlo pendiente.
+> **Directiva de Cierre Obligatorio y Autocorrección (Zero-Missing Gate & Self-Healing):**
+> Una vez creados todos los contenidos solicitados, el agente DEBE realizar una **revisión exhaustiva de verificación física en disco** de todos y cada uno de los 10 componentes y el examen final.
+> Si se detecta que **falta cualquiera de ellos**, está terminantemente prohibido dar por concluida la tarea o consultar al usuario: el sistema debe auto-repararse inmediatamente (*Self-Healing*), invocando al agente o script especializado hasta satisfacer el 100% de la lista antes de cerrar la respuesta.
 
 ---
 
@@ -162,10 +179,13 @@ Antes de responder al usuario, el agente auto-audita 10 puntos canónicos:
 - **Tablas Responsivas**: Visualización perfecta tanto en escritorio como en dispositivos móviles
 - **Navegación Integrada**: Botones de Anterior/Siguiente/Índice
 
-### Multimedia
+### Multimedia y Suite Audiovisual HyperFrames
+- **Renderizado Headless de Video (HyperFrames)**: Generación programática de videos en Chrome Headless (1080p y 9:16 vertical) con animaciones GSAP deterministas.
+- **Plantillas Maestras Verificadas**: Showcases de cursos de 60s, adaptaciones para reels/shorts 9:16, tutoriales paso a paso de 120s con cursor interactivo y renovaciones de aula de 90s.
+- **Banco Sonoro Multicapa Portable (`assets/audio/`)**: 10 efectos sonoros diegéticos calibrados (whoosh, chime, sparkle, pop, impact), BGMs ambientales e institucionales al 12-15% y pistas VoiceOver de locución profesional.
 - **SCORM de Audio**: Reproductor HTML5 con seguimiento de finalización
 - **SCORM de Video**: Reproductor con barra de progreso y finalización automática al 90% visto
-- **Compresión Inteligente**: Optimización automática para archivos multimedia grandes
+- **Compresión Inteligente**: Optimización automática con ffmpeg (CRF 23)
 
 ### Seguimiento
 - **API SCORM**: Comunicación completa con el LMS
@@ -219,8 +239,8 @@ sudo apt update && sudo apt install ffmpeg
 ### 1. Clona el Repositorio
 
 ```bash
-git clone https://github.com/tuusername/scorm-course-generator.git
-cd scorm-course-generator
+git clone https://github.com/superpollo02/scorm-course-generator.git "aula lista EDUCAI"
+cd "aula lista EDUCAI"
 ```
 
 ### 2. Verifica Python
@@ -392,24 +412,33 @@ El sistema utiliza **cinco agentes especializados**, cada uno con competencias e
 5. **E-learning**: Adaptación a formatos de lectura digital ágiles.
 6. **Fluidez**: Coherencia y transición narrativa óptima.
 
-#### 4. SCORM Packager (Verde)
-**Objetivo**: Convierte los contenidos markdown a formato SCORM.
+#### 4. SCORM Architect (Amarillo)
+**Objetivo**: Compila interactivos gamificados SCORM 1.2 (Trivias Turbo/Turno, Conectabloques de pares y Exámenes Sumativos) optimizados con `scorm_core`.
 
 | Aspecto | Detalle |
 |---------|-----------|
-| **Entrada** | Contenidos markdown aprobados |
-| **Salida** | Archivo .zip compatible con el estándar SCORM 1.2 |
-| **Componentes** | HTML estructurado, estilos, navegación y manifest XML |
+| **Entrada** | Cuestionarios markdown, pares conceptuales o checkpoints |
+| **Salida** | Paquetes `.zip` SCORM 1.2 (`cmi.core.score.raw`), GIFT de Moodle y caché IA en disco |
+| **Capacidades** | Modo Turbo 1 y 2, Modo Turno, 7 temas visuales Neón/WCAG, Web Audio API y consulta previa interactiva |
+| **Invocación** | `subagent_type="scorm-architect"` |
+
+#### 5. Moodle Formatter & Tiza Auditor (Verde)
+**Objetivo**: Maqueta el HTML responsivo de las unidades para Moodle 4.5 y valida con el linter de Tiza.
+
+| Aspecto | Detalle |
+|---------|-----------|
+| **Entrada** | Textos instruccionales, infografías y enlaces a videos/SCORM |
+| **Salida** | Archivos HTML canónicos (`01_etiqueta...`, `02_pagina...`, `03_pagina...`, `04_tarea...`) |
+| **Filtro** | Bootstrap 4.6.2, Font Awesome 6 y aprobación estricta `tiza comprobar` |
 | **Invocación** | `subagent_type="moodle-xml-formatter"` |
 
-#### 5. Multimedia Integrator (Morado)
-**Objetivo**: Crea paquetes SCORM dedicados a archivos de audio o video.
+#### 6. Multimedia Integrator (Morado)
+**Objetivo**: Diseña activos gráficos vectoriales (banners panorámicos, infografías conceptuales) y diapositivas de clase.
 
 | Aspecto | Detalle |
 |---------|-----------|
-| **Entrada** | Archivo de audio (MP3, WAV...) o de video (MP4, WEBM...) |
-| **Salida** | Paquete SCORM independiente con reproductor HTML5 integrado |
-| **Funciones** | Análisis de integridad, compresión y optimización |
+| **Entrada** | Insumos de la cátedra y especificaciones de marca |
+| **Salida** | Banners PNG/SVG, Infografías teóricas de síntesis y presentaciones PPTX/PDF |
 | **Invocación** | `subagent_type="multimedia-integrator"` |
 
 ---
@@ -417,16 +446,39 @@ El sistema utiliza **cinco agentes especializados**, cada uno con competencias e
 ## Estructura del Proyecto
 
 ```
-scorm-course-generator/
+aula lista EDUCAI/
 │
-├── .claude/                          # Configuración del agente
-│   ├── agents/                       # Definiciones de los agentes
-│   │   ├── course-outliner.md       # Agente de estructura del curso
-│   │   ├── content-creator.md       # Agente de creación de contenido
-│   │   ├── senior-editor.md         # Agente de edición
-│   │   ├── moodle-xml-formatter.md  # Agente de empaquetado SCORM
-│   │   └── multimedia-integrator.md # Agente multimedia
-│   └── settings.local.json          # Ajustes locales
+├── templates/                        # Plantillas maestras de video programático HyperFrames
+│   ├── moodle-showcase-60s.html      # Showcase promocional de alto impacto (1080p, 60s)
+│   ├── moodle-vertical-9-16.html     # Adaptación vertical (1080x1920) para Shorts y Reels
+│   ├── moodle-makeover-90s.html      # Renovación de aula en 8 escenas (90s)
+│   ├── moodle-tutorial-120s.html     # Tutorial técnico con cursor reactivo animado (120s)
+│   └── unidad*-*.html                # Plantillas curriculares sincronizadas (Unidades 2 a 8)
+│
+├── assets/                           # Activos multimedia portables
+│   └── audio/                        # Banco sonoro multicapa (SFX diegéticos, BGMs, VoiceOvers)
+│
+├── scorm_core/                                  # Motor unificado de empaquetado y optimización
+│   ├── manifest.py                              # Generador canónico de imsmanifest.xml con escape XML
+│   └── ai_cache.py                              # Caché de IA en disco SHA-256 (0 tokens en repeticiones)
+│
+├── skills/                                      # Habilidades ejecutables de Antigravity
+│   ├── edtech-moodle-video/                     # Metodología y captura de recorridos Moodle y SCORM
+│   ├── notebooklm-video-shorts/                 # Ingesta con NotebookLM (CLI nlm) para guiones de shorts
+│   ├── hyperframes-render/                      # Renderizado programático en MP4 con HyperFrames en Chrome Headless
+│   ├── diseno-instruccional-aula-tripartita/    # Redacción de intro (2 oraciones + 3 preguntas) y consignas
+│   └── scorm-gamification/                      # Compilación y personalización SCORM 1.2 (Turbo 1/2, Turno, Neón)
+│
+├── agents/ y .claude/agents/                    # Agentes y subagentes especializados
+│   ├── asistente-notebooklm.md                  # Ingesta de fuentes y guiones de microlearning con NotebookLM
+│   ├── course-outliner.md                       # Arquitectura curricular Kit Aula Lista y Aula Tripartita
+│   ├── content-creator.md                       # Redacción de marcos teóricos, intro, consignas y rúbricas
+│   ├── senior-editor.md                         # Auditoría editorial, consigna obligatoria y anti-trampa
+│   ├── multimedia-integrator.md                 # Diseño de banners panorámicos, infografías vectoriales y PPTX
+│   ├── edtech-video-director.md                 # Director audiovisual HyperFrames (renders MP4 a 1080p y 9:16)
+│   ├── scorm-architect.md                       # Compilación SCORM 1.2 (Trivias Turbo/Turno, Conectabloques, GIFT)
+│   ├── moodle-xml-formatter.md                  # Maquetación HTML responsiva (Bootstrap 4.6.2) y auditoría Tiza
+│   └── auditor-calidad-aula-lista.md            # Auto-auditoría exhaustiva Zero-Missing Gate y Self-Healing
 │
 ├── scripts/                          # Scripts de Python
 │   ├── scorm_generators/            # Creadores de SCORM
@@ -587,6 +639,42 @@ python scripts/scorm_generators/create_audio_scorm.py leccion.mp3 "Lección 1" "
 ```
 
 **Formatos**: MP3, WAV, OGG, M4A, AAC.
+
+---
+
+### build_trivia_scorm.py (Gran Trivia SCORM con Modo Turno, Temas Neón y Modo Turbo)
+
+**Objetivo**: Genera paquetes SCORM 1.2 interactivos de autoevaluación y trivia gamificada con navegación por turnos, temporizador, barra de accesibilidad WCAG para el estudiante y sincronización de puntaje con Moodle (`cmi.core.score.raw`).
+
+**Ejemplos de Uso**:
+```bash
+# 1. Modo Turbo 1 (1-Click Automático: 10 preguntas, 60% aprobación, 30 min, aleatorio, Neón)
+python scripts/scorm_generators/build_trivia_scorm.py cuestionario.md --turbo 1
+
+# 2. Modo Turbo 2 (Por lotes / Batch: procesa carpetas completas y empaqueta todo en SCORM 1.2)
+python scripts/scorm_generators/build_trivia_scorm.py content/unidades/ --turbo 2
+
+# 3. Personalización de Temas Visuales (neon, corporate, minimal, high-contrast, sunset, forest, cosmic)
+python scripts/scorm_generators/build_trivia_scorm.py cuestionario.md --tema cosmic --tiempo 20 --barajar
+
+# 4. Personalización Fina Neón y Exportación simultánea a formato GIFT de Moodle
+python scripts/scorm_generators/build_trivia_scorm.py cuestionario.md --tema neon --neon-accent "#00f3ff" --exportar-gift
+```
+
+---
+
+### build_conectabloques_scorm.py (Conectabloques SCORM con Web Audio)
+
+**Objetivo**: Genera un paquete SCORM 1.2 interactivo de emparejamiento conceptual de 8 pares extraídos de las lecturas, con síntesis de sonido procedural vía Web Audio API, temporizador dinámico y reporte directo al libro de calificaciones de Moodle.
+
+**Ejemplos de Uso**:
+```bash
+# Empaquetado estándar de Conectabloques desde markdown de pares conceptuales
+python scripts/scorm_generators/build_conectabloques_scorm.py content/conectabloques_unidad1.md
+
+# Con ruta de salida personalizada
+python scripts/scorm_generators/build_conectabloques_scorm.py content/conectabloques_unidad1.md -o output/scorm/conectabloques_u1.zip
+```
 
 ---
 

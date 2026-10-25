@@ -12,10 +12,15 @@ import argparse
 import json
 import os
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
+
+# Integrar scorm_core
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+from scorm_core import cache_ai_call
 
 load_dotenv()
 
@@ -116,36 +121,38 @@ def generar_preguntas_trivia(
 
     # Probar modelo solicitado o fallbacks ligeros
     modelos_a_probar = [model_name, "gemini-2.0-flash-lite", "gemini-1.5-flash-8b", "gemini-1.5-flash"]
-    response = None
 
-    for mod in modelos_a_probar:
-        try:
-            print(f"[*] Consultando modelo eficiente: {mod}...")
-            model = genai.GenerativeModel(
-                model_name=mod,
-                system_instruction=system_prompt,
-                generation_config={
-                    "temperature": 0.2,
-                    "response_mime_type": "application/json",
-                }
-            )
-            response = model.generate_content(user_prompt)
-            print(f"[OK] Generación completada exitosamente con {mod}.")
-            break
-        except Exception as e:
-            print(f"[-] Error con modelo {mod}: {e}. Intentando alternativa...")
+    def _hacer_llamada_gemini():
+        for mod in modelos_a_probar:
+            try:
+                print(f"[*] Consultando modelo eficiente: {mod}...")
+                model = genai.GenerativeModel(
+                    model_name=mod,
+                    system_instruction=system_prompt,
+                    generation_config={
+                        "temperature": 0.2,
+                        "response_mime_type": "application/json",
+                    }
+                )
+                resp = model.generate_content(user_prompt)
+                if resp and resp.text:
+                    print(f"[OK] Generación completada exitosamente con {mod}.")
+                    raw = resp.text.strip()
+                    if raw.startswith("```"):
+                        raw = re.sub(r"^```(?:json)?\s*", "", raw)
+                        raw = re.sub(r"\s*```$", "", raw)
+                    return json.loads(raw)
+            except Exception as e:
+                print(f"[-] Error con modelo {mod}: {e}. Intentando alternativa...")
+        raise RuntimeError("No fue posible obtener respuesta válida de Gemini.")
 
-    if not response or not response.text:
-        raise RuntimeError("No fue posible obtener respuesta de Gemini.")
-
-    raw_text = response.text.strip()
-    # Limpiar posibles bloques ```json ```
-    if raw_text.startswith("```"):
-        raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
-        raw_text = re.sub(r"\s*```$", "", raw_text)
-
-    data = json.loads(raw_text)
-    return data
+    # Ejecutar con caché persistente SHA-256
+    cache_params = {
+        "checkpoint": str(checkpoint_path),
+        "num_preguntas": num_preguntas,
+        "model_name": model_name
+    }
+    return cache_ai_call("generate_trivia_ai", user_prompt, cache_params, _hacer_llamada_gemini)
 
 
 def _generar_plantilla_local(lecturas: list[dict[str, str]], num_preguntas: int) -> list[dict[str, Any]]:

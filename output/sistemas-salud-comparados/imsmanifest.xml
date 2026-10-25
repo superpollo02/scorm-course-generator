@@ -1,64 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="sistemas_salud_comparados" version="1.0"
+<?xml version="1.0" standalone="no" ?>
+<!-- Generator: Aula Lista EDUCAI Monolithic Course Builder -->
+<manifest identifier="sistemas_salud_comparados" version="1.2"
           xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
           xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
-                              http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
                               http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
-
   <metadata>
     <schema>ADL SCORM</schema>
     <schemaversion>1.2</schemaversion>
   </metadata>
-
-  <organizations default="org_default">
-    <organization identifier="org_default">
+  <organizations default="org_sistemas_salud_comparados">
+    <organization identifier="org_sistemas_salud_comparados">
       <title>Sistemas de Salud Comparados</title>
-      <item identifier="item_index" identifierref="index">
+      <item identifier="item_index" identifierref="res_index">
         <title>Índice del Curso</title>
       </item>
-      <item identifier="item_unidad1" identifierref="unidad1">
+      <item identifier="item_unidad1" identifierref="res_unidad1">
         <title>Unidad 1: Unidad I: La Salud y las Ciencias Sociales</title>
       </item>
-      <item identifier="item_unidad2" identifierref="unidad2">
+      <item identifier="item_unidad2" identifierref="res_unidad2">
         <title>Unidad 2: Unidad II: Evolución de la Salud Pública</title>
       </item>
-      <item identifier="item_unidad3" identifierref="unidad3">
+      <item identifier="item_unidad3" identifierref="res_unidad3">
         <title>Unidad 3: Unidad III: Sistemas de Salud</title>
       </item>
-      <item identifier="item_unidad4" identifierref="unidad4">
+      <item identifier="item_unidad4" identifierref="res_unidad4">
         <title>Unidad 4: Unidad IV: Economía de la Salud</title>
       </item>
     </organization>
   </organizations>
-
   <resources>
-    <resource identifier="index" type="webcontent" adlcp:scormtype="sco" href="index.html">
+    <resource identifier="res_index" type="webcontent" adlcp:scormtype="sco" href="index.html">
       <file href="index.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="unidad1" type="webcontent" adlcp:scormtype="sco" href="unidad1.html">
+    <resource identifier="res_unidad1" type="webcontent" adlcp:scormtype="sco" href="unidad1.html">
       <file href="unidad1.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="unidad2" type="webcontent" adlcp:scormtype="sco" href="unidad2.html">
+    <resource identifier="res_unidad2" type="webcontent" adlcp:scormtype="sco" href="unidad2.html">
       <file href="unidad2.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="unidad3" type="webcontent" adlcp:scormtype="sco" href="unidad3.html">
+    <resource identifier="res_unidad3" type="webcontent" adlcp:scormtype="sco" href="unidad3.html">
       <file href="unidad3.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
-    <resource identifier="unidad4" type="webcontent" adlcp:scormtype="sco" href="unidad4.html">
+    <resource identifier="res_unidad4" type="webcontent" adlcp:scormtype="sco" href="unidad4.html">
       <file href="unidad4.html"/>
-      <file href="styles.css"/>
-      <file href="scorm_api.js"/>
     </resource>
   </resources>
-
 </manifest>

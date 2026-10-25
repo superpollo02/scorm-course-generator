@@ -11,10 +11,15 @@ import argparse
 import json
 import os
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
+
+# Integrar scorm_core
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+from scorm_core import cache_ai_call
 
 load_dotenv()
 
@@ -118,34 +123,38 @@ def generar_conceptos_ai(
     sys_prompt, usr_prompt = construir_prompt_conectabloques(lecturas, num_conceptos, dificultad)
 
     modelos = [model_name, "gemini-2.0-flash-lite", "gemini-1.5-flash-8b", "gemini-1.5-flash"]
-    response = None
 
-    for mod in modelos:
-        try:
-            print(f"[*] Extrayendo conceptos con modelo ligero: {mod}...")
-            model = genai.GenerativeModel(
-                model_name=mod,
-                system_instruction=sys_prompt,
-                generation_config={
-                    "temperature": 0.2,
-                    "response_mime_type": "application/json",
-                }
-            )
-            response = model.generate_content(usr_prompt)
-            print(f"[OK] Conceptos extraídos exitosamente con {mod}.")
-            break
-        except Exception as e:
-            print(f"[-] Error con {mod}: {e}. Probando siguiente...")
-
-    if not response or not response.text:
+    def _hacer_llamada_gemini():
+        for mod in modelos:
+            try:
+                print(f"[*] Extrayendo conceptos con modelo ligero: {mod}...")
+                model = genai.GenerativeModel(
+                    model_name=mod,
+                    system_instruction=sys_prompt,
+                    generation_config={
+                        "temperature": 0.2,
+                        "response_mime_type": "application/json",
+                    }
+                )
+                resp = model.generate_content(usr_prompt)
+                if resp and resp.text:
+                    print(f"[OK] Conceptos extraídos exitosamente con {mod}.")
+                    raw = resp.text.strip()
+                    if raw.startswith("```"):
+                        raw = re.sub(r"^```(?:json)?\s*", "", raw)
+                        raw = re.sub(r"\s*```$", "", raw)
+                    return json.loads(raw)
+            except Exception as e:
+                print(f"[-] Error con {mod}: {e}. Probando siguiente...")
         raise RuntimeError("No se obtuvo respuesta de Gemini.")
 
-    raw = response.text.strip()
-    if raw.startswith("```"):
-        raw = re.sub(r"^```(?:json)?\s*", "", raw)
-        raw = re.sub(r"\s*```$", "", raw)
-
-    return json.loads(raw)
+    cache_params = {
+        "md_path": str(md_path),
+        "num_conceptos": num_conceptos,
+        "dificultad": dificultad,
+        "model_name": model_name
+    }
+    return cache_ai_call("generate_conectabloques_ai", usr_prompt, cache_params, _hacer_llamada_gemini)
 
 
 def _fallback_local(lecturas: list[dict[str, str]], num_conceptos: int) -> list[dict[str, Any]]:

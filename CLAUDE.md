@@ -156,6 +156,21 @@ Hay **dos generadores de texto** disponibles; elegir según la estructura del co
 
 Ver `docs/` para guías detalladas: `GUIA_IMPORTAR_MOODLE.md`, `GUIA_AUMENTAR_LIMITE_UPLOAD_MOODLE.md`
 
+
+## Protocolo del Copiloto Orquestador: Menú Inicial (Modo Turbo vs. Modo Guiado)
+
+Al iniciar la creación de cualquier unidad o curso completo, el agente (`agents/copiloto-orquestador.md` apoyado en `skills/asistente-toma-decisiones/SKILL.md`) presenta al docente **2 opciones cerradas**:
+
+1. **`(Recomendado para rapidez) 🚀 Opción 1: Modo Turbo Autónomo (1-Click)`**:
+   - Ejecución 100% autónoma sin pedir instrucciones intermedias. Todos los textos, imágenes, videos HyperFrames y paquetes SCORM 1.2 se generan con la configuración institucional óptima.
+2. **`🧭 Opción 2: Modo Guiado Paso a Paso (4 Checkpoints con Opciones Cerradas)`**:
+   - Acompaña al usuario a través de 4 puntos de decisión cerrados:
+     - **Checkpoint 1 (Audiovisual)**: Formato de video short (16:9, 9:16 o Tutorial) y mezcla de audio.
+     - **Checkpoint 2 (Gráfico)**: Paleta de banner/infografía y formato de diapositivas (PPTX/PDF).
+     - **Checkpoint 3 (Pedagógico)**: Enfoque de las 3 lecturas y tipo de caso práctico con rúbrica.
+     - **Checkpoint 4 (Gamificación SCORM)**: Modo de Trivia (Turbo 1, Turno, WCAG AAA o Temas) y Conectabloques.
+   - Incluye siempre: opción `(Recomendado)`, vista previa de 3 líneas, botón para saltar a **Modo Turbo** en cualquier momento y regeneración en 1 clic.
+
 ## Protocolo Obligatorio: Consulta de Modo de Trivia y Examen
 
 Al momento de generar la **Gran Trivia SCORM** de cada unidad o el **Examen Final Sumativo**, el agente **DEBE pausar y preguntar al usuario qué modo prefiere utilizar**, describiéndole las características de cada uno:

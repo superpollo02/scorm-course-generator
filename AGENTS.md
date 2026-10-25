@@ -115,6 +115,16 @@ Para los cursos organizados bajo la metodología **Aula Tripartita** (`1. La Cla
 
 Siempre que se solicite crear o actualizar los contenidos de una unidad temática o curso completo:
 
+### 0. Puerta de Entrada: Menú Inicial del Copiloto Orquestador (Modo Turbo vs. Modo Guiado)
+Antes de disparar la generación de contenidos, el **Copiloto Orquestador** (`agents/copiloto-orquestador.md` + `skills/asistente-toma-decisiones/SKILL.md`) presenta al usuario dos opciones estrictamente cerradas mediante `ask_question`:
+1. **`(Recomendado para rapidez) 🚀 Opción 1: Modo Turbo Autónomo (1-Click)`**:
+   - Los agentes ejecutan el flujo de principio a fin sin interrupciones usando los presets canónicos de Aula Lista EDUCAI (Video 16:9 Showcase con locución y BGM al 12%, paleta Institucional/Neón, 3 lecturas de gestión situada, rúbrica analítica de 4 niveles y paquetes SCORM en Modo Turno/Turbo 1), cerrando con la auditoría `Zero-Missing Gate`.
+2. **`🧭 Opción 2: Modo Guiado Paso a Paso (Copiloto Asistido en 4 Checkpoints)`**:
+   - Configuración acompañada junto al docente en **4 Checkpoints agrupados** (1. Suite Audiovisual, 2. Identidad Gráfica, 3. Marco Teórico y Práctica, 4. Gamificación SCORM).
+   - **Reglas del Modo Guiado**:
+     - **Opciones Estrictamente Cerradas**: Nunca se formulan preguntas abiertas; siempre se ofrecen alternativas cerradas para evitar interpretaciones ambiguas.
+     - **4 Capacidades Asistenciales**: (a) Opción `(Recomendado)` primero basada en andragogía, (b) Previsualización de 3 líneas antes de generar cada bloque, (c) Opción de conmutar a `Modo Turbo` en cualquier checkpoint intermedio, y (d) Regeneración en 1 clic si el usuario desea ajustar el resultado.
+
 ### A. Estructura de Directorio Único y Organizado
 Todos los contenidos de la unidad deben generarse en **un mismo directorio** estructurado con sus subdirectorios:
 ```text

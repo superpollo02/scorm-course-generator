@@ -68,6 +68,11 @@ El sistema integra un flujo de trabajo autónomo de punta a punta. Cuando el doc
 ```text
 Usuario: «Genera la Unidad X»
   │
+  ├── 0. MENÚ INICIAL DEL COPILOTO ORQUESTADOR (ask_question con Opciones Cerradas)
+  │      • Opción 1: 🚀 Modo Turbo Autónomo (1-Click, sin preguntas intermedias, presets óptimos).
+  │      • Opción 2: 🧭 Modo Guiado Paso a Paso (4 Checkpoints asistidos con preview de 3 líneas,
+  │        recomendación andragógica, salto a Turbo en caliente y regeneración en 1 clic).
+  │
   ├── 1. INGESTA COGNITIVA (NotebookLM con CLI nlm)
   │      Conexión al cuaderno correspondiente (ej. Unidad 1 SSC, 39 fuentes).
   │      Extracción de citas textuales, transcripciones docentes, diapositivas y papers.
@@ -463,6 +468,7 @@ aula lista EDUCAI/
 │   └── ai_cache.py                              # Caché de IA en disco SHA-256 (0 tokens en repeticiones)
 │
 ├── skills/                                      # Habilidades ejecutables de Antigravity
+│   ├── asistente-toma-decisiones/               # Árbol de decisión cerrado (Modo Turbo vs. 4 Checkpoints)
 │   ├── edtech-moodle-video/                     # Metodología y captura de recorridos Moodle y SCORM
 │   ├── notebooklm-video-shorts/                 # Ingesta con NotebookLM (CLI nlm) para guiones de shorts
 │   ├── hyperframes-render/                      # Renderizado programático en MP4 con HyperFrames en Chrome Headless
@@ -470,6 +476,7 @@ aula lista EDUCAI/
 │   └── scorm-gamification/                      # Compilación y personalización SCORM 1.2 (Turbo 1/2, Turno, Neón)
 │
 ├── agents/ y .claude/agents/                    # Agentes y subagentes especializados
+│   ├── copiloto-orquestador.md                  # Asistente de toma de decisiones (Turbo vs. 4 Checkpoints)
 │   ├── asistente-notebooklm.md                  # Ingesta de fuentes y guiones de microlearning con NotebookLM
 │   ├── course-outliner.md                       # Arquitectura curricular Kit Aula Lista y Aula Tripartita
 │   ├── content-creator.md                       # Redacción de marcos teóricos, intro, consignas y rúbricas

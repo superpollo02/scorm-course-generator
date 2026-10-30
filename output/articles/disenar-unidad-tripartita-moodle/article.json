@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo diseñar una unidad didáctica bajo la estructura tripartita en Moodle",
+  "article_type": "how-to",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a estructurar cada unidad temática de un curso virtual siguiendo el modelo tripartito de Clase, Lectura y Práctica para reducir la carga cognitiva y asegurar el cumplimiento de la Circular N° 5."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Disponer del programa académico aprobado con contenidos mínimos y bibliografía.",
+        "Contar con las video-lecciones grabadas o editadas en cápsulas de duración acotada.",
+        "Tener acceso a la plantilla de diseño de Kit Aula Nueva en el repositorio."
+      ]
+    },
+    {
+      "id": "estructurar-clase",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Diseñar el componente de 1. La Clase",
+      "content": "Integra la video-lección principal de 20 a 30 minutos junto con su transcripción mediada y el reproductor de podcast de cátedra para garantizar accesibilidad multiplataforma.",
+      "has_image": true
+    },
+    {
+      "id": "redactar-lectura-practica",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Desarrollar 2. La Lectura y 3. La Práctica",
+      "content": "Redacta el glosario de términos clave y las 20 preguntas frecuentes para la lectura analítica, acompañándolos en la práctica con una consigna orientadora y actividades interactivas.",
+      "has_image": true
+    },
+    {
+      "id": "verificar-checklist",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Validar el checklist de integridad didáctica",
+      "content": "Comprueba que los enlaces externos utilicen el atributo target=\"_blank\", que los archivos PDF estén agrupados en carpetas temáticas y que los tres componentes queden encadenados.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Recomendaciones didácticas",
+      "items": [
+        "Inicia cada unidad con tres preguntas andragógicas disparadoras centradas en la práctica profesional real.",
+        "Evita saturar la sección con textos planos extensos; apóyate en microlearning y síntesis visuales.",
+        "Vincula explícitamente los enunciados prácticos con situaciones abordadas en la video-lección."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "El formato tripartito brinda una secuencia predecible y profesional que optimiza el tiempo de estudio de los cursantes y facilita la administración docente."
+    }
+  ]
+}

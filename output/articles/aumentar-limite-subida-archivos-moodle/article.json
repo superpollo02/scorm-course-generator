@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo aumentar el límite de subida de archivos para paquetes SCORM en Moodle",
+  "article_type": "troubleshooting",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a solucionar el error de tamaño máximo excedido al cargar paquetes SCORM de video o audio en Moodle ajustando la configuración del servidor web y las políticas del sitio."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Tener acceso administrativo con permisos de superusuario (root o sudo) al servidor web.",
+        "Contar con rol de Administrador del Sitio en la plataforma Moodle.",
+        "Localizar la ruta activa del archivo php.ini en el entorno de producción."
+      ]
+    },
+    {
+      "id": "editar-php-ini",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Modificar los parámetros de carga en el archivo php.ini",
+      "content": "Aumenta los valores de upload_max_filesize y post_max_size a 256 megabytes y amplía los tiempos máximos de ejecución para transferencias prolongadas.",
+      "has_image": true
+    },
+    {
+      "id": "configurar-panel-moodle",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Ajustar las políticas de tamaño en el panel de Moodle",
+      "content": "Accede a la sección de políticas del sitio dentro de la administración de Moodle y selecciona el nuevo valor máximo disponible en la lista desplegable.",
+      "has_image": true
+    },
+    {
+      "id": "reiniciar-servicios",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Reiniciar el servidor web y comprobar la subida",
+      "content": "Reinicia los servicios de Apache o PHP-FPM para aplicar los cambios y realiza una carga de prueba con el paquete SCORM más pesado del curso.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Ajustes adicionales en servidores Apache y Nginx",
+      "items": [
+        "En Nginx, verifica que la directiva client_max_body_size en el archivo nginx.conf coincida con el límite fijado en PHP.",
+        "En entornos con archivo .htaccess, añade las directivas php_value para sobrescribir los valores locales si no tienes acceso global a php.ini.",
+        "Si los paquetes exceden los 300 megabytes, considera alojar los videos en servidores de streaming dedicados e incrustar la URL en la lección."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "Coordinar los límites de PHP, del servidor web y de Moodle permite incorporar recursos multimedia enriquecidos sin interrupciones en la carga docente."
+    }
+  ]
+}

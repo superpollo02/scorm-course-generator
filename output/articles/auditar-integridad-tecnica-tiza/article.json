@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo auditar la integridad técnica de un curso con la CLI tiza",
+  "article_type": "troubleshooting",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a diagnosticar y solucionar errores de formato, dependencias inválidas y etiquetas no admitidas en ficheros HTML y Markdown antes de publicarlos en Moodle."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Tener instalada la herramienta CLI tiza en el entorno de trabajo.",
+        "Disponer de los archivos fuente .html y .md ubicados en la carpeta del curso.",
+        "Contar con una terminal PowerShell o Bash abierta en el directorio de la asignatura."
+      ]
+    },
+    {
+      "id": "ejecutar-comprobacion",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Ejecutar la validación técnica offline",
+      "content": "Lanza el comando de comprobación indicando la lista de ficheros del curso para auditar la sintaxis y generar la previsualización local sin conectarte a internet.",
+      "has_image": true
+    },
+    {
+      "id": "diagnosticar-errores",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Identificar y corregir alertas de seguridad",
+      "content": "Revisa los mensajes de error para eliminar comentarios internos, scripts no autorizados o dependencias rotas que impidan la aprobación del paquete didáctico.",
+      "has_image": true
+    },
+    {
+      "id": "revisar-informe-ok",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Confirmar el reporte limpio en la vista previa",
+      "content": "Abre el archivo de previsualización generado para verificar que todos los recursos se muestren correctamente y el informe registre cero incidencias bloqueantes.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Prevención de incidencias comunes",
+      "items": [
+        "Sustituye reproductores de audio directos por paquetes interactivos SCORM si el servidor bloquea la etiqueta nativa.",
+        "Comprueba que los encabezados de metadatos YAML al inicio de cada archivo no contengan tabulaciones o caracteres invisibles.",
+        "Verifica que ningún enlace apunte a rutas absolutas del disco local antes de la exportación definitiva."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "La auditoría previa con la herramienta tiza previene caídas de visualización en Moodle y asegura que los contenidos cumplan los estándares de seguridad de la institución."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo usar Aula Lista para crear actividades del curso y conectarse a Moodle",
+  "article_type": "how-to",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a generar automáticamente todas las actividades pedagógicas de un curso bajo el estándar Kit Aula Nueva y sincronizarlas de forma segura con la plataforma Moodle del Campus Virtual."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Tener instalado Python 3.10 o superior en el equipo de desarrollo.",
+        "Disponer de la herramienta CLI tiza en el PATH del sistema.",
+        "Contar con rol docente o administrador y credenciales activas en el Campus Moodle."
+      ]
+    },
+    {
+      "id": "generar-actividades",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Ejecutar la generación integral del aula",
+      "content": "Abre la terminal en la raíz del proyecto y ejecuta el pipeline de ensamblado didáctico para compilar las actividades tripartitas obligatorias.",
+      "has_image": true
+    },
+    {
+      "id": "validar-actividades",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Verificar la estructura de actividades y recursos",
+      "content": "Inspecciona la previsualización local para constatar que cada unidad cuente con sus componentes de **1. La Clase**, **2. La Lectura** y **3. La Práctica** conforme a la normativa.",
+      "has_image": true
+    },
+    {
+      "id": "conectar-moodle",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Iniciar la sesión docente y sincronizar con Moodle",
+      "content": "Inicia la sesión segura con **tiza empezar** o ejecuta el script de conexión por lotes para publicar las etiquetas, lecciones, cuestionarios y paquetes SCORM en las secciones del aula virtual.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Consejos pedagógicos y técnicos",
+      "items": [
+        "Asegúrate de que los enlaces a bibliografía externa abran siempre con target=\"_blank\".",
+        "Configura las trivias SCORM con bancos de preguntas aleatorios y sin numeración rígida en los enunciados.",
+        "Verifica que el examen final sumativo posea restricción de acceso con candado condicionado al cumplimiento de las lecturas y prácticas."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "El flujo de Aula Lista permite estructurar, empaquetar y subir cursos integrales en Moodle en minutos, asegurando la consistencia pedagógica y la validez técnica de la capacitación."
+    }
+  ]
+}

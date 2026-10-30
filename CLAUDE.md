@@ -20,6 +20,12 @@ python scripts/scorm_generators/create_scorm_modern_package.py list <config.yaml
 # Crear paquete SCORM de audio
 python scripts/scorm_generators/create_audio_scorm.py <archivo_de_audio> [titulo] [descripcion]
 
+# Generar podcasts pedagógicos de cátedra (motor local gratuito edge-tts con acento rioplatense + ffmpeg)
+python -c "from scripts.audio_generators.podcast_engine import generate_podcast_sync; generate_podcast_sync('A: Guion...\nB: Guion...', 'podcast.mp3')"
+
+# Construir aula Moodle completa con podcasts y SCORMs embebidos
+python cursos/gestion_personas_talento/generate_moodle_aula.py
+
 # Crear paquete SCORM de video
 python scripts/scorm_generators/create_video_scorm.py <archivo_de_video> [titulo] [descripcion]
 

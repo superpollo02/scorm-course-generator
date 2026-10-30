@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detección de HTML Peligroso</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #0f172a; font-family: ui-monospace, SFMono-Regular, monospace; color: #f8fafc; }
+    .box { border: 2px solid #ef4444; border-radius: 8px; background: #1e293b; padding: 20px; }
+  </style>
+</head>
+<body>
+<div class="box" data-rtfm-action-target="diagnosticar-errores">
+  <h5 style="color: #f87171; margin-top: 0;"><i class="fa-solid fa-triangle-exclamation"></i> Diagnóstico de Violaciones de Seguridad</h5>
+  <p>La herramienta detecta etiquetas y atributos que no cumplen la política de aislamiento:</p>
+  <ul style="color: #cbd5e1; line-height: 1.8;">
+    <li><strong style="color: #f87171;">HTML_PELIGROSO:</strong> Scripts en línea, comentarios HTML <code>&lt;!-- --&gt;</code> o etiquetas no permitidas.</li>
+    <li><strong style="color: #f87171;">DEPENDENCIA_INVALIDA:</strong> Referencias a ficheros previos que fallaron la comprobación.</li>
+    <li><strong style="color: #facc15;">Solución:</strong> Reemplazar elementos prohibidos por etiquetas limpias o recursos SCORM empaquetados.</li>
+  </ul>
+</div>
+</body>
+</html>

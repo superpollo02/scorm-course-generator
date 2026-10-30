@@ -1,0 +1,8 @@
+{
+  "framework": "bootstrap",
+  "framework_cdn": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css",
+  "compiled_css_path": "branding.css",
+  "compilation_method": "fallback_synthesis",
+  "compiled_css_bytes": 237499,
+  "generated_at": "2026-10-30T13:56:41Z"
+}

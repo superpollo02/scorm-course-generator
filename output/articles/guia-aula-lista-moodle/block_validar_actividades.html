@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Previsualización Local de Actividades en Moodle</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1e293b; padding: 20px; }
+    .moodle-topbar { background: linear-gradient(90deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 14px 28px; border-radius: 10px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .moodle-section { background: #ffffff; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 14px rgba(0,0,0,0.05); padding: 28px 32px; margin-bottom: 24px; }
+    .activity-card { border: 1px solid #e2e8f0; border-left: 5px solid #2563eb; border-radius: 8px; background: #f8fafc; padding: 18px 22px; margin-bottom: 16px; transition: transform 0.15s ease; }
+    .activity-card:hover { transform: translateY(-2px); border-color: #93c5fd; }
+    .badge-tripartite { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; padding: 5px 10px; border-radius: 6px; font-weight: 700; }
+    .badge-clase { background: #dbeafe; color: #1e40af; }
+    .badge-lectura { background: #fef3c7; color: #92400e; }
+    .badge-practica { background: #dcfce7; color: #166534; }
+    .badge-evaluacion { background: #f3e8ff; color: #6b21a8; }
+    .action-target-highlight { outline: 3px solid #2563eb; outline-offset: 4px; box-shadow: 0 0 15px rgba(37,99,235,0.25); }
+  </style>
+</head>
+<body>
+
+<header class="moodle-topbar d-flex justify-content-between align-items-center">
+  <div>
+    <span class="badge badge-warning mr-2">VISTA PREVIA LOCAL</span>
+    <strong>Campus ESALUD (Moodle 4.5)</strong> — Estándar Kit Aula Nueva (Circular N° 5)
+  </div>
+  <div>
+    <span class="badge badge-success p-2"><i class="fa-solid fa-check-circle"></i> Ficheros Comprobados: 13/13 OK</span>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar Navegación -->
+    <div class="col-md-3">
+      <div class="card p-3 shadow-sm border-0">
+        <h6 class="font-weight-bold text-muted mb-3"><i class="fa-solid fa-bars"></i> SECCIONES DEL CURSO</h6>
+        <div class="list-group list-group-flush small font-weight-bold">
+          <a href="#" class="list-group-item list-group-item-action text-primary active bg-light border-0">0. Presentación General</a>
+          <a href="#" class="list-group-item list-group-item-action border-0">1. Unidad 1: Cultura Organizacional</a>
+          <a href="#" class="list-group-item list-group-item-action border-0">2. Unidad 2: Gestión Estratégica</a>
+          <a href="#" class="list-group-item list-group-item-action border-0">3. Cierre y Doble Candado</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido Aula -->
+    <div class="col-md-9">
+      <div class="moodle-section action-target-highlight" data-rtfm-action-target="validar-actividades">
+        <h4 class="font-weight-bold text-dark mb-3"><i class="fa-solid fa-graduation-cap text-primary"></i> Estructura Tripartita de Actividades (Unidad 1)</h4>
+        <p class="text-muted small mb-4">Cada unidad desplegada contiene los componentes pedagógicos listos para interacción directa del cursante:</p>
+
+        <!-- 1. Clase -->
+        <div class="activity-card">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge-tripartite badge-clase mr-2"><i class="fa-solid fa-play"></i> 1. La Clase</span>
+              <strong>Video-Lección Magistral & Podcast Cátedra</strong>
+            </div>
+            <span class="badge badge-pill badge-secondary">Obligatorio</span>
+          </div>
+          <p class="small text-muted mt-2 mb-0">Video en YouTube con reproductor optimizado y microlearning en audio Rioplatense integrado.</p>
+        </div>
+
+        <!-- 2. Lectura -->
+        <div class="activity-card">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge-tripartite badge-lectura mr-2"><i class="fa-solid fa-book-open"></i> 2. La Lectura</span>
+              <strong>Módulo Analítico & 20 Preguntas Frecuentes</strong>
+            </div>
+            <span class="badge badge-pill badge-secondary">Glosario</span>
+          </div>
+          <p class="small text-muted mt-2 mb-0">Conceptos rectores (SER, HACER, ESTAR), bibliografía en carpetas temáticas y resolución de dilemas.</p>
+        </div>
+
+        <!-- 3. Práctica -->
+        <div class="activity-card">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge-tripartite badge-practica mr-2"><i class="fa-solid fa-gamepad"></i> 3. La Práctica</span>
+              <strong>Trivia Gamificada SCORM 1.2 & Conecta Bloques</strong>
+            </div>
+            <span class="badge badge-pill badge-success">Calificada</span>
+          </div>
+          <p class="small text-muted mt-2 mb-0">Desafío contrarreloj y emparejamiento conceptual sin numeración rígida para banco aleatorio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

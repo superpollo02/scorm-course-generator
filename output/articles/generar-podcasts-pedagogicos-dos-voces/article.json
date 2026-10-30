@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo generar podcasts pedagógicos de dos voces con acento rioplatense",
+  "article_type": "how-to",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a redactar diálogos docentes interactivos y convertirlos en podcasts pedagógicos de alta calidad con síntesis neuronal gratuita y masterización profesional para Moodle."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Tener instalado el paquete edge-tts y la utilidad ffmpeg en el sistema.",
+        "Disponer del módulo scripts/audio_generators/podcast_engine.py en el proyecto.",
+        "Contar con el contenido de la clase resumido en formato de conversación dinámica."
+      ]
+    },
+    {
+      "id": "redactar-guion",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Redactar el guion de cátedra en formato diálogo",
+      "content": "Escribe los turnos de habla alternando entre el rol docente principal y el residente con los prefijos A: y B: para establecer una conversación formativa natural.",
+      "has_image": true
+    },
+    {
+      "id": "renderizar-voces",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Sintetizar el audio con voces neuronales rioplatenses",
+      "content": "Ejecuta el motor de podcasting para renderizar las voces es-AR-ElenaNeural y es-AR-TomasNeural aplicando normalización de volumen y ecualización con ffmpeg.",
+      "has_image": true
+    },
+    {
+      "id": "empaquetar-audio-scorm",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Empaquetar el archivo MP3 en un módulo SCORM 1.2",
+      "content": "Convierte la pista de audio en un paquete ZIP interactivo con barra de navegación y marcado de avance para registrar el progreso en la plataforma Moodle.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Pautas de locución pedagógica",
+      "items": [
+        "Mantén las intervenciones de cada interlocutor en un rango de dos a cuatro oraciones para dar agilidad al diálogo.",
+        "Usa signos de puntuación claros para que el modelo neural aplique pausas naturales de respiración.",
+        "Evita siglas complejas sin su pronunciación fonética explícita en el guion de audio."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "Los podcasts pedagógicos en formato SCORM refuerzan el aprendizaje ubicuo permitiendo a los cursantes repasar los conceptos centrales mientras se desplazan o descansan."
+    }
+  ]
+}

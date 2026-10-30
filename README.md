@@ -19,6 +19,7 @@ Sistema profesional para la generación de contenidos didácticos en formato SCO
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Guía Completa de Scripts](#guía-completa-de-scripts)
 - [Integración Multimedia](#integración-multimedia)
+- [Centro de Ayuda y Guías Ilustradas](#centro-de-ayuda-y-guías-ilustradas)
 - [Importación en LMS](#importación-en-lms)
 - [Estándares de Calidad](#estándares-de-calidad)
 - [Resolución de Problemas](#resolución-de-problemas)
@@ -542,6 +543,23 @@ ffmpeg -i input.mp4 -vcodec libx264 -crf 28 -preset fast -acodec aac -b:a 96k ou
 ```
 
 ---
+
+---
+
+## Centro de Ayuda y Guías Ilustradas
+
+El proyecto incluye un centro de documentación y guías paso a paso ilustradas con capturas de pantalla, generadas bajo el estándar Schema v2 en `output/articles/`:
+
+| Guía / Flujo | Descripción Pedagógica y Técnica | Tipo |
+| :--- | :--- | :---: |
+| [**Cómo usar Aula Lista para crear actividades del curso y conectarse a Moodle**](output/articles/guia-aula-lista-moodle/article.json) | Ejecución del pipeline de ensamblado de aula, previsualización local y conexión autenticada mediante la CLI `tiza`. | `how-to` |
+| [**Cómo diseñar una unidad didáctica bajo la estructura tripartita en Moodle**](output/articles/disenar-unidad-tripartita-moodle/article.json) | Metodología de la Circular N° 5: integración de **1. La Clase** (cápsulas 20-30 min), **2. La Lectura** (glosario y 20 FAQs) y **3. La Práctica** (gamificación). | `how-to` |
+| [**Cómo crear trivias gamificadas y desafíos Conecta Bloques en SCORM**](output/articles/crear-trivias-scorm-conecta-bloques/article.json) | Formulación de ítems de autoevaluación sin numeración fija para mezcla aleatoria y exportación a SCORM 1.2 interactivo. | `how-to` |
+| [**Cómo generar podcasts pedagógicos de dos voces con acento rioplatense**](output/articles/generar-podcasts-pedagogicos-dos-voces/article.json) | Redacción de guiones dialógicos (A/B), síntesis con `edge-tts` (Elena y Tomás) y masterización con filtros `ffmpeg` de calidad cálida. | `how-to` |
+| [**Cómo comprimir y empaquetar videos pedagógicos en formato SCORM**](output/articles/empaquetar-videos-comprimir-scorm/article.json) | Compresión optimizada para LMS (`crf 23`, `libx264`) y configuración de rastreo de lección al 90% visto. | `how-to` |
+| [**Cómo configurar el sistema de Doble Candado para emitir certificados en Moodle**](output/articles/configurar-doble-candado-certificacion/article.json) | Encadenamiento condicional: aprobación del Examen Final Sumativo (≥ 70%) y envío de la Encuesta de Calidad obligatoria. | `how-to` |
+| [**Cómo auditar la integridad técnica de un curso con la CLI tiza**](output/articles/auditar-integridad-tecnica-tiza/article.json) | Auditoría offline de HTML peligroso, validación de dependencias entre lecciones y control de calidad institucional. | `troubleshooting` |
+| [**Cómo aumentar el límite de subida de archivos para paquetes SCORM en Moodle**](output/articles/aumentar-limite-subida-archivos-moodle/article.json) | Ajuste coordinado en `php.ini`, servidores web (Apache / Nginx) y políticas de administración del campus. | `troubleshooting` |
 
 ## Importación en LMS
 

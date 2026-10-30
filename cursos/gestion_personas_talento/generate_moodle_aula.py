@@ -1,6 +1,15 @@
+import sys
 from pathlib import Path
 
 BASE_DIR = Path(r"c:\Users\mfischer\Documents\antigravitiy proyectos\aula nueva con moodle\cursos\gestion_personas_talento")
+REPO_ROOT = Path(r"c:\Users\mfischer\Documents\antigravitiy proyectos\aula nueva con moodle")
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+if str(REPO_ROOT / "scripts" / "scorm_generators") not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT / "scripts" / "scorm_generators"))
+
+from scripts.audio_generators.podcast_engine import generate_podcast_sync
+from create_audio_scorm import create_audio_scorm
 
 files = {}
 
@@ -64,15 +73,36 @@ finalizacion: ver
 
 <h3><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> 1. La Clase: Cultura Organizacional en Salud</h3>
 <p><span class="badge badge-primary">Etapa 1 del Modelo Tripartito</span> <span class="badge badge-secondary">Dra. Susana Salomón</span></p>
-<p class="lead">Visualizá la videoclase magistral de la unidad, repasá la cápsula audiovisual de síntesis producida en NotebookLM y descargá las diapositivas oficiales de cátedra.</p>
+<p class="lead">Visualizá la videoclase magistral de la unidad, escuchá el podcast pedagógico de cátedra, repasá las cápsulas audiovisuales de microlearning y descargá las diapositivas oficiales.</p>
 
 <div class="alert alert-info">
   <h4><i class="fa-solid fa-fw fa-bullseye" aria-hidden="true"></i> Qué vas a aprender en esta clase</h4>
   <ul class="mb-0">
-    <li>Diferenciar la <strong>administración normativa</strong> de procesos frente a la <strong>gestión estratégica</strong> del talento humano.</li>
+    <li>Diferenciar la <strong>administración normativa</strong> de procesos frente a la <strong>gestión estratégica</strong> del talento humano en salud.</li>
     <li>Articular los tres vectores de la identidad hospitalaria: el <strong>SER</strong> (Misión, Visión, Valores y Principios rectores), el <strong>HACER</strong> (Prioridades, Funciones finales y de apoyo, Actividades) y el <strong>ESTAR</strong> (Estructura formal vs. real, Ambiente y Cultura).</li>
     <li>Reconocer las 4 tipologías culturales (Clan, Adhocracia, Mercado y Jerárquica) y distinguir entre clima laboral y cultura organizacional.</li>
   </ul>
+</div>
+
+<!-- PODCAST DE LA UNIDAD 1 (CLAUDEMY ENGINE) -->
+<div class="card border-info mb-4 shadow-sm">
+  <div class="card-header bg-info text-white d-flex align-items-center justify-content-between">
+    <h4 class="mb-0 text-white"><i class="fa-solid fa-fw fa-podcast" aria-hidden="true"></i> Podcast de la Unidad 1: Del SER Declarado al ESTAR Cotidiano</h4>
+    <span class="badge badge-light text-dark">Microlearning Audio · 2 min</span>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><strong>Diálogo de Cátedra:</strong> Un intercambio dinámico entre la docente y un residente sobre las tensiones reales entre el organigrama impreso, las pautas no escritas en la guardia médica y por qué el núcleo ético del hospital no se negocia.</p>
+    <div class="p-3 bg-light rounded mb-3">
+      <audio controls style="width: 100%;">
+        <source src="media/u1_podcast_cultura.mp3" type="audio/mpeg">
+        Tu navegador no soporta el reproductor de audio HTML5.
+      </audio>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <a class="btn btn-sm btn-outline-info mr-2" href="media/u1_podcast_cultura.mp3" download><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Descargar Audio (MP3)</a>
+      <a class="btn btn-sm btn-info text-white" href="scorm/u1_podcast_SCORM.zip" target="_blank"><i class="fa-solid fa-fw fa-box-archive" aria-hidden="true"></i> Módulo SCORM del Podcast</a>
+    </div>
+  </div>
 </div>
 
 <h3>Videoclase Magistral Oficial</h3>
@@ -83,22 +113,29 @@ finalizacion: ver
   <div class="col-md-6 mb-3">
     <div class="card border-primary">
       <div class="card-body">
-        <h4 class="card-title text-primary"><i class="fa-solid fa-fw fa-link" aria-hidden="true"></i> Enlace Externo a Videoclase</h4>
-        <p class="card-text">Si preferís visualizar la clase magistral de la Dra. Susana Salomón en pantalla completa en YouTube, utilizá el siguiente acceso directo:</p>
-        <a class="btn btn-primary" href="https://www.youtube.com/watch?v=wEQLqEE7r2I" target="_blank">Abrir Videoclase Magistral en YouTube</a>
+        <h4 class="card-title text-primary"><i class="fa-solid fa-fw fa-link" aria-hidden="true"></i> Recursos Audiovisuales</h4>
+        <p class="card-text">Contás con tres recursos audiovisuales para abordar los ejes de la Dra. Susana Salomón:</p>
+        <ul class="mb-3">
+          <li><strong>Videoclase Magistral:</strong> Exposición completa de la unidad.</li>
+          <li><strong>Video Short NotebookLM:</strong> Síntesis conceptual (<em>Por Qué Gestionar No Es Administrar</em>).</li>
+          <li><strong>Video Short HyperFrames:</strong> Microlearning animado en alta definición sobre vectores y tipologías.</li>
+        </ul>
+        <p class="mb-2"><a class="btn btn-primary" href="https://www.youtube.com/watch?v=wEQLqEE7r2I" target="_blank">Abrir Videoclase Magistral en YouTube</a></p>
+        <p class="mb-2"><a class="btn btn-secondary" href="media/u1_video_short_cultura_organizacional.mp4" target="_blank">Ver Video Short NotebookLM (MP4)</a></p>
+        <p class="mb-0"><a class="btn btn-info text-white" href="media/u1_hyperframes_short.mp4" target="_blank">Ver Video Short HyperFrames (MP4)</a></p>
       </div>
     </div>
   </div>
   <div class="col-md-6 mb-3">
     <div class="card bg-light">
       <div class="card-body">
-        <h4 class="card-title"><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Video Short Microlearning y Diapositivas</h4>
-        <p class="card-text">Accedé al Video Short de síntesis generada con NotebookLM (<em>Por Qué Gestionar Un Hospital No Es Administrarlo</em>) y a las placas oficiales:</p>
-        <ul class="mb-0">
-          <li><a href="media/u1_video_short_cultura_organizacional.mp4" target="_blank">Ver Video Short Microlearning Unidad 1 (MP4)</a></li>
+        <h4 class="card-title"><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Diapositivas Oficiales</h4>
+        <p class="card-text">Descargá las placas oficiales de estudio de la Unidad 1 en formato PDF o PowerPoint editable:</p>
+        <ul class="mb-3">
           <li><a href="diapositivas/u1_diapositivas_cultura_organizacional.pdf" target="_blank">Descargar Diapositivas Oficiales Unidad 1 (PDF)</a></li>
           <li><a href="diapositivas/u1_diapositivas_cultura_organizacional.pptx" target="_blank">Descargar Presentación Editable Unidad 1 (PPTX)</a></li>
         </ul>
+        <p class="card-text mb-0"><strong>Guía de observación activa:</strong> Prestá especial atención a la diferencia entre la cadena de mando formal y los referentes reales a quienes acude el equipo en la urgencia.</p>
       </div>
     </div>
   </div>
@@ -564,7 +601,7 @@ finalizacion: ver
 
 <h3><i class="fa-solid fa-fw fa-video" aria-hidden="true"></i> 1. La Clase: Comunicación, Trabajo en Equipo y Liderazgo</h3>
 <p><span class="badge badge-primary">Etapa 1 del Modelo Tripartito</span> <span class="badge badge-success">Lic. Carla Nani</span></p>
-<p class="lead">Visualizá la videoclase magistral de la Lic. Carla Nani, repasá el Video Short Microlearning generado con NotebookLM y descargá las diapositivas oficiales de la unidad.</p>
+<p class="lead">Visualizá la videoclase magistral de la Lic. Carla Nani, escuchá el podcast pedagógico de la unidad, repasá las cápsulas audiovisuales de microlearning y descargá las diapositivas oficiales.</p>
 
 <div class="alert alert-info">
   <h4><i class="fa-solid fa-fw fa-bullseye" aria-hidden="true"></i> Qué vas a aprender en esta clase</h4>
@@ -576,6 +613,27 @@ finalizacion: ver
   </ul>
 </div>
 
+<!-- PODCAST DE LA UNIDAD 2 (CLAUDEMY ENGINE) -->
+<div class="card border-success mb-4 shadow-sm">
+  <div class="card-header bg-success text-white d-flex align-items-center justify-content-between">
+    <h4 class="mb-0 text-white"><i class="fa-solid fa-fw fa-podcast" aria-hidden="true"></i> Podcast de la Unidad 2: El Paradigma del Quirófano y la Comunicación Asertiva</h4>
+    <span class="badge badge-light text-dark">Microlearning Audio · 2 min</span>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><strong>Diálogo de Cátedra:</strong> La Lic. Carla Nani y un médico del equipo examinan por qué en salud el paciente y el colega nunca son receptores pasivos, cómo opera la interdependencia estricta en el quirófano y dónde trazar el límite entre empatía y permisividad.</p>
+    <div class="p-3 bg-light rounded mb-3">
+      <audio controls style="width: 100%;">
+        <source src="media/u2_podcast_liderazgo.mp3" type="audio/mpeg">
+        Tu navegador no soporta el reproductor de audio HTML5.
+      </audio>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <a class="btn btn-sm btn-outline-success mr-2" href="media/u2_podcast_liderazgo.mp3" download><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Descargar Audio (MP3)</a>
+      <a class="btn btn-sm btn-success text-white" href="scorm/u2_podcast_SCORM.zip" target="_blank"><i class="fa-solid fa-fw fa-box-archive" aria-hidden="true"></i> Módulo SCORM del Podcast</a>
+    </div>
+  </div>
+</div>
+
 <h3>Videoclase Magistral Oficial</h3>
 <p>Reproducí la clase completa desde el reproductor integrado o abrila en una nueva pestaña:</p>
 <p><iframe src="https://www.youtube.com/embed/ELI-w2KgJSc" title="Módulo 4: Video 2. Motivación, Trabajo en Equipo y Liderazgo - Lic. Carla Nani" style="width:100%;aspect-ratio:16/9;border:0" allowfullscreen></iframe></p>
@@ -584,22 +642,29 @@ finalizacion: ver
   <div class="col-md-6 mb-3">
     <div class="card border-primary">
       <div class="card-body">
-        <h4 class="card-title text-primary"><i class="fa-solid fa-fw fa-link" aria-hidden="true"></i> Enlace Externo a Videoclase</h4>
-        <p class="card-text">Para visualizar la clase magistral de la Lic. Carla Nani directamente en YouTube en una pestaña nueva, utilizá este botón:</p>
-        <a class="btn btn-primary" href="https://www.youtube.com/watch?v=ELI-w2KgJSc" target="_blank">Abrir Videoclase Magistral en YouTube</a>
+        <h4 class="card-title text-primary"><i class="fa-solid fa-fw fa-link" aria-hidden="true"></i> Recursos Audiovisuales</h4>
+        <p class="card-text">Disponés de tres recursos audiovisuales para consolidar los contenidos de la Lic. Carla Nani:</p>
+        <ul class="mb-3">
+          <li><strong>Videoclase Magistral:</strong> Exposición completa con casos hospitalarios.</li>
+          <li><strong>Video Short NotebookLM:</strong> Síntesis conceptual (<em>Por Qué el Paciente No Es un Receptor</em>).</li>
+          <li><strong>Video Short HyperFrames:</strong> Microlearning animado sobre Emisor-Perceptor y Quirófano.</li>
+        </ul>
+        <p class="mb-2"><a class="btn btn-primary" href="https://www.youtube.com/watch?v=ELI-w2KgJSc" target="_blank">Abrir Videoclase Magistral en YouTube</a></p>
+        <p class="mb-2"><a class="btn btn-secondary" href="media/u2_video_short_comunicacion_liderazgo.mp4" target="_blank">Ver Video Short NotebookLM (MP4)</a></p>
+        <p class="mb-0"><a class="btn btn-info text-white" href="media/u2_hyperframes_short.mp4" target="_blank">Ver Video Short HyperFrames (MP4)</a></p>
       </div>
     </div>
   </div>
   <div class="col-md-6 mb-3">
     <div class="card bg-light">
       <div class="card-body">
-        <h4 class="card-title"><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Video Short Microlearning y Diapositivas</h4>
-        <p class="card-text">Accedé al Video Short producido con NotebookLM (<em>Por Qué el Paciente No Es un Receptor</em>) y a las diapositivas de cátedra:</p>
-        <ul class="mb-0">
-          <li><a href="media/u2_video_short_comunicacion_liderazgo.mp4" target="_blank">Ver Video Short Microlearning Unidad 2 (MP4)</a></li>
+        <h4 class="card-title"><i class="fa-solid fa-fw fa-download" aria-hidden="true"></i> Diapositivas Oficiales</h4>
+        <p class="card-text">Descargá las diapositivas oficiales de la Unidad 2 en formato PDF o PowerPoint editable:</p>
+        <ul class="mb-3">
           <li><a href="diapositivas/u2_diapositivas_comunicacion_liderazgo.pdf" target="_blank">Descargar Diapositivas Oficiales Unidad 2 (PDF)</a></li>
           <li><a href="diapositivas/u2_diapositivas_comunicacion_liderazgo.pptx" target="_blank">Descargar Presentación Editable Unidad 2 (PPTX)</a></li>
         </ul>
+        <p class="card-text mb-0"><strong>Guía de observación activa:</strong> Analizá cómo en el quirófano las jerarquías formales se articulan dinámicamente con el rol experto de cada integrante en pos de la seguridad del paciente.</p>
       </div>
     </div>
   </div>
@@ -1281,3 +1346,71 @@ preguntas:
 for fname, text in files.items():
     (BASE_DIR / fname).write_text(text.strip() + "\n", encoding="utf-8")
     print(f"Created Moodle/Tiza file: {fname}")
+
+# ==============================================================================
+# GENERACIÓN DE PODCASTS EDUCATIVOS RIOPLATENSES (CLAUDEMY ENGINE + EDGE-TTS)
+# ==============================================================================
+print("\n" + "=" * 60)
+print("  Generando Podcasts Pedagógicos de Unidad (Claudemy Engine)")
+print("=" * 60)
+
+MEDIA_DIR = BASE_DIR / "media"
+SCORM_DIR = BASE_DIR / "scorm"
+MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+SCORM_DIR.mkdir(parents=True, exist_ok=True)
+
+# Guion Unidad 1: Cultura Organizacional y Gestión (Rioplatense, ~300 palabras)
+U1_PODCAST_SCRIPT = """
+A: Hola, te damos la bienvenida al podcast de la Unidad 1. Hoy nos metemos de lleno en una pregunta que incomoda: ¿por qué gestionar un hospital no tiene nada que ver con administrar papeles?
+B: Tal cual, Elena. En la residencia o en la guardia médica muchas veces creemos que conducir es firmar planillas o controlar horarios, cuando en realidad estamos lidiando con personas en contextos críticos.
+A: Exacto, Tomás. Y ahí entra lo que la doctora Susana Salomón define como los tres vectores de la identidad: el SER, el HACER y el ESTAR. Fijate que muchas instituciones tienen una Misión hermosa colgada en un cuadro, pero en el día a día las prioridades van por otro carril.
+B: Claro, la famosa disociación entre el organigrama oficial y lo que pasa a las tres de la mañana en la urgencia. El organigrama formal dice una cosa, pero el equipo acude al referente real en el que confía.
+A: Eso es el ESTAR cotidiano. Y por eso la regla de oro de esta unidad es innegociable: el SER, los valores éticos de la salud pública, no se negocian en un expediente burocrático; se defienden y se construyen en el ESTAR de cada guardia.
+B: Fundamental para no perder el rumbo ético ni el compromiso con nuestros pacientes.
+"""
+
+# Guion Unidad 2: Comunicación y Liderazgo (Rioplatense, ~310 palabras)
+U2_PODCAST_SCRIPT = """
+A: Bienvenidos al podcast de la Unidad 2. Hoy analizamos con la licenciada Carla Nani por qué en salud dos más dos casi nunca es cuatro.
+B: Es que en el hospital los imponderables son la regla, Elena. Te cambia una guardia en un segundo por un ingreso imprevisto y todo lo planificado se cae.
+A: Totalmente. Y frente a esos imponderables, la herramienta central es la comunicación. Ojo con esto: el paciente, la familia y el colega nunca son receptores mecánicos; son perceptores activos atravesados por el miedo, la incertidumbre y su historia social.
+B: Por eso el modelo del quirófano es tan potente. En quirófano nadie se corta solo; hay una interdependencia absoluta donde la instrumentadora, el anestesiólogo y el cirujano comparten una sola meta: la seguridad del paciente.
+A: Ni más ni menos. El cirujano no puede cerrarse en un liderazgo autoritario. Un líder positivo escucha, persuade y tiene empatía genuina sin caer en la permisividad destructiva.
+B: Y la regla de oro que nos deja Carla Nani es contundente: en salud no comunicás lo que decís, sino lo que tu perceptor comprendió y puede ejecutar de forma segura.
+"""
+
+u1_audio_path = MEDIA_DIR / "u1_podcast_cultura.mp3"
+u2_audio_path = MEDIA_DIR / "u2_podcast_liderazgo.mp3"
+
+print("-> Renderizando audio Unidad 1 (es-AR-ElenaNeural / es-AR-TomasNeural)...")
+generate_podcast_sync(U1_PODCAST_SCRIPT, u1_audio_path)
+print(f"   [OK] Audio U1 generado: {u1_audio_path.name} ({u1_audio_path.stat().st_size / 1024:.1f} KB)")
+
+print("-> Renderizando audio Unidad 2 (es-AR-ElenaNeural / es-AR-TomasNeural)...")
+generate_podcast_sync(U2_PODCAST_SCRIPT, u2_audio_path)
+print(f"   [OK] Audio U2 generado: {u2_audio_path.name} ({u2_audio_path.stat().st_size / 1024:.1f} KB)")
+
+# Generar paquetes SCORM para los audios
+print("\n-> Empaquetando SCORMs de audio para Moodle...")
+import os
+import shutil
+
+orig_cwd = os.getcwd()
+try:
+    os.chdir(str(SCORM_DIR))
+    create_audio_scorm(
+        str(u1_audio_path),
+        "Podcast Unidad 1: Cultura Organizacional y Gestión",
+        "Microlearning en audio de dos voces sobre los vectores SER, HACER y ESTAR en salud.",
+        "u1_podcast_SCORM.zip"
+    )
+    create_audio_scorm(
+        str(u2_audio_path),
+        "Podcast Unidad 2: Comunicación y Liderazgo",
+        "Microlearning en audio de dos voces sobre el paradigma del quirófano y el perceptor en salud.",
+        "u2_podcast_SCORM.zip"
+    )
+finally:
+    os.chdir(orig_cwd)
+
+print("\n[OK] Generación completa de aula virtual Moodle con podcasts finalizada exitosamente.")

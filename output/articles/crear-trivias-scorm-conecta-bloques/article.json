@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo crear trivias gamificadas y desafíos Conecta Bloques en SCORM",
+  "article_type": "how-to",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a formular y empaquetar actividades de autoevaluación lúdicas en formato SCORM 1.2 sin numeración fija para permitir bancos de preguntas aleatorios en Moodle."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Contar con el glosario de términos clave y conceptos rectores de la unidad.",
+        "Disponer de las preguntas de opción múltiple redactadas con distractores plausibles.",
+        "Tener acceso a los scripts generadores de paquetes SCORM en scripts/scorm_generators/."
+      ]
+    },
+    {
+      "id": "crear-trivia",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Redactar preguntas sin numeración rígida",
+      "content": "Escribe cada ítem con retroalimentación formativa inmediata y omite prefijos estáticos en el enunciado para habilitar la mezcla aleatoria en el cuestionario.",
+      "has_image": true
+    },
+    {
+      "id": "armar-conecta-bloques",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Diseñar el tablero de Conecta Bloques",
+      "content": "Asocia términos clave de la lectura con sus definiciones operativas para consolidar el vocabulario técnico del cursante antes de la evaluación integradora.",
+      "has_image": true
+    },
+    {
+      "id": "empaquetar-actividad",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Compilar el paquete SCORM 1.2 interactivo",
+      "content": "Ejecuta el script de empaquetado para generar el archivo ZIP con el manifiesto imsmanifest.xml y los scripts de comunicación para el calificador de Moodle.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Buenas prácticas de evaluación formativa",
+      "items": [
+        "Asegúrate de que cada opción incorrecta incluya una explicación didáctica que aclare el error conceptual.",
+        "Limita el tiempo de respuesta a 45 o 60 segundos por pregunta para reforzar la agilidad cognitiva.",
+        "Verifica que el estado de lección aprobada registre nota automática en el libro de calificaciones."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "Las trivias interactivas y los desafíos de emparejamiento transforman la lectura teórica en una experiencia dinámica de fijación de conocimientos."
+    }
+  ]
+}

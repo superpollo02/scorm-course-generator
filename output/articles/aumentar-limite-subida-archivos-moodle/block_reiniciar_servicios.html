@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reinicio de Servicios Web</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #0f172a; font-family: ui-monospace, SFMono-Regular, monospace; color: #f8fafc; }
+    .box { border: 2px solid #10b981; border-radius: 8px; background: #1e293b; padding: 20px; }
+  </style>
+</head>
+<body>
+<div class="box" data-rtfm-action-target="reiniciar-servicios">
+  <h5 style="color: #34d399; margin-top: 0;"><i class="fa-solid fa-arrows-rotate"></i> Reinicio del Servicio y Comprobación</h5>
+  <p>Reiniciar el servidor web para aplicar la nueva configuración:</p>
+  <pre style="background: #0f172a; padding: 12px; border-radius: 6px; color: #f8fafc;"># En servidores Linux (Ubuntu/Debian):
+sudo systemctl restart apache2
+# o para PHP-FPM:
+sudo systemctl restart php8.2-fpm nginx</pre>
+  <p style="color: #4ade80;">✔ Comprobado: Moodle ahora acepta paquetes SCORM de video y audio de hasta 256 MB sin cortar la subida.</p>
+</div>
+</body>
+</html>

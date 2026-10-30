@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo configurar el sistema de Doble Candado para emitir certificados en Moodle",
+  "article_type": "how-to",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a configurar las restricciones encadenadas en Moodle para que el certificado oficial del curso solo se emita al aprobar el examen final y enviar la encuesta de calidad."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Tener creado el cuestionario del Examen Final Integrador en el aula Moodle.",
+        "Disponer del módulo de Encuesta de Calidad o Retroalimentación configurado.",
+        "Contar con el módulo de Certificado Personalizado o Certificado Simple añadido a la sección de cierre."
+      ]
+    },
+    {
+      "id": "configurar-candado-examen",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Establecer la condición de aprobación del examen final",
+      "content": "Configura la calificación para aprobar en 70 por ciento dentro del libro de calificaciones y marca el criterio de finalización por nota aprobatoria.",
+      "has_image": true
+    },
+    {
+      "id": "configurar-candado-encuesta",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Exigir el envío obligatorio de la encuesta de calidad",
+      "content": "Ajusta la actividad de retroalimentación para que requiera el envío completo de las respuestas anónimas como condición de marcado de actividad completada.",
+      "has_image": true
+    },
+    {
+      "id": "vincular-emision-certificado",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Vincular el doble candado en la actividad del certificado",
+      "content": "Añade un conjunto de restricciones combinadas en el recurso del certificado exigiendo el cumplimiento simultáneo de ambas condiciones antes de habilitar su descarga.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Seguridad jurídica y administrativa",
+      "items": [
+        "Oculta el enlace del certificado a los estudiantes hasta que se cumplan las dos condiciones para evitar descargas anticipadas.",
+        "Comprueba que el certificado incluya el código QR de validación institucional y la carga horaria oficial reglamentada.",
+        "Realiza una prueba con un usuario ficticio para verificar que el candado se desbloquee automáticamente al finalizar ambas tareas."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "El mecanismo de Doble Candado garantiza la validez técnica y jurídica de los certificados emitidos sin requerir intervención manual de los equipos de soporte."
+    }
+  ]
+}

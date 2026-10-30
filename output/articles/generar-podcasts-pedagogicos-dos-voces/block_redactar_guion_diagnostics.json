@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-10-30T14:11:00.006Z",
+  "viewport": {
+    "width": 1480,
+    "height": 900,
+    "viewportCrop": true
+  },
+  "metrics": {
+    "width": 1480,
+    "height": 274.171875,
+    "hasChildren": true,
+    "childCount": 1,
+    "visibleElementCount": 8,
+    "hasTextContent": true,
+    "textLength": 514,
+    "backgroundColor": "rgb(15, 23, 42)",
+    "imageCount": 0,
+    "loadedImageCount": 0,
+    "regionGeometry": {
+      "checked": false,
+      "regions": [],
+      "errors": []
+    },
+    "isLikelyBlank": false,
+    "contentHeight": 275,
+    "isClipped": false,
+    "watermark": true
+  },
+  "pageErrors": [],
+  "failedResources": [],
+  "blockedExternalResources": [],
+  "stageTimings": {
+    "newPage": 24,
+    "setViewport": 1,
+    "goto": 1010,
+    "addStyleTag": 11,
+    "contentExtent": 5,
+    "metrics": 1,
+    "screenshot": 325
+  },
+  "loadedResourceCount": 2,
+  "qualityScore": {
+    "score": 100,
+    "rating": "good",
+    "deductions": []
+  }
+}

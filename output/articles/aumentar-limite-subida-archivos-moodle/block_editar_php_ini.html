@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajustes de PHP para Subida en Moodle</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #0f172a; font-family: ui-monospace, SFMono-Regular, monospace; color: #f8fafc; }
+    .box { border: 2px solid #f59e0b; border-radius: 8px; background: #1e293b; padding: 20px; }
+  </style>
+</head>
+<body>
+<div class="box" data-rtfm-action-target="editar-php-ini">
+  <h5 style="color: #fbbf24; margin-top: 0;"><i class="fa-solid fa-server"></i> Ajuste en el archivo php.ini del Servidor Web</h5>
+  <p>Directivas que deben modificarse para permitir paquetes SCORM pesados:</p>
+  <pre style="background: #0f172a; padding: 14px; border-radius: 6px; color: #38bdf8;">upload_max_filesize = 256M
+post_max_size = 256M
+max_execution_time = 300
+max_input_time = 300
+memory_limit = 512M</pre>
+  <p style="color: #fbbf24;">Importante: <code>post_max_size</code> debe ser siempre igual o superior a <code>upload_max_filesize</code>.</p>
+</div>
+</body>
+</html>

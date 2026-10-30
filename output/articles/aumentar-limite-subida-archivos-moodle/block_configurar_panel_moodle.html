@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajustes de Administración del Sitio en Moodle</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 24px; color: #1e293b; }
+    .card-moodle { background: #fff; border-radius: 10px; border: 1px solid #cbd5e1; padding: 22px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+  </style>
+</head>
+<body>
+<div class="card-moodle" data-rtfm-action-target="configurar-panel-moodle">
+  <h6 class="text-primary font-weight-bold mb-3"><i class="fa-solid fa-sliders mr-2"></i> Administración del Sitio > Seguridad > Políticas del Sitio</h6>
+  <div class="form-group mb-3">
+    <label class="font-weight-bold small">Tamaño máximo del archivo subido (maxbytes):</label>
+    <select class="form-control form-control-sm" style="max-width: 320px;">
+      <option>256 MB (Límite del servidor)</option>
+      <option>128 MB</option>
+      <option>64 MB</option>
+      <option>2 MB (Predeterminado restrictivo)</option>
+    </select>
+  </div>
+  <p class="small text-muted mb-0">Ruta: <code>Administración del sitio > Cursos > Ajustes por defecto de curso > Tamaño máximo de archivos</code>.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Cómo comprimir y empaquetar videos pedagógicos en formato SCORM",
+  "article_type": "how-to",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a optimizar el peso de grabaciones magistrales con ffmpeg y convertirlas en paquetes SCORM 1.2 interactivos para hacer seguimiento del visionado en Moodle."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Disponer de la utilidad ffmpeg instalada y añadida al PATH del sistema.",
+        "Tener el archivo de video de la clase grabado en formato MP4 o MOV.",
+        "Contar con el script scripts/scorm_generators/create_video_scorm.py listo para ejecutar."
+      ]
+    },
+    {
+      "id": "comprimir-video",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Optimizar el archivo de video con compresión equilibrada",
+      "content": "Aplica una tasa de compresión constante con el parámetro crf 23 y códec libx264 para reducir el tamaño del archivo sin degradar la legibilidad de las diapositivas.",
+      "has_image": true
+    },
+    {
+      "id": "empaquetar-video-scorm",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Generar el paquete SCORM 1.2 interactivo",
+      "content": "Ejecuta el script generador indicando el archivo de video optimizado, el título de la lección y la descripción didáctica para crear el archivo ZIP.",
+      "has_image": true
+    },
+    {
+      "id": "verificar-completado",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Configurar las condiciones de finalización en el aula",
+      "content": "Al cargar el paquete en Moodle, ajusta las opciones de seguimiento para exigir el visionado de al menos el 90 por ciento de la clase antes de marcarla como aprobada.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Recomendaciones de producción audiovisual",
+      "items": [
+        "Mantén una resolución de 1080p o 720p a 30 cuadros por segundo para evitar sobrecargar la conexión de cursantes en dispositivos móviles.",
+        "Normaliza el audio de la grabación a 128 kbps AAC para garantizar claridad vocal sin aumentar el peso total.",
+        "Comprueba que el reproductor web cargue correctamente en navegadores móviles antes de publicar la sección."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "Comprimir y empaquetar videos bajo el estándar SCORM asegura una reproducción fluida y permite verificar el compromiso de los estudiantes con las clases virtuales."
+    }
+  ]
+}

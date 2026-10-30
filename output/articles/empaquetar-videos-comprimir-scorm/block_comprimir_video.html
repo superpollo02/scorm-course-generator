@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Compresión de Video con FFmpeg</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #0f172a; font-family: ui-monospace, SFMono-Regular, monospace; color: #f8fafc; }
+    .box { border: 2px solid #3b82f6; border-radius: 8px; background: #1e293b; padding: 20px; }
+  </style>
+</head>
+<body>
+<div class="box" data-rtfm-action-target="comprimir-video">
+  <h5 style="color: #60a5fa; margin-top: 0;"><i class="fa-solid fa-film"></i> Optimización de Video MP4 para Campus Virtual</h5>
+  <p>Comando de compresión equilibrada para Moodle (alta fidelidad y bajo peso):</p>
+  <pre style="background: #0f172a; padding: 12px; border-radius: 6px; color: #38bdf8;">ffmpeg -i clase_cruda.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k clase_optimizada.mp4</pre>
+  <p style="color: #4ade80;">✔ Reducción de peso: de 450 MB a 68 MB (reducción de más del 80%) manteniendo nitidez de texto en diapositivas.</p>
+</div>
+</body>
+</html>

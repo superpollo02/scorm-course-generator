@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-10-30T14:09:03.739Z",
+  "viewport": {
+    "width": 1480,
+    "height": 900,
+    "viewportCrop": true
+  },
+  "metrics": {
+    "width": 1464,
+    "height": 526.6875,
+    "hasChildren": true,
+    "childCount": 1,
+    "visibleElementCount": 17,
+    "hasTextContent": true,
+    "textLength": 484,
+    "backgroundColor": "rgb(248, 250, 252)",
+    "imageCount": 0,
+    "loadedImageCount": 0,
+    "regionGeometry": {
+      "checked": false,
+      "regions": [],
+      "errors": []
+    },
+    "isLikelyBlank": false,
+    "contentHeight": 535,
+    "isClipped": false,
+    "watermark": true
+  },
+  "pageErrors": [],
+  "failedResources": [
+    {
+      "url": "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css",
+      "resourceType": "stylesheet",
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+      "resourceType": "stylesheet",
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+    }
+  ],
+  "blockedExternalResources": [
+    "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  ],
+  "stageTimings": {
+    "newPage": 23,
+    "setViewport": 1,
+    "goto": 1020,
+    "addStyleTag": 7,
+    "contentExtent": 1,
+    "metrics": 2,
+    "screenshot": 234
+  },
+  "loadedResourceCount": 2,
+  "qualityScore": {
+    "score": 94,
+    "rating": "good",
+    "deductions": [
+      "-6: 2 failed resource(s)"
+    ]
+  }
+}

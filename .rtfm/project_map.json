@@ -1,0 +1,157 @@
+{
+  "schema_version": 5,
+  "framework": "bootstrap",
+  "app_type": "web",
+  "app_type_source": "default",
+  "git_sha": "36da0ab4e454928f06c5c20a7392a568a39824eb",
+  "generated_at": "2026-10-30T13:54:20.651Z",
+  "dir_map": {
+    "courses": "cursos",
+    "output": "output",
+    "scorm": "scorm_package",
+    "scripts": "scripts"
+  },
+  "layouts": [
+    {
+      "name": "moodle_course_preview",
+      "path": "cursos/gestion_personas_talento/.tiza/preview/index.html",
+      "area": "Moodle Course Classroom & Units",
+      "chrome": [
+        "cursos/gestion_personas_talento/.tiza/preview/index.html"
+      ],
+      "root_classes": {
+        "html": [],
+        "body": []
+      },
+      "render_chain": [],
+      "render_chain_stats": {
+        "files": 0,
+        "unresolved": 0,
+        "max_depth": 0,
+        "truncated": false
+      }
+    },
+    {
+      "name": "scorm_standalone_player",
+      "path": "output/esalud-scorm/index.html",
+      "area": "SCORM Package Web Player",
+      "chrome": [
+        "output/esalud-scorm/index.html"
+      ],
+      "root_classes": {
+        "html": [],
+        "body": []
+      },
+      "render_chain": [],
+      "render_chain_stats": {
+        "files": 0,
+        "unresolved": 0,
+        "max_depth": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "global_chrome": [],
+  "app_shell": {
+    "type": "top-bar-and-sidebar",
+    "layout": "moodle_course_preview",
+    "nav_items": [
+      {
+        "label": "0. Presentación General",
+        "href": "#sec-presentacion",
+        "icon": "tag"
+      },
+      {
+        "label": "1. Unidad 1: Cultura Organizacional",
+        "href": "#sec-u1",
+        "icon": "folder"
+      },
+      {
+        "label": "2. Unidad 2: Gestión Estratégica",
+        "href": "#sec-u2",
+        "icon": "folder"
+      },
+      {
+        "label": "3. Cierre y Evaluación",
+        "href": "#sec-cierre",
+        "icon": "check-circle"
+      }
+    ],
+    "account_area": "Campus ESALUD Mendoza (Moodle 4.5)",
+    "top_bar": {
+      "selector": ".moodle-topbar",
+      "items_left": [
+        "MODO PREVISUALIZACIÓN LOCAL",
+        "Campus ESALUD Mendoza (Moodle 4.5)"
+      ],
+      "items_right": [
+        "13 Ficheros Validados con tiza: OK"
+      ]
+    },
+    "root_classes": {
+      "html": [],
+      "body": []
+    }
+  },
+  "default_user_assumptions": [
+    "Usuario estudiante o docente autenticado en Moodle 4.5"
+  ],
+  "route_index": {
+    "preview_course": {
+      "method": "GET",
+      "path": "/cursos/gestion_personas_talento/.tiza/preview/index.html",
+      "controller": "course#show",
+      "layout": "moodle_course_preview",
+      "primary_view": "cursos/gestion_personas_talento/.tiza/preview/index.html",
+      "render_chain": [],
+      "render_chain_stats": {
+        "files": 0,
+        "unresolved": 0,
+        "max_depth": 0,
+        "truncated": false
+      },
+      "partials_expanded": []
+    },
+    "scorm_esalud": {
+      "method": "GET",
+      "path": "/output/esalud-scorm/index.html",
+      "controller": "scorm#index",
+      "layout": "scorm_standalone_player",
+      "primary_view": "output/esalud-scorm/index.html",
+      "render_chain": [],
+      "render_chain_stats": {
+        "files": 0,
+        "unresolved": 0,
+        "max_depth": 0,
+        "truncated": false
+      },
+      "partials_expanded": []
+    }
+  },
+  "css_build": null,
+  "runtime_surface_coverage": {
+    "ignored": []
+  },
+  "route_chain_resolver": {
+    "version": 1,
+    "generated_at": "2026-10-30T13:55:55.300Z",
+    "max_files": 80,
+    "max_depth": 6
+  },
+  "mockup_model_recommendation": {
+    "schema_version": 1,
+    "policy_version": "heuristic-v1",
+    "tier": "medium",
+    "score": 2,
+    "source": "heuristic",
+    "reasons": [
+      {
+        "code": "fallback_css_synthesis",
+        "weight": 2,
+        "evidence": {
+          "compilation_method": "fallback_synthesis"
+        }
+      }
+    ]
+  }
+}

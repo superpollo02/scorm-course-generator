@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Trivias SCORM y Conecta Bloques</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { background: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 24px; color: #1e293b; }
+    .trivia-card { background: #fff; border-radius: 12px; border: 1px solid #cbd5e1; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .btn-opt { display: block; width: 100%; text-align: left; padding: 12px 18px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: 500; }
+    .btn-opt:hover { border-color: #2563eb; background: #eff6ff; }
+  </style>
+</head>
+<body>
+<div class="trivia-card" data-rtfm-action-target="crear-trivia">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="text-primary font-weight-bold mb-0"><i class="fa-solid fa-gamepad mr-2"></i> Trivia Gamificada: Cultura y Desafíos de Gestión</h5>
+    <span class="badge badge-warning p-2"><i class="fa-solid fa-clock"></i> 45s por pregunta</span>
+  </div>
+  <p class="font-weight-bold">Pregunta: ¿Cuáles son las tres dimensiones de la identidad institucional según el marco analítico del curso?</p>
+  <div>
+    <button class="btn-opt">A) El Diagnóstico, la Planificación y la Evaluación.</button>
+    <button class="btn-opt border-primary text-primary font-weight-bold">B) El SER (Identidad), el HACER (Operativa) y el ESTAR (Contexto y Cultura).</button>
+    <button class="btn-opt">C) La Administración, la Contabilidad y los Recursos Humanos.</button>
+  </div>
+  <div class="alert alert-success mt-3 mb-0 small">
+    <strong>Sin numeración fija:</strong> Permite ordenar los ítems de forma completamente aleatoria en cada intento.
+  </div>
+</div>
+</body>
+</html>

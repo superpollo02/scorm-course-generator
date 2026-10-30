@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Instructivo paso a paso: Instalación del repositorio y prompts de línea de comandos",
+  "article_type": "how-to",
+  "blocks": [
+    {
+      "id": "introduction",
+      "type": "prose",
+      "presentation": "lead",
+      "content": "Aprende a clonar e instalar el entorno del generador de cursos y conoce la secuencia exacta de prompts para crear todas las actividades didácticas y sincronizarlas con Moodle."
+    },
+    {
+      "id": "prerequisites",
+      "type": "list",
+      "presentation": "checklist",
+      "title": "Requisitos previos",
+      "items": [
+        "Tener instalado Git y Python 3.10 o superior en la terminal.",
+        "Disponer de la utilidad ffmpeg en el PATH del sistema para compresión y audio.",
+        "Contar con acceso a la CLI tiza para la conexión segura con Moodle."
+      ]
+    },
+    {
+      "id": "instalacion-entorno",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Clonar el repositorio y configurar el entorno",
+      "content": "Ejecuta git clone para descargar el proyecto, crea un entorno virtual de Python e instala las dependencias de empaquetado SCORM y síntesis neuronal.",
+      "has_image": true
+    },
+    {
+      "id": "prompts-creacion",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Secuencia de prompts para generar actividades",
+      "content": "Introduce los prompts secuenciales en tu asistente CLI para crear la estructura tripartita, redactar las lecturas y compilar los podcasts y trivias interactivas.",
+      "has_image": true
+    },
+    {
+      "id": "ensamblado-publicacion",
+      "type": "section",
+      "presentation": "numbered",
+      "title": "Ensamblado final y conexión con el campus",
+      "content": "Lanza el script de generación masiva, audita la sintaxis con tiza comprobar y activa la sesión docente con tiza empezar para desplegar el aula en Moodle.",
+      "has_image": true
+    },
+    {
+      "id": "tips",
+      "type": "list",
+      "presentation": "tips",
+      "title": "Consejos para la formulación de prompts",
+      "items": [
+        "Especifica siempre el cumplimiento de la Circular N° 5 en tus prompts para garantizar la estructura andragógica reglamentaria.",
+        "Indica que las preguntas de evaluación se redacten sin numeración fija para admitir rotación en bancos aleatorios.",
+        "Solicita que los podcasts incluyan dos roles contrastantes para dinamizar la explicación auditiva."
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "prose",
+      "presentation": "summary",
+      "title": "Resumen",
+      "content": "Seguir la secuencia estructurada de comandos y prompts asegura una producción ágil de contenidos homologados y listos para certificar en Moodle."
+    }
+  ]
+}

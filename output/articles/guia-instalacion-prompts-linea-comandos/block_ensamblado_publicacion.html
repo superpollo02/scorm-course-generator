@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Paso 3: Ensamblado y Publicación en Moodle</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #0f172a; font-family: ui-monospace, SFMono-Regular, monospace; color: #f8fafc; }
+    .box { border: 2px solid #10b981; border-radius: 8px; background: #1e293b; padding: 20px; }
+    .prompt { color: #38bdf8; font-weight: bold; }
+    .cmd { color: #f8fafc; font-weight: bold; }
+    .comment { color: #94a3b8; font-style: italic; }
+  </style>
+</head>
+<body>
+<div class="box" data-rtfm-action-target="ensamblado-publicacion">
+  <h5 style="color: #34d399; margin-top: 0;"><i class="fa-solid fa-cloud-arrow-up"></i> Paso 3: Comandos de Ensamblado Local y Publicación en Moodle</h5>
+  
+  <p class="comment"># 1. Compilar todas las actividades del aula (etiquetas, HTML, audios y SCORMs):</p>
+  <p><span class="prompt">$</span> <span class="cmd">python cursos/gestion_personas_talento/generate_moodle_aula.py</span></p>
+
+  <p class="comment"># 2. Auditar la calidad técnica offline con la herramienta tiza:</p>
+  <p><span class="prompt">$</span> <span class="cmd">cd cursos/gestion_personas_talento</span></p>
+  <p><span class="prompt">$</span> <span class="cmd">tiza comprobar *.html *.md</span></p>
+
+  <p class="comment"># 3. Iniciar sesión docente y sincronizar en Moodle:</p>
+  <p><span class="prompt">$</span> <span class="cmd">tiza empezar</span></p>
+  <p style="color: #4ade80;">✔ Aula virtual conectada y sincronizada al 100% con doble candado y calificación.</p>
+</div>
+</body>
+</html>

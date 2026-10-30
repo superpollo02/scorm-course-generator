@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Paso 1: Clonación del Repositorio e Instalación de Dependencias</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #0f172a; font-family: ui-monospace, SFMono-Regular, monospace; color: #f8fafc; }
+    .box { border: 2px solid #38bdf8; border-radius: 8px; background: #1e293b; padding: 20px; }
+    .prompt { color: #38bdf8; font-weight: bold; }
+    .cmd { color: #f8fafc; font-weight: bold; }
+    .comment { color: #94a3b8; font-style: italic; }
+  </style>
+</head>
+<body>
+<div class="box" data-rtfm-action-target="instalacion-entorno">
+  <h5 style="color: #38bdf8; margin-top: 0;"><i class="fa-solid fa-terminal"></i> Paso 1: Instalación del Repositorio y Dependencias</h5>
+  <p class="comment"># 1. Clonar el repositorio desde GitHub:</p>
+  <p><span class="prompt">$</span> <span class="cmd">git clone https://github.com/superpollo02/scorm-course-generator.git</span></p>
+  <p><span class="prompt">$</span> <span class="cmd">cd scorm-course-generator</span></p>
+  
+  <p class="comment"># 2. Crear y activar entorno virtual Python:</p>
+  <p><span class="prompt">$</span> <span class="cmd">python -m venv venv</span></p>
+  <p><span class="prompt">$</span> <span class="cmd">.\venv\Scripts\Activate.ps1</span></p>
+  
+  <p class="comment"># 3. Instalar librerías de generación multimedia y empaquetado:</p>
+  <p><span class="prompt">$</span> <span class="cmd">pip install -r requirements.txt edge-tts beautifulsoup4</span></p>
+  <p style="color: #4ade80;">✔ Entorno configurado correctamente con Python 3.10+, ffmpeg y edge-tts.</p>
+</div>
+</body>
+</html>
